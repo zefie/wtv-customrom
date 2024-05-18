@@ -68,5 +68,5 @@ function getValue(nv, off) {
 function pp() {
 	d.write('<form name=z><input type=hidden name=h value="&pname;"></form>')
 	z_nv = d.z.h.value
-	return parseInt(getValue(z_nv, 0), 16) // theme
+	return parseInt(getValue(z_nv, 0)) // theme
 }
