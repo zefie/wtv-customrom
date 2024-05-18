@@ -5,10 +5,10 @@
 <script src=file://rom/JS/NVRAM.js></script>
 <script>	
 	th = pp()
-	bgm = getValue(z_nv, 1)
+	bgm = gV(z_nv, 1)
 	function doSubmit(c) {
 		if (c) {
-			setByte(z_nv, 1, c)
+			sB(z_nv, 1, c)
 		}
 	}
 	function doLoad() {
