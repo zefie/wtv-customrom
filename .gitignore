@@ -1,5 +1,3 @@
-src/template.rar
-src/template.bin.i64
 *.o
 orig/
 origdbg/
