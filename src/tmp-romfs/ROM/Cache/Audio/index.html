@@ -1,13 +1,10 @@
-<html>
-<head>
-<DISPLAY NOOPTIONS NOSCROLL NOTVAUDIO SWITCHTOWEBMODE ALLOWOFFLINE NORECONNECTALERT>
-</head>
-<script src="file://rom/JS/htv-header.js"></script>
-<script src="file://rom/JS/farts.js"></script>
-<form name="t"><input type="hidden" name="h" value="&pname;"></form>
+<html><head><display nooptions noscroll allowoffline noreconnectalert></head>
+<script src=file://rom/JS/htv-header.js></script>
+<script src=file://rom/JS/NVRAM.js></script>
+<script src=file://rom/JS/farts.js></script>
 <script>
-th = document.t.h.value;
-head(th, 'medium', '', '', 'Fart Sounds Built into ROM');
+th=pp()
+head(th,'medium','','','Fart Sounds Built into ROM')
 </script>
 <bgsound src="fart2.mp3" autostart=true loop=0>
 <table>
@@ -32,32 +29,23 @@ head(th, 'medium', '', '', 'Fart Sounds Built into ROM');
 <tr>
 <td>
 </table>
-
-      <table cellspacing="0" cellpadding="0">
-        <tr>
-          <td width="60"></td>
-          <td valign="top" align="right"></td>
-          <td valign="top" align="left">
-            <script>as(th);</script>
-          <td width=80 align="left">
-          <td valign="top" align="right">
-            <font size="3" color="#ffcf69">
-              <shadow>
-                <form onsubmit="dF();return false"><input type=submit font=proportional value="Let 'er Rip!!!" width=160></form>
-              </shadow>
-            </font>
-            </form>
-          <td width=90></td>
-          </td>
-        </tr>
-      </table>
+<table cellspacing=0 cellpadding=0>
+  <tr>
+    <td width=60>
+    <td valign=top align=left>
+      <script>as(th);</script>
+    <td width=80 align=left>
+    <td valign=top align=right>
+      <form onsubmit="dF();return false"><script>butt(th,"Let 'er Rip!!!",'',160,'','font=proportional')</script></form>
+    <td width=90>
+  </tr>
+</table>
 <br><br>
 <font size="-2">
 &nbsp;&nbsp;&nbsp;&nbsp;Fart Sounds by Mike Koenig
-</table>
 <table>
 <tr>
 <td width="500" align="right">
 <br><br><br>
-<form action="file://rom/HTMLs/HackTV.html"><input type=submit font=proportional value="Done" width=120></form></font>
-</BODY>
+<form action="javascript:goHTV()"><script>butt(th,'Done','Done',120,'','','font=proportional')</script></form>
+</body>
