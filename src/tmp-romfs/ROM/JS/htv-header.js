@@ -14,14 +14,14 @@ function gTC(th,type){
 		case 1://dark
 			bgclr='191919'
 			tclr='aaaaaa'
-		break
+			break
 		case 2://purple
 			bgclr='4a2766'
 			lclr='aaaaaa'
-		break
+			break
 		case 3://blue
 			bgclr='002244'
-		break
+			break
 	}
 
 	switch(type){
@@ -122,8 +122,7 @@ function butt(th,v,n,w,t,x){
 	if(n)d.write(' name='+n)
 	if(w)d.write(' width='+w)
 	if(x)d.write(' '+x)
-	if(th==1){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorder4.bif')}
-	else if(th==2||th==3){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorderTh'+th+'.bif')}
+	if(th > 0){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorderTh'+th+'.bif')}
 	d.write('></font>');
 }
 
