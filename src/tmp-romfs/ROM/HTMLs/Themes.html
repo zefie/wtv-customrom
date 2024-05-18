@@ -41,25 +41,25 @@
 					<table cellspacing=0 cellpadding=4>
 						<tr>
 						<td align=center>
-							<font size=-1><script>d.write(getThemeName(0))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(0,'bg')+' height=45 width=60>')</script>
+							<font size=-1><script>d.write(gTN(0))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+gTC(0,'bg')+' height=45 width=60>')</script>
 							</table>
 						<td align=center>
-							<font size=-1><script>d.write(getThemeName(1))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(1,'bg')+' height=45 width=60>')</script>
+							<font size=-1><script>d.write(gTN(1))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+gTC(1,'bg')+' height=45 width=60>')</script>
 							</table>
 						<td align=center>
-							<font size=-1><script>d.write(getThemeName(2))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(2,'bg')+' height=45 width=60>')</script>
+							<font size=-1><script>d.write(gTN(2))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+gTC(2,'bg')+' height=45 width=60>')</script>
 							</table>
 						<td align=center>
-							<font size=-1><script>d.write(getThemeName(3))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(3,'bg')+' height=45 width=60>')</script>
+							<font size=-1><script>d.write(gTN(3))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+gTC(3,'bg')+' height=45 width=60>')</script>
 							</table>
 					</table>
 							<p><br>
 								<FONT SIZE=-1>Your current theme is 
-				<script>d.write(getThemeName(th));</script>.
+				<script>d.write(gTN(th));</script>.
 					<tr>
 				</table>
 			<td width=60>
@@ -69,7 +69,7 @@
 						<td absheight=40 valign=top colspan=3>
 							<form name=r>
 								<select name=l width=160 onchange="doSubmit(this[this.selectedIndex].value);" selected>
-									<script>for(i=0;i<z_th.length;i++){d.write('<option value='+i+'>'+getThemeName(i)+'</option>');}</script>
+									<script>for(i=0;i<z_th.length;i++){d.write('<option value='+i+'>'+gTN(i)+'</option>');}</script>
 								</select>
 							</form>
 							<table>

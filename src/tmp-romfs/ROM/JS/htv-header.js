@@ -1,14 +1,15 @@
 String.prototype.replace=function(o,n){
 	return this.split(o).join(n);
 }
-var d=document
-function getThemeName(th){return z_th[parseInt(th)]}
-function getThemeColor(th,type){
+var d=document;
+
+function gTC(th,type){
 	// light
 	bgclr='4c5a67'
 	tclr='cbcbcb'
 	vclr='dddddd'
 	lclr='dddddd'
+
 	switch(th){
 		case 1://dark
 			bgclr='191919'
@@ -20,9 +21,9 @@ function getThemeColor(th,type){
 		break
 		case 3://blue
 			bgclr='002244'
-      tclr='f0f0f0'
 		break
 	}
+
 	switch(type){
 		case 'bg':
 			return bgclr
@@ -48,13 +49,13 @@ function head(th,fs,bgm,lp,msg){
 			break
 	}
 
-	bgclr=getThemeColor(th,'bg')
-	tclr=getThemeColor(th,'t')
-	vclr=getThemeColor(th,'v')
-	lclr=getThemeColor(th,'l')
+	bgclr=gTC(th,'bg')
+	tclr=gTC(th,'t')
+	vclr=gTC(th,'v')
+	lclr=gTC(th,'l')
 
 	if(msg){d.write('<title>'+msg+'</title>')}
-	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 yspeed=1 fontsize='+fs+'>')
+	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		d.write('<bgsound src=file://rom/Cache/Music/'+bgm+' autostart=true')
@@ -64,7 +65,7 @@ function head(th,fs,bgm,lp,msg){
 			d.write(' loop='+lp+'>')
 		}
 	}
-	if(!msg){msg=''}
+	if(!msg){msg=""}
 	d.write('<table cellspacing=0 cellpadding=0>')
 	d.write('<tr><td>')
 	tab();
@@ -77,25 +78,25 @@ function head(th,fs,bgm,lp,msg){
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
 	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
-	else{d.write('<td width=100% height=80 valign=top align=left background="file://ROM/Images/Themes/ShadowLogo.gif" novtilebg>')}
+	else{d.write('<td width=100% height=80 valign=top align=left background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg>')}
 }
 
 function ci(th){
-	bgclr=getThemeColor(th,'bg')
-	tclr=getThemeColor(th,'t')
+	bgclr=gTC(th,'bg')
+	tclr=gTC(th,'t')
 	d.write('&nbsp;&nbsp;<textarea rows=4 size=46 id=msg name=msg border=0 text='+tclr+' bgcolor='+bgclr+' value="" nohighlight noselect></textarea>')
 }
 
 function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 	
 	if(s){
-		if(!lc){lc=getThemeColor(th,'t')}
-		if(!rc){rc=getThemeColor(th,'bg')}
+		if(!lc){lc=gTC(th,'t')}
+		if(!rc){rc=gTC(th,'bg')}
 	} else{
-		if(!lc){lc=getThemeColor(th,'bg')}
-		if(!rc){rc=getThemeColor(th,'t')}
+		if(!lc){lc=gTC(th,'bg')}
+		if(!rc){rc=gTC(th,'t')}
 	}
-	if(th==1){bgclr='333333'}
+	if(th == 1){bgclr='333333'}
 	if(!bg){bg='191919'}
 	if(!h){h=32}
 	if(!w){w=320}
@@ -114,7 +115,7 @@ function go(u){
 function goHTV(){return go('client:gotoadvancedsetup')}
 
 function butt(th,v,n,w,t,x){
-	tclr=getThemeColor(th,'t')
+	tclr=gTC(th,'t')
 	d.write('<font color='+tclr+'>')
 	if(!t)t='submit';
 	d.write('<input type='+t+' value="'+v+'"')
