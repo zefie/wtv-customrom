@@ -4,7 +4,8 @@
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 <script>
-ref = document.referrer
+ref = history.previous
+alert(ref)
 if (ref == 'file://rom/HTMLs/Themes.html' || ref == 'file://rom/HTMLs/PhoneCallWaitThresh.html' || ref == 'file://rom/HTMLs/BGM.html') {
 	go(ref)
 }
