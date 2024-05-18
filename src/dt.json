@@ -1,0 +1,95 @@
+{
+    "compression_strategy": "object-table-value-then-best",
+    "level0_build_info": {
+        "image_type": "ORIG_CLASSIC_BOX"
+    },
+    "level0_romfs_objects": {
+        "/ROM": {
+            "compression_type": "UNKNOWN",
+            "depth": 0,
+            "name": "ROM"
+        },
+        "/ROM/Cache": {
+            "compression_type": "UNKNOWN",
+            "depth": 1,
+            "name": "Cache"
+        },
+        "/ROM/Cache/Music": {
+            "compression_type": "UNKNOWN",
+            "depth": 2,
+            "name": "Audio"
+        },
+        "/ROM/Cache/Music/loop2.mid": {
+            "compression_type": "NONE",
+            "depth": 3,
+            "name": "loop2.mid"
+        },
+        "/ROM/Cache/Music/Starlight.xm": {
+            "compression_type": "NONE",
+            "depth": 3,
+            "name": "Starlight.xm"
+        },
+        "/ROM/Cache/Music/Intro029.mod": {
+            "compression_type": "NONE",
+            "depth": 3,
+            "name": "Intro029.mod"
+        },
+        "/ROM/Cache/Music/Intro101.mod": {
+            "compression_type": "NONE",
+            "depth": 3,
+            "name": "Intro101.mod"
+        },		
+        "/ROM/Cache/Music/SimplyShort.mod": {
+            "compression_type": "NONE",
+            "depth": 3,
+            "name": "SimplyShort.mod"
+        },
+        "/ROM/Cache/Music/cool.mod": {
+            "compression_type": "NONE",
+            "depth": 3,
+            "name": "cool.mod"
+        },
+        "/ROM/Cache/Music/FridayEvilArr.mid": {
+            "compression_type": "NONE",
+            "depth": 2,
+            "name": "FridayEvilArr.mid"
+        },
+        "/ROM/Cache/Music/SM64FileSel.mid": {
+            "compression_type": "NONE",
+            "depth": 2,
+            "name": "SM64FileSel.mid"
+        },		
+        "/ROM/Cache/Music/Intro017.mod": {
+            "compression_type": "NONE",
+            "depth": 2,
+            "name": "Intro017.mod"
+        },		
+       "/ROM/Cache/Music/loop1.mid": {
+            "compression_type": "NONE",
+            "depth": 2,
+            "name": "loop1.mid"
+        }
+ 		
+    },
+    "template_file": "template.bin",
+    "tmp_build_info": {
+        "image_type": "ORIG_CLASSIC_BOX"
+    },
+    "tmp_romfs_objects": {
+        "/ROM": {
+            "compression_type": "UNKNOWN",
+            "depth": 0,
+            "name": "ROM"
+        },
+        "/ROM/Cache": {
+            "compression_type": "UNKNOWN",
+            "depth": 1,
+            "name": "Cache"
+        },
+        "/ROM/Cache/Music": {
+            "compression_type": "UNKNOWN",
+            "depth": 2,
+            "name": "Music"
+        }
+    }
+}

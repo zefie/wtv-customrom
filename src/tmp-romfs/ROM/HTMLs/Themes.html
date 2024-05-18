@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <display nooptions noscroll allowoffline noreconnectalert>
+<script src=file://rom/JS/htv-header.js></script>
+<script src=file://rom/JS/NVRAM.js></script>
+<script>	
+	th = pp()
+	if (th != 1 && th != 2 && th != 3) {
+		th = 0;
+	}
+	function doSubmit(c) {
+		if (c) {
+			setByte(z_nv, 0, c)
+		}
+	}
+	// light = 0, dark = 1, purple = 2, blue = 3
+	function doLoad() {
+		document.r.l.selectedIndex = th;
+	}
+	window.onload = doLoad;
+</script>
+</head>
+<script>head(th, 'large', 'world1', 5 , 'Theme Settings');</script>
+  <spacer Width=30 Height=6 type=vertical>
+  <table cellspacing=0 cellpadding=0>
+    <tr>
+      <td abswidth=14>
+      <td colspan=3>
+        <table cellspacing=0 cellpadding=0>
+          <tr>
+            <td valign=center absheight=40>
+        </table>
+      <td>
+    <TR>
+      <td>
+      <td width=250 height=230 valign=top align=left>
+        <table cellspacing=0 cellpadding=0>
+          <tr>
+            <td absheight=250 valign=top>
+              <font size=-1> Please select the theme you would like to use from the drop down on the right. Click done when finished.
+              <p><br>
+					<table cellspacing=0 cellpadding=4>
+						<tr>
+						<td align=center>
+							<font size=-1><script>d.write(getThemeName(0))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(0, 'bg')+' height=45 width=60>')</script>
+							</table>
+						<td align=center>
+							<font size=-1><script>d.write(getThemeName(1))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(1, 'bg')+' height=45 width=60>')</script>
+							</table>
+						<td align=center>
+							<font size=-1><script>d.write(getThemeName(2))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(2, 'bg')+' height=45 width=60>')</script>
+							</table>
+						<td align=center>
+							<font size=-1><script>d.write(getThemeName(3))</script><br>
+							<script>d.write('<table border=1><tr><td bgcolor='+getThemeColor(3, 'bg')+' height=45 width=60>')</script>
+							</table>
+					</table>
+              <p><br>
+                <FONT SIZE=-1>Your current theme is 
+				<script>d.write(getThemeName(th));</script>.
+          <tr>
+        </table>
+      <td width=60>
+      <td width=230 valign=top align=left>
+        <table cellspacing=0 cellpadding=0>
+          <tr>
+            <td absheight=40 valign=top colspan=3>
+              <form name=r>
+                <select name=l width=160 onchange="doSubmit(this[this.selectedIndex].value);" selected>
+                  <script>
+					for (i = 0; i < z_th.length; i++) {
+						d.write('<option value='+i+'>'+getThemeName(i)+'</option>');
+					}
+				  </script>
+                </select>
+              </form>		  
+              <table>
+                <tr>
+                  <td valign=top align=left>
+              </table>
+        </table>
+        <spacer height=190 type=vertical>
+		<FORM action=client:gotoadvancedsetup>
+			<script>butt(th, 'Done', 'Done', 160);</script>			
+		</FORM>
+      </td>
+    </tr>
+  </table>
+  </td>
+  </tr>
+  </table>
+</body>
+</html>

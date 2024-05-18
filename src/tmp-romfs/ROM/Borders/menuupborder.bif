@@ -1,0 +1,5 @@
+IMAGE file://ROM/Images/menuupborder.img
+INNERBOUNDS  14, 17, 28, 24
+PADBOUNDS  6, 6, 12, 12
+DRAWCENTER
+SCALECENTER

@@ -1,0 +1,6 @@
+IMAGE file://rom/Images/Selection.img
+IMAGE file://rom/Images/activeselection.gif
+IMAGE file://rom/Images/secondaryselection.gif
+IMAGE file://ROM/Images/notworkingselection.gif
+INNERBOUNDS 7,7,23,23
+NOFILTER

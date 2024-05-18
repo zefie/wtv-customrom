@@ -1,0 +1,83 @@
+<html>
+<head>
+<display nooptions noscroll allowoffline noreconnectalert>
+<script src=file://rom/JS/htv-header.js></script>
+<script src=file://rom/JS/NVRAM.js></script>
+</head>
+<script>	
+th = pp()
+bgm = z_bgm[getValue(z_nv, 1)]
+head(th, 'medium', bgm, -1, 'Welcome to HackTV')
+function doMenu() {
+	d.ua.vu.value = d.ua.um[d.ua.um.selectedIndex].value
+}
+function setMsg(msg) {
+	d.msg.box.value = msg
+}
+function urlInfo() {
+	setMsg('                            This is a URL accessor. Will allow you to explore this build, and when connected to the web allow access to wtv- urls.')
+}
+window.onload = doMenu;
+</script>
+<table cellspacing=0 cellpadding=0>
+<tr>
+<td abswidth=10>&nbsp;</td>
+<td colspan=3>
+
+<table>
+<tr>
+<td width=190 valign=top align=left>
+<spacer width=9 type=block><font size=3 color=#bbbbbb><shadow><a selected href=BuildInfo.html onmouseover="setMsg('                            Welcome to the HTV custom build for bf0.                                             Brought to you by:           eMac                 MattMan69                 zefie                     Outa                                                        BuildInfo for more details.')" nohighlight>Welcome!</a></shadow></font>
+<br> &nbsp; <br>
+<font size=2 color=#989898>
+<li><a href="javascript:dial()" onmouseover="setMsg('                            In the event that you already have a Tellyscript for the server you want to connect to, select this to connect to the web now.')">Quick Connect</a>
+<li><a href=client:gotoconnectsetup onmouseover="setMsg('                            This page provides you with the option to choose from a list of servers that you would like to connect to.')">Connect Setup</a>
+<li><a href=client:gotophonesetup onmouseover="setMsg('                            To connect to the internet, it may be necessary to modify some dialing options.')">Phone Settings</a>
+<li><a href=SecretPhoneSetup.html  onmouseover="setMsg('                            This page allows you to set more advanced phone options, such as the 1800 number.')">Obsecure Settings</a>
+<li><a href=Themes.html onmouseover="setMsg('                            Customize the look of the HTV custom build. Currently, there are four colors to choose from.')">Theme Settings</a>
+<li><a href=BGM.html onmouseover="setMsg('                            Choose from several available background music for the HackTV Homepage.')">BGM Settings</a>
+<li><a href=TechInfoInternal.html onmouseover="setMsg('                            This page allows you to view technical information about your box. Identify the build version, ssid, and other relevant information.')">Tech Info</a>
+<li><a href=HTMLv2.html onmouseover="setMsg('                            This page allows you to play with the HTML and Javascript features of this build by offering a sandbox to play in.')">HTML Sandbox v2</a>
+<tr>
+<td>
+<spacer width=2 height=120 type=block>
+</td></tr>
+</table>
+</td>
+<spacer height=9 type=block>
+<td valign=top>
+<table>
+<td valign=top>
+<center>
+<spacer width=2 height=2 type=block>
+<form name=msg>
+<textarea rows=11 size=29 id=alert name=box border=1 text=#191919 bgcolor=#b5b5b5 nohighlight noselect></textarea>
+</form>	 
+
+</table>
+&nbsp;
+<script>
+as(th, '', 10, 256, 0, 1)
+</script>
+
+<table>
+<tr>
+<td>
+<form name=ua>
+<select name=um onchange=doMenu() width=272 onmouseover='urlInfo()'>
+<option value=file://rom/HTMLs/BuildInfo.html selected>file://rom/HTMLs/BuildInfo.html</option>
+<option value=file://rom/Cache/Music/index.html>file://rom/Cache/Music/index.html</option>
+<option value=file://rom/Cache/Audio/index.html>file://rom/Cache/Audio/index.html</option>
+<option value=file://rom/>file://rom/</option>
+<option value=client:>client:</option>
+<option value=wtv->wtv-</option>
+</select>
+<input type=text name=vu value='' border=1 bgcolor=b5b5b5 text=191919 cursor=3e4360 align=center width=214 executeurl asciionly autoactivate onmouseover='urlInfo()'>
+<spacer type=block width=5>
+<script>butt(th, 'Go', '', 58, '', 'onmouseover="urlInfo()"')</script>
+</form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
