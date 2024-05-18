@@ -1,12 +1,12 @@
 <html>
 <head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<DISPLAY NOOPTIONS NOSCROLL NOTVAUDIO SWITCHTOWEBMODE ALLOWOFFLINE NORECONNECTALERT>
 </head>
-<script src=file://rom/JS/htv-header.js></script>
-<script src=file://rom/JS/NVRAM.js></script>
+<script src="file://rom/JS/htv-header.js"></script>
+<form name="t"><input type="hidden" name="h" value="&pname;"></form>
 <script>
-th = pp()
-head(th, 'medium', SM64FileSel , 0, 'Music Built into ROM')
+th = document.t.h.value;
+head(th, 'medium', 'plingA','','MIDI Songs Built into ROM');
 </script>
 <table>
 <tr align=top>
@@ -16,53 +16,50 @@ head(th, 'medium', SM64FileSel , 0, 'Music Built into ROM')
 
 <table>
 <tr align=top>
-<td width=200>
-<ul>
-<li><a href="AfterWork.mid">AfterWork</a>
-<li><a href="airloop.mid">airloop</a>
-<li><a href="AliveAtDawn.mid">AliveAtDawn</a>
-<li><a href="Boogie.mid">Boogie</a>
-<li><a href="Daybreak.mid">Daybreak</a>
-<li><a href="DialingWebTV.mid">DialingWebTV</a>
-<li><a href="FridayEvilArr.mid">FridayEvilArr</a>
-<li><a href="ghosttown.mid">ghosttown</a>
-<li><a href="Intro017.mod">Intro017</a>
-<li><a href="Intro029.mod">Intro029</a>
-<li><a href="Intro101.mod">Intro101</a>
-<td width=200>
-<li><a href="karTV.mid">karTV</a>
-<li><a href="loop1.mid">loop1</a>
-<li><a href="loop2.mid">loop2</a>
-<li><a href="majesty.mid">majesty</a>
-<li><a href="mjstyWTV.mid">mjstyWTV</a>
-<li><a href="plingA.mid">plingA</a>
-<li><a href="plingB.mid">plingB</a>
-<li><a href="seqJ.mid">seqJ</a>
-<li><a href="SimplyShort.mod">SimplyShort</a>
-<li><a href="SM64FileSel.mid" selected>SM64FileSel</a>
-<td width=200>
-<li><a href="snowy1.mid">snowy1</a>
-<li><a href="snowy2.mid">snowy2</a>
-<li><a href="Splash.mid">Splash</a>
-<li><a href="Starlight.xm">Starlight</a>
-<li><a href="swelplng.mid">swelplng</a>
-<li><a href="tymplingA.mid">tymplingA</a>
-<li><a href="tymplingB.mid">tymplingB</a>
-<li><a href="world1.mid">world1</a>
-<li><a href="world2.mid">world2</a>
-<li><a href="WTVa.mid">WTVa</a>
-</ul>
+<td width=240>
+<UL>
+<LI><A HREF="AfterWork.mid" selected>AfterWork</A>
+<LI><A HREF="airloop.mid">airloop</A>
+<LI><A HREF="AliveAtDawn.mid">AliveAtDawn</A>
+<LI><A HREF="Boogie.mid">Boogie</A>
+<LI><A HREF="Daybreak.mid">Daybreak</A>
+<LI><A HREF="DialingWebTV.mid">DialingWebTV</A>
+<LI><A HREF="FridayEvilArr.mid">FridayEvilArr</A>
+<LI><A HREF="ghosttown.mid">ghosttown</A>
+<LI><A HREF="karTV.mid">karTV</A>
+<LI><A HREF="loop1.mid">loop1</A>
+<LI><A HREF="loop2.mid">loop2</A>
+<LI><A HREF="majesty.mid">majesty</A>
+<LI><A HREF="mjstyWTV.mid">mjstyWTV</A>
+<td>
+<LI><A HREF="plingA.mid">plingA</A>
+<LI><A HREF="plingB.mid">plingB</A>
+<LI><A HREF="seqJ.mid">seqJ</A>
+<LI><A HREF="snowy1.mid">snowy1</A>
+<LI><A HREF="snowy2.mid">snowy2</A>
+<LI><A HREF="Splash.mid">Splash</A>
+<LI><A HREF="swelplng.mid">swelplng</A>
+<LI><A HREF="tymplingA.mid">tymplingA</A>
+<LI><A HREF="tymplingB.mid">tymplingB</A>
+<LI><A HREF="world1.mid">world1</A>
+<LI><A HREF="world2.mid">world2</A>
+<LI><A HREF="WTVa.mid">WTVa</A>
+</UL>
 </table>
-<br><br><br><br>
-      <table cellspacing=0 cellpadding=0>
+<br>
+      <table cellspacing="0" cellpadding="0">
         <tr>
-          <td width=100"></td>
-          <td valign=top" align=right></td>
-          <td valign=top align=left>
+          <td width="100"></td>
+          <td valign="top" align="right"></td>
+          <td valign="top" align="left">
             <script>as(th);</script>
-          <td width=80 align=left>
-          <td width=420 valign=top align=right>
-            <form action="javascript:goHTV()"><script>butt(th, 'Done', '', 120, '', 'font=proportional')</script></form>
+          <td width=80 align="left">
+          <td width=420 valign="top" align="right">
+            <font size="3" color="#ffcf69">
+              <shadow>
+                <form action="file://rom/HTMLs/HackTV.html"><input type=submit font=proportional value="Done" width=120></form></font>
+              </shadow>
+            </font>
             </form>
           <td width=90></td>
           </td>

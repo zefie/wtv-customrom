@@ -135,7 +135,7 @@ function go(u) {
 }
 
 function goHTV() {
-	return go('client:gotoadvancedsetup')
+	return go('client:gotohacktv')
 }
 
 function butt(th, v, n, w, t, x) {

@@ -7,22 +7,13 @@ var z_th = new Array()
 	z_th[3] = 'SKCro Blue'
 
 var z_bgm = new Array()
-	z_bgm[0] = 'AfterWork'
-	z_bgm[1] = 'airloop'
-	z_bgm[2] = 'AliveAtDawn'
-	z_bgm[3] = 'Daybreak'
-	z_bgm[4] = 'FridayEvilArr'
-	z_bgm[5] = 'Intro017.mod'
-	z_bgm[6] = 'Intro029.mod'
-	z_bgm[7] = 'Intro101.mod'
-	z_bgm[8] = 'karTV'
-	z_bgm[9] = 'SimplyShort.mod'
-	z_bgm[10] = 'SM64FileSel'
-	z_bgm[11] = 'Starlight.xm'
+	z_bgm[0] = 'FridayEvilArr'
+	z_bgm[1] = 'loop1'
+	z_bgm[2] = 'loop2'
 
 var z_def = new Array()
 	z_def[0] = 0 // theme
-	z_def[1] = 5 // bgm
+	z_def[1] = 2 // bgm
 
 var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!" // 64 possible different values
 
