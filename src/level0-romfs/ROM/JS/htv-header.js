@@ -77,7 +77,7 @@ function head(th,fs,bgm,lp,msg){
 
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
-	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
+	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif align=right novtilebg><spacer height=32 type=block><b><shadow><font color=cbcbcb>'+msg+' &nbsp; </font></shadow></b>')}
 	else{d.write('<td width=100% height=80 valign=top align=left background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg>')}
 }
 
@@ -112,7 +112,7 @@ function go(u){
 	return true
 }
 
-function goHTV(){return go('client:gotohacktv')}
+function goHTV(){return go('file://ROM/HTMLs/HackTV.html')}
 
 function butt(th,v,n,w,t,x){
 	tclr=gTC(th,'t')

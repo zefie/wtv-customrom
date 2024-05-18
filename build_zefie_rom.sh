@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(realpath "$(dirname "${0}")")" || exit 1
 
-ZWNIBUILD=7383
+ZWNIBUILD=16467
 if [ -z "${ZVERSION}" ]; then
 	ZVERSION="git-${USER}-v1"
 fi

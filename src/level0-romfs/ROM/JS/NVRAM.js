@@ -10,6 +10,7 @@ var z_bgm = new Array()
 	z_bgm[0]='FridayEvilArr'
 	z_bgm[1]='loop1'
 	z_bgm[2]='loop2'
+	z_bgm[3]='music15.mid'
 
 var z_def = new Array()
 	z_def[0]=0//theme
