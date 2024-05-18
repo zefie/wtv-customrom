@@ -17,20 +17,20 @@ var z_def = new Array()
 
 var chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!"//64 possible different values
 
-function getByte(nv,off){	
-	return chars.indexOf(nv.charAt(off));
-}
+function gTN(th){return z_th[parseInt(th)]}
 
-function setByte(nv,off,dat){
+function gB(nv,off){return chars.indexOf(nv.charAt(off));}
+
+function sB(nv,off,dat){
 	prefix=''
 	if(off>nv.length){for(i=0;i<off;i++){prefix += '.'}}
-  else if(off > 0){prefix=nv.substring(0,off)}
+	else if(off > 0){prefix=nv.substring(0,off)}
 	dat=chars.charAt(parseInt(dat));
 	z_url='client:ConfirmBYOISPSetup?BYOISPProviderName='+prefix+dat+nv.substring(off+1)
 	go(z_url)
 }
 
-function getValue(nv,off){
+function gV(nv,off){
 	z_len=0
 	switch(off){
 		case 0:
@@ -47,5 +47,6 @@ function getValue(nv,off){
 
 function pp(){
 	d.write('<form name=z><input type=hidden name=h value="&pname;"></form>')
-	z_nv = d.z.h.value
-	return parseInt(getValue(z_nv, 0))//theme
+	z_nv=d.z.h.value
+	return parseInt(gV(z_nv,0))//theme
+}
