@@ -2,7 +2,9 @@
 cd "$(realpath "$(dirname "${0}")")" || exit 1
 
 ZWNIBUILD=1235
-ZVERSION="zefie-v2"
+if [ -z "${ZVERSION}" ]; then
+	ZVERSION="git-${USER}-v1"
+fi
 ZROMTYPE="bf0app"
 
 ZSRC="src"
