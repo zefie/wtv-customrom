@@ -1,20 +1,19 @@
-<html>
-<head>
+<html><head>
 <display nooptions noscroll allowoffline noreconnectalert>
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/htv-cSetup.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 </head>
-<form name="t"><input type="hidden" name="h" value="&pname;"></form>
+<form name=t><input type=hidden name=h value="&pname;"></form>
 <script>
-th = getTheme(document.t.h.value);
-head(th, 'medium', 'karTV', 5, 'Connect Setup v2.6');
-window.onload = uS;
+th=getTheme(document.t.h.value);
+head(th,'medium','karTV',5,'Connect Setup v2.6');
+window.onload=uS;
 </script>
-<spacer H=24 type=block>
+<spacer height=24 type=block>
 <form name=c action=client:ConfirmConnectSetup>
 <table width=100% cellspacing=1 cellpadding=0><tr><td colspan=3>&nbsp;Server:</td>
-<td><spacer W=24 type=block>	
+<td><spacer width=24 type=block>	
 <select width=440 name=p onchange=uS() selected>
 <option value=htv>MattMan's (HTV) MiniSrv</option>
 <option value=htvb>MattMan's (HTV) MiniSrv Backup</option>
@@ -29,8 +28,8 @@ window.onload = uS;
 <table width=100% cellspacing=1 cellpadding=0>
 <tr><td height=18>
 <tr><td><input name=serviceType type=hidden value=custom>
-&nbsp;Address:&nbsp;&nbsp;&nbsp;<input size=21 asciionly name=machine value="" bgcolor=b5b5b5 text=191919 cursor=6d32a8">
-&nbsp;&nbsp;&nbsp;Port:<input size=5 asciionly numbers name=port value="" bgcolor=b5b5b5 text=191919 cursor=6d32a8">
+&nbsp;Address:&nbsp;&nbsp;&nbsp;<input size=21 asciionly name=machine value="" bgcolor=b5b5b5 text=191919 cursor=6d32a8>
+&nbsp;&nbsp;&nbsp;Port:<input size=5 asciionly numbers name=port value="" bgcolor=b5b5b5 text=191919 cursor=6d32a8>
 </table>
 <spacer type=block height=60>
 <hr><br>
@@ -40,25 +39,22 @@ window.onload = uS;
 &nbsp;Info:<br><br>
 <td>
 <tr><td width=20><td width=390 align=left valign=top>
-<form name="i">
-<script>ci(th);</script>
-</form>
+<form name=i><script>ci(th);</script></form>
 <td><td width=100% align=right valign=top>
 <font size=-2>
 <input type=hidden name=useEncryption value=true>
-<script>butt(th, 'Connect', 'Connect', 170);</script>
+<script>butt(th,'Connect','Connect',170);</script>
 </font>	
 </form>
 <form action="javascript:goHTV()">
 <font size=-2>
-<script>butt(th, 'HackTV Home', '', 170);</script>
+<script>butt(th,'HackTV Home','',170);</script>
 </font>
 </form>		
 <form action=client:gotophonesetup>
 <font size=-2>
-<script>butt(th, 'Dialing Options', '', 170);</script>
+<script>butt(th,'Dialing Options','',170);</script>
 </font>
 </form>
 </table>
-
 </body>
