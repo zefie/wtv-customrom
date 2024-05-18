@@ -1,19 +1,14 @@
 String.prototype.replace=function(o,n){
 	return this.split(o).join(n);
 }
-var d=document;
-
-function getThemeName(th){	
-	return z_th[parseInt(th)]
-}
-
+var d=document
+function getThemeName(th){return z_th[parseInt(th)]}
 function getThemeColor(th,type){
 	// light
 	bgclr='4c5a67'
 	tclr='cbcbcb'
 	vclr='dddddd'
 	lclr='dddddd'
-
 	switch(th){
 		case 1://dark
 			bgclr='191919'
@@ -25,9 +20,9 @@ function getThemeColor(th,type){
 		break
 		case 3://blue
 			bgclr='002244'
+      tclr='f0f0f0'
 		break
 	}
-
 	switch(type){
 		case 'bg':
 			return bgclr
@@ -59,7 +54,7 @@ function head(th,fs,bgm,lp,msg){
 	lclr=getThemeColor(th,'l')
 
 	if(msg){d.write('<title>'+msg+'</title>')}
-	d.write('<body background=file://rom/Images/Themes/Pattern.giftext='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
+	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 yspeed=1 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		d.write('<bgsound src=file://rom/Cache/Music/'+bgm+' autostart=true')
@@ -69,19 +64,19 @@ function head(th,fs,bgm,lp,msg){
 			d.write(' loop='+lp+'>')
 		}
 	}
-	if(!msg){msg=""}
+	if(!msg){msg=''}
 	d.write('<table cellspacing=0 cellpadding=0>')
 	d.write('<tr><td>')
 	tab();
 	d.write('<spacer type=block width=11 height=11><br>')
-	d.write('<spacer type=block width=10 height=1><a href="javascript:goHTV()"><img src=file://ROM/Cache/WebTVLogoJewel.gifwidth=90 height=69></a>')
+	d.write('<spacer type=block width=10 height=1><a href="javascript:goHTV()"><img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69></a>')
 	tab(msg);
 	d.write('</td></tr></table>')
 }	
 
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
-	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gifnovtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gifalign=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
+	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
 	else{d.write('<td width=100% height=80 valign=top align=left background="file://ROM/Images/Themes/ShadowLogo.gif" novtilebg>')}
 }
 
@@ -100,7 +95,7 @@ function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 		if(!lc){lc=getThemeColor(th,'bg')}
 		if(!rc){rc=getThemeColor(th,'t')}
 	}
-	if(th == 1){bgclr='333333'}
+	if(th==1){bgclr='333333'}
 	if(!bg){bg='191919'}
 	if(!h){h=32}
 	if(!w){w=320}
