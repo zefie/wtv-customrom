@@ -19,7 +19,11 @@ var chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!"//64
 
 function gTN(th){return z_th[parseInt(th)]}
 
-function gB(nv,off){return chars.indexOf(nv.charAt(off));}
+function gB(nv,off){
+	b = nv.charAt(off)
+	if(b){return chars.indexOf(b)}
+	else{return -1}
+}
 
 function sB(nv,off,dat){
 	prefix=''
@@ -41,8 +45,8 @@ function gV(nv,off){
 			break
 	}
 	z_val=gB(nv,off)
-	if(!z_val || z_val < 0 || z_val >= z_len){return z_def[off]}
-	return z_val
+	if(z_val < 0 || z_val >= z_len){return parseInt(z_def[off])}
+	return parseInt(z_val)
 }
 
 function pp(){
