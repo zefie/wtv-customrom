@@ -23,7 +23,7 @@ function gB(nv,off){return chars.indexOf(nv.charAt(off));}
 
 function sB(nv,off,dat){
 	prefix=''
-	if(off>nv.length){for(i=0;i<off;i++){prefix += '.'}}
+	if(off>nv.length){for(i=0;i<off;i++){prefix += '?'}}
 	else if(off > 0){prefix=nv.substring(0,off)}
 	dat=chars.charAt(parseInt(dat));
 	z_url='client:ConfirmBYOISPSetup?BYOISPProviderName='+prefix+dat+nv.substring(off+1)
@@ -40,7 +40,7 @@ function gV(nv,off){
 			z_len=z_bgm.length
 			break
 	}
-	z_val=getByte(nv,off)
+	z_val=gB(nv,off)
 	if(!z_val || z_val < 0 || z_val >= z_len){return z_def[off]}
 	return z_val
 }
