@@ -1,0 +1,81 @@
+<html>
+<head><title>TV Search</title></head>
+<display nooptions>
+
+<body bgcolor=#1c2438 background="file://ROM/tvimages/StripePatternTVListings.gif" text=989898 link=6cb18a vlink=6cb18a hspace=0 vspace=0 fontsize=large>
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://ROM/tvimages/TVListingsShadowLogo.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
+			<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<spacer type=vertical height=26>
+
+<table cellspacing=0 cellpadding=0>
+	<tr><td abswidth=62>
+		<td>
+			<table cellspacing=0 cellpadding=0>
+				<tr><td valign=top>
+						<font size=+2 color=#ffcf69><shadow>Search TV Listings</shadow></font>
+						<br><spacer type=vertical height=15>
+				<tr><td valign=top>
+					<form action="client:TVSearch?action=textSearch">
+						<font size=-1 color=6cb18a>
+							Type a word, phrase, or program title
+							<spacer type=vertical height=4><br>
+						</font>
+						<spacer type=block height=49 width=42>
+						<font color=black>
+							<input type=text name="title" width=292 maxlength=255
+								bgcolor=#444444 text=#ffdd33 cursor=#cc9933 selected>
+						</font>
+						<spacer type=horizontal width=12>
+						<font color=ffcf69 size=-1><shadow>
+						<input type=submit value="Search" submitform usestyle width=130 borderimage="file://ROM/tvimages/TVButtonBorder.bif">
+						</shadow></font>
+						<br><spacer type=vertical height=33>
+					</form>
+				<tr><td valign=top>
+						<font size=-1 color=6cb18a>
+							Or choose a category
+						</font>
+						<br><spacer type=vertical height=18>
+				<tr><td valign=top>
+						<table cellspacing=0 cellpadding=0>
+							<tr><td abswidth=43><td>
+								<table cellspacing=0 cellpadding=0>
+									<tr><td abswidth=139 absheight=41 valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=movies">
+											<font size=+2 color=cccccc>Movies</font>
+											</a>
+										<td abswidth=139 valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=sports">
+												<font size=+2 color=cccccc>Sports</font>
+											</a>
+										<td abswidth=148 valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=instructional">
+												<font size=+2 color=cccccc>Instructional</font>
+											</a>
+									<tr><td absheight=41 valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=series">
+												<font size=+2 color=cccccc>Series</font>
+											</a>
+										<td valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=news">
+												<font size=+2 color=cccccc>News</font>
+											</a>
+										<td valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=specials">
+												<font size=+2 color=cccccc>Specials</font>
+											</a>
+								</table>
+						</table>
+			</table>
+</table>
+</body>
+</html>

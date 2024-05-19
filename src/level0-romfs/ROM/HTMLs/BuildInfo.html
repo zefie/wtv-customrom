@@ -1,0 +1,50 @@
+<html>
+<head>
+<display nooptions noscroll allowoffline noreconnectalert>
+<script src=file://rom/JS/htv-header.js></script>
+<script src=file://rom/JS/NVRAM.js></script>
+<script src=file://rom/JS/BuildInfo.js></script>
+</head>
+<script>
+th = pp()
+head(th,'medium','FridayEvilArr',5,'About this HackTV build');
+</script>
+
+<table>
+<tr>
+<td width=20>
+<td valign=top align=right width=120><shadow>Client ROM:</shadow>
+<td width=10>
+<td valign=top>Version &wtv-appvers;-<script>d.write(bI('version'));</script>
+<tr>
+<td>
+<td valign=top align=right><shadow>ROM Type:</shadow>
+<td width=10>
+<td valign=top><script>d.write(bI('romtype'));</script>
+<tr>
+<td>
+<td valign=top align=right><shadow>ROM Pack Date:</shadow>
+<td width=10>
+<td valign=top><script>d.write(bI('packed_date'));</script>
+<tr>
+<td height=10>
+<tr>
+<td>
+<td valign=top align=right><shadow>Credits:</shadow>
+<td width=10>
+<td valign=top height=190>
+Brought to you by the efforts of:<br>
+- eMac (rommy, rev engineering, much more)<br>
+- MattMan69 (themes, design, layout)<br>
+- zefie (coding, packing, distribution)<br>
+- Outa (rev engineering, hw discoveries)<br>
+- FairPlay137 (MAME development)<br>
+- WebTV Discord (for the lulz)<br>
+<tr>
+<td height=4>
+</table>
+<hr>
+<table>
+<tr>
+<td width=600 align=right>
+<form action=client:gotoadvancedsetup><script>butt(th, 'Done', '', 120, '', 'font=proportional selected')</script></form></font>

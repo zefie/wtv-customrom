@@ -1,0 +1,93 @@
+#bannerImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 560;
+    height: 62;
+}
+
+#bannerHead {
+    position: absolute;
+    top: 26;
+    left: 200;
+}
+
+#bodyHead {
+    position: absolute;
+    top: 62;
+    left: 30;
+    width: 494;
+    height: 30;
+}
+
+#bodyTextOnly {
+    position: absolute;
+    top: 102;
+    left: 30;
+    width: 300;
+    height: 200;
+}
+
+#bodyTextByImg {
+    position: absolute;
+    top: 102;
+    left: 30;
+    width: 220;
+    height: 200;
+}
+
+#bodyImg {
+    position: absolute;
+    top: 101;
+    left: 271;
+    width: 267;
+    height: 250;
+}
+
+#farRightImg {
+    position: absolute;
+    top: 101;
+    left: 430;
+}
+
+#bodyImgFrame {
+    position: absolute;
+    top: 100;
+    left: 270;
+    width: 275;
+    height: 208;
+}
+
+#codesetInstructionsText {
+    position: absolute;
+    top: 98;
+    left: 30;
+    width: 280;
+    height: 300;
+}
+
+#codesetInstructionsImg {
+    position: absolute;
+    top: 98;
+    left: 320;
+}
+
+#brandEmbed {
+    position: absolute;
+    top: 104;
+    left: 260;
+    width: 280;
+    height: 250;
+}
+
+#middleButton {
+    position: absolute;
+    top: 370;
+    left: 260;
+}
+
+#rightButton {
+    position: absolute;
+    top: 370;
+    left: 410;
+}

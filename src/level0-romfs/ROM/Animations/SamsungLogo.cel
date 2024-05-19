@@ -1,0 +1,22 @@
+IMAGE = file://ROM/Images/SamsungLogo.gif
+
+FRAME s1 = 0 0 91 269 
+FRAME s2 = 91 0 182 269 
+
+PERIOD = 6
+
+FRAME s2
+    ADVANCE = 0 0
+
+FRAME s1
+    DISSOLVE = 4
+    ADVANCE = 0 0
+
+PERIOD = 60
+
+FRAME s1
+    ADVANCE = 0 0
+
+FRAME s2
+    DISSOLVE = 4
+    ADVANCE = 0 0

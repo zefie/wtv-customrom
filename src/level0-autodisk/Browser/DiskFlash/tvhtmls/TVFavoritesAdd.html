@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>TV Favorites Add</title>
+<display nomapscroll>
+<script language="JavaScript" src="pageUtils.js">
+	var groupCount = TVFavorites.getGroupCount();
+	var isEmpty = (groupCount == 0);
+	var isFull = (groupCount == 8);
+
+	if (isFull)
+		history.back();
+
+	function addCustomList()
+	{
+		var newGroupName = makeDefaultFavoriteName();
+		document.location = "file://Disk/Browser/DiskFlash/tvhtmls/TVFavoritesEditor.html?newGroup=true&newGroupName=" + escape(newGroupName);
+	}
+
+	function makeDefaultFavoriteName()
+	{
+		var favName;
+		var groupCount = TVFavorites.getGroupCount();
+		var nameCount;
+		var maxNameCount = 0;
+		var groupIndex;
+
+		for (groupIndex = 0; groupIndex < groupCount; groupIndex++) {
+			favName = TVFavorites.getGroupName(groupIndex);
+			if (favName.indexOf("Custom") == 0) {
+				namePieces = favName.split(" ");
+				if (namePieces.length == 2) {
+					nameCount = parseInt(namePieces[1]);
+					if (!isNaN(nameCount) && nameCount > maxNameCount)
+						maxNameCount = nameCount;
+				} else if (namePieces.length == 1 && maxNameCount < 1)
+					maxNameCount = 1;
+			}
+		}
+
+		maxNameCount++;
+
+		if (maxNameCount > 1)
+			return "Custom " + maxNameCount;
+		else
+			return "Custom";
+	}
+</script>
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 65;
+	width: 291;
+	height: 27;
+}
+
+#explain {
+	position: absolute;
+	top: 147;
+	left: 65;
+	width: 215;
+}
+
+#customList {
+	position: absolute;
+	top: 139;
+	left: 312;
+}
+
+#presetList {
+	position: absolute;
+	top: 180;
+	left: 312;
+}
+
+#divider {
+	position: absolute;
+	top: 172;
+	left: 341;
+	width: 160;
+	height: 2;
+}
+
+#doneButton {
+	position: absolute;
+	top: 373;
+	left: 407;
+	width: 137;
+	height: 35;
+}
+</style>
+</head>
+<body bgcolor=#1c2438 background="file://ROM/tvimages/StripePatternTVListings.gif"
+		text=#989898 link=#6cb18a vlink=#6cb18a hspace=0 vspace=0 fontsize=large>
+
+<form id=tvForm>
+
+<div id=banner>
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://ROM/tvimages/TVListingsShadowLogo.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+		    <a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+		<td width=456 height=80 valign=top align=center>
+			<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
+			<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69><shadow>Add a favorites list</shadow></font>
+</div>
+
+<div id=explain>
+	<font size=-1>
+	<p>
+	Choose <b>Custom List</b> to create
+	your own set of favorite channels.
+	</p>
+	<p>
+	Or choose a category to quickly create
+	a list of suggested channels.
+	</p>
+</div>
+
+<div id=customList>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td maxlines=1 valign=top abswidth=240>
+			<spacer type=block width=10 height=22>
+			<img src=file://Disk/Browser/DiskFlash/tvimages/Arrow_Green.gif width=7 height=13>
+			<font size=-1><b>
+			<a selected href="client:donothing" onClick="addCustomList();">Custom List</a>
+			</b></font>
+	</table>
+</div>
+
+<div id=presetList>
+	<table cellspacing=0 cellpadding=0>
+	<script language="JavaScript">
+		function onClickPreset(favName)
+		{
+				// get a head start on spinning up the disk
+			Disk.spin();
+
+			tvSplash("Adding " + favName + " favorites", 2, "file://Disk/Browser/TV/PresetTVFavorites.html?favName=" + escape(favName), "");
+		}
+
+		function writePresetItem(favName)
+		{
+			return "<tr><td maxlines=1 valign=top abswidth=240>" +
+						"<spacer type=block width=10 height=21>" +
+						"<img src=file://Disk/Browser/DiskFlash/tvimages/Arrow_Green.gif width=7 height=13>&nbsp;&nbsp;" +
+						"<font size=-1><a href=client:donothing" +
+							" onClick=\"onClickPreset('" + favName + "');\">" + favName +
+						"</a></font></td>";
+		}
+
+		var listMarkup;
+
+		listMarkup = writePresetItem("Movie");
+		listMarkup += writePresetItem("News");
+		listMarkup += writePresetItem("Sports");
+		listMarkup += writePresetItem("Dish on Demand");
+		listMarkup += writePresetItem("Childrens");
+		listMarkup += writePresetItem("Family");
+		listMarkup += writePresetItem("Music");
+
+		document.write(listMarkup);
+	</script>
+	</table>
+</div>
+
+<div id=divider bgcolor=#6cb18a gradcolor=#1c2438 gradangle=90>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value=Done name=Done
+		usestyle width=137 action="" onClick="history.back();"
+		borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+	</shadow></font>
+</div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+IMAGE = file://Disk/Browser/DiskFlash/tvimages/CrossoverMarkSelect.gif
+FRAME normal = 0 0 64 64
+
+IMAGE = file://ROM/tvimages/CrossoverMarkHighlight.gif
+FRAME hilited = 0 0 64 64
+
+PERIOD = 0
+
+FRAME normal
+    ADVANCE = 0 0
+
+PERIOD = 0
+
+FRAME hilited
+    ADVANCE = 0 0
+

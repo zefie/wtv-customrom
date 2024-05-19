@@ -1,0 +1,22 @@
+IMAGE = file://ROM/Images/RCALogo.gif
+
+FRAME s1 = 0 0 51 166 
+FRAME s2 = 51 0 102 166 
+
+PERIOD = 6
+
+FRAME s2
+    ADVANCE = 0 0
+
+FRAME s1
+    DISSOLVE = 4
+    ADVANCE = 0 0
+
+PERIOD = 60
+
+FRAME s1
+    ADVANCE = 0 0
+
+FRAME s2
+    DISSOLVE = 4
+    ADVANCE = 0 0

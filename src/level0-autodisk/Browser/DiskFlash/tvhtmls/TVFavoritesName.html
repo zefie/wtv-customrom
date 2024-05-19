@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>TV Favorites Name</title>
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 65;
+	width: 291;
+	height: 27;
+}
+
+#explain {
+	position: absolute;
+	top: 147;
+	left: 65;
+	width: 196;
+	height: 171;
+}
+
+#nameField {
+	position: absolute;
+	top: 147;
+	left: 312;
+	width: 215;
+	height: 44;
+}
+
+#doneButton {
+	position: absolute;
+	top: 373;
+	left: 407;
+	width: 137;
+	height: 35;
+}
+</style>
+<script language="JavaScript" src="pageUtils.js">
+	var pageParams = parsePageParams();
+
+	function handleDoneButton()
+	{
+		var favName = document.tvFavoritesForm.favName.value;
+
+		if (favName.length > 0)
+			TVFavorites.setGroupName(favName, TVFavorites.getCurrentGroup());
+		history.back();
+	}
+
+	function onLoadPage()
+	{
+		document.tvFavoritesForm.favName.value = TVFavorites.getGroupName(TVFavorites.getCurrentGroup());
+	}
+</script>
+
+<display noscroll skipback>
+
+</head>
+<body text=#989898 hspace=0 vspace=0 fontsize=large onLoad="onLoadPage();" bgcolor=#1c2438 background="file://rom/tvimages/StripePatternTVListings.gif">
+
+<form id=tvFavoritesForm action="client:donothing">
+
+<div id=banner>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td background="file://ROM/tvimages/TVListingsShadowLogo.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block width=11 height=11><br>
+				<spacer type=block width=10 height=1>
+				 <a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
+				<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69><shadow>
+	Rename favorites list
+	</shadow></font>
+</div>
+
+<div id=explain>
+	<font size=-1>
+	Type in a new name<br>for this favorites list,<br>then choose <b>Done</b>.
+	</font>
+</div>
+
+<div id=nameField>
+	<font size=-1 color=#6cb18a>Favorites name</font><br>
+	<spacer type=vertical height=36>
+	<font size=-1 color=#ffcf69>
+	<input type=text name=favName value="" autocaps nosubmit usestyle bgcolor=#131927 cursor=#cc9933 width=205 selected>
+	</font>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value=Done usestyle width=137 onClick="handleDoneButton();"
+		nosubmit borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+	</shadow></font>
+</div>
+
+</form>
+</body>
+</html>

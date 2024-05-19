@@ -1,0 +1,358 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<display fontsize="medium">
+	<style>
+	#checkTitleText {
+		position: absolute;
+		top: 140;
+		left: 64;
+		width: 420;
+	}
+	#checkButton {
+		position: absolute;
+		top: 375;
+		left: 230;
+		font:18pt;
+		color:ffcf69;
+		line-height:24pt;
+		background-color: 191919;
+	}
+	#skipButton {
+		position: absolute;
+		top: 375;
+		left: 390;
+		font:18pt;
+		color:ffcf69;
+		line-height:24pt;
+		background-color: 191919;
+	}
+	#sampleButton {
+		position: absolute;
+		top: 330;
+		left: 5;
+		color:00ff00;
+		visibility: hidden;
+	}
+	#sendAddress {
+		position: absolute;
+		top: 370;
+		left: 5;
+		right: 320;
+		color:00ff00;
+		font:9pt;
+		visibility: hidden;
+	}
+	</style>
+
+	<script>
+		window.message("testing isOffline");
+		// First, synchronize our users with the service's users
+		window.message("SyncUsers");
+		top.SyncUsers();
+		window.message("back from SyncUsers");
+
+//		if (!top.gRequest.isOffline())
+//			top.TriggerSync(false, "ChooseUser.html");		// if we're already connected, automatically sync and go right into offline email
+
+		function SkipCheck()
+		{
+			location = "ChooseUser.html";
+		}
+
+		function AddMailMsg(path, msgid, senderName, senderAdr, sendDate, subject, body)
+		{
+			var fullpath = path + msgid + ".xml";
+			var msg;
+			if (top.XMLBuiltIn()) {
+				msg = new Store(fullpath);
+			} else {
+				msg = new document.Store(fullpath);
+			}
+			msg.data = '<letter msgid="' + msgid + '"'
+				+ ' hasRead="u" deleted="n">'
+				+ ' <sender_name>' + senderName + '</sender_name> '
+				+ ' <sender_address>' + senderAdr + '</sender_address> '
+				+ ' <cc></cc> '
+				+ ' <reply_to /> '
+				+ ' <send_date>' + sendDate + '</send_date>'
+				+ '  <subject>' + subject + '</subject> '
+				+ '  <message><![CDATA[' + body + ']]></message> '
+				+ ' </letter>';
+		}
+
+		function AddSampleData(user)
+		{
+			// Create or delete a blank address book in the user's new folder
+			var userID = user.getAttribute("userid");
+			var userName = user.getAttribute("user-name");
+			var addrFile = top.gPath.AdrBookFilename + userName + ".xml";
+			var addrFileStore;
+			var writeFile = top.gPath.LastMsgFilename + userID + ".xml";
+			var writeFileStore;
+
+			var inFolderDir = top.gPath.InBoxDir + userID + "/";
+			var outFolderDir = top.gPath.OutBoxDir + userID + "/";
+
+			window.message(" loading infolder ", inFolderDir);
+			window.message(" loading outfolder ", outFolderDir);
+
+			var inFolder;
+			var outFolder;
+
+			if (top.XMLBuiltIn()) {
+				inFolder = new Store(inFolderDir);
+				outFolder = new Store(outFolderDir);
+				addrFileStore = new Store(addrFile);
+			} else {
+				inFolder = new document.Store(inFolderDir);
+				outFolder = new document.Store(outFolderDir);
+				addrFileStore = new document.Store(addrFile);
+			}
+			// Tricky note here: setting the data of a Store object to "" actually
+			// deletes the file!
+			// Create a blank "write" message where we keep track of user's last
+			// incomplete message before a send.
+
+			// create an addressbook
+			addrFileStore.data = '<AddressBook changed="true">'
+						+ '<ae s="Friends" a="fred@hotmail.com,mike@hotmail.com,bill@hotmail.com" />' 
+						+ '<ae s="dad" a="jaforseman@freemail.com" />' 
+						+ '<ae s="mom" a="mrsdoubtfire@yahoomail.com" />' 
+						+ '<ae s="jimi" a="hendrix@hendrixmusic.com" />' 
+						+ '<ae s="haggard" a="hrider@oldbooks.com" />' 
+						+ '<ae s="bob" a="bobs@corp.net" />' 
+						+ '<ae s="mary" a="mary@big.gov" />' 
+						+ '<ae s="bill" a="bill@big.gov" />' 
+						+ '<ae s="mike" a="mike@tougie.gov" />' 
+						+ '<ae s="joe" a="joe@tougie.gov" />' 
+						+ '<ae s="mari" a="mari@tougie.gov" />' 
+						+ '<ae s="megan" a="megan@tougie.gov" />' 
+						+ '<ae s="kris" a="kris@tougie.gov" />' 
+						+ '<ae s="lonnie" a="lonnie@tougie.gov" />' 
+						+ '<ae s="dave" a="dave@tougie.gov" />' 
+						+ '</AddressBook>';
+
+			// create some inbox messages
+			AddMailMsg(inFolderDir, 0, "Bill McGee", "bill@hotmail.com", "8/14/99 10:31",
+				 "Basketball", "Do you want to go to the Warriors game this weekend? My boss gave me two free"
+				 + "tickets. Let me know if you can go. I hoping that the Warriors are better this year. "
+				 + "It seems that the Warriors didn't do too well in the free agency battle during the off"
+				 + " season. I think it has to do with the fact that the warriors have a reputation for doing"
+				 + " poorly, even when they have awesome talent. It seems that a large number of the NBA's"
+				 + " all-stars have been Warriors at one time in their career. This includes Chris Gatling,"
+				 + " Latrell Spreewell, Mitch Richmond, Chris Mullin, Hardway, and lots more!" );
+
+			AddMailMsg(inFolderDir, 1, "Mike Mulligan", "mike@saturn.com", "8/10/99 7:31",
+				 "work tonight?", "What time are you leaving work tonight?." );
+
+			AddMailMsg(inFolderDir, 2, "Amy MacIntosh", "amac@byu.edu", "8/9/99 8:31",
+				 "new book", "Have you read the latest best seller? If not, I've got a copy you can borrow." );
+
+			AddMailMsg(inFolderDir, 3, "Special Offer", "special@amazon.com", "8/5/99 1:31",
+				 "Free book", "Order now and we'll give you two free books." );
+
+			AddMailMsg(inFolderDir, 4, "Scott Light", "scott@webtv.net", "8/2/99 2:31",
+				 "mountain bike", "I'm interested in getting a mountain bike. What brand should I go look at?" );
+
+	if (true) {
+			AddMailMsg(inFolderDir, 5, "Tiger Woods", "tiger@woods.com", "7/30/99 10:31",
+				 "Golf tourney", "I'm looking for a golf buddy. Can you show up on Saturday?" );
+
+			AddMailMsg(inFolderDir, 6, "Carolyn Taylor", "ctaylor@webtv.com", "8/10/99 8:31",
+				 "dinner tonight?", "What's for dinner?." );
+
+			AddMailMsg(inFolderDir, 7, "Bill Michaels", "abm@byu.edu", "8/10/99 8:31",
+				 "CD Collection", "Can I come over and check out your cd collection?" );
+
+			AddMailMsg(inFolderDir, 8, "Junk Mail", "junk@amazon.com", "8/2/99 1:71",
+				 "More Junk", "Sign up and earn zillions on the internet." );
+
+			AddMailMsg(inFolderDir, 9, "Doug Pyle", "dg@webtv.net", "8/30/99 2:31",
+				 "eBay stuff", "I've seen a lot of good stuff on eBay. Could you float me a loan?" );
+
+			AddMailMsg(inFolderDir, 10, "Jennifer Paxter", "jenn@hotmail.com", "8/18/99 14:31",
+				 "New computer", "Do you think I should buy a new computer or stick with my Mac 512?" );
+
+			AddMailMsg(inFolderDir, 11, "Flying Elvis", "elvis@saturn.com", "8/31/99 7:31",
+				 "Parachute drop", "We have 14 Elvi schedule for the drop tonight." );
+
+			AddMailMsg(inFolderDir, 12, "R.L. Drake", "kingpin@drake.net", "8/28/99 8:31",
+				 "New radio", "We're coming out with a new radio and we'd like to send you one for $29.99 a month for six years." );
+
+			AddMailMsg(inFolderDir, 13, "Marty McFly", "timetraveler@future.com", "10/5/2000 1:31",
+				 "Lost book", "I left my sporting sports scores book in the garbage. Could you get it for me?" );
+
+			AddMailMsg(inFolderDir, 14, "Billy McHale", "billy@mchales.com", "7/2/99 12:31",
+				 "Food", "I'm working on a completely new hamburger recipe. Please stop by!" );
+	}
+			var now = new Date();
+			// create some outbox messages
+
+			AddMailMsg(outFolderDir, 0, user.name, document.checkform.sendAddress.value,
+				 now.toString(), "re:Basketball",
+				 "Yep! I'd like to go to the game. What day is the game? Saturday or Sunday?\n\nme" );
+
+			AddMailMsg(outFolderDir, 1, user.name, document.checkform.sendAddress.value,
+				 now.toString(), "Cell Phone",
+				 "What kind of cell phone do you have?" );
+		}
+
+		function CreateSampleData()
+		{
+			// First, synchronize our users with the service's users
+			top.SyncUsers();
+
+			var userLength = top.gServiceUserCount;
+			window.message("SyncUsers - there are ", userLength, " users");
+
+			if (userLength == 0) {
+				window.message("*****There are no users on this box!");
+			}
+			for (var i = 0; i < userLength; i++) {
+				var user = top.gServiceUserInfos[i];
+				AddSampleData(user);
+			}
+
+			SkipCheck();
+		}
+
+		function TotalOutgoing()
+		{
+			var userLength = top.gServiceUserCount;
+			window.message("SyncUsers - there are ", userLength, " users");
+			var totalOut = 0;
+
+			if (userLength > 0) {
+				for (var i = 0; i < userLength; i++) {
+					var user = top.gServiceUserInfos[i];
+					var userID = user.getAttribute("userid");
+
+					var outFolderDir = top.gPath.OutBoxDir + userID + "/";
+
+					window.message(" loading outfolder ", outFolderDir);
+
+					var outFolder;
+
+					if (top.XMLBuiltIn()) {
+						outFolder = new Store(outFolderDir);
+					} else {
+						outFolder = new document.Store(outFolderDir);
+					}
+					totalOut += outFolder.length;
+				}
+			}
+			return totalOut;
+		}
+
+	</script>
+</head>
+
+<print blackandwhite>
+
+<body 
+	bgcolor=172625 text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	hspace=0
+	>
+
+<div id=topTVBannerBackground bgcolor=6D5A85>
+</div>
+
+<div id=topTVBanner>
+	<img src=images/TVMailBanner.gif>
+</div>
+
+<div id=webTVJewel>
+	<img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67>
+</div>
+
+<div id=topTVBannerShadow>
+	<img src=images/TVMailShadowHoriz.gif shadow=#000000 transparency=60>
+</div>
+
+<div id=tvPageTitleText>
+	<shadow>Get your latest mail?</shadow>
+</div>
+
+<form name="checkform">
+	<div id=checkTitleText>
+		<script>
+			var dirty = true;	// ******************* need to calculate this
+			var L_NeedSync_Text = "You should connect now to make sure you have the latest mail.";
+			var L_MaybeSync_Text = "Do you to want to connect to WebTV and collect your latest mail now?";
+
+			var L_OneOut_Text  = "One message will be sent when you connect.";
+			var L_TwoOut_Text= "Two messages will be sent when you connect.";
+			var L_MultiOut_Text= "&1 messages will be sent when you connect.";
+
+			var cnt = TotalOutgoing();
+			var msg = "";
+			if (cnt > 0) {
+				if (cnt == 1)
+					msg += L_OneOut_Text;
+				else if (cnt == 2)
+					msg += L_TwoOut_Text;
+				else
+					msg += L_MultiOut_Text;
+
+				msg = top.ParamText(msg, cnt);
+			}
+			var s = "<font size=3 color=b1b1b1><shadow>";
+			if (dirty)
+				s += L_NeedSync_Text + "<br><br>";
+			s += L_MaybeSync_Text + "<br><br>";
+			if (msg != "")
+				s += msg + "<br><br>";
+
+			document.write(s);
+window.message("top.gConfig.gLastConnect = '" + top.gConfig.gLastConnect + "'");
+			if (top.gConfig.gLastConnect != "") {
+				var L_LastSynced_Text= "Previous offline e-mail connection:";
+				s  = "<font size=-2 color=#ffcf69><shadow>" + L_LastSynced_Text
+						+ "  " + top.gConfig.gLastConnect;
+				document.write(s);
+			}
+		</script>
+	</div>
+
+	<div id=checkButton>
+		<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value="Connect" name=checkMail width=150
+			usestyle  action="" onClick='top.TriggerSync(false, "ChooseUser.html");'
+			borderimage=file://ROM/tvimages/TVButtonBorder.bif selected>
+		</shadow></font>
+	</div>
+
+	<div id=skipButton>
+		<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value="Don't connect" name=skipCheck width=150
+			usestyle  action="" onClick='SkipCheck();'
+			borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+
+	<div id=sampleButton>
+		<font size=-6><shadow>
+		<input type=submit value="Create sample data" name=sampleMaker
+			usestyle  action="" onClick='CreateSampleData();'
+			borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+
+	<div id=sendAddress>
+		Send address<br>
+		<font size=-6 color=00ff00><shadow>
+		<input type=text value="youraddress@somewhere.com" name=sendAddress
+			usestyle textbelow action="">
+		</shadow></font>
+	</div>
+</form>
+
+</body>
+</html>

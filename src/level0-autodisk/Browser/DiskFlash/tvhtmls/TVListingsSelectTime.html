@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>TV Listings</title>
+	<display nooptions>
+	<script language="JavaScript" src="pageUtils.js">
+		var pageParams = parsePageParams();
+		var startDate;
+		var startSeconds = 0;
+		var todaysDate = new Date();
+
+		if (pageParams.date != null) {
+			startSeconds = parseInt(pageParams.date);
+			var msecondsInEpoch = (startSeconds + 3600) * 1000.0;
+			startDate = new Date(msecondsInEpoch);
+		}
+		else
+			startDate = new Date();
+
+		startDate.setHours(0);
+		startDate.setMinutes(0);
+		startDate.setSeconds(0);
+
+			// the date is always passed in, so this should never happen
+		if (startSeconds == 0)
+			startSeconds = Math.floor(startDate.getTime() / 1000) + Math.floor(startDate.getTime() % 1000);
+	</script>
+
+</head>
+
+<!-- new link and vlink color --> 
+<body bgcolor=#1c2438 background=file://ROM/tvimages/StripePatternTVListings.gif text=#cbcbcb link=#6cb18a vlink=#6cb18a hspace=0 vspace=0 fontsize=large noscroll hideoptions> 
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://ROM/tvimages/TVListingsShadowLogo.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
+			<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+<table cellspacing=0 cellpadding=0><tr><td abswidth=555 valign=top align=left>
+
+<table cellspacing=0 cellpadding=0>
+	<tr><td abswidth=62 valign=top>
+
+<!-- new abswidth --> 
+		<td abswidth=190 absheight=270 valign=top>
+			<table cellspacing=0 cellpadding=0>
+				<tr><td absheight=25>
+				<tr><td absheight=40 valign=top>
+					<font size=+2 color=#ffcf69><shadow>Time</shadow></font>
+				<tr><td>
+					<font size=-1 color=#989898>
+<!-- change this text -->
+						Choose a time to<br>
+						<spacer type=block height=17>
+						view TV Listings for<br>
+						<spacer type=block height=17>
+					</font>
+					<font size=-2 color=#989898>
+
+	<script>
+		var dateString;
+		var dayNames = new Array( "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" );
+		var monthNames = new Array( "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" );
+
+		dateString = dayNames[startDate.getDay()] + " " + monthNames[startDate.getMonth()] + " " + startDate.getDate();
+
+		document.write(dateString);
+
+	</script>
+					</font>
+
+			</table>
+
+<!-- change cell width -->
+
+		<td abswidth=20>
+		<td valign=top>
+
+<!-- change spacer height -->
+			<spacer type=vertical height=66>
+
+<!-- new script -->
+	<script>
+	var timeSeconds = startSeconds;
+	var todaySeconds;
+	var isFirstAnchor = true;
+
+	function displayTime(dateObject)
+	{
+		var hours;
+
+			// convert military time to 12 hour format
+		hours = dateObject.getHours();
+		if (hours < 12)
+			ampm = "AM";
+		else
+			ampm = "PM";
+		hours = ((hours + 11) % 12) + 1;
+
+		return hours + " " + ampm;
+	}
+
+	todaysDate.setMinutes(0);
+	todaysDate.setSeconds(0);
+	todaySeconds = todaysDate.getTime();
+	todaySeconds = Math.floor(todaySeconds / 1000) + Math.floor(todaySeconds % 1000);
+
+	document.write( "<table cellspacing=0 cellpadding=0><tr>" );
+	for (var col = 0; col < 4; col++) {
+		document.write( "<td><table cellspacing=0 cellpadding=0><tr><td height=0 width=63>" );
+
+		for (var row = 0; row < 6; row++) {
+			document.write( "<tr><td align=right bgcolor=" + ((col < 2) ? "141a28" : "101217") + " height=28>" );
+
+			startDate.setHours((col * 6) + row);
+
+			if (timeSeconds >= todaySeconds && TVDatabase.isDataAvailable(timeSeconds, timeSeconds)) {
+				document.write(
+					"<a " + (isFirstAnchor ? "selected" : "") + " href=client:ShowTVListings?time=" + timeSeconds + ">" +
+					"<font size=-2>" + displayTime(startDate) +
+					"</a>"
+					);
+				isFirstAnchor = false;
+			} else
+				document.write( "<font size=-2 color=#232e47>" + displayTime(startDate) );
+
+			document.write( "<spacer type=horizontal width=3><tr><td height=2>" );
+
+				// increment to next hour
+			timeSeconds += 3600;
+		}
+
+		document.write( "</table><td width=" + ((col == 1) ? "8" : "4") + ">" );
+	}		
+	document.write( "</table>" );
+	</script>
+
+		<td>
+</table>
+</table>
+</body>
+

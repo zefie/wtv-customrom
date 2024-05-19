@@ -1,0 +1,202 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<style>
+	#fullInBox {
+		position: absolute;
+		visibility: hidden;
+		top: 250;
+		left: 120;
+		width: 420;
+		height: 50;
+	}
+	#instructionsText {
+		position: absolute;
+		top: 81;
+		left: 124;
+		width: 375;
+		font:18pt;
+		color:6cb18a;
+		line-height:24pt;
+	}
+	#nameLabelText {
+		position: absolute;
+		top: 215;
+		left: 140;
+		right: 295;
+		font:18pt;
+		color:6cb18a;
+		line-height:24pt;
+		text-align:right;
+	}
+	#nameFieldText {
+		position: absolute;
+		top: 210;
+		left: 200;
+		font:18pt;
+		color:ffcf69;
+		line-height:24pt;
+	}
+	#addressLabelText {
+		position: absolute;
+		top: 255;
+		left: 124;
+		right: 295;
+		font:18pt;
+		color:6cb18a;
+		line-height:24pt;
+		text-align:right;
+	}
+	#addressFieldText {
+		position: absolute;
+		top: 250;
+		left: 200;
+		font:18pt;
+		color:ffcf69;
+		line-height:24pt;
+	}
+	#addButton {
+		position: absolute;
+		top: 345;
+		left: 420;
+		font:18pt;
+		color:ffcf69;
+		line-height:24pt;
+		background-color: 191919;
+	}
+	</style>
+
+	<script>
+		var addressAndShortcut = top.gAddressEntries[parameters.whichItem];
+		shortcut = addressAndShortcut.getAttribute("s");
+		address = addressAndShortcut.getAttribute("a");
+
+		function DiscardAddress()
+		{
+			top.RemoveAddress(shortcut);
+
+			// write the address book back out
+			window.message("Write address book to ", top.gPath.AdrBookFile);
+			top.gAddressBookXML.toXML(top.gPath.AdrBookFile);
+			top.LoadAddressBook();	// reload to reflect changes
+
+			history.back();
+		}
+
+		function SetFields()
+		{
+			document.addressform.nickname.value = shortcut;
+			document.addressform.address.value = address;
+		}
+
+		function ChangeAddress()
+		{
+			window.message("In ChangeAddress, calling AddAddressToBook");
+			top.AddAddressToBook(document.addressform.nickname.value, document.addressform.address.value, shortcut);
+
+			history.back();
+		}
+
+	</script>
+
+	<DISPLAY fontsize=medium>
+	<title>Add an e-mail address</title>
+</head>
+
+<print blackandwhite>
+
+<body
+	bgcolor="191919" text="42BD52" link="189CD6" vlink="189CD6"
+	vspace=0
+	hspace=0
+	fontsize="medium"
+	onLoad="SetFields();">
+
+<div id=sideBarBackground bgcolor=514971 gradcolor=1f2a30 gradangle=0>
+</div>
+
+<div id=sideBar>
+	<script>
+		var L_DiscardButton_Text = "Discard";
+
+		top.beginSidebars(true);
+		top.addSidebar(top.L_AddressesButton_Text, "Addresses.html", "MainFrameArea", "", true)
+		top.addSidebar(L_DiscardButton_Text, "", "", 'onClick="DiscardAddress();"', true)
+		top.endSidebars();
+	</script>
+</div>
+
+<!--
+<div id=sideBarSeparator>
+	<img src=images/TransVertShadow.gif width=6 height=384>
+</div>
+-->
+
+<div id=topBannerBackground bgcolor=0c1413 gradcolor=172625 gradangle=0>
+</div>
+
+<div id=topBanner>
+	<img src=images/MailBanner.gif width=431 height=54>
+</div>
+
+<div id=pageTitleText>
+	<shadow>Change an e-mail address</shadow>
+</div>
+
+<div id=instructionsText>
+	To change the e-mail address, make your change, then choose <B>Done</B>.<br><br>
+	To remove the entry from your address book, choose <B>Discard</b>.
+</div>
+
+<form name=addressform>
+	<div id=nameLabelText>
+		Name
+	</div>
+
+	<div id=nameFieldText>
+		<input type="text" bgcolor=191919
+			cursor=#cc9933
+			text="E7CE4A"
+			font=proportional
+			name="nickname"
+			value=""
+			size=25
+			maxlength=30
+			autoactivate
+			selected
+			nosubmit>
+	</div>
+
+	<div id=addressLabelText>
+		Address
+	</div>
+
+	<div id=addressFieldText>
+		<textarea bgcolor=191919
+			cursor=#cc9933
+			text="E7CE4A"
+			font=proportional
+			nosoftbreaks nohardbreaks	name="address"
+			size=25
+			rows=1
+			maxlength=1000
+			autoactivate
+			autoascii
+			nosubmit
+			growable>
+		</textarea>
+	</div>
+
+	<div id=addButton>
+		<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value=Done name=Done
+			usestyle width=137 action="" onClick='ChangeAddress();'
+			borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+</form>
+</body>

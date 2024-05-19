@@ -1,0 +1,627 @@
+<html>
+<head>
+<display nosaveformdata noTVInfoOptions>
+<title>TV Info Page</title>
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 64;
+}
+
+#clockDisplay {
+	position: absolute;
+	top: 26;
+	left: 346;
+	width: 200;
+	height: 16;
+}
+
+#programInfo {
+	position: absolute;
+	top: 70;
+	left: 34;
+	width: 305;
+	height: 240;
+}
+
+#tvwindow {
+	position: absolute;
+	top: 70;
+	left: 355;
+	width: 191;
+	height: 240;
+}
+
+#crossover {
+	position: absolute;
+	top: 320;
+	left: 27;
+	width: 530;
+	height: 40;
+}
+
+#tvchat {
+	position: absolute;
+	top: 320;
+	left: 358;
+	width: 200;
+	height: 40;
+}
+
+#RecordButton
+{
+	position: absolute;
+	top: 370;
+	left: 27;
+	width: 135;
+	height: 47;
+}
+
+#RemindButton
+{
+	position: absolute;
+	top: 370;
+	left: 182;
+	width: 135;
+	height: 47;
+}
+
+#PPVButton
+{
+	position: absolute;
+	top: 370;
+	left: 253;
+	width: 145;
+	height: 47;
+}
+
+#UnlockButton
+{
+	position: absolute;
+	top: 370;
+	left: 263;
+	width: 135;
+	height: 47;
+}
+
+#DoneButton
+{
+	position: absolute;
+	top: 370;
+	left: 410;
+	width: 135;
+	height: 47;
+}
+</style>
+
+<script language="JavaScript" src="pageUtils.js">
+	var programChannel;
+	var programTime;
+	var programTitle;
+	var programStartTime;
+	var isBrowsing = TVController.isListingsBrowseMode;
+	var accessString = null;
+	var pageParams = parsePageParams();
+	var programLocked = false;
+	var hasCrossover = false;
+	var timeOut = null;	
+
+	function Initialize()
+	{
+		if (pageParams.skipBack != null)
+			document.skipBack(true);
+
+		var channel = pageParams.tvchannel;
+		if (channel != null)
+			programChannel = channel;
+		else
+			programChannel = TVController.channel;
+
+		var time = pageParams.time;
+		if (time != null)
+			programTime = time;
+		else
+			programTime = 0;
+
+		var title = TVDatabase.getProgramTitle(programChannel, programTime);
+		if ( title != null && title != "" ) 
+			programTitle = title;
+		else
+			programTitle = "No Information";
+
+		programStartTime = TVDatabase.getProgramStartTimeGMT(programChannel, programTime);
+	}
+
+	function updateStatus()
+	{
+		if (!isBrowsing) {
+			document.tv.time = programTime;
+
+			if (TVDatabase.isProgramShowingNow(programChannel, programTime)) {
+				document.tv.isActive = true;
+				document.statusArea.status.value = TVDatabase.getProgramStatus(programChannel, programTime, 1);
+			} else {
+				document.tv.alt = TVDatabase.getProgramStatus(programChannel, programTime, 1);
+				document.tv.isActive = false;
+				document.statusArea.status.value = "";
+			}
+		} else {
+			document.tv.isActive = true;
+			document.statusArea.status.value = TVDatabase.getProgramStatus(programChannel, programTime, 1);
+		}
+		if ( timeOut != null )
+			clearTimeout( timeOut );
+		timeOut = setTimeout( 'updateStatus()', 5000 );
+	}
+
+	function updateChannel()
+	{
+//		if (isBrowsing) 
+		{
+			var channel = TVController.channel;
+
+			document.channelText.channel = channel;
+			document.channelText.network = TVDatabase.getNetworkOrCallSign(channel);
+		}
+	}
+
+	function refreshPage()		
+	{
+		updateChannel();
+		document.location = "client:showtvinfopage";			
+	}
+
+	function getAccessStatus()
+	{
+		statusIndex = TVAccess.getStatus(programChannel, programTime);
+
+		if (statusIndex == "ChannelLocked" || statusIndex == "RatingsLock" || statusIndex == "PPVLocked")
+			programLocked = true;
+
+		return statusIndex;
+	}
+
+	function handleRecordButton(channel, startTime, length)
+	{
+		document.location = "client:tvplanner?tvchannel=" + channel + "&programStart=" + startTime + 
+							"&programLength=" + length + "&action=record";
+
+	}
+
+	function handleDoneButton()
+	{
+		if (pageParams.skipBack != null)
+			history.go(-2);
+		else
+			history.go(-1);
+	}
+</script>
+
+</head>
+ 
+<body bgcolor=#1c2438 background=file://rom/tvimages/Pattern_TVSettings.gif onLoad="updateStatus();" 
+text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<div id=banner>
+	<img src="file://Disk/Browser/DiskFlash/tvimages/ProgramInfoBanner.gif">
+	<img src=file://rom/tvimages/Shadow_Horizontal.gif width=560 height=6>
+</div>
+<div id=clockDisplay align=right>
+	<font size=-2 color=6a8cd2>
+		<clock dayofweek allcaps abbreviated><spacer width=6 type=block>
+		<clock month day allcaps abbreviated><spacer width=12 type=block>
+		<clock time ampm>
+	</font>
+</div>
+
+<spacer type=vertical height=15>
+
+<form name=infoPageForm>
+
+<!-- Program title, time, ratings, descriptions -->
+<div id=programInfo>
+<table cellspacing=0 cellpadding=0>
+	<tr><td abswidth=305 valign=top>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td height=16>
+		<tr><td valign=top maxlines=2>
+			<font size=+1 color=cbcbcb><shadow>
+			<script language="JavaScript">
+				Initialize();
+				document.write(programTitle);
+			</script>
+			</shadow></font>
+		<tr><td height=12>
+		<tr><td>
+			<font size=-2 color=6cb18a>
+			<script language="JavaScript">
+				if (programTime == 0) 
+					document.write("TODAY");
+				else {
+					var msecondsInEpoch = programTime * 1000;
+					var startDate = new Date(msecondsInEpoch);
+					var todaysDate = new Date();
+					var dateStr = "";
+
+					if (todaysDate.getYear() == startDate.getYear()) {
+						var today = todaysDate.getDay();
+						var startDay = startDate.getDay();
+
+							// today and startDay are days of the week
+						if (today == startDay)
+							dateStr = "TODAY";
+						else if (startDay - today == 1 || today - startDay == 6)
+							dateStr = "TOMORROW";
+						else
+							dateStr = startDate.toTVProgramTimeString(true);
+					}
+					else
+						dateStr = startDate.toTVProgramTimeString(true);
+
+					document.write(dateStr);
+				}
+			</script>
+			&nbsp;&nbsp;&nbsp;
+			<script language="JavaScript">
+				document.write(TVDatabase.getProgramStartTime(programChannel, programTime) + " – " + 
+							   TVDatabase.getProgramEndTime(programChannel, programTime));
+			</script>
+
+		<tr><td height=3>
+		<tr><td align=bottom>
+			<font size=-2 color=6cb18a>
+			<script language="JavaScript">
+				var rating = TVDatabase.getProgramRating(programChannel, programTime);
+				var string L_ProgramType_Text = "MOVIE";
+
+				if (rating != null && rating != "")
+					document.write("RATED: " + rating);
+				else
+					document.write("NOT RATED");
+
+				document.write("&nbsp;&nbsp;&nbsp;");
+
+				
+				if ( TVDatabase.getProgramType(programChannel, programTime).toUpperCase() == L_ProgramType_Text ) {
+					document.write(L_ProgramType_Text +
+					" " + TVDatabase.getProgramStarRatingHTML(programChannel, pageParams.time));
+				}
+			</script>
+			</font>
+		<tr><td height=12>
+		<tr><td align=top maxlines=8>
+			<font size=-2 color=6cb18a>
+			<script language="JavaScript">
+				var isClosedCaptioned = false;
+				var isStereo = false;
+				var productionYear = 0;
+				var string L_ClosedCaptioned_Text = "CC";
+				var string L_Stereo_Text = "Stereo";
+				document.write(TVDatabase.getProgramType(programChannel, programTime));
+				productionYear = TVDatabase.getProgramProductionYear(programChannel, programTime);
+				if ( productionYear != 0 )
+					document.write(productionYear);
+				document.write(". ");
+				document.write(TVDatabase.getProgramDescription(programChannel, programTime));
+				isClosedCaptioned = TVDatabase.isProgramClosedCaptioned(programChannel, programTime);
+				isStereo = TVDatabase.isProgramStereo(programChannel, programTime);
+				if ( isClosedCaptioned )
+					document.write("\("+L_ClosedCaptioned_Text+"\) ");
+				if ( isStereo )
+					document.write("\("+L_Stereo_Text+"\) ");
+			</script>
+			</font>
+	</table>
+</table>
+</div>
+
+<!-- Crossover Links & TVChat -->
+<script Language="Javascript">
+	var crossoverURL;
+	var linkTitle = "";
+	var crossoverStr = "";
+	var isChatAvailable = false;
+	var tvChatStr = "";
+	var tvChatLabel = "";
+	var widthStr = "";
+
+	hasCrossover = false;
+
+	if (navigator.isRegistered) {
+		crossoverURL = TVDatabase.getStaticCrossoverLinkURL(programChannel, programTime);
+		if (crossoverURL != null && crossoverURL != "") {
+			var title;
+
+			hasCrossover = true;
+
+			title = TVDatabase.getStaticCrossoverLinkDescription(programChannel, programTime);
+			if (title != null && title != "")
+				linkTitle = title;
+			else
+				linkTitle = "WEB SITE: " + programTitle;
+
+			crossoverStr = "href=\"client:crossover?address=" + escape(crossoverURL) + "&title=" + escape(linkTitle) + "\"";
+		}
+
+		isChatAvailable = TVDatabase.isChatEnabled(programChannel, programTime);
+		if (isChatAvailable) {
+			var network = TVDatabase.getNetworkName(programChannel);
+			var station = TVDatabase.getStationCallSign(programChannel);
+
+			var tvChatURL = "wtv-chat:/tvchat?serviceID=" + TVDatabase.getProgramID(programChannel, programTime) +
+						"&tunerNumber=" + TVDatabase.getTunerNumber(programChannel) + 
+						"&startTimeGMT=" + programStartTime + 
+						"&programName=" + programTitle;
+
+			if (network != null && network != "")
+				tvChatURL += "&network=" + TVDatabase.getNetworkName(programChannel);
+
+			if (station != null && station != "")
+				tvChatURL += "&station=" + TVDatabase.getStationCallSign(programChannel);
+
+			tvChatStr = "href=\"client:gototvapplication?address=" + escape(tvChatURL) + 
+						"&title=" + escape("Loading TV Chat...") + "\"";
+
+			widthStr = "abswidth=316"; 
+			tvChatLabel = "TV CHAT";
+		}
+
+		if (hasCrossover) {
+			document.write(
+				"<div id=crossover>" +
+				"<table cellspacing=0 cellpadding=0>" +
+				"	<tr><td " + widthStr + ">" +
+				"	<table name=\"crossoverlink\" cellspacing=0 cellpadding=0 " + crossoverStr + " table=1>" +
+				"		<tr><td>" +
+		   		"				<img src=\"file://Disk/Browser/DiskFlash/tvimages/Sym_CrossOverLink.gif\" width=37 height=34>" +
+				"			<td width=6>" +
+				"			<td maxlines=1 valign=middle>" +
+				"				<font size=-2 color=6cb18a>" + linkTitle + "</font>" +
+				"	</table>" +
+				"</table>" +
+				"</div>"
+			);
+		}
+
+		if (isChatAvailable) {
+			document.write(
+				"<div id=tvchat>" +
+				"<table name=\"chatlink\" cellspacing=0 cellpadding=0 " + tvChatStr + " nextup=\"tvwindow\">" +
+				"	<tr><td>" +
+				"		<img src=\"file://Disk/Browser/DiskFlash/tvimages/Sym_ChatLink.gif\" width=37 height=34>" +
+				"		<td width=6>" +
+				"		<td maxlines=1 valign=middle>" +
+				"		<font size=-2 color=6cb18a>" + tvChatLabel + "</font>" +
+				"</table>" +
+				"</div>"
+			);
+		}
+	}
+</script>
+
+<!-- Record, Remind, PPV, Locked, Done buttons -->
+<script language="JavaScript">
+	var isPPV = false; 
+	var programCost = 0;
+	var purchased = false;
+	var programLength = TVDatabase.getProgramMinutes(programChannel, programTime) * 60;
+
+	programCost = TVDatabase.getProgramCost(programChannel, programTime);
+	if (programCost > 0) {
+		isPPV = true;
+		purchased = TVDatabase.isProgramPurchased(programChannel, programTime);
+	}
+
+	if (navigator.isTVAccessSupported)
+		getAccessStatus();
+
+	if (!programLocked && (!isPPV || purchased)) {
+		document.write(
+			"<div id=RecordButton>" + 
+			"<font size=-1 color=#ffcf69><shadow>" +
+			"<input type=SUBMIT BORDERIMAGE=\"file://ROM/tvimages/TVButtonBorder.bif\" Value=Record name=button usestyle width=135 " +
+			"action=\"\" onClick=\"handleRecordButton(programChannel, programStartTime, programLength);\" NOARGS>" +
+			"</shadow></font>" +
+			"</div>"
+		);
+	}
+
+	if (!programLocked) {
+		if (!isPPV || purchased) {
+			document.write(
+				"<div id=RemindButton>" +
+				"<font size=-1 color=#ffcf69><shadow>" +
+				"<input type=SUBMIT BORDERIMAGE=\"file://ROM/tvimages/TVButtonBorder.bif\" Value=Remind usestyle width=135 " +
+				"action=\"client:tvplanner?tvchannel=" + programChannel + 
+				"&programStart=" + programStartTime + "&programLength=" + programLength + "&action=remind\" NOARGS>" +
+				"</shadow></font>" +
+				"</div>"
+			);
+		}
+		else {
+			document.write(
+				"<div id=PPVButton>" +
+				"<font size=-1 color=#ffcf69><shadow>" +
+				"<input type=SUBMIT BORDERIMAGE=\"file://ROM/tvimages/TVButtonBorder.bif\" Value=\"Pay To View\" usestyle width=145 " +
+				"action=\"client:ppvplanner?tvchannel=" + programChannel + 
+				"&programStart=" + programStartTime + "&programLength=" + programLength + "&action=purchase&hideInfoButton=true\" NOARGS>" +
+				"</shadow></font>" +
+				"</div>"
+			);
+		}
+	}
+	else {
+		document.write(
+			"<div id=UnlockButton>" +
+			"<font size=-1 color=#ffcf69><shadow>" +
+			"<input type=SUBMIT BORDERIMAGE=\"file://ROM/tvimages/TVButtonBorder.bif\" Value=\"Unlock\" usestyle width=135 " +
+			"action=\"client:CAM?showPasswordPage=true&channel=" + programChannel + "&time=" + programStartTime + "\" NOARGS>" +
+			"</shadow></font>" +
+			"</div>"
+		);
+	}
+			
+	var nextUpStr = "";
+
+	if (hasCrossover)
+		nextUpStr = "nextup=crossoverlink";
+
+	document.write(
+		"<div id=DoneButton>" +
+		"<font size=-1 color=#ffcf69><shadow>" +
+		"<input selected type=SUBMIT BORDERIMAGE=\"file://ROM/tvimages/TVButtonBorder.bif\" Value=Done" +
+		" name=button usestyle width=135 action=\"\" onclick=\"handleDoneButton();\" " + nextUpStr + " NOARGS>" +
+		"</shadow></font>" +
+		"</div>"
+	);
+</script>
+
+<!-- TV Window -->
+<div id=tvwindow>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td abswidth=10 absheight=3>
+	   			<img src=file://ROM/tvimages/VideoBorder_TopLeft.gif width=10 height=3>
+			<td abswidth=160 absheight=3>
+				<img src=file://ROM/tvimages/VideoBorderEdge_Top.gif width=160 height=3>
+			<td abswidth=10 absheight=3>
+	   			<img src=file://ROM/tvimages/VideoBorder_TopRight.gif width=10 height=3>
+
+		<script language="JavaScript">
+			var height;
+			var bgcolor;
+			var displayChannel;
+			var networkCallLetter = "";
+			var browseStr = "";
+
+			if (isBrowsing) {
+				height = 143;
+				bgcolor = "171d2e";
+				displayChannel = TVController.channel;
+				networkCallLetter = TVDatabase.getNetworkOrCallSign(displayChannel, 0);
+				browseStr = " channeldisplayid=channelText onChannelChange=\"updateChannel();\"";
+			}
+			else {
+				height = 120;
+				bgcolor = "161d2d gradcolor=0b0b10 gradangle=90";
+				displayChannel = programChannel;
+				browseStr = " channeldisplayid=channelText onChannelChange=\"refreshPage();\"";
+			}
+
+			document.write(
+				"<tr><td abswidth=10 absheight=" + height + ">" +
+				"	<img src=\"file://ROM/tvimages/VideoBorderEdge_Left.gif\" width=10 height=" + height + ">" +
+				"<td name=\"tvwindow\" abswidth=160 absheight=" + height + 
+				" align=right valign=top href=\"client:showtvfullscreen\" bgcolor=" + bgcolor + ">" +
+				"	<font size=-1 color=#6a8dd3>" +
+				"	<tv autoactivate=0 id=tv width=160 height=120 tvchannel=" + displayChannel + browseStr + ">" +
+				"	</font>"
+			);
+				
+			if (isBrowsing) {
+				document.write(
+					"<br><spacer type=vertical height=6>" +
+					"<form>" +
+					"	<font size=-2 color=#506ba0>" +
+					"		<channeldisplay id=channelText text=#506ba0 channel=" + displayChannel + " network=\"" + networkCallLetter + "\" halign=right>" +
+					"	</font>" +
+					"</form>"
+				);
+			} 
+
+			document.write(
+				"<td abswidth=10 absheight=" + height + ">" +
+				"<img src=file://ROM/tvimages/VideoBorderEdge_Right.gif width=10 height=" + height + ">"
+			);
+		</script>
+
+		<tr><td abswidth=10 absheight=3>
+	   			<img src=file://ROM/tvimages/VideoBorder_BotLeft.gif width=10 height=3>
+			<td abswidth=160 absheight=3>
+				<img src=file://ROM/tvimages/VideoBorderEdge_Bottom.gif width=160 height=3>
+			<td abswidth=10 absheight=3>
+	   			<img src=file://ROM/tvimages/VideoBorder_BotRight.gif width=10 height=3>
+ 	</table> 
+
+	<!-- Channel and station info below the TV window -->
+	<table cellspacing=0 cellpadding=0>
+	<tr><td width=10 height=10 align=left>
+	<tr><td valign=bottom>
+		<table cellspacing=0 cellpadding=0>
+		<tr><td abswidth=8>
+			<td>
+			<font size=+1 color=#ffcf69><shadow>
+			<script language="Javascript">
+				document.write(
+					"<form>" +
+					"<channeldisplay id=channelText channel=" + programChannel + 
+					" network=" + TVDatabase.getNetworkOrCallSign(programChannel, programTime) + ">" +
+					"</form>"
+				);
+			</script>
+			</shadow></font>
+		</table>
+
+	<!-- TV Access and cost info -->
+	<tr><td valign=bottom>
+		<spacer type=vertical height=5>
+		<table cellspacing=0 cellpadding=0>
+
+		<script language="JavaScript">
+			if (navigator.isTVAccessSupported) {
+				var statusIndex;
+				var cost = TVDatabase.getProgramCost(programChannel, programTime);
+				var costString = "$<b>" + (cost/100).toString() + "</b>";
+				var accessArray = new Object();
+				var isPurchased = TVDatabase.isProgramPurchased(programChannel, programTime);
+
+				accessArray["ChannelAuthorized"] = isPurchased ? "Paid " + costString : null;
+				accessArray["PPVNotPurchased"] = "Cost to view<br>" + costString;
+				accessArray["ChannelLocked"] = "Channel<br>locked";
+				accessArray["Blackout"] = "Not available in<br>this area";
+				accessArray["RatingsLock"] = "Program<br>rating locked";
+				accessArray["PPVLocked"] = "Pay to view<br>locked";
+				accessArray["NonImpulsePPV"] = "Call &sat-callhome;<br>to view";
+				accessArray["Subscription"] = "To subscribe call<br>&sat-callhome;";
+				accessArray["NIPPVNotAvailable"] = "No longer<br>available";
+
+				statusIndex = getAccessStatus();
+
+				if (accessArray[statusIndex])
+					accessString = accessArray[statusIndex];
+				else
+					accessString = null;
+
+				if (accessString != null && (isBrowsing || (isPurchased && statusIndex == "ChannelAuthorized"))) {
+					document.write(
+						"<tr><td abswidth=9><td valign=top width=144>" +
+							"<font size=-2 color=ffcf69>" +
+							 accessString
+					);
+
+					if (programLocked) {
+						document.write(
+							"<td><img src='file://ROM/tvimages/LockYellow_Locked.gif' width=22 height=30>"
+						);
+					}
+				} else {
+					document.write(
+						"<tr><td abswidth=9><td>" +
+						"<form name=statusArea>" +
+							"<font size=-2 color=6a8dd3>" +
+							"<textarea id=status width=120 rows=2 usestyle nobackground border=0 nocursor noselect></textarea>" +
+						"</form>"
+						);
+					accessString = null;
+				}
+			}
+		</script>
+
+		</table>
+	</table>
+</div>
+</form>
+</body>
+</html>

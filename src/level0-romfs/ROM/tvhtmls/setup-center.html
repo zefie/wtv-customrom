@@ -1,0 +1,68 @@
+<html>
+<HEAD>
+<TITLE>Center the screen</TITLE>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</HEAD>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<form action="file://ROM/tvhtmls/setup-display-info.html">
+
+<table cellspacing=0 cellpadding=0>
+<tr><td absheight=291 abswidth=555 valign=top align=left>
+
+	<table cellspacing=0 cellpadding=0>
+	<tr><td absheight=25>
+	<tr><td abswidth=62>
+		<td colspan=3>
+		<table cellspacing=0 cellpadding=0>
+		<tr><td valign=top absheight=40>
+			<font size=+2 color=#ffcf69><shadow>Center the screen</shadow></font>
+		</table>
+
+	<tr><td>
+		<td width=198 height=80 valign=top align=left>
+		<font size=-1 color=#989898>
+Use these arrows<br>to center the picture<br>on your TV screen.<p>This is useful if WebTV looks off-center.
+		<td width=26>
+		<td width=198 valign=top align=left>
+			<TABLE cellspacing=4>
+			<TR>
+			<TD>
+			<TD align=center><A HREF="client:adjustactivearea?xadj=0&yadj=-1"><IMG src="file://ROM/tvimages/MoveUp.gif"></A>
+			<TD>
+			<TR>
+			<TD align=right><A HREF="client:adjustactivearea?xadj=-1&yadj=0"><IMG src="file://ROM/tvimages/MoveLeft.gif"></A>
+			<TD align=center><A HREF="client:adjustactivearea?xadj=0&yadj=0" SELECTED><IMG src="file://ROM/tvimages/MoveReset.gif"></A>
+			<TD align=left><A HREF="client:adjustactivearea?xadj=1&yadj=0"><IMG src="file://ROM/tvimages/MoveRight.gif"></A>
+			<TR>
+			<TD>
+			<TD align=center><A HREF="client:adjustactivearea?xadj=0&yadj=1"><IMG src="file://ROM/tvimages/MoveDown.gif"></A>
+			<TD>
+			</TABLE>
+	</table>
+</table>
+
+<table cellspacing=0 cellpadding=0>
+<tr>
+<td width=410>
+<td COLSPAN=4 valign=top align=right>
+<font size=-1 color=#ffcf69><shadow>
+<input selected type=SUBMIT BORDERIMAGE="file://ROM/tvimages/TVButtonBorder.bif" Value=Continue name=Continue usestyle width=130>
+</shadow></font>
+</table>
+
+</form>
+
+</body>
+</html>

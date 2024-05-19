@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<TITLE>
+Dialing options
+</TITLE>
+<DISPLAY noscroll nologo nooptions clearback=noskipback>
+<form name="theme" id="theme">
+  <input type="hidden" value="&pname;" id="name">
+  <script>
+    var htvtheme=document.theme.name.value;
+    
+    if (htvtheme == "light") {
+    	//light theme
+        logolight()
+    } else if (htvtheme == "dark") {
+    	//dark theme
+          logodark()
+    } else if (htvtheme == "blue") {
+    	//blue theme
+          logoblue()
+    } else if (htvtheme == "") {
+    	//no theme default to light
+          themeAlert()
+    }
+    
+    function logolight() {
+    document.write("<link rel='stylesheet' type='text/css' href='file://disk/browser/MattMan/theme/light.css'>");
+    }
+    
+    function logodark() {
+    document.write("<link rel='stylesheet' type='text/css' href='file://disk/browser/MattMan/theme/dark.css'>");
+    }
+    
+    function logoblue() {
+    document.write("<link rel='stylesheet' type='text/css' href='file://disk/browser/MattMan/theme/blue.css'>");
+    }
+
+    function themeAlert() {
+    document.write("<link rel='stylesheet' type='text/css' href='file://disk/browser/MattMan/theme/light.css'>");
+	}
+  </script>
+</form>
+<display noscroll hideoptions>
+</HEAD>
+  <body bgcolor="#281f26" background="file://disk/browser/games/Pattern_Games.gif" text="#cbcbcb" alink="#4489a8" vlink="#4489a8" link="#4489a8" hspace="0" vspace="0">
+ <table cellspacing="0" cellpadding="0" cellborder="0">
+      <tr>
+        <td class="t1" width="104" height="80" valign="top" align="left">
+          <spacer type="block" WIDTH="11" HEIGHT="11"><br>
+            <spacer type="block" WIDTH="10" HEIGHT="1"> <a href="file://disk/browser/games/games.html"><img src="file://disk/browser/games/hacktv4.gif" width="90" height="69"></a>
+        </td>
+        <td width="456" height="80" valign="top" align="center"><img src="file://disk/browser/games/BlankBanner.jpg" width="456" height="50"><br>
+          <img src="file://rom/tvimages/Shadow_Horizontal.gif" width="456" height="6">
+        </td>
+      </tr>
+    </table>
+<table cellspacing=0 cellpadding=0>
+<tr>
+<td abswidth=14>
+<td colspan=3>
+<table cellspacing=0 cellpadding=0>
+<tr>
+<td valign=center absheight=60>
+<font size="+2" color="E7CE4A"><blackface><shadow>
+Call waiting sensitivity
+</table>
+<td abswidth=20>
+<TR>
+<td>
+<td WIDTH=220 HEIGHT=220 VALIGN=top ALIGN=left>
+Adjust for call waiting on your phone line:
+<p><i>More sensitive</i>
+if call waiting sometimes misses incoming calls.
+<p><i>Less sensitive</i>
+if call waiting sometimes disconnects
+when there is no call.
+<TD WIDTH=20>
+<TD WIDTH=220 VALIGN=top ALIGN=left>
+<form action="client:ConfirmPhoneSetup">
+<table cellspacing=0 cellpadding=0>
+<tr>
+<td width=10>
+<td align=center><font size=-1>More</font>
+<tr><td absheight=8>
+<tr>
+<td>
+<td valign=top align=center>
+<input type=radio name=call-waiting-threshold value="1" checked=&sens1;>
+<tr><td absheight=8>
+<tr>
+<td>
+<td valign=top align=center>
+<input type=radio name=call-waiting-threshold value="2" checked=&sens2;>
+<tr><td absheight=8>
+<tr>
+<td>
+<td valign=top align=center>
+<input type=radio name=call-waiting-threshold value="3" checked=&sens3;>
+<tr><td absheight=8>
+<tr>
+<td>
+<td valign=top align=center>
+<input type=radio name=call-waiting-threshold value="4" checked=&sens4;>
+<tr><td absheight=8>
+<tr>
+<td>
+<td align=center><font size=-1>Less</font>
+</table>
+</form>
+<TR>
+<TD>
+<TD COLSPAN=4 HEIGHT=7 VALIGN=top ALIGN=left>
+<tr>
+<TD>
+
+<tr>
+<TD>
+<td colspan=4 height=1 valign=top align=left>
+<tr>
+<TD>
+
+<TR>
+<TD>
+<TD COLSPAN=4 HEIGHT=4 VALIGN=top ALIGN=left>
+<TR>
+<TD>
+<TD COLSPAN=3 VALIGN=top ALIGN=right>
+<FORM
+action="client:confirmphonesetup">
+<FONT COLOR="#E7CE4A" SIZE=-1><SHADOW>
+<INPUT TYPE=SUBMIT BORDERIMAGE="file://ROM/tvimages/TVButtonBorder.bif" Value=Connect NAME="Connect" USESTYLE WIDTH=110>
+</SHADOW></FONT></FORM>
+<TD>
+</TABLE>
+</BODY>
+</HTML>

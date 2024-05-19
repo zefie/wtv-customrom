@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>
+TV Setup
+</TITLE>
+<DISPLAY noscroll nologo nooptions noreconnectalert>
+</HEAD>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<table cellspacing=0 cellpadding=0>
+<tr><td absheight=5>
+<tr><td abswidth=62 absheight=52>
+	<td colspan=3 valign=top>
+	<font size=+2 color=#ffcf69>Dialing options</font>
+
+<TR>
+<td>
+<td WIDTH=208 VALIGN=top ALIGN=left>
+<A HREF="client:showdialingpage" selected>
+<font size=+1 color=#cbcbcb><shadow>Basic</shadow></font></A>
+<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+Use tone or pulse dialing,<br>or choose a dialing prefix</FONT><BR>
+<spacer type=block WIDTH=1 HEIGHT=20><BR>
+<A HREF="file://ROM/tvhtmls/p-PhoneCallWaiting.html">
+<font size=+1 color=#cbcbcb><shadow>Call waiting</shadow></font></A>
+<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+Call waiting can be turned off automatically</FONT><BR>
+<spacer type=block WIDTH=1 HEIGHT=20><BR>
+<A HREF="file://ROM/tvhtmls/p-PhonePower.html">
+<font size=+1 color=#cbcbcb><shadow>Power Button</shadow></font></A>
+<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+Connect to Web Home when powering on</FONT><BR>
+
+<TD WIDTH=40>
+<TD WIDTH=208 VALIGN=top ALIGN=left>
+<A HREF="file://ROM/tvhtmls/p-AdvancedPhoneSetup.html">
+<font size=+1 color=#cbcbcb>Advanced</shadow></font></A>
+<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+Set audible dialing, speed, wait for dialtone</FONT><BR>
+<spacer type=block WIDTH=1 HEIGHT=20><BR>
+<A HREF="file://ROM/tvhtmls/p-PhoneReset.html">
+<font size=+1 color=#cbcbcb><shadow>Reset</shadow></font></A>
+<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+Original settings for dialing options</FONT><BR>
+<spacer type=block WIDTH=1 HEIGHT=20><BR>
+<A HREF="client:GoToConfigureBYOISP">
+<font size=+1 color=#cbcbcb><shadow>ISP Settings</shadow></font></A>
+<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+Change the settings of your ISP connection.
+
+</table>
+
+<form action="client:tvsetup?showmainsetup=true">
+
+<table cellspacing=0 cellpadding=0>
+<tr><td height=23>
+<tr>
+<td width=266>
+<td width=80>
+<font size=-1 color=#ffcf69><shadow>
+<input type=SUBMIT BORDERIMAGE="file://ROM/tvimages/TVButtonBorder.bif" Value=Connect usestyle width=130 action=client:gotowebhome>
+</shadow></font>
+<td width=14>
+<td valign=top align=right>
+<font size=-1 color=#ffcf69><shadow>
+<input type=SUBMIT BORDERIMAGE="file://ROM/tvimages/TVButtonBorder.bif" Value=Done usestyle width=130>
+</shadow></font>
+</table>
+
+</form>
+
+</BODY>
+</HTML>

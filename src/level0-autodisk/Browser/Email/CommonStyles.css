@@ -1,0 +1,140 @@
+#bannerAdBackground {
+	position: absolute;
+	top: 356;
+	left: 0;
+	width: 560;
+	height: 72;
+	background-color: 202d36;
+}
+#bannerAdDisplay {
+	position: absolute;
+	top: 357;
+	left: 1;
+	width: 558;
+	height: 70;
+}
+#bannerAdDivider {
+	position: absolute;
+	top: 349;
+	left: 0;
+	width: 560;
+	height: 1;
+}
+#sideBarBackground {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 104;
+	height: 420;
+}
+#sideBar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 104;
+	height: 348;
+}
+#sideBarSeparator {
+	position: absolute;
+	top: 0;
+	left: 104;
+	width: 6;
+	height: 348;
+}
+#topBannerBackground {
+	position: absolute;
+	top: 0;
+	left: 104;
+	width: 560;
+	height: 80;
+}
+#topBanner {
+	position: absolute;
+	top: 0;
+	left: 104;
+	width: 431;
+	height: 54;
+}
+#topTVBannerBackground {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 104;
+	height: 50;
+}
+#topBannerBackgroundScroll {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 456;
+	height: 80;
+}
+#topBannerScroll {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 431;
+	height: 54;
+}
+#webTVJewel {
+	position: absolute;
+	top: 10;
+	left: 5;
+}
+#topTVBanner {
+	position: absolute;
+	top: 0;
+	left: 104;
+	width: 456;
+	height: 50;
+}
+#topTVBannerShadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 50;
+}
+#upArrow {
+	position: absolute;
+	top: 10;
+	left: 541;
+	visibility: hidden;
+}
+#downArrow {
+	position: absolute;
+	top: 340;
+	left: 541;
+	visibility: hidden;
+}
+#pageTitleText {
+	position: absolute;
+	top: 39;
+	left: 124;
+	width: 431;
+	height: 30;
+	color: ffcf69;
+	font-size: 24pt;
+}
+#pageTitleTextScroll {
+	position: absolute;
+	top: 39;
+	left: 18;
+	width: 431;
+	height: 30;
+	color: ffcf69;
+	font-size: 24pt;
+}
+#tvPageTitleText {
+	position: absolute;
+	top: 105;
+	left: 64;
+	width: 431;
+	height: 30;
+	color: ffcf69;
+}
+#scrollArea {
+	position: absolute;
+	top: 0;
+	left: 106;
+}

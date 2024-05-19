@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>TV Favorites Index</title>
+<display noscroll>
+
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 65;
+	height: 27;
+}
+
+#favoritesTable {
+	position: absolute;
+	top: 135;
+	left: 56;
+}
+
+#tvWindow {
+	position: absolute;
+	top: 76;
+	left: 345;
+}
+
+#doneButton {
+	position: absolute;
+	top: 373;
+	left: 407;
+	width: 137;
+	height: 35;
+}
+
+</style>
+
+<script language="JavaScript" src="pageUtils.js">
+	function updateChannel()
+	{
+		var channel = TVController.channel;
+
+		document.channelText.channel = channel;
+		document.channelText.network = TVDatabase.getNetworkOrCallSign(channel);
+	}
+
+	function setupFavorite()
+	{
+		if ( TVFavorites.getGroupCount() == 0 ) {
+				// there are no groups, so create one and go
+				// to the edit page so the user can set it up
+			var groupIndex = TVFavorites.addGroup( "Favorites " + (TVFavorites.getGroupCount() + 1) );
+			if ( groupIndex != -1 )
+				TVFavorites.setCurrentGroup(groupIndex);
+
+			document.location = "file://Disk/Browser/DiskFlash/tvhtmls/TVFavoritesEditor.html";
+		} else {
+				// go to the setup page to allow the user to figure out which group to edit
+			document.location = "file://Disk/Browser/DiskFlash/tvhtmls/TVFavoritesSetup.html";
+		}
+	}
+
+	function viewFavorite(groupIndex)
+	{
+		TVFavorites.setCurrentGroup(groupIndex);
+		document.location = "file://Disk/Browser/DiskFlash/tvhtmls/TVFavoritesListings.html";
+	}
+
+</script>
+</head>
+<body bgcolor=#1c2438 background="file://rom/tvimages/StripePatternTVListings.gif"
+		text=#cbcbcb link=#cbcbcb vlink=#cbcbcb hspace=0 vspace=0 fontsize=large onLoad="updateChannel();">
+
+<form id=tvListingsForm action=client:tvlistings>
+
+<div id=banner>
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://ROM/tvimages/TVListingsShadowLogo.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+		    <a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+		<td width=456 height=80 valign=top align=center>
+			<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
+			<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69><shadow>Favorite channels</shadow></font>
+</div>
+
+<div id=favoritesTable>
+	<table cellspacing=0 cellpadding=0>
+	<script language="JavaScript">
+
+		// build list of favorite group names
+
+		var currentGroup = TVFavorites.getCurrentGroup();
+		var groupCount = TVFavorites.getGroupCount();
+		var groupName;
+		var selected;
+
+		for ( var i = 0; i < groupCount; i++ ) {
+			selected = currentGroup == i ? " selected " : "";
+			groupName = TVFavorites.getGroupName(i);
+			if ( groupName != null && groupName != "" ) {
+				//groupName = makeStringHTMLProof(groupName);
+				document.write(
+					"<tr><td valign=top abswidth=32 absheight=31>" +
+							"<img src=file://Disk/Browser/DiskFlash/tvimages/TOCArrows.gif width=32 height=31>" +
+						"<td valign=top>" +
+							"<spacer type=vertical height=8><br>" +
+							"<table cellspacing=0 cellpadding=0>" +
+							"<tr><td maxlines=1 abswidth=252>" +
+							"<spacer type=horizontal width=5>" +
+							"<a href=client:donothing onClick='viewFavorite(" + i + ");'" + selected + ">" +
+								"<font size=-1>" + groupName + "</font>" +
+							"</a></table>"
+					);
+			}
+		}
+
+	</script>
+	</table>
+</div>
+
+<div id=tvWindow>
+	<!-- invoke TV Window script -->
+	<script language="JavaScript" src="TVWindow.js">
+		var tvCellAttributes = "href=client:showtvfullscreen";
+		var tvDisplayAttributes = "channelDisplayId=channelText onChannelChange='updateChannel();'";
+		var tvChannelAttributes = "id=channelText text=#506ba0 halign=right";
+		var tvFontAttributes = "size=-2 color=#506ba0";
+
+		writeTVWindow(true, tvDisplayAttributes, tvCellAttributes, tvChannelAttributes, tvFontAttributes);
+	</script>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value=Done usestyle width=137 action=client:goback borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+	</shadow></font>
+</div>
+
+</form>
+</body>
+</html>

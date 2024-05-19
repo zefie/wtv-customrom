@@ -1,0 +1,122 @@
+<html>
+<display nomapscroll>
+<head>
+	<title>TV Favorites Setup</title>
+
+	<script language="JavaScript">
+	var defaultGroupName = "Recommended";
+
+	if (TVFavorites.getGroupCount() == 0) {
+		if (TVFavorites.addGroup(defaultGroupName) == -1)
+			history.back();
+	}
+	TVFavorites.setCurrentGroup(0);
+
+	function updateShowInfo()
+	{
+		var channel = TVController.channel;
+
+		document.channel.channel = channel;
+		document.channel.network = TVDatabase.getNetworkOrCallSign(channel)
+	}
+
+	function onCellMouseOver(channel)
+	{
+		if (channel != -1 && channel != document.tv.channel)
+			document.tv.channel = channel;
+	}
+
+	function onCellClick(channel)
+	{
+		TVFavorites.setFavoriteChannel(channel, !TVFavorites.isFavoriteChannel(channel));
+	}
+
+	function titleClick()
+	{
+		if (TVDatabase.isDataAvailable())
+			document.location = "client:showtvinfopage";
+		else
+			document.location = "file://ROM/tvhtmls/NoTVHomeData.html";
+	}
+
+	function clearFavorites()
+	{
+		TVFavorites.removeGroup(0);
+		if (TVFavorites.getGroupCount() == 0) {
+			if (TVFavorites.addGroup(defaultGroupName) != -1)
+				TVFavorites.setCurrentGroup(0);
+			else
+				history.back();
+		}
+	}
+
+	</script>
+</head>
+<body text=#989898 link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll onLoad="updateShowInfo();">
+
+	<table cellspacing=0 cellpadding=0>
+		<tr><td absheight=420 abswidth=365 valign=top bgcolor=#0f2a27 background="file://ROM/tvimages/TVFavoritesBanner.gif" nohtilebg novtilebg>
+				<spacer type=vertical height=58>
+				<table cellspacing=0 cellpadding=0>
+					<tr><td abswidth=21 absheight=126 bgcolor=#244441 gradcolor=#0f2a27 gradangle=0>
+						<td abswidth=180 valign=top>
+							<table cellspacing=0 cellpadding=0>
+								<tr><td abswidth=10 absheight=3>
+							   			<img src=file://ROM/tvimages/VideoBorder_TopLeft.gif width=10 height=3>
+									<td abswidth=160 absheight=3>
+										<img src=file://ROM/tvimages/VideoBorderEdge_Top.gif width=160 height=3>
+									<td abswidth=10 rowspan=3 background=file://ROM/tvimages/Pattern_TVFavorites.gif nohtilebg>
+							   			<img src=file://ROM/tvimages/VideoBorder_TopRight.gif width=10 height=3><br>
+										<img src=file://ROM/tvimages/VideoBorderEdge_Right.gif width=10 height=120><br>
+							   			<img src=file://ROM/tvimages/VideoBorder_BotRight.gif width=10 height=3>
+								<tr><td abswidth=10 absheight=120 bgcolor=#244441 gradcolor=#0f2a27 gradangle=0>
+										<img src=file://ROM/tvimages/VideoBorderEdge_Left.gif width=10 height=120>
+									<td abswidth=160 absheight=120 href=client:showtvfullscreen selected>
+										<tv id=tv width=160 height=120 onChannelChange="updateShowInfo();" channeldisplayid=channel>
+								<tr><td abswidth=10 absheight=3>
+							   			<img src=file://ROM/tvimages/VideoBorder_BotLeft.gif width=10 height=3>
+									<td abswidth=160 absheight=3>
+										<img src=file://ROM/tvimages/VideoBorderEdge_Bottom.gif width=160 height=3>
+							</table>
+
+						<td abswidth=150 valign=top background=file://ROM/tvimages/Pattern_TVFavorites.gif nohtilebg>
+							<spacer type=vertical height=8>
+							<form name=channelForm>
+							<table cellspacing=0 cellpadding=0>
+								<tr><td><spacer width=6 type=horizontal>
+										<font size=+2 color=ffcf69><shadow>
+											<channeldisplay id=channel>
+										</shadow></font>
+							</table>
+							</form>
+
+					<tr><td abswidth=21>
+						<td colspan=2>
+							<spacer height=23 type=vertical><br>
+							<font size=-1>
+								<spacer width=6 type=horizontal>
+								Mark the channels you want<br>
+								<spacer width=6 type=horizontal>
+								to use in TV Favorites<br>
+								<spacer width=6 type=horizontal>
+								then choose <b>Done</b>
+							</font>
+							<br><spacer height=10 type=vertical>
+
+					<tr><td abswidth=21>
+						<td colspan=2 valign=top><spacer height=103 type=vertical>
+							<form>
+							<spacer width=88 type=horizontal>
+							<font size=-1 color=ffcf69><shadow>
+							<input type=submit value="Clear" action="" onClick="clearFavorites();" width=110 usestyle borderImage=file://ROM/tvimages/TVButtonBorder.bif>
+							<spacer width=13 type=horizontal>
+							<input type=submit value="Done" action=client:GoBack width=110 usestyle borderImage=file://ROM/tvimages/TVButtonBorder.bif>
+							</shadow></font>
+							</form>
+			</table>
+
+			<td absheight=420 abswidth=195 bgcolor=#133632 valign=top>
+				<tvFavoritesEditTable width=195 height=420 bgcolor=#133632>
+	</table>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+<head>
+<display nooptions nosave nosend skipback>
+<title>TV Enhancement Failed</title>
+
+</head>
+
+<body bgcolor=#1b2136 background="file://Disk/Browser/DiskFlash/tvimages/Pattern_Contacting3.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://Disk/Browser/DiskFlash/tvimages/Contacting3ShadowLogo.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://Disk/Browser/DiskFlash/tvimages/Contacting3Banner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<form name=theForm>
+
+<style type="text/css">
+	#TitleDiv {
+		position: absolute;
+		top: 100;
+		left: 52;
+		width: 400;
+		height: 30;
+	}
+	#Message1 {
+		position: absolute;
+		top: 143;
+		left: 52;
+		width: 400;
+		height: 220;
+	}
+	#Message2 {
+		position: absolute;
+		top: 143;
+		left: 52;
+		width: 400;
+		height: 220;
+	}
+	#Message3 {
+		position: absolute;
+		top: 143;
+		left: 52;
+		width: 400;
+		height: 220;
+	}
+	#ContinueButtonDiv {
+		position: absolute;
+		top: 370;
+		left: 408;
+		width: 135;
+		height: 47;
+	}
+</style>
+
+<div id=TitleDiv>
+	<font size=+2 color=#ffcf69><shadow>
+	Enhancement unavailable
+	</shadow></font>
+</div>
+
+<div id=Message1 style='visibility: hidden;'>
+	<font color=#989898>
+		What you chose can't go interactive.
+	</font>
+</div>
+
+<div id=Message2 style='visibility: hidden;'>
+	<font color=#989898>
+		What you are watching can't go<br>
+		interactive today. 
+	</font>
+</div>
+
+<div id=Message3 style='visibility: hidden;'>
+	<font color=#989898>
+		Too many people have chosen to go<br> 
+		interactive right now. Try again later.
+	</font>
+</div>
+
+<script language=JavaScript	src="pageUtils.js"></script>
+<script language="Javascript">
+	var pageParams = parsePageParams();
+	
+	var error = pageParams.error;
+	window.message("error = " + error);
+
+	if (error == -4) {
+		window.message("can't find host");
+		document.Message2.visibility = "visible";
+	}
+	else if (error == -10) {
+		window.message("too busy");
+		document.Message3.visibility = "visible";
+	}
+	else {
+		window.message("other error");
+		document.Message1.visibility = "visible";
+	}
+
+</script>
+
+<div id=ContinueButtonDiv>
+	<font color=#ffcf69><shadow>
+	<input selected name=Continue type=SUBMIT action="client:gobacktvapploadfailed" 
+		BORDERIMAGE=file://ROM/tvimages/TVButtonBorder.bif Value="Continue" usestyle width=130>
+	</shadow></font>
+</div>
+
+</form>
+
+</body>
+</html>

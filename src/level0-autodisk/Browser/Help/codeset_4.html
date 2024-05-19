@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>
+    Code set
+</title>
+<display nologo noscroll nooptions>
+
+<script language="JavaScript">
+
+    var allParameters = location.search;
+	var startIndex;
+	var endIndex;
+	var nowDevice;
+	var nowBrand;
+	var nowCodes;
+	var boxBrand;
+	var boxRemoteBrand;
+
+	if ( allParameters != null ) {
+		startIndex = allParameters.indexOf("=")+1;
+		endIndex = allParameters.indexOf("&");
+		nowDevice = allParameters.substring( startIndex, endIndex );
+		allParameters = allParameters.substring( endIndex + 1, allParameters.length );
+		startIndex = allParameters.indexOf("=")+1;
+		endIndex = allParameters.indexOf("&");
+		nowBrand = allParameters.substring( startIndex, endIndex );
+		allParameters = allParameters.substring( endIndex + 1, allParameters.length );
+		startIndex = allParameters.indexOf("=")+1;
+		endIndex = allParameters.indexOf("&");
+		nowCodes = allParameters.substring( startIndex, endIndex );
+		allParameters = allParameters.substring( endIndex + 1, allParameters.length );
+		startIndex = allParameters.indexOf("=")+1;
+		endIndex = allParameters.indexOf("&");
+		boxBrand = allParameters.substring( startIndex, endIndex );
+
+		boxRemoteBrand = boxBrand;
+		if (boxBrand == "Philips")
+		{
+			if(System.boxType.indexOf("Plus 2.5") != -1)
+				boxRemoteBrand = "PhilipsNew";
+		}
+	}
+	codeArray = nowCodes.split(",");
+
+	function goOn() {
+        var str = ("codeset_5.html" + location.search);
+        location.href = str;
+    }
+
+	function lastStep() {
+        var str = ("codeset_6.html" + location.search);
+        location.href = str;
+    }
+
+</script>
+
+</head>
+
+<link rel="StyleSheet" type="text/css" href="tv-help.css">
+
+<body bgcolor='21212e' background='images/Pattern_Help.gif' text='b2b2b2'
+      link='6a8bd2' vlink='6a8bd2' hspace=0 vspace=0 fontsize='medium'>
+
+<div id='bannerImg'>
+	<img src='images/Banner_Help.gif'>
+</div>
+
+<div id='bannerHead'>
+	<font color='6a8bd2' size='-1'>
+	<script>
+		if ( nowDevice == "keyboard" ) {
+			var tmpStr = "WIRELESS KEYBOARD";
+		} else {
+			var tmpStr = "REMOTE CONTROL";
+		}
+		for (i=0; i<tmpStr.length; i++) {
+			document.write(tmpStr.charAt(i) + '&nbsp;&nbsp;');
+		}
+	</script>
+	</font>
+</div>
+
+<div id='bodyHead'>
+	<font color='ffcf69' size='+2'><blackface><shadow>
+       	Code set
+		<font size='+1'>
+		<script language="JavaScript">
+			document.write("(" + unescape(nowBrand) + ")");
+		</script>
+	</font></font>
+</div>
+
+<div id='bodyTextByImg'>
+    <p>
+	<b>Step 5:</b>
+    <p>
+	Press the <font size=-1>VOLUME</font> buttons on your
+	remote to see if it is controlling your TV.
+    <p>
+    If it works, choose <b>Continue</b>.
+    <p>
+
+	<script language="JavaScript">
+		if ( codeArray[1] != null ) {
+			document.write("If not, choose <b>More Codes</b> to keep trying.");
+        } else {
+			document.write("If not, choose <b>Try Again</b> to make sure you entered the number correctly.");
+        }
+    </script>
+
+</div>
+
+<div id='bodyImg'>
+	<script language="JavaScript">
+		if ( nowDevice == "keyboard" ) {
+			document.write('<img src="images/' + boxBrand + '/keyboard.gif" >');
+		} else {
+			document.write('<img src="images/' + boxRemoteBrand + '/remote.jpg" >');
+		}
+	</script>
+</div>
+
+<div id='bodyImg'>
+	<script language="JavaScript">
+		if ( nowDevice == "keyboard" ) {
+			document.write('<img src="images/' + boxBrand + '/keyboard_volume.gif">');
+		} else {
+			document.write('<img src="images/' + boxRemoteBrand + '/remote_volume.gif">');
+		}
+	</script>
+</div>
+
+<div id='middleButton'>
+	<form><font color=ffcf69><shadow>
+		<script language="JavaScript">
+			if ( codeArray[1] != null ) {
+				document.write("<input type=button action='javascript:goOn()' value='More Codes' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=145>");
+            } else {
+				document.write("<input type=button action=javascript:history.go('codeset_2') value='Try Again' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=145>");
+            }
+	    </script>
+
+	</shadow></font></form>
+</div>
+
+<div id='rightButton'>
+	<form><font color=ffcf69><shadow>
+	    <spacer type=horizontal width=10>
+		<input type=button action='javascript:lastStep()' value='Continue'
+		       borderimage='file://ROM/tvimages/TVButtonBorder.bif'
+		       usestyle width=120 selected>
+	</shadow></font></form>
+</div>
+
+</body>
+</html>
+

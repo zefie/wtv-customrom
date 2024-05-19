@@ -1,0 +1,1049 @@
+<html>
+<head>
+<title>
+	Code set
+</title>
+<display nologo noscroll nooptions>
+
+<script language="JavaScript">
+
+    var allParameters = location.search;
+	var startIndex;
+	var endIndex;
+	var nowDevice;
+	var nowCodes;
+
+	if ( allParameters != null ) {
+		startIndex = allParameters.indexOf("=")+1;
+		endIndex = allParameters.indexOf("&");
+		nowDevice = allParameters.substring( startIndex, endIndex );
+	}
+
+	var topicName = new Array();
+	var topicLink = new Array();
+	var i = 0;
+
+	var boxMakerID = navigator.manufacturer;
+	var boxBrand;
+
+	if ( boxMakerID == 0 )
+		boxBrand = "Sony";
+	else if ( boxMakerID == 1 || boxMakerID == 5 )
+		boxBrand = "Philips";
+	else if ( boxMakerID == 8 )
+		boxBrand = "EchoStar";
+	else
+		boxBrand = "WebTV";
+	
+	if (nowDevice == "keyboard") {
+
+         topicName[i] = "Admiral";
+         topicLink[i++] = "102,114,109,155";
+         topicName[i] = "Akai";
+         topicLink[i++] = "103,020,006";			
+         topicName[i] = "Bell & Howell";
+         topicLink[i++] = "114,109,138,067";
+         topicName[i] = "Brocsonic";
+         topicLink[i++] = "103,112";
+         topicName[i] = "Candle";
+         topicLink[i++] = "057,0773,083,213";
+         topicName[i] = "Centurion";
+         topicLink[i++] = "112,045";
+         topicName[i] = "Coronado";
+         topicLink[i++] = "113,088,090";
+         topicName[i] = "Craig";
+         topicLink[i++] = "122,123,120,121,007,049,050";
+         topicName[i] = "Croslex";
+         topicLink[i++] = "111,030";
+         topicName[i] = "Curtis Mathis";
+         topicLink[i++] = "103,119,123,001,006,020,090,017,031";
+         topicName[i] = "Daewoo";
+         topicLink[i++] = "135,136,103";
+         topicName[i] = "Daytron";
+         topicLink[i++] = "113,001,006,020";
+         topicName[i] = "Emerson";
+         topicLink[i++] = "122,113,120,121,123,103,115,088,001,090,050,083,019,030,081,020,006,025,055,023,036";
+         topicName[i] = "Fisher";
+         topicLink[i++] = "125,008,080,061,015";
+         topicName[i] = "General Electric";
+         topicLink[i++] = "102,118,103,107,001,061,072,050,058,017,018,006,049,019,090";
+         topicName[i] = "Goldstar";
+         topicLink[i++] = "103,113,112,130,088,027,001,037,010,011,042,090,039,040,092,099";
+         topicName[i] = "Hitachi";
+         topicLink[i++] = "131,113,103,132,088,006,090,071,077,070,021,022,023,025";
+         topicName[i] = "JC Penny";
+         topicLink[i++] = "103,102,130,107,091,092,017,020";
+         topicName[i] = "JVC";
+         topicLink[i++] = "128,129,060,016";
+         topicName[i] = "KTV";
+         topicLink[i++] = "133,113,103,123,134";
+         topicName[i] = "LXI";
+         topicLink[i++] = "102,103,111,125,119,112,061,008,015,082";
+         topicName[i] = "Magnavox";
+         topicLink[i++] = "111,112,113,103,025,088,061,006,090,012,098,092,100,082,020,017,103";
+         topicName[i] = "Marantz";
+         topicLink[i++] = "124,094,082,020,090";
+         topicName[i] = "Mitsubishi";
+         topicLink[i++] = "124,103,112,095,075,001,006,019,020,073,066,080,088,265";
+         topicName[i] = "MGA";
+         topicLink[i++] = "124,103,112";
+         topicName[i] = "NEC";
+         topicLink[i++] = "103,112,001,005,006,008,020,075,025";
+         topicName[i] = "Panasonic";
+         topicLink[i++] = "118,116,117,107,064,072,058,082,140";
+         topicName[i] = "Philco";
+         topicLink[i++] = "111,113,103,001,008,088,061,006,090,050,012,098,092,100,082,020";
+         topicName[i] = "Philips";
+         topicLink[i++] = "111,088,001,061,006,090,012,098,092,082,020,005,057";
+         topicName[i] = "Pioneer";
+         topicLink[i++] = "137,118,119,065,026";
+         topicName[i] = "Portland";
+         topicLink[i++] = "103,108,088,006,090";
+         topicName[i] = "Proscan";
+         topicLink[i++] = "102,103,104,105,106,107,108,061,006,071,066,087,020,090,001";
+         topicName[i] = "Quasar";
+         topicLink[i++] = "118,107,072,058";
+         topicName[i] = "Radio Shack";
+         topicLink[i++] = "102,112,124,123,115,050,092,025,090";
+         topicName[i] = "RCA";
+         topicLink[i++] = "102,103,104,105,106,107,108,061,006,071,066,087,020,090,001";
+         topicName[i] = "Samsung";
+         topicLink[i++] = "103,126,112,113,127,088,001,061,028,043,029,081,044,048,049,090,092,051";
+         topicName[i] = "Sanyo";
+         topicLink[i++] = "125,089,080,062,078,013";
+         topicName[i] = "Scott";
+         topicLink[i++] = "123,112,001,050,019,090,006";
+         topicName[i] = "Sears";
+         topicLink[i++] = "102,103,111,125,119,112,061,008,015,082";
+         topicName[i] = "Sharp";
+         topicLink[i++] = "114,113,115,088,090,085,024,025,069";
+         topicName[i] = "Signature 2000";
+         topicLink[i++] = "114,109,084,006";
+         topicName[i] = "Sony";
+         topicLink[i++] = "101";
+         topicName[i] = "Sylvania";
+         topicLink[i++] = "111,112,103,001,061,006,012,098,092,020,100,082";
+         topicName[i] = "Symphonic";
+         topicLink[i++] = "123,139,002,006,090,012,020";
+         topicName[i] = "Toshiba";
+         topicLink[i++] = "119,114,008,091,015,075";
+         topicName[i] = "Vidtech";
+         topicLink[i++] = "131,103,112,006";
+         topicName[i] = "Wards";
+         topicLink[i++] = "113,103,115,112,088,001,090,006,036,017,018,089,080,050,039,023,078,064,055";
+         topicName[i] = "Zenith";
+         topicLink[i++] = "108,109,110,076,084,006";
+
+
+	} else {
+
+		switch (boxBrand) {
+
+			case "EchoStar" :
+
+				topicName[i] = "Admiral";
+				topicLink[i++] = "162,265,290";
+				topicName[i] = "Aiwa";
+				topicLink[i++] = "105,106,107";
+				topicName[i] = "Akai";
+				topicLink[i++] = "110";
+				topicName[i] = "AOC";
+				topicLink[i++] = "112";
+				topicName[i] = "Bell and Howell";
+				topicLink[i++] = "265,290";
+				topicName[i] = "BrocSonic";
+				topicLink[i++] = "110,112";
+				topicName[i] = "Centurion";
+				topicLink[i++] = "112";
+				topicName[i] = "Closlex";
+				topicLink[i++] = "210";
+				topicName[i] = "Craig";
+				topicLink[i++] = "143,144,141";
+				topicName[i] = "Curtis Mathes";
+				topicLink[i++] = "110,130,144";
+				topicName[i] = "DaeWoo";
+				topicLink[i++] = "120,110,121";
+				topicName[i] = "Emerson";
+				topicLink[i++] = "143,141,144,110,240,145,146";
+				topicName[i] = "Fisher";
+				topicLink[i++] = "150";
+				topicName[i] = "Fujitsu";
+				topicLink[i++] = "151,152,153,154";
+				topicName[i] = "Funai";
+				topicLink[i++] = "159,155,156,157,158";
+				topicName[i] = "GE";
+				topicLink[i++] = "162,101,110,163";
+				topicName[i] = "Gold Star";
+				topicLink[i++] = "110,112";
+				topicName[i] = "Hitachi";
+				topicLink[i++] = "180,110";
+				topicName[i] = "Inteq";
+				topicLink[i++] = "290,291";
+				topicName[i] = "JC Penny";
+				topicLink[i++] = "110,162";
+				topicName[i] = "JVC";
+				topicLink[i++] = "190,191,192";
+				topicName[i] = "KTV";
+				topicLink[i++] = "110,144";
+				topicName[i] = "LXI";
+				topicLink[i++] = "162,110,112,130,150,210";
+				topicName[i] = "Magnavox";
+				topicLink[i++] = "210,110,112,212,213";
+				topicName[i] = "Marantz";
+				topicLink[i++] = "220";
+				topicName[i] = "MGA";
+				topicLink[i++] = "110,112";
+				topicName[i] = "Mitsubishi";
+				topicLink[i++] = "220,110,112,265";
+				topicName[i] = "MTC";
+				topicLink[i++] = "101,103";
+				topicName[i] = "National";
+				topicLink[i++] = "100,101,102,104";
+				topicName[i] = "NEC";
+				topicLink[i++] = "110,112";
+				topicName[i] = "Orion";
+				topicLink[i++] = "221";
+				topicName[i] = "Panasonic";
+				topicLink[i++] = "100,101,102,104";
+				topicName[i] = "Philco";
+				topicLink[i++] = "210,110";
+				topicName[i] = "Philips";
+				topicLink[i++] = "210";
+				topicName[i] = "Pioneer";
+				topicLink[i++] = "222,101,130";
+				topicName[i] = "Portland";
+				topicLink[i++] = "110";
+				topicName[i] = "Prism";
+				topicLink[i++] = "101";
+				topicName[i] = "Proscan";
+				topicLink[i++] = "162,110,230,250,255";
+				topicName[i] = "Quasar";
+				topicLink[i++] = "101,103";
+				topicName[i] = "Radio Shack";
+				topicLink[i++] = "162,112,144,220";
+				topicName[i] = "RCA";
+				topicLink[i++] = "162,110,163,230,250,255,256,257,300,301,302";
+				topicName[i] = "Samsung";
+				topicLink[i++] = "260,110,112";
+				topicName[i] = "Sanyo";
+				topicLink[i++] = "150,261,262,263,264";
+				topicName[i] = "Scott";
+				topicLink[i++] = "144,112";
+				topicName[i] = "Sears";
+				topicLink[i++] = "130,110,112,150,162,210";
+				topicName[i] = "Sharp";
+				topicLink[i++] = "265,240,266";
+				topicName[i] = "Signature 2000";
+				topicLink[i++] = "265,290";
+				topicName[i] = "Sony";
+				topicLink[i++] = "270";
+				topicName[i] = "Sylavnia";
+				topicLink[i++] = "210,110,112";
+				topicName[i] = "Symphonic";
+				topicLink[i++] = "144";
+				topicName[i] = "Toshiba";
+				topicLink[i++] = "130,265";
+				topicName[i] = "Vidtech";
+				topicLink[i++] = "180,110,112";
+				topicName[i] = "Wards";
+				topicLink[i++] = "110,112,240";
+				topicName[i] = "Zenith";
+				topicLink[i++] = "290,291";
+
+
+			case "Philips" :
+
+				topicName[i] = "Abex ";
+				topicLink[i++]   = "059";
+				topicName[i] = "Admiral ";
+				topicLink[i++]   = "120";
+				topicName[i] = "Adventura ";
+				topicLink[i++]   = "073";
+				topicName[i] = "Aiko ";
+				topicLink[i++]   = "119";
+				topicName[i] = "Akai ";
+				topicLink[i++]   = "057";
+				topicName[i] = "Alleron ";
+				topicLink[i++]   = "206,210";
+				topicName[i] = "A-Mark ";
+				topicLink[i++]   = "003";
+				topicName[i] = "Ambassador ";
+				topicLink[i++]   = "204";
+				topicName[i] = "Anam ";
+				topicLink[i++]   = "095,207";
+				topicName[i] = "Anam National ";
+				topicLink[i++]   = "082";
+				topicName[i] = "AOC ";
+				topicLink[i++]   = "030,046,057,079,212";
+				topicName[i] = "Archer ";
+				topicLink[i++]   = "030";
+				topicName[i] = "Audiovox ";
+				topicLink[i++]   = "030,207";
+				topicName[i] = "Belcor ";
+				topicLink[i++]   = "046";
+				topicName[i] = "Bell & Howell ";
+				topicLink[i++]   = "043,181";
+				topicName[i] = "Bradford ";
+				topicLink[i++]   = "207";
+				topicName[i] = "Brockwood ";
+				topicLink[i++]   = "046";
+				topicName[i] = "Broksonic ";
+				topicLink[i++]   = "030";
+				topicName[i] = "Candle ";
+				topicLink[i++]   = "057,0773,083,213";
+				topicName[i] = "Carnivale ";
+				topicLink[i++]   = "057";
+				topicName[i] = "Carver ";
+				topicLink[i++]   = "081";
+				topicName[i] = "Celebrity ";
+				topicLink[i++]   = "027";
+				topicName[i] = "Citizen ";
+				topicLink[i++]   = "057,066,073,083,087,119,213,307";
+				topicName[i] = "Clairtone ";
+				topicLink[i++]   = "212";
+				topicName[i] = "Concerto ";
+				topicLink[i++]   = "083";
+				topicName[i] = "Contec ";
+				topicLink[i++]   = "184,185,207,212";
+				topicName[i] = "Craig ";
+				topicLink[i++]   = "207";
+				topicName[i] = "Crown ";
+				topicLink[i++]   = "066,207";
+				topicName[i] = "Curtis Mathis ";
+				topicLink[i++]   = "057,066,087,181";
+				topicName[i] = "CXC ";
+				topicLink[i++]   = "207";
+				topicName[i] = "Daewoo ";
+				topicLink[i++]   = "046,066,119,478";
+				topicName[i] = "Daytron ";
+				topicLink[i++]   = "046";
+				topicName[i] = "Dumont ";
+				topicLink[i++]   = "044,046";
+				topicName[i] = "Electroband ";
+				topicLink[i++]   = "027,212";
+				topicName[i] = "Electrohome ";
+				topicLink[i++]   = "408,416,436";
+				topicName[i] = "Emerson ";
+				topicLink[i++]   = "046,065,066,181,185,204,205,206,207,209,210,212,263,307,309,490";
+				topicName[i] = "Envision ";
+				topicLink[i++]   = "057";
+				topicName[i] = "Fisher ";
+				topicLink[i++]   = "181,186";
+				topicName[i] = "Fujitsu ";
+				topicLink[i++]   = "206";
+				topicName[i] = "Funai ";
+				topicLink[i++]   = "198,206,207";
+				topicName[i] = "Futuretech ";
+				topicLink[i++]   = "207";
+				topicName[i] = "GE ";
+				topicLink[i++]   = "048,054,056,074,078,082,162,201,205,306,309,478";
+				topicName[i] = "Gibralter ";
+				topicLink[i++]   = "044,046,057";
+				topicName[i] = "Goldstar ";
+				topicLink[i++]   = "028,046,057,059,066,083,205,436";
+				topicName[i] = "Grunpy ";
+				topicLink[i++]   = "206,207";
+				topicName[i] = "Hallmark ";
+				topicLink[i++]   = "205";
+				topicName[i] = "Harman/Kardon ";
+				topicLink[i++]   = "105";
+				topicName[i] = "Harvard ";
+				topicLink[i++]   = "095,207";
+				topicName[i] = "Hitachi ";
+				topicLink[i++]   = "059,065,083,172,178,306,436";
+				topicName[i] = "Infinity ";
+				topicLink[i++]   = "081";
+				topicName[i] = "Janeil ";
+				topicLink[i++]   = "073";
+				topicName[i] = "JBL ";
+				topicLink[i++]   = "081";
+				topicName[i] = "JCB ";
+				topicLink[i++]   = "027";
+				topicName[i] = "JVC ";
+				topicLink[i++]   = "080,209";
+				topicName[i] = "Kawasho ";
+				topicLink[i++]   = "185";
+				topicName[i] = "Kaypani ";
+				topicLink[i++]   = "079";
+				topicName[i] = "KEC ";
+				topicLink[i++]   = "207";
+				topicName[i] = "Kenwood ";
+				topicLink[i++]   = "046,057";
+				topicName[i] = "Kloss ";
+				topicLink[i++]   = "051,073,105";
+				topicName[i] = "KTV ";
+				topicLink[i++]   = "057,066,207,210,212,307";
+				topicName[i] = "Logik ";
+				topicLink[i++]   = "043";
+				topicName[i] = "Luxman ";
+				topicLink[i++]   = "083";
+				topicName[i] = "LXI ";
+				topicLink[i++]   = "074,081,181,183,205";
+				topicName[i] = "Magnavox ";
+				topicLink[i++]   = "047,051,055,057,081,123,213,214,413,845";
+				topicName[i] = "Majestic ";
+				topicLink[i++]   = "042,043";
+				topicName[i] = "Marantz ";
+				topicLink[i++]   = "057,081";
+				topicName[i] = "Matsushita ";
+				topicLink[i++]   = "277";
+				topicName[i] = "Megatron ";
+				topicLink[i++]   = "030,172,205";
+				topicName[i] = "MEI ";
+				topicLink[i++]   = "212";
+				topicName[i] = "Memorex ";
+				topicLink[i++]   = "043,083,177,181,205";
+				topicName[i] = "MGA ";
+				topicLink[i++]   = "046,057,177,205";
+				topicName[i] = "Midland ";
+				topicLink[i++]   = "044,059,066,074,078,162";
+				topicName[i] = "Minutz ";
+				topicLink[i++]   = "048";
+				topicName[i] = "Mitsubishi ";
+				topicLink[i++]   = "046,120,177,205,268";
+				topicName[i] = "Motorola ";
+				topicLink[i++]   = "082,120";
+				topicName[i] = "MTC ";
+				topicLink[i++]   = "046,057,083,087,212";
+				topicName[i] = "Multitech ";
+				topicLink[i++]   = "207";
+				topicName[i] = "NAD ";
+				topicLink[i++]   = "183,193,205";
+				topicName[i] = "NEC ";
+				topicLink[i++]   = "046,057,083";
+				topicName[i] = "Nikko ";
+				topicLink[i++]   = "057,119,205";
+				topicName[i] = "Noshi ";
+				topicLink[i++]   = "045";
+				topicName[i] = "NTC ";
+				topicLink[i++]   = "119";
+				topicName[i] = "Onwa ";
+				topicLink[i++]   = "207";
+				topicName[i] = "Optimus ";
+				topicLink[i++]   = "181,193,277";
+				topicName[i] = "Optonica ";
+				topicLink[i++]   = "120,192";
+				topicName[i] = "Orion ";
+				topicLink[i++]   = "263";
+				topicName[i] = "Panasonic ";
+				topicLink[i++]   = "078,082,277";
+				topicName[i] = "Penney ";
+				topicLink[i++]   = "030,045,046,048,054,057,059,066,074,078,087,162,176,183,205";
+				topicName[i] = "Philco ";
+				topicLink[i++]   = "046,047,055,057,081,123";
+				topicName[i] = "Philips ";
+				topicLink[i++]   = "081,845";
+				topicName[i] = "Pilot ";
+				topicLink[i++]   = "046,057,066";
+				topicName[i] = "Pioneer ";
+				topicLink[i++]   = "065,193";
+				topicName[i] = "Portland ";
+				topicLink[i++]   = "046,066,119";
+				topicName[i] = "Prism ";
+				topicLink[i++]   = "078";
+				topicName[i] = "Proscan ";
+				topicLink[i++]   = "074";
+				topicName[i] = "Proton ";
+				topicLink[i++]   = "030,079,205";
+				topicName[i] = "Pulsar ";
+				topicLink[i++]   = "044,046";
+				topicName[i] = "Quasar ";
+				topicLink[i++]   = "078,082,192,277";
+				topicName[i] = "Radio Shack ";
+				topicLink[i++]   = "046,057,059,066,074,083,181,192,205,207,436";
+				topicName[i] = "RCA ";
+				topicLink[i++]   = "045,046,056,065,074,117,162,201";
+				topicName[i] = "Realistic ";
+				topicLink[i++]   = "045,057,059,066,083,181,192,205,207";
+				topicName[i] = "Rhapsody ";
+				topicLink[i++]   = "210,212";
+				topicName[i] = "Runco ";
+				topicLink[i++]   = "044,057";
+				topicName[i] = "Sampo ";
+				topicLink[i++]   = "057,059,066,079";
+				topicName[i] = "Samsung ";
+				topicLink[i++]   = "046,057,059,066,083,087,205";
+				topicName[i] = "Samsux ";
+				topicLink[i++]   = "066";
+				topicName[i] = "Sanyo ";
+				topicLink[i++]   = "173,181,186";
+				topicName[i] = "Scimitsu ";
+				topicLink[i++]   = "046";
+				topicName[i] = "Scotch ";
+				topicLink[i++]   = "205";
+				topicName[i] = "Scott ";
+				topicLink[i++]   = "046,205,206,207,263";
+				topicName[i] = "Sears ";
+				topicLink[i++]   = "042,074,081,083,173,176,181,183,186,198,205,206";
+				topicName[i] = "Sharp ";
+				topicLink[i++]   = "066,120,184,192,413";
+				topicName[i] = "Shogun ";
+				topicLink[i++]   = "046";
+				topicName[i] = "Signature ";
+				topicLink[i++]   = "043";
+				topicName[i] = "Simpson ";
+				topicLink[i++]   = "213,214";
+				topicName[i] = "Sony ";
+				topicLink[i++]   = "027,038,107,138";
+				topicName[i] = "Soundesign ";
+				topicLink[i++]   = "205,206,207,213";
+				topicName[i] = "Spectricon ";
+				topicLink[i++]   = "030";
+				topicName[i] = "Squareview ";
+				topicLink[i++]   = "198";
+				topicName[i] = "SSS ";
+				topicLink[i++]   = "046,207";
+				topicName[i] = "Starlite ";
+				topicLink[i++]   = "207";
+				topicName[i] = "Supre-Macy ";
+				topicLink[i++]   = "073";
+				topicName[i] = "Supreme ";
+				topicLink[i++]   = "027";
+				topicName[i] = "Sylvania ";
+				topicLink[i++]   = "047,055,057,081,123,408";
+				topicName[i] = "Symphonic ";
+				topicLink[i++]   = "198";
+				topicName[i] = "Tandy ";
+				topicLink[i++]   = "120";
+				topicName[i] = "Tatung ";
+				topicLink[i++]   = "030,082";
+				topicName[i] = "Technics ";
+				topicLink[i++]   = "078,277";
+				topicName[i] = "Technol Ace ";
+				topicLink[i++]   = "206";
+				topicName[i] = "Techwood ";
+				topicLink[i++]   = "030,078,083";
+				topicName[i] = "Teknika ";
+				topicLink[i++]   = "043,046,066,081,083,087,119,177,206,207,213";
+				topicName[i] = "TMK ";
+				topicLink[i++]   = "083,204,205";
+				topicName[i] = "Toshiba ";
+				topicLink[i++]   = "087,176,181,183";
+				topicName[i] = "Tosonic ";
+				topicLink[i++]   = "212";
+				topicName[i] = "Totevision ";
+				topicLink[i++]   = "066";
+				topicName[i] = "Trical ";
+				topicLink[i++]   = "184";
+				topicName[i] = "Universal ";
+				topicLink[i++]   = "054";
+				topicName[i] = "Vector Research ";
+				topicLink[i++]   = "057";
+				topicName[i] = "Victor ";
+				topicLink[i++]   = "080";
+				topicName[i] = "Vidikron ";
+				topicLink[i++]   = "081,269";
+				topicName[i] = "Vidtech ";
+				topicLink[i++]   = "046,205";
+				topicName[i] = "Viking ";
+				topicLink[i++]   = "073";
+				topicName[i] = "Wards ";
+				topicLink[i++]   = "043,046,047,048,054,055,056,057,081,083,107,123,138,192,201,205,206";
+				topicName[i] = "Yamaha ";
+				topicLink[i++]   = "046,057";
+				topicName[i] = "Zenith ";
+				topicLink[i++]   = "043,044";
+				topicName[i] = "Zonda ";
+				topicLink[i++]   = "030";
+
+			case "WebTV":
+
+				topicName[i] = "Akai";
+				topicLink[i++] = "032,070";
+				topicName[i] = "Alba";
+				topicLink[i++] = "113";
+				topicName[i] = "A-Mark";
+				topicLink[i++] = "120";
+				topicName[i] = "Amstrad";
+				topicLink[i++] = "033";
+				topicName[i] = "Anam";
+				topicLink[i++] = "009,021,041,020,121";
+				topicName[i] = "AOC";
+				topicLink[i++] = "005,006,009,020,120";
+				topicName[i] = "Archer";
+				topicLink[i++] = "120";
+				topicName[i] = "Audiovox";
+				topicLink[i++] = "120";
+				topicName[i] = "Bauer";
+				topicLink[i++] = "111";
+				topicName[i] = "Candle";
+				topicLink[i++] = "006,022,023,025";
+				topicName[i] = "Capeheart";
+				topicLink[i++] = "019";
+				topicName[i] = "Citizen";
+				topicLink[i++] = "006,016,022,023,024,025,026";
+				topicName[i] = "Concerto";
+				topicLink[i++] = "023";
+				topicName[i] = "Contec";
+				topicLink[i++] = "027,028,041,091";
+				topicName[i] = "Craig";
+				topicLink[i++] = "021,041";
+				topicName[i] = "Crown";
+				topicLink[i++] = "026";
+				topicName[i] = "Curtis Mathis";
+				topicLink[i++] = "006,016,026";
+				topicName[i] = "CXC";
+				topicLink[i++] = "041";
+				topicName[i] = "Daewoo";
+				topicLink[i++] = "005,026,029,030,031,032";
+				topicName[i] = "Dixi";
+				topicLink[i++] = "032,088,120";
+				topicName[i] = "Electrohome";
+				topicLink[i++] = "026";
+				topicName[i] = "Elta";
+				topicLink[i++] = "032";
+				topicName[i] = "Emerson";
+				topicLink[i++] = "026,027,028,033,034,035,037,038,039,040,112";
+				topicName[i] = "Envision";
+				topicLink[i++] = "006";
+				topicName[i] = "Etron";
+				topicLink[i++] = "032";
+				topicName[i] = "Fisher";
+				topicLink[i++] = "042,090";
+				topicName[i] = "Formenti";
+				topicLink[i++] = "111";
+				topicName[i] = "Fortress";
+				topicLink[i++] = "105";
+				topicName[i] = "Fujitsu";
+				topicLink[i++] = "034";
+				topicName[i] = "Funai";
+				topicLink[i++] = "034,041";
+				topicName[i] = "Futuretech";
+				topicLink[i++] = "041";
+				topicName[i] = "GE";
+				topicLink[i++] = "003,008,009,015,040,043,044,030";
+				topicName[i] = "Genexxa";
+				topicLink[i++] = "113";
+				topicName[i] = "Goldstar";
+				topicLink[i++] = "005,023,026,045,046,088";
+				topicName[i] = "Grundig";
+				topicLink[i++] = "047";
+				topicName[i] = "Harman/Kardon";
+				topicLink[i++] = "062";
+				topicName[i] = "Hinari";
+				topicLink[i++] = "034";
+				topicName[i] = "Hitachi";
+				topicLink[i++] = "023,026,048,049,050,051,052,053,054,055,126";
+				topicName[i] = "Infinity";
+				topicLink[i++] = "066";
+				topicName[i] = "JBL";
+				topicLink[i++] = "066";
+				topicName[i] = "JC Penney";
+				topicLink[i++] = "003,005,006,014,016,026,043,096";
+				topicName[i] = "Jensen";
+				topicLink[i++] = "056";
+				topicName[i] = "JVC";
+				topicLink[i++] = "057,058,059,060";
+				topicName[i] = "Kawasho";
+				topicLink[i++] = "062";
+				topicName[i] = "Kenwood";
+				topicLink[i++] = "006";
+				topicName[i] = "Kloss";
+				topicLink[i++] = "022,062,110";
+				topicName[i] = "KTV";
+				topicLink[i++] = "026,039,040,041";
+				topicName[i] = "Logik";
+				topicLink[i++] = "018";
+				topicName[i] = "Luxman";
+				topicLink[i++] = "023";
+				topicName[i] = "LXI";
+				topicLink[i++] = "003,063,066,090,095,117,125";
+				topicName[i] = "Magnavox";
+				topicLink[i++] = "006,020,025,064,065,066,067,068,069,110";
+				topicName[i] = "Marantz";
+				topicLink[i++] = "006,066,088";
+				topicName[i] = "Matsui";
+				topicLink[i++] = "032,109";
+				topicName[i] = "Memorex";
+				topicLink[i++] = "018,032,090";
+				topicName[i] = "Mitsubishi";
+				topicLink[i++] = "004,005,070,071,072,123";
+				topicName[i] = "MGA";
+				topicLink[i++] = "004,005,006,071";
+				topicName[i] = "MTC";
+				topicLink[i++] = "005,006,016,023,031";
+				topicName[i] = "NAD";
+				topicLink[i++] = "002,117";
+				topicName[i] = "National";
+				topicLink[i++] = "009,021";
+				topicName[i] = "NEC";
+				topicLink[i++] = "005,006,007,017,023,127";
+				topicName[i] = "Nikkai";
+				topicLink[i++] = "112,113,118";
+				topicName[i] = "Novabeam";
+				topicLink[i++] = "062";
+				topicName[i] = "Onwa";
+				topicLink[i++] = "041";
+				topicName[i] = "Optonica";
+				topicLink[i++] = "105,107";
+				topicName[i] = "Osaki";
+				topicLink[i++] = "112";
+				topicName[i] = "Panasonic";
+				topicLink[i++] = "008,009,010,011,012,066,074,075";
+				topicName[i] = "Philco";
+				topicLink[i++] = "005,006,025,064,065,068,110";
+				topicName[i] = "Philips";
+				topicLink[i++] = "066,088";
+				topicName[i] = "Pioneer";
+				topicLink[i++] = "002,048,051,076";
+				topicName[i] = "Portland";
+				topicLink[i++] = "005,026";
+				topicName[i] = "Proscan";
+				topicLink[i++] = "003";
+				topicName[i] = "Proton";
+				topicLink[i++] = "013,019,026,124";
+				topicName[i] = "Pulsar";
+				topicLink[i++] = "001";
+				topicName[i] = "Quasar";
+				topicLink[i++] = "008,009,075";
+				topicName[i] = "Radio Shack";
+				topicLink[i++] = "026,041,107,112";
+				topicName[i] = "RCA";
+				topicLink[i++] = "003,005,014,015,048,079,080,081,082,083,084,085,086,087,125,133,134";
+				topicName[i] = "Realistic";
+				topicLink[i++] = "090";
+				topicName[i] = "Saisho";
+				topicLink[i++] = "032,033,109";
+				topicName[i] = "Sampo";
+				topicLink[i++] = "006,019";
+				topicName[i] = "Samsung";
+				topicLink[i++] = "005,006,016,023,026,032,088,112";
+				topicName[i] = "Sanyo";
+				topicLink[i++] = "047,089,090,091,092,109";
+				topicName[i] = "SBR";
+				topicLink[i++] = "088";
+				topicName[i] = "Schneider";
+				topicLink[i++] = "088";
+				topicName[i] = "Scott";
+				topicLink[i++] = "026,034,037,041,093";
+				topicName[i] = "Sears";
+				topicLink[i++] = "003,023,034,042,063,089,090,094,095,096,097,098,099,100,101,102,103,104,117";
+				topicName[i] = "Sharp";
+				topicLink[i++] = "026,091,105,106,107,108,128,129";
+				topicName[i] = "Siemens";
+				topicLink[i++] = "091";
+				topicName[i] = "Signature2000";
+				topicLink[i++] = "018";
+				topicName[i] = "Sony";
+				topicLink[i++] = "000,109,119,122";
+				topicName[i] = "Soundesign";
+				topicLink[i++] = "025,041";
+				topicName[i] = "Spectricon";
+				topicLink[i++] = "020,120";
+				topicName[i] = "SSS";
+				topicLink[i++] = "005,041";
+				topicName[i] = "Supra";
+				topicLink[i++] = "023";
+				topicName[i] = "Supre-Macy";
+				topicLink[i++] = "022";
+				topicName[i] = "Sylvania";
+				topicLink[i++] = "006,025,064,065,066,068,110,111";
+				topicName[i] = "Symphonic";
+				topicLink[i++] = "132";
+				topicName[i] = "Tandy";
+				topicLink[i++] = "105,113";
+				topicName[i] = "Tatung";
+				topicLink[i++] = "009";
+				topicName[i] = "Technics";
+				topicLink[i++] = "008";
+				topicName[i] = "Techwood";
+				topicLink[i++] = "023";
+				topicName[i] = "Teknika";
+				topicLink[i++] = "004,005,016,018,022,023,024,025,026,034,041,114,115";
+				topicName[i] = "Telefunken";
+				topicLink[i++] = "051";
+				topicName[i] = "Teletech";
+				topicLink[i++] = "032";
+				topicName[i] = "Tera";
+				topicLink[i++] = "013";
+				topicName[i] = "Thomson";
+				topicLink[i++] = "051,116";
+				topicName[i] = "TMK";
+				topicLink[i++] = "023";
+				topicName[i] = "Toshiba";
+				topicLink[i++] = "016,090,096,117,118,131";
+				topicName[i] = "Tosonic";
+				topicLink[i++] = "028";
+				topicName[i] = "Totevision";
+				topicLink[i++] = "026";
+				topicName[i] = "Universal";
+				topicLink[i++] = "043";
+				topicName[i] = "Vector Research";
+				topicLink[i++] = "006";
+				topicName[i] = "Victor";
+				topicLink[i++] = "057";
+				topicName[i] = "Video Concepts";
+				topicLink[i++] = "070";
+				topicName[i] = "Vidtech";
+				topicLink[i++] = "005";
+				topicName[i] = "Viking";
+				topicLink[i++] = "022";
+				topicName[i] = "Wards";
+				topicLink[i++] = "005,006,015,018,034,043,064,065,067,068,107,119";
+				topicName[i] = "Yamaha";
+				topicLink[i++] = "005,006";
+				topicName[i] = "Zenith";
+				topicLink[i++] = "001,018";
+				topicName[i] = "Zonda";
+				topicLink[i++] = "120";
+	            break;
+
+			case "Sony":
+
+				topicName[i] = "ABC";
+				topicLink[i++] = "112";
+				topicName[i] = "Admiral";
+				topicLink[i++] = "102,114,109";
+				topicName[i] = "Bell & Howell";
+				topicLink[i++] = "114,109,138";
+				topicName[i] = "Brocsonic";
+				topicLink[i++] = "103,112";
+				topicName[i] = "Craig";
+				topicLink[i++] = "122,123,120,121";
+				topicName[i] = "Croslex";
+				topicLink[i++] = "111";
+				topicName[i] = "Curtis Mathis";
+				topicLink[i++] = "103,119,123";
+				topicName[i] = "Daewoo";
+				topicLink[i++] = "135,136,103";
+				topicName[i] = "Daytron";
+				topicLink[i++] = "113";
+				topicName[i] = "Emerson";
+				topicLink[i++] = "122,113,120,121,123,103,115";
+				topicName[i] = "Fisher";
+				topicLink[i++] = "125";
+				topicName[i] = "GE";
+				topicLink[i++] = "102,118,103,107";
+				topicName[i] = "Goldstar";
+				topicLink[i++] = "103,113,112,130";
+				topicName[i] = "Hitachi";
+				topicLink[i++] = "131,113,103,132";
+				topicName[i] = "JC Penny";
+				topicLink[i++] = "103,102,130,107";
+				topicName[i] = "JVC";
+				topicLink[i++] = "128,129";
+				topicName[i] = "KTV";
+				topicLink[i++] = "133,113,103,123,134";
+				topicName[i] = "LXI";
+				topicLink[i++] = "102,103,111,125,119,112";
+				topicName[i] = "Magnavox";
+				topicLink[i++] = "111,112,113,107";
+				topicName[i] = "MGA";
+				topicLink[i++] = "124,103,112";
+				topicName[i] = "Mitsubishi";
+				topicLink[i++] = "124,103,112";
+				topicName[i] = "NEC";
+				topicLink[i++] = "103,112";
+				topicName[i] = "Panasonic";
+				topicLink[i++] = "118,116,117,107";
+				topicName[i] = "Philco";
+				topicLink[i++] = "111,118,109";
+				topicName[i] = "Philips";
+				topicLink[i++] = "111";
+				topicName[i] = "Pioneer";
+				topicLink[i++] = "137,118,119";
+				topicName[i] = "Portland";
+				topicLink[i++] = "103,108";
+				topicName[i] = "Proscan";
+				topicLink[i++] = "102,103,104,105,106,107,108";
+				topicName[i] = "Quasar";
+				topicLink[i++] = "110,107";
+				topicName[i] = "Radio Shack";
+				topicLink[i++] = "102,112,124,123";
+				topicName[i] = "RCA";
+				topicLink[i++] = "102,103,104,105,106,107,108";
+				topicName[i] = "Samsung";
+				topicLink[i++] = "126,112,113,103";
+				topicName[i] = "Sanyo";
+				topicLink[i++] = "125";
+				topicName[i] = "Scott";
+				topicLink[i++] = "123,112";
+				topicName[i] = "Sharp";
+				topicLink[i++] = "114,113,115";
+				topicName[i] = "Signature2000";
+				topicLink[i++] = "114,109";
+				topicName[i] = "Sony";
+				topicLink[i++] = "101";
+				topicName[i] = "Sylvania";
+				topicLink[i++] = "111,112,108";
+				topicName[i] = "Symphonic";
+				topicLink[i++] = "123,139";
+				topicName[i] = "Toshiba";
+				topicLink[i++] = "119,114";
+				topicName[i] = "Vidtech";
+				topicLink[i++] = "131,103,112";
+				topicName[i] = "Wards";
+				topicLink[i++] = "113,103,115,112";
+				topicName[i] = "Zenith";
+				topicLink[i++] = "108,110";
+	            break;
+		}
+	}
+
+	var visibleRows = 8;
+	var nowPage = 0;
+	var itemIndex = 0;
+    var nowItem;
+	var isDone;
+	var embedDoc;
+    var nowselect;
+    var rowHeight = 26;
+    var colWidth = 140;
+	var maxPage = Math.floor((topicName.length -1) / (visibleRows * 2 ));
+
+	function buildTopicList() {
+		embedDoc = document.embedArea.document;
+		isDone = false;
+		embedDoc.open();
+		embedDoc.write( "<body text=#6cb18a link=#6cb18a vlink=#6cb18a fontsize=small><table cellspacing=0 cellpadding=0><tr><td bgcolor=#121212 width=280 height=220 valign=top><spacer type=vertical height=6><br>" );
+		embedDoc.write( "<table cellpadding=0 cellspacing=0>" );
+
+		embedDoc.write( "<tr><td width=" + colWidth + "><td width=" + colWidth + ">" );
+		for ( row = 0; row < visibleRows && !isDone; row++ ) {
+            embedDoc.write( "<tr>" );
+            for ( col = 0; col < 2; col++ ) {
+                itemIndex = nowPage * visibleRows * 2;
+                itemIndex += col * visibleRows;
+                itemIndex += row;
+                nowItem = getItem( itemIndex );
+                if ( nowItem == null) {
+                    embedDoc.write( '<td height=' + rowHeight + '>' );
+                } else {
+                    embedDoc.write( '<td height=' + rowHeight + ' href="javascript:goToInstructions(' + itemIndex + ')">&nbsp;&nbsp;' );
+                    embedDoc.write( nowItem );
+                }
+            }
+		}
+		embedDoc.write( "</table>" );
+		embedDoc.close();
+	}
+
+	function buildButtons() {
+
+		embedDoc = document.embedButton.document;
+		embedDoc.open();
+		embedDoc.write("<body text=#6cb18a link=#6cb18a vlink=#6cb18a fontsize=small>");
+		embedDoc.write("<form id='buttonForm'>");
+		embedDoc.write("<font color=ffcf69><shadow>");
+		
+		if (nowPage >0)  {
+			if (maxPage==nowPage) {
+				embedDoc.write("<input name='prevBut' value='Previous' type=button action='' onClick='prevSet()' borderimage='file://ROM/tvimages/TVButtonBorder.bif' selected usestyle width=130>");
+			}	else {
+				
+				embedDoc.write("<input name='prevBut' value='Previous' type=button action='' onClick='prevSet()' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=130>");
+			} 
+		}	else {
+			embedDoc.write("<spacer type=horizontal width=130");
+		} 
+		
+
+
+		embedDoc.write("<spacer type = horizontal width = 10>");
+
+		if (nowPage < maxPage) {
+			embedDoc.write("<input name='moreBut' value='More' type=button action='' onClick='nextSet()' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=130 selected></shadow></font>");
+		}
+		embedDoc.write("</form>");
+		embedDoc.close();
+		
+
+    }
+
+	function getItem( index ) {
+		if ( index >= topicName.length )
+			return null;
+		return topicName[index];
+    }
+
+	function getLink( index ) {
+		if ( index >= topicLink.length )
+			return null;
+		return topicLink[index];
+    }
+
+	function nextSet()  {
+		nowPage++;
+		buildTopicList();
+		buildButtons();
+        
+    }
+
+	function prevSet() {
+		nowPage--;
+		buildTopicList();
+		buildButtons();
+        
+    }
+
+    function goToInstructions(gvnNum) {
+        codelist = getLink( gvnNum );
+        nowbrand = getItem( gvnNum );
+        if (nowDevice == "remote") {
+	        str = ("file:codeset_2.html?device=" + nowDevice + "&tvbrand=" + escape(nowbrand) + "&codes=" + codelist + "&boxbrand=" + boxBrand );
+        } else {
+	        str = ("file:codeset_5.html?device=" + nowDevice + "&tvbrand=" + escape(nowbrand) + "&codes=" + codelist + "&boxbrand=" + boxBrand );
+        }
+        location.href = str;
+    }
+
+
+
+</script>
+
+</head>
+
+<link rel="StyleSheet" type="text/css" href="tv-help.css">
+
+<body bgcolor='21212e' background='images/Pattern_Help.gif' text='b2b2b2'
+      link='6a8bd2' vlink='6a8bd2' hspace=0 vspace=0 fontsize='medium'>
+
+
+<div id='bannerImg'>
+	<img src='images/Banner_Help.gif'>
+</div>
+
+<div id='bannerHead'>
+	<font color='6a8bd2' size='-1'>
+	<script>
+		if ( nowDevice == "keyboard" ) {
+			var tmpStr = "WIRELESS KEYBOARD";
+		} else {
+			var tmpStr = "REMOTE CONTROL";
+		}
+		for (i=0; i<tmpStr.length; i++) {
+			document.write(tmpStr.charAt(i) + '&nbsp;&nbsp;');
+		}
+	</script>
+	</font>
+</div>
+
+<div id='bodyHead'>
+	<font color='ffcf69' size='+3'><blackface><shadow>
+		Code set
+</div>
+
+<div id='bodyTextByImg'>
+	<p>
+	Choose your television's brand from the list.
+	<p>
+	Choose <b>More</b> to <br> see more brands.
+</div>
+
+<div id='brandEmbed'>
+	<embed id="embedArea" src="codeset_init.html" transition=crossfade nobackground width=280>
+</div>
+
+
+
+<div id='middleButton'>
+	<embed id="embedButton" src="button_init.html" transition=crossfade nobackground width=280>
+
+
+</div>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,158 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<display fontsize="medium">
+	<style>
+	</style>
+
+	<script>
+		function InitMail()
+		{
+			window.message("InitMail");
+
+			// Try to open the config file in one of the standard places.
+			// This is the only file with a hardcoded path, the rest of the
+			// paths come out of this file.
+
+			window.message("trying to load ", "file://" + top.L_2dot5BoxPaths_FileName);
+			if (!top.gPathXML.load("file://" + top.L_2dot5BoxPaths_FileName)) {
+				window.message("couldn't find ", "file://" + top.L_2dot5BoxPaths_FileName);
+				if (!gPathXML.load("file://" + top.L_SimulatorPaths_FileName)) {
+					window.message("couldn't find ", "file://" + top.L_SimulatorPaths_FileName);
+					var L_NoPathFile_Text = "Path configuration file cannot be found.";
+					alert(L_NoPathFile_Text);
+					return false;
+				}
+			}
+
+			var appInfos = top.gPathXML.getElementsByTagName("APPLICATION");
+			top.gAppInfo = appInfos[0];
+
+			top.gPath.InBoxDir				= top.gAppInfo.getAttribute("InBoxDir");
+			top.gPath.OutBoxDir				= top.gAppInfo.getAttribute("OutBoxDir");
+			top.gPath.AdrBookFile			= "";
+			top.gPath.AdrBookFilename		= top.gAppInfo.getAttribute("AddressBookFile");
+			top.gPath.UserInfoFile			= top.L_Disk_FileName + top.gAppInfo.getAttribute("UserInfoFile");
+			top.gPath.ServiceUserFile		= top.L_Disk_FileName + top.gAppInfo.getAttribute("ServiceUserFile");
+			top.gPath.BlankMsgFile			= top.L_Disk_FileName + top.gAppInfo.getAttribute("BlankWriteMsg");
+			top.gPath.LastMsgFile			= "";
+			top.gPath.LastMsgFilename		= top.gAppInfo.getAttribute("LastWriteMsg");
+			top.gPath.ConfigFile			= top.L_Disk_FileName + top.gAppInfo.getAttribute("ConfigFile");
+			top.gPath.EmailData				= top.L_Disk_FileName + top.gAppInfo.getAttribute("EmailDataPath");
+			top.gPath.SettingsFile			= top.L_Disk_FileName + top.gAppInfo.getAttribute("SettingsFile");
+
+		window.message("gPath.EmailData = ", top.gPath.EmailData);
+
+			top.VerifyFile(top.gPath.BlankMsgFile, '<letter msgid="0" hasRead="u" deleted="n" forward_msgid="0">'
+ 						+ '<sender_name></sender_name>'
+ 						+ '<sender_address></sender_address>'
+ 						+ '<cc></cc>'
+ 						+ '<reply_to></reply_to>'
+ 						+ '<send_date></send_date>'
+ 						+ '<subject></subject>'
+ 						+ '<message></message>'
+						+ '</letter>');
+
+			top.VerifyFile(top.gPath.ConfigFile, '<CONFIGINFO MaxInMsgs="40" MaxInDiskSpace="204800"'
+						+ ' MaxMsgSize="20480" MaxOutMsgs="20" MaxOutDiskSpace="40960"'
+						+ ' MaxShortcuts="20" MaxAddressesPerShortcut="10"'
+						+ ' MaxInBoxMsgSize="20480" MaxInSpacePerUser="102400"'
+						+ ' LastConnect="" />');
+			if (!top.gConfigXML.load("file://" + top.gPath.ConfigFile)) {
+				window.message("Couldn't load ", "file://" + top.gPath.ConfigFile);
+				var L_NoConfigFile_Text = "Configuration file not found: ";
+				alert(L_NoConfigFile_Text + top.gPath.ConfigFile);
+				return false;
+			}
+			var configInfos = top.gConfigXML.getElementsByTagName("CONFIGINFO");
+			top.gConfigInfo = configInfos[0];
+
+			top.gConfig.MaxInMsgs			= top.gConfigInfo.getAttribute("MaxInMsgs");
+			top.gConfig.MaxInDiskSpace		= top.gConfigInfo.getAttribute("MaxInDiskSpace");
+			top.gConfig.MaxOutMsgs			= top.gConfigInfo.getAttribute("MaxOutMsgs");
+			top.gConfig.MaxOutDiskSpace		= top.gConfigInfo.getAttribute("MaxOutDiskSpace");
+			top.gConfig.MaxInBoxMsgSize		= top.gConfigInfo.getAttribute("MaxMsgSize");
+			top.gConfig.MaxOutBoxMsgSize	= top.gConfig.MaxOutDiskSpace / top.gConfig.MaxOutMsgs;
+			top.gConfig.MaxInSpacePerUser	= top.gConfigInfo.getAttribute("MaxInSpacePerUser");
+			top.gConfig.gLastConnect		= top.gConfigInfo.getAttribute("LastConnect");
+
+			// load the information about the users
+			top.VerifyFile(top.gPath.UserInfoFile, '<Users></Users>');
+
+			if (!top.gUserInfoXML.load("file://" + top.gPath.UserInfoFile)) {
+				window.message("Couldn't load ", "file://" + top.gPath.UserInfoFile);
+				var L_NoUserFile_Text = "User info file not found: ";
+				alert(L_NoUserFile_Text + top.gPath.UserInfoFile);
+				return false;
+			}
+
+			top.gUserInfos = top.gUserInfoXML.getElementsByTagName("UserInfo");
+			top.gUserCount = top.gUserInfos.length;
+
+			window.message("Offline email thinks there are ", top.gUserCount, " users");
+
+			// Now load the service's view of users
+
+			var L_NoUsers_Text	= "The service hasn't told this box about any of the users. You need to go to Web World once (or your service doesn't support offline e-mail). Do you want to go to Web World?";
+			var L_GoWW_Text		= "Go to Web World";
+			var L_Quit_Text		= "Exit E-mail";
+
+			if (!top.gServiceUsersXML.load("file://" + top.gPath.ServiceUserFile)) {
+				if (confirmPriv(L_NoUsers_Text, top.gAlertIconURL, L_GoWW_Text, L_Quit_Text)) {
+					parent.location = "client:GoToWebHome";
+				}
+				return false;
+			}
+			top.gServiceUserInfos = top.gServiceUsersXML.getElementsByTagName("user");
+			top.gServiceUserCount = top.gServiceUserInfos.length;
+			window.message("The service thinks there are ", top.gServiceUserCount, " users");
+
+			if (top.gServiceUserCount == 0) {
+				if (confirmPriv(L_NoUsers_Text, top.gAlertIconURL, L_GoWW_Text, L_Quit_Text)) {
+					parent.location = "client:GoToWebHome";
+				}
+				return false;
+			}
+			return true;
+		}
+	</script>
+</head>
+
+<print blackandwhite>
+
+<body 
+	bgcolor=172625 text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	hspace=0
+	>
+
+<div id=topTVBannerBackground bgcolor=6D5A85>
+</div>
+
+<div id=topTVBanner>
+	<img src=images/TVMailBanner.gif>
+</div>
+
+<div id=webTVJewel>
+	<img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67>
+</div>
+
+<div id=topTVBannerShadow>
+	<img src=images/TVMailShadowHoriz.gif shadow=#000000 transparency=60>
+</div>
+
+<script>
+	if (!InitMail())
+		parent.location = "client:gototvhome";
+	else {
+		var startPage = parameters.action == "sync" ? "SyncMail.html?action=niteSync" : "AskSync.html";
+		location = startPage;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+IMAGE = file://ROM/Cache/WebTVLogoJewel.gif
+
+FRAME s1 = 0 0 109 141
+FRAME s2 = 109 0 218 141
+
+PERIOD = 6
+
+FRAME s2
+    ADVANCE = 0 0
+
+FRAME s1
+    DISSOLVE = 4
+    ADVANCE = 0 0
+
+PERIOD = 60
+
+FRAME s1
+    ADVANCE = 0 0
+
+FRAME s2
+    DISSOLVE = 4
+    ADVANCE = 0 0

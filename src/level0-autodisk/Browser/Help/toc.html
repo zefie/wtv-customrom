@@ -1,0 +1,292 @@
+<html>
+<head>
+<title>
+
+Table of contents
+
+</title>
+<script language='Javascript'>
+
+	var boxMakerID = navigator.manufacturer;
+	var boxBrand;
+
+	if ( boxMakerID == 0 )
+		boxBrand = "Sony";
+	else if ( boxMakerID == 1 || boxMakerID == 5 )
+		boxBrand = "Philips";
+	else if ( boxMakerID == 9 )
+		boxBrand = "RCA";
+	else
+		boxBrand = "WebTV";
+
+	// populate ARRAYS
+	var cat = new Array();
+	var subCat = new Array();
+	var subCatUrl = new Array();
+	var ind=0;
+    var subind=0;
+    
+	ind++;
+    subind=0;
+	cat[ind] = "Remote & keyboard";
+	subCat[ind] = new Array();
+	subCatUrl[ind] = new Array();
+	subind++;
+	subCat[ind][subind] = "Setting up your remote";
+	subCatUrl[ind][subind] = "remote";
+	subind++;
+	subCat[ind][subind] = "Setting up your keyboard";
+	subCatUrl[ind][subind] = "keyboard";
+	subind++;
+	subCat[ind][subind] = "Adjusting volume";
+	subCatUrl[ind][subind] = "remote_volume";
+	subind++;
+	subCat[ind][subind] = "Changing channels";
+	subCatUrl[ind][subind] = "remote_channels";
+	subind++;
+	switch (boxBrand) {
+		case "RCA" :
+			subCat[ind][subind] = "Component Buttons";
+		case "Sony" :
+			subCat[ind][subind] = "<font size=-1>TV-WEBTV";
+		case "Philips" :
+			subCat[ind][subind] = "<font size=-1>TV/WEBTV";
+		case "WebTV" :
+			subCat[ind][subind] = "<font size=-1>MODE";
+	}
+	subCatUrl[ind][subind] = "remote_tvwebtv";
+    
+	
+	subind++;
+	subCat[ind][subind] = "<font size=-1>TV/VIDEO";
+	subCatUrl[ind][subind] = "remote_tvvideo";
+
+    
+	ind++;
+    subind=0;
+	cat[ind] = "TV Listings";
+	subCat[ind] = new Array();
+	subCatUrl[ind] = new Array();
+    subind++;
+	subCat[ind][subind] = "Using TV Listings";
+	subCatUrl[ind][subind] = "tvlistings1";
+    subind++;
+	subCat[ind][subind] = "Program info";
+	subCatUrl[ind][subind] = "proginfo1";
+    subind++;
+	subCat[ind][subind] = "Viewing favorite channels";
+	subCatUrl[ind][subind] = "favs1";
+    subind++;
+	subCat[ind][subind] = "Viewing by date/time";
+	subCatUrl[ind][subind] = "date";
+    subind++;
+	subCat[ind][subind] = "Searching listings";
+	subCatUrl[ind][subind] = "search1";
+
+    ind++;
+    subind=0;
+	cat[ind] = "Watching TV";
+	subCat[ind] = new Array();
+	subCatUrl[ind] = new Array();
+    subind++;
+	subCat[ind][subind] = "TV Home";
+	subCatUrl[ind][subind] = "tvhome";
+	subind++;
+	subCat[ind][subind] = "Recent";
+	subCatUrl[ind][subind] = "recent";
+    subind++;
+	subCat[ind][subind] = "Setting reminders";
+	subCatUrl[ind][subind] = "remind1";
+	subind++;
+	subCat[ind][subind] = "TV Planner";
+	subCatUrl[ind][subind] = "tvplan";
+
+    ind++;
+    subind=0;
+	cat[ind] = "TV and the Web";
+	subCat[ind] = new Array();
+	subCatUrl[ind] = new Array();
+	subind++;
+	subCat[ind][subind] = "View";
+	subCatUrl[ind][subind] = "remote_view";
+    subind++;
+	subCat[ind][subind] = "Interactive TV links";
+	subCatUrl[ind][subind] = "ilinks";
+    subind++;
+	subCat[ind][subind] = "TV Sites";
+	subCatUrl[ind][subind] = "tvsites1";
+
+	ind++;
+    subind=0;
+	cat[ind] = "VCR";
+	subCat[ind] = new Array();
+	subCatUrl[ind] = new Array();
+	subind++;
+	subCat[ind][subind] = "VCR Recording";
+	subCatUrl[ind][subind] = "record";
+	subind++;
+	subCat[ind][subind] = "On-screen controls";
+	subCatUrl[ind][subind] = "VCR_01";
+	subind++;
+	subCat[ind][subind] = "Troubleshooting";
+	subCatUrl[ind][subind] = "ConfirmExternalSetupTS";
+
+
+	
+    ind++;
+    subind=0;
+	cat[ind] = "Changing settings";
+	subCat[ind] = new Array();
+	subCatUrl[ind] = new Array();
+    subind++;
+	subCat[ind][subind] = "Hooking up";
+	subCatUrl[ind][subind] = "settings_hookup";
+    subind++;
+	subCat[ind][subind] = "Channels";
+	subCatUrl[ind][subind] = "settings_channels";
+    subind++;
+	subCat[ind][subind] = "Dialing";
+	subCatUrl[ind][subind] = "settings_dialing";
+    subind++;
+	subCat[ind][subind] = "Screen & Audio";
+	subCatUrl[ind][subind] = "settings_screen";
+    subind++;
+	
+	var visibleCat;
+	var selectCat;
+	var selectSubcat;
+
+	function drawAll() {
+		visibleCat = document.hiddenForm.visibleCat.value;
+		selectCat = document.hiddenForm.selectCat.value;
+		selectSubcat = document.hiddenForm.selectSubcat.value;
+		if (visibleCat == "") visibleCat = 0;
+		if (selectCat == "") selectCat = 1;
+		if (selectSubcat == "") selectSubcat = 0;
+		var embedDoc = document.embedArea.document;
+		embedDoc.open();
+		embedDoc.write( '<body text=#cbcbcb link=#cbcbcb vlink=#cbcbcb>' );
+		embedDoc.write( '<table width=400 height=180 cellspacing=0 cellpadding=0>' );
+		embedDoc.write( '<tr><td width=200 valign=top>' );
+		embedDoc.write( '<table width=100% height=100% cellspacing=0 cellpadding=0>' );
+		for (var i = 1; i < cat.length; i++) {
+			if (i == visibleCat) {
+				embedDoc.write( '<tr><td bgcolor=#4b4b60><td height=27 bgcolor=#4b4b60>');
+				if (i == selectCat) {
+					embedDoc.write( '<a href="client:donothing" nextRight="cat' + i + '1" id="cat' + i + '" selected>');
+				} else {
+					embedDoc.write( '<a href="client:donothing" nextRight="cat' + i + '1" id="cat' + i + '">');
+				}
+				embedDoc.write( '<font color=#dedede>' + cat[i] + '</a>');
+				embedDoc.write( '<td align=right bgcolor=#4b4b60><img src="images/TopicArrow2.gif" width=7 height=14>');
+			} else {
+				embedDoc.write( '<tr><td height=27><img src="images/TopicArrow.gif" width=7 height=14><td>' );
+				if (i == selectCat) {
+					embedDoc.write( '<a href="javascript:showSection(' + i + ')" selected>' + cat[i] + '</a>');
+				} else {
+					if (visibleCat == 0) {
+						embedDoc.write( '<a href="javascript:showSection(' + i + ')">' + cat[i] + '</a>');
+					} else {
+						embedDoc.write( '<a href="javascript:showSection(' + i + ')" onMouseOver="hideSection(' + i + ');"><font color=6e6e7e>' + cat[i] + '</a>');
+					}
+				}
+			}
+		}
+		embedDoc.write( '<tr><td width=20><td width=160><td width=20 height=1>' );
+		embedDoc.write( '</table><td width=280 height=' + (27*(cat.length-1)) + ' valign=top>' );
+		if ( visibleCat != 0 ) {
+			embedDoc.write( '<table width=100% height=100% cellspacing=0 cellpadding=0>' );
+			embedDoc.write( '<tr><td width=2 rowspan=99 bgcolor=#4b4b60><td height=2 colspan=2 bgcolor=#4b4b60><td width=2 rowspan=99 bgcolor=#4b4b60>' );
+			embedDoc.write( '<tr><td height=3 colspan=2>' );
+
+			for (var i = 1; i < subCat[visibleCat].length; i++) {
+				embedDoc.write( '<tr><td width=25 height=26 align=center><img src="images/Bullet.gif" width=7 height=7><td width=250>' );
+				if (i == selectSubcat) {
+					embedDoc.write( '<a href="' + subCatUrl[visibleCat][i] + '.html" onMouseOver="setSubSection(' + i + ');" nextLeft="cat' + visibleCat + '" id="cat' + visibleCat + i +'" selected>' + subCat[visibleCat][i]);
+				} else {
+					embedDoc.write( '<a href="' + subCatUrl[visibleCat][i] + '.html" onMouseOver="setSubSection(' + i + ');" nextLeft="cat' + visibleCat + '" id="cat' + visibleCat + i +'">' + subCat[visibleCat][i]);
+				}
+				embedDoc.write( '</a>' );
+			}
+			embedDoc.write( '<tr><td>' );
+			embedDoc.write( '<tr><td colspan=3 height=2 bgcolor=#4b4b60>' );
+			embedDoc.write( '</table>' );
+		}
+		embedDoc.write( '</table>');
+		embedDoc.write( '</body>' );
+		embedDoc.close();
+	}
+	function showSection(gvnNum) {
+		document.hiddenForm.visibleCat.value = gvnNum;
+		document.hiddenForm.selectCat.value = 0;
+		document.hiddenForm.selectSubcat.value = 1;
+		drawAll();
+	}
+	function setSubSection(gvnNum) {
+		document.hiddenForm.selectCat.value = 0;
+		document.hiddenForm.selectSubcat.value = gvnNum;
+	}
+	function hideSection(gvnNum) {
+		document.hiddenForm.visibleCat.value = 0;
+		document.hiddenForm.selectCat.value = gvnNum;
+		document.hiddenForm.selectSubcat.value = 0;
+		drawAll();
+	}
+	function waitNdraw(caller) {
+		if (caller == 'main') {
+			if (embedCalled == true) {
+				drawAll();
+			} else {
+				mainCalled = true;
+			}
+		} else {
+			if (mainCalled == true) {
+				drawAll();
+			} else {
+				embedCalled = true;
+			}
+		}
+	}
+</script>
+<display nooptions>
+</head>
+
+<body onload='waitNdraw("main")' bgcolor='21212e' background='images/Pattern_Help.gif'
+      text='cbcbcb' link='cbcbcb' vlink='cbcbcb' hspace=0 vspace=0 fontsize='medium'>
+
+
+<table cellspacing=0 cellpadding=0 width=560 height=62 background='images/Banner_Help.gif'>
+	<tr><td valign=top>
+			<spacer type=vertical height=53><br>
+			<spacer type=horizontal width=32>
+</table>
+<spacer type=vertical height=10>
+
+
+<form name='hiddenForm'>
+<input type='hidden' name='visibleCat' noselect nocursor>
+<input type='hidden' name='selectCat' noselect nocursor>
+<input type='hidden' name='selectSubcat' noselect nocursor>
+</form>
+
+<table cellspacing=0 cellpadding=0>
+	<tr>
+		<td width=30 rowspan=9>
+		<td width=530 height=40 valign=top>
+			<font color='ffcf69' size='+2'><blackface><shadow>Choose a topic
+	<tr>
+		<td height=258 valign=top>
+			<embed name='embedArea' src='tocInit.html' nobackground>
+	<tr>
+		<td>
+			<form>
+			<spacer type=horizontal width=380>
+			<font color=ffcf69><shadow>
+				<input 	name="doneButton" type='button' action='client:showtvhome'
+						value='Done' borderimage='file://ROM/tvimages/TVButtonBorder.bif'
+						usestyle width=130 selected>
+			</shadow></font>
+			</form>
+</table>
+</body>
+</html>

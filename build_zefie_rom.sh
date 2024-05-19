@@ -1,11 +1,11 @@
 #!/bin/bash
 cd "$(realpath "$(dirname "${0}")")" || exit 1
 
-ZWNIBUILD=1235
+ZWNIBUILD=7532
 if [ -z "${ZVERSION}" ]; then
 	ZVERSION="git-${USER}-v1"
 fi
-ZROMTYPE="bf0app"
+ZROMTYPE="US-LC2-disk-0MB-8MB"
 
 ZSRC="src"
 ZWORK="workdir"
@@ -13,7 +13,7 @@ ZROM="htv-${ZVERSION}.o"
 ZDEST="parts"
 
 ZINFOJS="${ZWORK}/tmp-romfs/ROM/JS/BuildInfo.js"
-ZDATE=$(date +"%Y-%m-%d %H:%M:%S %Z") 
+ZDATE=$(date +"%Y-%m-%d %H:%M:%S %Z")
 
 
 

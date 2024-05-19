@@ -1,0 +1,184 @@
+<html>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<style>
+	#listArea {
+		position: absolute;
+		top: 129;
+		left: 20;
+		width: 434;
+	}
+	#mailCount {
+		position: absolute;
+		top: 80;
+		left: 16;
+		width: 431;
+		height: 30;
+		color:6cb18a;
+	}
+	#listBackground {
+		position: absolute;
+		top: 105;
+		left: 16;
+		width: 417;
+		height: 17;
+		background-color:48775d;
+	}
+	#listFromTitle {
+		position: absolute;
+		top: 108;
+		left: 23;
+		font:bold 12pt;
+		color:0f1918;
+		background-color:48775d
+	}
+	#listSubjectTitle {
+		position: absolute;
+		top: 108;
+		left: 158;
+		font:bold 12pt;
+		color:0f1918;
+		background-color:48775d
+	}
+	#listDateTitle {
+		position: absolute;
+		top: 108;
+		left: 380;
+		font:bold 12pt;
+		color:0f1918;
+		background-color:48775d
+	}
+	</style>
+
+	<script>
+		var folderToUse = top.gInFolder;
+
+		function ListFolder(folder)
+		{
+			var messageCnt = top.MailFolder_length(folderToUse);
+
+			for (i = 0; i < messageCnt; i++) {
+				ListLetter(folder, i, messageCnt)
+			}
+		}
+
+		function ListLetter(folder, index, maxCount)
+		{
+			var letterXML = top.MailFolder_GetLetterXML(folder, index);
+			var letters = letterXML.getElementsByTagName("letter");
+			letter = letters[0];
+
+			var hasRead = letter.getAttribute("hasRead") == "r";
+			var letterInfo = new Object();
+
+			var senders = letterXML.getElementsByTagName("sender_name");
+			letterInfo.senderName = senders[0].firstChild;
+
+			var senderAddresses = letterXML.getElementsByTagName("sender_address");
+			letterInfo.senderAddress = senderAddresses[0].firstChild;
+
+			var sendDates = letterXML.getElementsByTagName("send_date");
+			letterInfo.sendDate = sendDates[0].firstChild;
+
+			var subjects = letterXML.getElementsByTagName("subject");
+			letterInfo.subject = subjects[0].firstChild;
+
+			var s = "<table cellspacing=0 cellpadding=0>";
+			s +=	"<tr>";
+			s +=	"<td abswidth=410>";
+			s +=	"<table cellspacing=0 cellpadding=2 width=410 height=26";
+			s +=	" href=\"ReadLetter.html?whichItem=" + index + "&maxcount=" + maxCount + "&folder=top.gInFolder\" target=MainFrameArea ";
+			s +=	index == 0 ? " selected >" : " >";
+			s +=	"<tr>";
+			s +=	"<td abswidth=-4 align=center valign=middle maxlines=1>";
+			s +=	"<td abswidth=132 maxlines=1>";
+
+			var fontColor = hasRead ? "cbcbcb" : "e5e5e5";
+			s +=	"<font color=" + fontColor + ">";
+			if (!hasRead)
+				s +=	"<b>";
+			s +=	letterInfo.senderName;
+			s +=	"<td abswidth=200 maxlines=1>";
+			s +=	"<font color=" + fontColor + ">";
+			if (!hasRead)
+				s +=	"<b>";
+			s +=	letterInfo.subject;
+			s +=	"<td abswidth=65 maxlines=1 align=right>";
+			s +=	"<font color=" + fontColor + " size=1>";
+			if (!hasRead)
+				s +=	"<b>";
+			s +=	top.ConvertDate(letterInfo.sendDate.text);
+			s +=	"</table>";
+			s +=	"</table>";
+
+			document.write(s);
+		}
+	</script>
+</head>
+
+<print blackandwhite>
+
+<body bgcolor="172625" text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	hspace=0
+	onLoad="top.refreshArrows();">
+
+<div id=topBannerBackgroundScroll bgcolor=0c1413 gradcolor=172625 gradangle=0>
+</div>
+
+<div id=topBannerScroll>
+	<img src=images/MailBanner.gif width=431 height=54>
+</div>
+
+<div id=pageTitleTextScroll>
+	<shadow>Mail list</shadow>
+</div>
+
+<div id=mailCount>
+	<script>
+		var L_ZeroIn_Text = "You have no messages.";
+		var L_OneIn_Text  = "You have one message.";
+		var L_MultiIn_Text= "You have &1 messages.";
+
+		var cnt = top.MailFolder_length(folderToUse);
+		var msg;
+		if (cnt == 0)
+			msg = L_ZeroIn_Text;
+		else if (cnt == 1)
+			msg = L_OneIn_Text;
+		else
+			msg = L_MultiIn_Text;
+
+		msg = top.ParamText(msg, cnt);
+		//window.message("Mail count = " + msg);
+		document.write(msg);
+	</script>
+</div>
+
+<div id=listBackground>
+</div>
+
+<div id=listFromTitle>
+	FROM
+</div>
+
+<div id=listSubjectTitle>
+	SUBJECT
+</div>
+
+<div id=listDateTitle>
+	DATE
+</div>
+
+<div id=listArea>
+	<script>
+		ListFolder(folderToUse)
+	</script>
+</div>
+
+
+</body>
+</html>

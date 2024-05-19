@@ -1,0 +1,76 @@
+<html>
+<head>
+
+<style type="text/css">
+
+#adSpace {
+	position: absolute;
+	top: 10;
+	left: 10;
+	width: 540;
+	height: 340;
+}
+
+#webIcon {
+	position: absolute;
+	top: 368;
+	left: 18;
+}
+
+#adLink {
+	position: absolute;
+	top: 378;
+	left: 66;
+}
+
+#doneButton {
+	position: absolute;
+	top: 369;
+	left: 417;
+	width: 130;
+	height: 35;
+}
+
+</style>
+</head>
+
+<body bgcolor=#000000 text=#cbcbcb link=#cbcbcb vlink=#cbcbcb hspace=0 vspace=0 fontsize=large noscroll>
+
+<div id=adSpace>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td absheight=340 abswidth=540 align=center bgcolor=#0f0f0f>
+			This space for rent.
+	</table>
+</div>
+
+<div id=webIcon>
+	<img src="file://Disk/Browser/DiskFlash/tvimages/Sym_CrossOverLink.gif" width=37 height=34>
+</div>
+
+<div id=adLink>
+	<font size=-1>
+	Web Page:
+
+	<script language="JavaScript">
+		var address = escape("http://www.webtv.com");
+		var title = escape("WebTV Home");
+
+		document.write("<a href=\"client:crossover?address=" + address + "&title=" + title + "\">");
+	</script>
+	WebTV Home
+	</a>
+
+	</font>
+</div>
+
+<form>
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value="Done" name="Done" selected
+			usestyle width=130 action="" onClick="history.back();"
+			borderimage="file://ROM/tvimages/TVButtonBorderLt.bif">
+	</shadow></font>
+</div>
+</form>
+</body>
+</html>

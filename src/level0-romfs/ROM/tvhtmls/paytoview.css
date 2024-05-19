@@ -1,0 +1,91 @@
+<style type="text/css">
+
+#dummy {
+	position: absolute;
+	top: 54;
+	left: 455;
+	width: 218;
+	height: 74;
+}
+
+#dishlogo {
+	position: absolute;
+	top: 54;
+	left: 455;
+	width: 218;
+	height: 74;
+}
+
+#clock {
+	position: absolute;
+	top: 20;
+	left: 362;
+	width: 218;
+	height: 20;
+}
+
+#title {
+	position: absolute;
+	top: 83;
+	left: 68;
+	width: 294;
+	height: 28;
+}
+
+#cost {
+	position: absolute;
+	top: 114;
+	left: 68;
+	width: 294;
+	height: 28;
+}
+
+#timerange {
+	position: absolute;
+	top: 145;
+	left: 68;
+	width: 175;
+	height: 18;
+}
+
+#channel {
+	position: absolute;
+	top: 145;
+	left: 249;
+	width: 136;
+	height: 17;
+}
+
+#rating {
+	position: absolute;
+	top: 165;
+	left: 68;
+	width: 122;
+	height: 28;
+}
+
+#type {
+	position: absolute;
+	top: 164;
+	left: 215;
+	width: 200;
+	height: 28;
+}
+
+#description {
+	position: absolute;
+	top: 193;
+	left: 68;
+	width: 308;
+	height: 218;
+}
+
+#button {
+	position: absolute;
+	top: 320;
+	left: 375;
+	width: 180;
+	height: 48;
+}
+
+</style>

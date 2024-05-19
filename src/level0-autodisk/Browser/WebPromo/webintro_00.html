@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>
+	Subscribe to WebTV
+</title>
+<display notvaudio nooptions>
+<script language="JavaScript">
+	var firstTimeUser = false;
+	if ( location.search.indexOf("firstTime") != -1 ) {
+		firstTimeUser = true;
+	}
+
+    function goOn() {
+        str = ("webintro_01.html" + location.search);
+		location.href = str;
+    }
+</script>
+</head>
+
+<link rel="StyleSheet" type="text/css" href="../Help/intro.css">
+
+<body bgcolor="21212e" background="images/Pattern_TVSettings.gif" hspace=0 vspace=0
+      text="b2b2b2" link="6a8bd2" vlink="6a8bd2" fontsize="medium" hideoptions>
+
+<div id='headerGrad'>
+	<table cellspacing=0 cellpadding=0 width=275 height=108
+	       bgcolor="000000" gradcolor=21212e gradangle=90><tr><td>
+	</table>
+</div>
+
+<div id='headerText'>
+	<font color='ffcf69' size='+5'><shadow>
+        Subscribe to
+</div>
+
+<div id='headerText'>
+	<spacer type=vertical height=30><br><spacer type=horizontal width=50>
+	<font color='ffcf69' size='+5'><shadow>
+        WebTV
+</div>
+
+<div id='headerRule'>
+	<table cellspacing=0 cellpadding=0 width=275 height=2
+	       bgcolor="a5884d" gradcolor="21212e" gradangle=90><tr><td>
+	</table>
+</div>
+
+<div id='mainText'>
+	<script>
+		if ( firstTimeUser == true ) {
+			document.write("Sign up for WebTV Plus!");
+		} else {
+			document.write("You've chosen a feature that requires a subscription to the WebTV Plus service.");
+		}
+	</script>
+    <p>
+    With a subscription to WebTV Plus, you'll get a better,
+	easier way to bring the tremendous benefits of the Internet
+	into your home, right on your TV.
+</div>
+
+<div id='bodyImgFrame'>
+	<embed src='../Help/imgFrame.html' nobackground>
+</div>
+
+<div id='bodyImg'>
+	<img src="images/Screen_webhome.jpg" width=267 height=200>
+</div>
+
+<div id='rightButton'>
+	<form><font color=ffcf69><shadow>
+		<input type=button action="javascript:goOn()"
+		       borderimage="file://ROM/tvimages/TVButtonBorder.bif"
+		       value="Continue" Name="Continue" usestyle width=130 selected>
+	</shadow></font></form>
+</div>
+
+</body>
+</html>
