@@ -12,7 +12,7 @@ ZWORK="workdir"
 ZROM="htv-${ZVERSION}.o"
 ZDEST="parts"
 
-ZINFOJS="${ZWORK}/tmp-romfs/ROM/JS/BuildInfo.js"
+ZINFOJS="${ZWORK}/level0-romfs/ROM/JS/BuildInfo.js"
 ZDATE=$(date +"%Y-%m-%d %H:%M:%S %Z") 
 
 
