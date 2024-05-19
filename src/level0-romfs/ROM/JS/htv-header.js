@@ -70,9 +70,12 @@ function head(th,fs,bgm,lp,msg){
 	d.write('<tr><td>')
 	tab();
 	d.write('<spacer type=block width=11 height=11><br>')
-	d.write('<spacer type=block width=10 height=1><a href="javascript:goHTV()"><img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69></a>')
+	d.write('<spacer type=block width=10 height=1><a href="javascript:goHTV()"><img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69"></a>')
 	tab(msg);
 	d.write('</td></tr></table>')
+	d.write('<div style="position: absolute; top: 50; left: 90">')
+	as(th,'',5,500,0,0)
+	d.write('</div>')
 }
 
 function tab(msg){
