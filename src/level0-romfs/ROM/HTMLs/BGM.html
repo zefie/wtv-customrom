@@ -6,14 +6,13 @@
 <script>	
 	th = pp()
 	bgm = gBGM(z_nv,'')
-	bgmn = 0;
+	bgmn = gBGM(z_nv,'',true);
 	function doSubmit(c) {
 		if (c) {
 			sB(z_nv, 1, c)
 		}
 	}
 	function doLoad() {
-		bgmn = gBGM(z_nv,'',true);
 		d.r.l.selectedIndex = bgmn
 	}
 	window.onload = doLoad;
