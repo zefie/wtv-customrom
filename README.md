@@ -2,6 +2,8 @@
 
 For `US-LC2-disk-0MB-8MB-softmodem-CPU5230` only.
 
+It should boot on a non-Derby LC2 for offline use, but the modem will be unavailable on non-Derby boxes.
+
 This ROM is *patched* to automatically boot into our custom HTML and can be used offline.
 It is also patched to bypass TV Home (still accessible with view button), and to bypass the "Did you move?" dialog.
 Finally, it is patched to be able to use Higher Quality Uncompressed1.1 Beatnik Patches without additional download.
