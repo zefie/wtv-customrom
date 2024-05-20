@@ -2,8 +2,8 @@ String.prototype.replace=function(o,n){
 	return this.split(o).join(n);
 }
 
-Array.prototype.includes = function(searchElement) {
-  return this.indexOf(searchElement) !== -1;
+Array.prototype.includes = function(e) {
+	return (this.indexOf(e) != -1);
 }
 
 var d=document;
@@ -64,7 +64,7 @@ function head(th,fs,bgm,lp,msg,nl){
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
-		d.write('<bgsound src='+bgm+' autostart=true')
+		d.write('<bgsound src="'+bgm+'" autostart=true')
 		if(!lp){d.write('>')}
 		else{
 			if(lp==-1){lp=9999;}

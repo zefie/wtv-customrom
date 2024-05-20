@@ -86,8 +86,6 @@ function gBGM(nv,n,rn) {
 		else{p=gV(nv,1)}
 		
 		if(rn){return p}
-		
-		if(z_bgmdsk.includes(p)){o='file://Disk/Browser/DiskFlash/Cache/Music/'}
 		f=z_bgm[p];
 		if(f.indexOf('.') < 0){f+='.mid'}
 		return o+f
