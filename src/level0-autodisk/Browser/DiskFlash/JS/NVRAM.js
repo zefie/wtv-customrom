@@ -40,8 +40,6 @@ var z_bgm=new Array()
 	z_bgm[30]='world1'
 	z_bgm[31]='zelda'
 
-z_bgmdsk=[1,4,5,6,7,8,10,11,12,13,14,18,19,20,21,23,24,27,28,29,31]
-
 var z_def=new Array()
 	z_def[0]=0//theme
 	z_def[1]=7//bgm
@@ -80,15 +78,14 @@ function gV(nv,off){
 	return parseInt(z_val)
 }
 
-function gBGM(nv,n,rn) {
-		o='file://rom/Cache/Music/'
+function gBGM(nv,n,rn) {		
 		if(n){p=n}
 		else{p=gV(nv,1)}
 		
 		if(rn){return p}
 		f=z_bgm[p];
 		if(f.indexOf('.') < 0){f+='.mid'}
-		return o+f
+		return 'file://rom/Cache/Music/'+f
 }
 
 function pp(){

@@ -4,6 +4,12 @@
 <script>
 th = pp();
 head(th, 'small', 'SM64FileSel', -1, 'Music on ROM and Disk');
+function p(f) {
+	d.bgm.stop()
+	d.bgm.src = 'file://rom/Cache/Music/'+f;
+	d.bgm.start()
+}
+
 </script>
 <table>
 <tr align=top>
@@ -17,49 +23,49 @@ head(th, 'small', 'SM64FileSel', -1, 'Music on ROM and Disk');
 <tr align=top>
 <td valign=top width=30%>
 <UL>
-<li><a href=file://rom/Cache/Music/AliveAtDawn.mid>AliveAtDawn</a>
-<li><a href=file://rom/Cache/Music/DarkDance.mid>DarkDance</a>
-<li><a href=file://rom/Cache/Music/Daybreak.mid>Daybreak</a>
-<li><a href=file://rom/Cache/Music/DialingWebTV.mid>DialingWebTV</a>
-<li><a href=file://rom/Cache/Music/DialingWebTV2.mid>DialingWebTV2</a>
-<li><a href=file://rom/Cache/Music/DKC2LostWorld.mid>DKC2LostWorld</a>
-<li><a href=file://rom/Cache/Music/DKC3Pursuit.mid>DKC3Pursuit</a>
-<li><a href=file://rom/Cache/Music/europa.mid>europa</a>
-<li><a href=file://rom/Cache/Music/FridayEvilArr.mid>FridayEvilArr</a>
-<li><a href=file://rom/Cache/Music/ghosttown.mid>ghosttown</a>
-<li><a href=file://rom/Cache/Music/Halloween.mid>Halloween</a>
-<li><a href=file://rom/Cache/Music/house.mid>house</a>
-<li><a href=file://rom/Cache/Music/Intro017.mod>Intro017</a>
-<li><a href=file://rom/Cache/Music/Intro029.mod>Intro029</a>
+<li><a href="javascript:p('AliveAtDawn.mid')">AliveAtDawn</a>
+<li><a href="javascript:p('DarkDance.mid')">DarkDance</a>
+<li><a href="javascript:p('Daybreak.mid')">Daybreak</a>
+<li><a href="javascript:p('DialingWebTV.mid')">DialingWebTV</a>
+<li><a href="javascript:p('DialingWebTV2.mid')">DialingWebTV2</a>
+<li><a href="javascript:p('DKC2LostWorld.mid')">DKC2LostWorld</a>
+<li><a href="javascript:p('DKC3Pursuit.mid')">DKC3Pursuit</a>
+<li><a href="javascript:p('europa.mid')">europa</a>
+<li><a href="javascript:p('FridayEvilArr.mid')">FridayEvilArr</a>
+<li><a href="javascript:p('ghosttown.mid')">ghosttown</a>
+<li><a href="javascript:p('Halloween.mid')">Halloween</a>
+<li><a href="javascript:p('house.mid')">house</a>
+<li><a href="javascript:p('Intro017.mod')">Intro017</a>
+<li><a href="javascript:p('Intro029.mod')">Intro029</a>
 <td valign=top width=25%>
-<li><a href=file://rom/Cache/Music/Intro101.mod>Intro101</a>
-<li><a href=file://rom/Cache/Music/karTV.mid>karTV</a>
-<li><a href=file://rom/Cache/Music/loop1.mid>loop1</a>
-<li><a href=file://rom/Cache/Music/loop2.mid>loop2</a>
-<li><a href=file://rom/Cache/Music/LowMansLyric.mid>LowMansLyric</a>
-<li><a href=file://rom/Cache/Music/majesty.mid>majesty</a>
-<li><a href=file://rom/Cache/Music/millionare.mid>millionare</a>
-<li><a href=file://rom/Cache/Music/mjstyWTV.mid>mjstyWTV</a>
-<li><a href=file://rom/Cache/Music/music15.mid>music15</a>
-<li><a href=file://rom/Cache/Music/plingA.mid>plingA</a>
-<li><a href=file://rom/Cache/Music/plingB.mid>plingB</a>
-<li><a href=file://rom/Cache/Music/royal.mid>royal</a>
-<li><a href=file://rom/Cache/Music/seqJ.mid>seqJ</a>
-<li><a href=file://rom/Cache/Music/SM64FileSel.mid>SM64FileSel</a>
+<li><a href="javascript:p('Intro101.mod')">Intro101</a>
+<li><a href="javascript:p('karTV.mid')">karTV</a>
+<li><a href="javascript:p('loop1.mid')">loop1</a>
+<li><a href="javascript:p('loop2.mid')">loop2</a>
+<li><a href="javascript:p('LowMansLyric.mid')">LowMansLyric</a>
+<li><a href="javascript:p('majesty.mid')">majesty</a>
+<li><a href="javascript:p('millionare.mid')">millionare</a>
+<li><a href="javascript:p('mjstyWTV.mid')">mjstyWTV</a>
+<li><a href="javascript:p('music15.mid')">music15</a>
+<li><a href="javascript:p('plingA.mid')">plingA</a>
+<li><a href="javascript:p('plingB.mid')">plingB</a>
+<li><a href="javascript:p('royal.mid')">royal</a>
+<li><a href="javascript:p('seqJ.mid')">seqJ</a>
+<li><a href="javascript:p('SM64FileSel.mid')">SM64FileSel</a>
 <td valign=top width=35%>
-<li><a href=file://rom/Cache/Music/snowy1.mid>snowy1</a>
-<li><a href=file://rom/Cache/Music/snowy2.mid>snowy2</a>
-<li><a href=file://rom/Cache/Music/Splash.mid>Splash</a>
-<li><a href=file://rom/Cache/Music/SimplyShort.mod>SimplyShort</a>
-<li><a href=file://rom/Cache/Music/Starlight.xm>Starlight</a>
-<li><a href=file://rom/Cache/Music/swelplng.mid>swelplng</a>
-<li><a href=file://rom/Cache/Music/TerranigmaRemix.mid>TerranigmaRemix</a>
-<li><a href=file://rom/Cache/Music/thriller.mid>thriller</a>
-<li><a href=file://rom/Cache/Music/tymplingA.mid>tymplingA</a>
-<li><a href=file://rom/Cache/Music/tymplingB.mid>tymplingB</a>
-<li><a href=file://rom/Cache/Music/world1.mid>world1</a>
-<li><a href=file://rom/Cache/Music/WTVa.mid>WTVa</a>
-<li><a href=file://rom/Cache/Music/zelda.mid>zelda</a>
+<li><a href="javascript:p('snowy1.mid')">snowy1</a>
+<li><a href="javascript:p('snowy2.mid')">snowy2</a>
+<li><a href="javascript:p('Splash.mid')">Splash</a>
+<li><a href="javascript:p('SimplyShort.mod')">SimplyShort</a>
+<li><a href="javascript:p('Starlight.xm')">Starlight</a>
+<li><a href="javascript:p('swelplng.mid')">swelplng</a>
+<li><a href="javascript:p('TerranigmaRemix.mid')">TerranigmaRemix</a>
+<li><a href="javascript:p('thriller.mid')">thriller</a>
+<li><a href="javascript:p('tymplingA.mid')">tymplingA</a>
+<li><a href="javascript:p('tymplingB.mid')">tymplingB</a>
+<li><a href="javascript:p('world1.mid')">world1</a>
+<li><a href="javascript:p('WTVa.mid')">WTVa</a>
+<li><a href="javascript:p('zelda.mid')">zelda</a>
 </ul>
 </table>
 <br>
@@ -71,11 +77,7 @@ head(th, 'small', 'SM64FileSel', -1, 'Music on ROM and Disk');
 <script>as(th);</script>
 <td width=80 align=left>
 <td width=420 valign=top align=right>
-<font size=3 color=#ffcf69>
-<shadow>
-<form action='javascript:goHTV()'><input type=submit font=proportional value=Done width=120></form></font>
-</shadow>
-</font>
+<form action='javascript:goHTV()'><script>butt(th, 'Done', '', 120, '', 'font=proportional')</script></form>
 </form>
 <td width=90></td>
 </td>

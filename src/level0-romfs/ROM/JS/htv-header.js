@@ -64,7 +64,7 @@ function head(th,fs,bgm,lp,msg,nl){
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
-		d.write('<bgsound src="'+bgm+'" autostart=true')
+		d.write('<bgsound name=bgm src="'+bgm+'" autostart=true')
 		if(!lp){d.write('>')}
 		else{
 			if(lp==-1){lp=9999;}
@@ -82,8 +82,8 @@ function head(th,fs,bgm,lp,msg,nl){
 	if(!nl){d.write('</a>')}
 	tab(msg);
 	d.write('</td></tr></table>')
-}	
-
+}
+	
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
 	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}

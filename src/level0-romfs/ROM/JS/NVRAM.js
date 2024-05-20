@@ -18,8 +18,6 @@ var z_bgm=new Array()
 	z_bgm[8]='snowy2'
 	z_bgm[9]='world1'
 
-z_bgmdsk=[]
-
 var z_def=new Array()
 	z_def[0]=0//theme
 	z_def[1]=5//bgm
@@ -58,25 +56,18 @@ function gV(nv,off){
 	return parseInt(z_val)
 }
 
-function gBGM(nv,n) {
-		o='file://rom/Cache/Music/'
+function gBGM(nv,n,rn) {
 		if(n){p=n}
 		else{p=gV(nv,1)}
 		
-		if(z_bgmdsk.includes(p)){o='file://Disk/Browser/DiskFlash/Cache/Music/'}
+		if(rn){return p}
 		f=z_bgm[p];
 		if(f.indexOf('.') < 0){f+='.mid'}
-		return o+f
+		return 'file://rom/Cache/Music/'+f
 }
-
-function gBGMNum(nv, n) {
-	if(n){p=n}
-	else{p=gV(nv,1)}
-	return p
-}
-
 
 function pp(){
 	d.write('<form name=z><input type=hidden name=h value="&pname;"></form>')
 	z_nv=d.z.h.value
 	return parseInt(gV(z_nv,0))//theme
+}
