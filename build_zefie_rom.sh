@@ -29,11 +29,14 @@ sed -i "s|!TEMPLATE_DATE!|${ZDATE}|" "${ZINFOJS}"
 sed -i "s|!TEMPLATE_VERS!|${ZVERSION}|" "${ZINFOJS}"
 sed -i "s|!TEMPLATE_ROM!|${ZROMTYPE}|" "${ZINFOJS}"
 
-# Build ROM
-rommy --fixcs "${ZWORK}" "${ZROM}"
-# --disable-lzss-compression
-
-./checksize.sh "${ZROM}" || exit 1
+if [ "${1}" == "viewer" ] || [ "${1}" == "vwr" ]; then
+	# Build Viewer Test
+	rommy "${ZWORK}" /mnt/c/bin/webtv/WebTVIntel--2.5-HE/Flash69.vwr
+else
+	# Build ROM
+	rommy --fixcs "${ZWORK}" "${ZROM}"
+	./checksize.sh "${ZROM}" || exit 1
+fi
 
 # Convert to Parts
 if [ "${1}" == "parts" ]; then
