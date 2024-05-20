@@ -10,4 +10,7 @@ This ROM is *patched* to automatically boot into our custom HTML and can be used
 It is also patched to bypass TV Home (still accessible with view button), and to bypass the "Did you move?" dialog.
 Finally, it is patched to be able to use Higher Quality Uncompressed1.1 Beatnik Patches without additional download.
 
+This patch hooks into the Power Off Code **92753**, which is used for a SSID Info Page.
+The page still exists at file://rom/HTMLs/SSIDInfo.html
+
 **[rommy](https://github.com/wtvemac/rommy)** is required to build the ROM.
