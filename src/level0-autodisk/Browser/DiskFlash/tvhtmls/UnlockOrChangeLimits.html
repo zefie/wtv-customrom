@@ -1,0 +1,107 @@
+<head>
+<title>Receiver locked</title>
+<display nologo nooptions noreconnectalert skipback>
+
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 1;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 104;
+	left: 64;
+	width: 230;
+	height: 47;
+}
+
+#explain {
+	position: absolute;
+	top: 147;
+	left: 64;
+	width: 250;
+	height: 197;
+}
+
+#unlockbutton {
+	position: absolute;
+	top: 373;
+	left: 380;
+	width: 155;
+	height: 35;
+}
+
+#changebutton {
+	position: absolute;
+	top: 373;
+	left: 200;
+	width: 155;
+	height: 35;
+}
+</style>
+
+</head>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" 
+ text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<form name=passwordForm>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>
+		<script language="JavaScript">
+		document.write(TVAccess.isLocked() ? "Receiver Locked" : "Receiver Unlocked");
+		</script>
+		</font>
+	</div>
+
+	<div id=explain>
+	<script language="JavaScript">
+	var Task = TVAccess.isLocked() ? "Unlock TV" : "Lock TV";
+	document.write("<font size=-1 color=#989898> " +
+		"Do you want to <b>" + Task + "</b> or <b>Change Limits</b> you've set? " + 
+		"</font>");
+	</script>	
+	</div>
+
+	<div id=unlockbutton>
+	<script language="JavaScript">
+	if (TVAccess.isLocked())
+	  document.write("<font size=-1 color=#ffcf69><shadow>" +
+		"<input selected type=submit value=\"Unlock TV\"" +
+		" action=client:CAM?showPasswordPage=true&global=true nosubmit " + 
+		" usestyle width=155 borderimage=file://ROM/tvimages/TVButtonBorder.bif> "+
+		" </shadow></font>");
+	else
+	  document.write("<font size=-1 color=#ffcf69><shadow>" +
+		"<input selected type=submit value=\"Lock TV\"" +
+		" action=client:CAM?showPasswordPage=true&global=true nosubmit " + 
+		" usestyle width=155 borderimage=file://ROM/tvimages/TVButtonBorder.bif> "+
+		" </shadow></font>");	  
+	</script>
+	</div>
+
+	<div id=changebutton>
+		<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value="Change Limits" name=Done action=file://rom/tvhtmls/satellite/setup-locks.html usestyle width=155 borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+
+</form>
+</body>
+

@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Limits</title>
+
+<display nologo skipback nooptions noreconnectalert>
+
+<style type="text/css">
+
+#banner {
+	position: absolute;
+	top: 0;
+	left: 1;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 104;
+	left: 60;
+	width: 230;
+	height: 47;
+}
+
+#explain {
+	position: absolute;
+	top: 146;
+	left: 61;
+	width: 350;
+	height: 220;
+}
+
+#lockbutton {
+	position: absolute;
+	top: 371;
+	left: 410;
+	width: 137;
+	height: 35;
+}
+
+#nolockbutton {
+	position: absolute;
+	top: 371;
+	left: 261;
+	width: 137;
+	height: 35;
+}
+
+</style>
+</head>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" 
+ text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<form action=client:CAM>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Enforce limits</font>
+	</div>
+
+	<div id=explain>
+		<font size=-1 color=#989898>
+		<p>To enforce the limits you have set,<br>choose <b>Lock TV</b>.
+		<p>Otherwise choose <b>Don't Lock</b>.
+		</font>
+	</div>
+
+	<div id=lockbutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input selected type=submit value="Lock TV" action="client:CAM?showPasswordPage=true&global=true"
+			 name=button usestyle width=137 
+			 borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+
+	<div id=nolockbutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input type=submit value="Don't Lock" action='' onClick="history.go(-2);"  
+			 name=button usestyle width=137 borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+
+</form>
+
+</body>
+</html>

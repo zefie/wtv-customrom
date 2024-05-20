@@ -1,0 +1,43 @@
+<style type="text/css">
+
+#banner {
+	position: absolute;
+	top: 0;
+	left: 1;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 104;
+	left: 60;
+	width: 230;
+	height: 47;
+}
+
+#explain {
+	position: absolute;
+	top: 148;
+	left: 60;
+	width: 193;
+	height: 122;
+}
+
+#duration {
+	position: absolute;
+	top: 148;
+	left: 311;
+	width: 239;
+	height: 100;
+}
+
+#donebutton {
+	position: absolute;
+	top: 367;
+	left: 409;
+	width: 130;
+	height: 35;
+}
+
+</style>

@@ -1,0 +1,4 @@
+IMAGE file://ROM/tvimages/VideoBorder.gif
+INNERBOUNDS  10, 3, 168, 123
+DRAWCENTER
+SCALECENTER

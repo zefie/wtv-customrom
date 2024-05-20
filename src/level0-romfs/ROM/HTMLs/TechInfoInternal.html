@@ -1,6 +1,6 @@
 <html>
 <head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
 <script src=file://ROM/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 <script src=file://ROM/JS/BuildInfo.js></script>
@@ -75,6 +75,6 @@ head(th, 'medium', 'tymplingA', '', 'WebTV Technical Information')
 <table>
 <tr>
 <td width=600 align=right>
-<form action=client:gotoadvancedsetup>
+<form action='javascript:goHTV()'>
 <script>butt(th, 'Done', '', 120, '', 'font=proportional selected')</script>
 </form></font>

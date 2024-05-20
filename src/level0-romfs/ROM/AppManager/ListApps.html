@@ -1,10 +1,13 @@
 <html>
-	<head>
-		<title>
-			Applications
-		</title>
-		<DISPLAY nooptions>
-
+<head>
+<DISPLAY noscroll nooptions>
+<form name="th">
+    <input type="hidden" value="&pname;" id="n">
+</form>
+<script>var th=document.th.n.value;</script>
+<script src="../JS/htv-header.js"></script>
+</head>
+<script>head(th, "medium", '', '', "Applications");</script>
 		<script language="JavaScript">
 			function writeSeparator() {
 				document.writeln('<tr>');
@@ -55,39 +58,7 @@
 			}
 		</script>
 	</head>
-	
-	<body bgcolor=191919 text=44cc55 link=189cd6 vlink=189cd6 hspace=0 vspace=0 fontsize=large>
-		<sidebar width=104>
-			<table cellspacing=0 cellpadding=0 bgcolor=284a52 height=100%>
-				<tr>
-				<td valign=top height=50%>
-				<table cellspacing=0 cellpadding=0>
-					<tr>
-					<td colspan=3 abswidth=104 absheight=4>
-					<tr>
-					<td abswidth=6>
-					<td abswidth=92 absheight=76>
-					
-					<table href="client:gohome" absheight=76 cellspacing=0 cellpadding=0>
-						<tr>
-						<td align=right>
-						<img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67>
-					</table>
-				
-					<td abswidth=6>
-					<tr><td colspan=3 abswidth=104 absheight=2 bgcolor=1f3136>
-					<img src="file://ROM/Images/Spacer.gif" width=1 height=1>
-					<tr><td colspan=3 abswidth=104 absheight=1>
-					<tr><td colspan=3 abswidth=104 absheight=2 bgcolor=436f79>
-					<img src="file://ROM/Images/Spacer.gif" width=1 height=1>
-					<tr><td absheight=32 colspan=3>
-					
-				</table>
-				
-			</table>
-		</sidebar>
-
-		<table cellspacing=0 cellpadding=0 width=456 bgcolor=191919>
+		<table cellspacing=0 cellpadding=0 width=456>
 			<tr>
 			<td height=16>
 			<img src="file://ROM/Images/Spacer.gif" width=1 height=1>
@@ -95,23 +66,12 @@
 			<td width=16>
 			<img src="file://ROM/Images/Spacer.gif" width=1 height=1>
 			<td>
-			<table cellspacing=0 cellpadding=0 width=428>
-				<tr>
-				<td align=left>
-				<shadow>
-					<blackface>
-						<font color=e7ce4a size=+1>
-							Applications
-						</font>
-					<blackface>
-				<shadow>
-			</table>
 			<tr>
 			<td height=14>
 			<img src="file://ROM/Images/Spacer.gif" width=1 height=1>
 		</table>
 	
-		<table cellspacing=0 cellpadding=0 bgcolor=191919>
+		<table cellspacing=0 cellpadding=0>
 			<script language="JavaScript">
 				var store = new Store( "/" );
 				

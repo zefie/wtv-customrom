@@ -1,18 +1,18 @@
 #!/bin/bash
 cd "$(realpath "$(dirname "${0}")")" || exit 1
 
-ZWNIBUILD=7532
+ZWNIBUILD=7253
 if [ -z "${ZVERSION}" ]; then
 	ZVERSION="git-${USER}-v1"
 fi
-ZROMTYPE="US-LC2-disk-0MB-8MB"
+ZROMTYPE="US-LC2-disk-0MB-8MB-softmodem-CPU5230"
 
 ZSRC="src"
 ZWORK="workdir"
 ZROM="htv-${ZVERSION}.o"
 ZDEST="parts"
 
-ZINFOJS="${ZWORK}/tmp-romfs/ROM/JS/BuildInfo.js"
+ZINFOJS="${ZWORK}/level0-romfs/ROM/JS/BuildInfo.js"
 ZDATE=$(date +"%Y-%m-%d %H:%M:%S %Z")
 
 
@@ -32,6 +32,8 @@ sed -i "s|!TEMPLATE_ROM!|${ZROMTYPE}|" "${ZINFOJS}"
 # Build ROM
 rommy --fixcs "${ZWORK}" "${ZROM}"
 # --disable-lzss-compression
+
+./checksize.sh "${ZROM}" || exit 1
 
 # Convert to Parts
 if [ "${1}" == "parts" ]; then

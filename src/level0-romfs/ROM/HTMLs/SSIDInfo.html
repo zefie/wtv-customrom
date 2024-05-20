@@ -1,52 +1,39 @@
 <html>
-
 <head>
-	<display NoLogo NoStatus NoOptions ClearBack NoSave>
+<display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
+<script src=file://ROM/JS/htv-header.js></script>
+<script src=file://rom/JS/NVRAM.js></script>
 </head>
-
-<body bgcolor=181818 text=44cc55 hspace=0>
-<br>
-<h1><spacer type=block width=24><font color=e7ce4a>WebTV SSID</font></h1>
-
-<table>
-	<tr>
-		<td>
-		<td valign=top align=right><shadow><font size=12>SSID:</shadow>
-		<td width=10>
-		<td valign=top><font size=12>&wtv-ssn-dash;
-</table>
-
-<table cellspacing=0 cellpadding=0 width=100%>
+<script>
+th = pp()
+head(th, "medium", '', '', "WebTV SSID");
+</script>
+<table cellspacing=0 cellpadding=0 width="99%">
+<tr>
+<td>
+<td>
+<h1>SSID:</h1>
+<font size="+2">&wtv-ssn-dash;</font>
 	<tr>
 		<td width=20>
-		<td height=260>
+		<td height=215>
 	<tr>
-		<td>
-		<td height=2 bgcolor=2B2B2B>
-			<spacer>
-	<tr>
-		<td height=1>
-	<tr>
-		<td>
-		<td height=2 bgcolor=0D0D0D>
-			<spacer>
-	<tr>
-		<td height=6>
+		<td colspan=2><hr>
 	<tr>
 		<td>
 		<td align=right>
 			<table>
 				<tr>
 					<td>
-						<font color=e7ce4a size=-1><shadow>
-						<form action=client:PowerOff><input type=submit font=proportional width=105 value="Power Off" borderImage="file://rom/Borders/ButtonBorder2.bif" usestyle></form>
-						</font>
+						<form action='javascript:goHTV()'><input type=submit font=proportional width=105 value=HackTV></form>
 					<td>
 						&nbsp;
 					<td>
-						<font color=e7ce4a size=-1><shadow>
-						<form action=client:ActivateNetwork><input type=submit font=proportional width=105 value="Connect" borderImage="file://rom/Borders/ButtonBorder2.bif" usestyle selected></form>
-						</font>
+						<form action=client:PowerOff><input type=submit font=proportional width=105 value='Power Off'></form>
+					<td>
+						&nbsp;
+					<td>
+						<form action=client:activ><input type=submit font=proportional width=105 value=Connect></form>
 			</table>
 </table>
 

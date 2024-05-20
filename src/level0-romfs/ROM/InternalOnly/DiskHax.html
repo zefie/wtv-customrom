@@ -1,99 +1,1 @@
-<!--- *=* Copyright 1996, 1997 WebTV Networks, Inc. All rights reserved. --->
-<html>
-
-<title>Disk Hax</title>
-
-<display nostatus nooptions noscroll>
-
-<body bgcolor="#111111" text="#44bb55" link=#dddddd nohtilebg fontsize=medium>
-
-<br><h1>Disk Hax<hr></h1>
-
-<form action="client:ConfirmDiskHax">
-
-
-<table cellspacing=0 cellpadding=0>
-	<tr>
-		<td colspan=3>
-			Operation:
-	<tr>
-		<td width=15>
-		<td>
-			<input name=operation type=radio bgcolor=#444444 value=newpart selected checked>
-		<td width=175>
-			&nbsp;Create partition:
-		<td width=250>
-			Name: <input ASCIIONLY size=16 name=partname bgcolor=#444444 text=#ffdd33 cursor=#cc9933 value="">
-
-	<tr>
-		<td height=2>
-
-	<tr>
-		<td>
-		<td>
-		<td>
-		<td width=175>
-			Size (MB): <input size=5 ASCIIONLY NUMBERS name=partsize bgcolor=#444444 text=#ffdd33 cursor=#cc9933 value="20">
-
-	<tr>
-		<td height=2>
-		
-	<tr>
-		<td>
-		<td>
-		<td>
-		<td width=175>
-			Type: <select name=parttype>
-					<option value=VFAT selected>VFAT
-					<option value=raw>Raw
-				</select>
-
-	<tr>
-		<td height=8>
-		
-	<tr>
-		<td>
-		<td>
-			<input name=operation type=radio bgcolor=#444444 value=showparts>
-		<td>
-			&nbsp;Show Partitions
-
-	<tr>
-		<td height=8>
-
-	<tr>
-		<td>
-		<td>
-			<input name=operation type=radio bgcolor=#444444 value=scrubparts>
-		<td>
-			&nbsp;Scrub Partitions
-
-	<tr>
-		<td height=8>
-
-	<tr>
-		<td width=15>
-		<td>
-			<input name=operation type=radio bgcolor=#444444 value=rmpart>
-		<td width=175>
-			&nbsp;Delete partition:
-		<td width=250>
-			Name: <input ASCIIONLY size=16 name=partname2 bgcolor=#444444 text=#ffdd33 cursor=#cc9933 value="">
-</table>
-
-
-<table width=100%>
-	<tr>
-		<td align=right width=100% height=70>
-			<font color="#E7CE4A" size=-1><shadow>
-			<input 
-				type=submit 
-				borderimage="file://ROM/Borders/ButtonBorder2.bif" 
-				value="Do It" 
-				name="Do It" 
-				usestyle 
-				width=103>
-			</shadow></font>
-</table>
-</form>
-</body>
+<html><head><DISPLAY NOOPTIONS NOSCROLL NOTVAUDIO SWITCHTOWEBMODE NORECONNECTALERT><script src="../JS/htv-header.js"></script></head><form name="t"><input type="hidden" name="h" value="&pname;"></form><script>th = document.t.h.value;head(th, "medium", '', '', "Disk Hax");</script>    <spacer Height=14 type=vertical>	<center>      <table cellspacing="0" cellpadding="0">        <tr>          <td absheight="420" abswidth="490" valign="top" align="left"><form action="client:ConfirmDiskHax"><table cellspacing=0 cellpadding=0>	<tr>		<td colspan=3>			Operation:	<tr>		<td width=15>		<td>			<input name=operation type=radio value=newpart selected checked>		<td width=180>			&nbsp;Create partition:		<td width=250>			Name: <script>document.write('<input ASCIIONLY size=16 name=partname bgcolor='+getThemeColor('bg')+' text='+getThemeColor('t')+' cursor='+getThemeColor('t')+' value="">');</script>	<tr>		<td height=2>	<tr>		<td>		<td>		<td>		<td width=180>			Size (MB): <script>document.write('<input size=5 ASCIIONLY NUMBERS name=partsize bgcolor='+getThemeColor('bg')+' text='+getThemeColor('t')+' cursor='+getThemeColor('t')+' value="20">')</script>	<tr>		<td height=2>			<tr>		<td>		<td>		<td>		<td width=180>			Type: <select name=parttype>					<option value=VFAT selected>VFAT					<option value=raw>Raw				</select>	<tr>		<td height=8>			<tr>		<td>		<td>			<input name=operation type=radio value=showparts>		<td>			&nbsp;Show Partitions	<tr>		<td height=8>	<tr>		<td>		<td>			<input name=operation type=radio value=scrubparts>		<td>			&nbsp;Scrub Partitions	<tr>		<td height=8>	<tr>		<td width=15>		<td>			<input name=operation type=radio value=rmpart		<td width=180>			&nbsp;Delete partition:		<td width=250>			Name: <script>document.write('<input ASCIIONLY size=16 name=partname2 bgcolor='+getThemeColor('bg')+' text='+getThemeColor('t')+' cursor='+getThemeColor('t')+' value="">');</script></table><table width=100%>	<tr>		<td align=right width=100% height=70>			<input 				type=submit 				value="Do It" 				name="Do It" 				width=103></table></form>	  </td>      </tr>      </table>     </center>  </body></html>

@@ -2,7 +2,12 @@ String.prototype.replace=function(o,n){
 	return this.split(o).join(n);
 }
 
+Array.prototype.includes = function(searchElement) {
+  return this.indexOf(searchElement) !== -1;
+}
+
 var d=document;
+
 function gTC(th,type){
 	// light
 	bgclr='4c5a67'
@@ -35,7 +40,7 @@ function gTC(th,type){
 			return lclr
 	}
 }
-function head(th,fs,bgm,lp,msg){
+function head(th,fs,bgm,lp,msg,nl){
 	switch(fs){
 		case 'small':
 			fsn=7
@@ -58,7 +63,8 @@ function head(th,fs,bgm,lp,msg){
 	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
-		d.write('<bgsound src=file://rom/Cache/Music/'+bgm+' autostart=true')
+		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
+		d.write('<bgsound src='+bgm+' autostart=true')
 		if(!lp){d.write('>')}
 		else{
 			if(lp==-1){lp=9999;}
@@ -70,10 +76,13 @@ function head(th,fs,bgm,lp,msg){
 	d.write('<tr><td>')
 	tab();
 	d.write('<spacer type=block width=11 height=11><br>')
-	d.write('<spacer type=block width=10 height=1><a href="javascript:goHTV()"><img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69></a>')
+	d.write('<spacer type=block width=10 height=1>')
+	if(!nl){d.write('<a href="javascript:goHTV()">')}
+	d.write('<img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69>')
+	if(!nl){d.write('</a>')}
 	tab(msg);
 	d.write('</td></tr></table>')
-}
+}	
 
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
@@ -88,7 +97,7 @@ function ci(th){
 }
 
 function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
-
+	
 	if(s){
 		if(!lc){lc=gTC(th,'t')}
 		if(!rc){rc=gTC(th,'bg')}
@@ -112,7 +121,7 @@ function go(u){
 	return true
 }
 
-function goHTV(){return go('client:gotohacktv')}
+function goHTV(){return go('file://ROM/HTMLs/HackTV.html')}
 
 function butt(th,v,n,w,t,x){
 	tclr=gTC(th,'t')

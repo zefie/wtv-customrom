@@ -1,12 +1,12 @@
 <html>
 <head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 </head>
 <script>	
 th = pp()
-bgm = z_bgm[gV(z_nv, 1)]
+bgm = gBGM(z_nv)
 head(th, 'medium', bgm, -1, 'Welcome to HackTV')
 function doMenu() {
 	d.ua.vu.value = d.ua.um[d.ua.um.selectedIndex].value
@@ -27,7 +27,7 @@ window.onload = doMenu;
 <table>
 <tr>
 <td width=190 valign=top align=left>
-<spacer width=9 type=block><font size=3 color=#bbbbbb><shadow><a selected href=BuildInfo.html onmouseover="setMsg('                            Welcome to the HTV custom build for bf0.                                             Brought to you by:           eMac                 MattMan69                 zefie                     Outa                                                        BuildInfo for more details.')" nohighlight>Welcome!</a></shadow></font>
+<spacer width=9 type=block><font size=3 color=#bbbbbb><shadow><a selected href=BuildInfo.html onmouseover="setMsg('                            Welcome to the HTV custom build for the LC2 Derby.                                   Brought to you by:           eMac                 MattMan69                 zefie                     Outa                                                        BuildInfo for more details.')" nohighlight>Welcome!</a></shadow></font>
 <br> &nbsp; <br>
 <font size=2 color=#989898>
 <li><a href="javascript:dial()" onmouseover="setMsg('                            In the event that you already have a Tellyscript for the server you want to connect to, select this to connect to the web now.')">Quick Connect</a>
@@ -38,6 +38,7 @@ window.onload = doMenu;
 <li><a href=BGM.html onmouseover="setMsg('                            Choose from several available background music for the HackTV Homepage.')">BGM Settings</a>
 <li><a href=TechInfoInternal.html onmouseover="setMsg('                            This page allows you to view technical information about your box. Identify the build version, ssid, and other relevant information.')">Tech Info</a>
 <li><a href=HTMLv2.html onmouseover="setMsg('                            This page allows you to play with the HTML and Javascript features of this build by offering a sandbox to play in.')">HTML Sandbox v2</a>
+<li><a href=client:showautodisk onmouseover="setMsg('                            Click here to attempt to re-trigger AutoDisk to extract the Disk Data from ROM, helpful if you are missing pages or having trouble witrh HackTV assets.')">Show AutoDisk</a>
 <tr>
 <td>
 <spacer width=2 height=120 type=block>
@@ -67,6 +68,8 @@ as(th, '', 10, 256, 0, 1)
 <select name=um onchange=doMenu() width=272 onmouseover='urlInfo()'>
 <option value=file://rom/HTMLs/BuildInfo.html selected>file://rom/HTMLs/BuildInfo.html</option>
 <option value=file://rom/Cache/Music/index.html>file://rom/Cache/Music/index.html</option>
+<option value=file://Disk/Browser/DiskFlash/Cache/Music/Intro017.mod>MOD TEST - Intro017.mod</option>
+<option value=file://Disk/Browser/DiskFlash/Cache/Music/kraftytechy.rmf>RMF TEST - kraftytechy.rmf</option>
 <option value=file://rom/Cache/Audio/index.html>file://rom/Cache/Audio/index.html</option>
 <option value=file://rom/>file://rom/</option>
 <option value=client:>client:</option>

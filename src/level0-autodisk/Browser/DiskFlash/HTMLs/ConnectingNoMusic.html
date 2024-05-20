@@ -1,0 +1,33 @@
+<html>
+<head>
+<display nooptions nostatus skipback clearback>
+<script src=file://rom/JS/htv-header.js></script>
+<script src=file://rom/JS/NVRAM.js></script>
+</head>
+<script>
+ref = document.referrer
+if (ref != 'file://rom/HTMLs/HackTV.html') {
+	go('client:StopConnectingToWeb')
+	go(ref)
+}	
+th = pp()
+head(th, 'medium', '', '', 'Connecting')
+</script>
+<center>
+	<br><br><br><br>
+	<img src="file://rom/Images/ConnectingTo.gif" ani="file://rom/Animations/ConnectingTo.cel">
+	<br>
+	<img src="file://rom/Images/CityGlow.gif">
+	<br>
+	<spacer type=block width=1 height=4>
+	<br>
+	<img src="file://rom/Images/CityRoad.gif" ani="file://rom/Animations/CityRoad.cel">
+</center>
+
+<br>
+<font color=808080>
+<spacer type=horizontal size=24><progressindicator name="progressindicator" height=44 width=240>
+</font>
+
+</body>
+</html>

@@ -6,14 +6,23 @@ var z_th=new Array()
 	z_th[2]='zefie Purple'
 	z_th[3]='SKCro Blue'
 
-var z_bgm = new Array()
-	z_bgm[0]='FridayEvilArr'
-	z_bgm[1]='loop1'
-	z_bgm[2]='loop2'
+var z_bgm=new Array()
+	z_bgm[0]='AliveAtDawn'
+	z_bgm[1]='Daybreak'
+	z_bgm[2]='Ghosttown'
+	z_bgm[3]='karTV'
+	z_bgm[4]='loop1'
+	z_bgm[5]='loop2'
+	z_bgm[6]='seqJ'
+	z_bgm[7]='snowy1'
+	z_bgm[8]='snowy2'
+	z_bgm[9]='world1'
 
-var z_def = new Array()
+z_bgmdsk=[]
+
+var z_def=new Array()
 	z_def[0]=0//theme
-	z_def[1]=2//bgm
+	z_def[1]=5//bgm
 
 var chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!"//64 possible different values
 
@@ -49,8 +58,25 @@ function gV(nv,off){
 	return parseInt(z_val)
 }
 
+function gBGM(nv,n) {
+		o='file://rom/Cache/Music/'
+		if(n){p=n}
+		else{p=gV(nv,1)}
+		
+		if(z_bgmdsk.includes(p)){o='file://Disk/Browser/DiskFlash/Cache/Music/'}
+		f=z_bgm[p];
+		if(f.indexOf('.') < 0){f+='.mid'}
+		return o+f
+}
+
+function gBGMNum(nv, n) {
+	if(n){p=n}
+	else{p=gV(nv,1)}
+	return p
+}
+
+
 function pp(){
 	d.write('<form name=z><input type=hidden name=h value="&pname;"></form>')
 	z_nv=d.z.h.value
 	return parseInt(gV(z_nv,0))//theme
-}

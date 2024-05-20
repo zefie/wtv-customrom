@@ -1,10 +1,16 @@
 <html>
 <head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 </head>
 <script>
+ref = document.referrer
+if (ref != 'file://rom/HTMLs/HackTV.html') {
+	go('client:StopConnectingToWeb')
+	go(ref)
+}
+
 th = pp();
 head(th, 'medium', 'seqJ', '', 'Use your own ISP');
 </script>
