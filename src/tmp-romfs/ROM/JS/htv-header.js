@@ -1,11 +1,13 @@
 String.prototype.replace=function(o,n){
 	return this.split(o).join(n);
 }
+
 var d=document;
 
 function gTC(th,type){
 	// light
 	bgclr='4c5a67'
+	bclr='e7ce4a'
 	tclr='cbcbcb'
 	vclr='dddddd'
 	lclr='dddddd'
@@ -25,6 +27,7 @@ function gTC(th,type){
 		case 4://red
 			bgclr='6e0005'
 			tclr='f0f0f0'
+			bclr='f0f0f0'
 		break
 		case 5://green
 			bgclr='004422'
@@ -36,15 +39,18 @@ function gTC(th,type){
 		break
 	}
 
+
 	switch(type){
 		case 'bg':
 			return bgclr
-		case 't':
-			return tclr
-		case 'v':
-			return vclr
+		case 'b':
+			return bclr
 		case 'l':
 			return lclr
+		case 't':
+			return tclr			
+		case 'v':
+			return vclr
 	}
 }
 function head(th,fs,bgm,lp,msg){
@@ -126,15 +132,18 @@ function go(u){
 function goHTV(){return go('client:gotoadvancedsetup')}
 
 function butt(th,v,n,w,t,x){
-	tclr=gTC(th,'t')
-	d.write('<font color='+tclr+'>')
+	bclr=gTC(th,'b')
+	if(th > 0){d.write('<shadow>')}
+	d.write('<font color='+bclr+'>')
 	if(!t)t='submit';
 	d.write('<input type='+t+' value="'+v+'"')
 	if(n)d.write(' name='+n)
 	if(w)d.write(' width='+w)
 	if(x)d.write(' '+x)
-	if(th > 0){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorderTh'+th+'.bif')}
+	if(th == 1){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorder2.bif')}
+	if(th > 1){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorderTh'+th+'.bif')}
 	d.write('></font>');
+	if(th > 0){d.write('</shadow>')}
 }
 
 function dial(){
