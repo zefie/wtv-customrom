@@ -2,9 +2,12 @@ var z_nv=null;
 
 var z_th=new Array()
 	z_th[0]='HackTV Light'
-	z_th[1]='HackTV Dark'
+	z_th[1]='WebTV Dark'
 	z_th[2]='zefie Purple'
 	z_th[3]='SKCro Blue'
+	z_th[4]='Avegee Red'
+	z_th[5]='Forest Green'
+	z_th[6]='MattMan Brown'
 
 var z_bgm=new Array()
 	z_bgm[0]='AliveAtDawn'
@@ -33,12 +36,11 @@ var z_bgm=new Array()
 	z_bgm[23]='SimplyShort.mod'
 	z_bgm[24]='SM64FileSel'
 	z_bgm[25]='snowy1'
-	z_bgm[26]='snowy2'
-	z_bgm[27]='Starlight.xm'
-	z_bgm[28]='TerranigmaRemix'
-	z_bgm[29]='thriller'
-	z_bgm[30]='world1'
-	z_bgm[31]='zelda'
+	z_bgm[26]='Starlight.xm'
+	z_bgm[27]='TerranigmaRemix'
+	z_bgm[28]='thriller'
+	z_bgm[29]='world1'
+	z_bgm[30]='zelda'
 
 var z_def=new Array()
 	z_def[0]=0//theme

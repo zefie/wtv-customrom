@@ -18,8 +18,7 @@ var z_bgm=new Array()
 	z_bgm[5]='loop2'
 	z_bgm[6]='seqJ'
 	z_bgm[7]='snowy1'
-	z_bgm[8]='snowy2'
-	z_bgm[9]='world1'
+	z_bgm[8]='world1'
 
 var z_def=new Array()
 	z_def[0]=0//theme
