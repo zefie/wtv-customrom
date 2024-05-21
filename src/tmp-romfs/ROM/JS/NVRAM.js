@@ -23,7 +23,7 @@ var z_def = new Array()
 	z_def[0]=0//theme
 	z_def[1]=2//bgm
 
-chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!"//64 possible different values
+chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@-"//64 possible different values
 
 function gTN(th){return z_th[parseInt(th)]}
 
@@ -35,8 +35,8 @@ function gB(nv,off){
 
 function sB(nv,off,dat){
 	prefix=''
-	if(off>nv.length){for(i=0;i<off;i++){prefix += '?'}}
-	else if(off > 0){prefix=nv.substring(0,off)}
+	if(off > 0){prefix=nv.substring(0,off)}
+	if(off>prefix.length){while(off!=prefix.length){prefix+='.'}}
 	dat=chars.charAt(parseInt(dat));
 	z_url='client:ConfirmBYOISPSetup?BYOISPProviderName='+prefix+dat+nv.substring(off+1)
 	go(z_url)
