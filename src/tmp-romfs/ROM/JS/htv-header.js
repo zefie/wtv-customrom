@@ -31,7 +31,7 @@ function gTC(th,type){
 			tclr='f0f0f0'
 		break
 		case 6://brown
-			bgclr='7f3300'
+			bgclr='442200'
 			tclr='f0e7e5'
 		break
 	}
