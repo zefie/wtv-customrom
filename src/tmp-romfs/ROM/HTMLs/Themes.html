@@ -4,18 +4,10 @@
 <script src=file://rom/JS/NVRAM.js></script>
 <script>	
 	th=pp()
-	if (th != 1 && th != 2 && th != 3) {
-		th=0;
-	}
-	function doSubmit(c) {
-		if (c) {
-			sB(z_nv, 0, c)
-		}
-	}
-	// light=0, dark=1, purple=2, blue=3
-	function doLoad() {
-		document.r.l.selectedIndex=th;
-	}
+	if(th!=1&&th!=2&&th!=3&&th!=4&&th!=5&&th!=6){th=0;}
+	function doSubmit(c){if(c){sB(z_nv,0,c)}}
+	// light=0, dark=1, purple=2, blue=3, red=4, green=5, brown=6
+	function doLoad(){document.r.l.selectedIndex=th;}
 	window.onload=doLoad;
 </script>
 </head>
@@ -37,7 +29,7 @@
 					<tr>
 						<td absheight=250 valign=top>
 							<font size=-1> Please select the theme you would like to use from the drop down on the right. Click done when finished.
-							<p><br>
+							<br>
 					<table cellspacing=0 cellpadding=4>
 						<tr>
 						<td align=center>
@@ -58,8 +50,7 @@
 							</table>
 					</table>
 							<p><br>
-								<FONT SIZE=-1>Your current theme is 
-				<script>d.write(gTN(th));</script>.
+								<font size=-1>Your current theme is <script>d.write(gTN(th));</script>.
 					<tr>
 				</table>
 			<td width=60>
@@ -72,14 +63,10 @@
 									<script>for(i=0;i<z_th.length;i++){d.write('<option value='+i+'>'+gTN(i)+'</option>');}</script>
 								</select>
 							</form>
-							<table>
-								<tr>
-									<td valign=top align=left>
-							</table>
 				</table>
 				<spacer height=190 type=vertical>
 		<FORM action=client:gotoadvancedsetup>
-			<script>butt(th, 'Done', 'Done', 160);</script>			
+			<script>butt(th,'Done','Done',160);</script>			
 		</FORM>
 	</table>
 </body></html>
