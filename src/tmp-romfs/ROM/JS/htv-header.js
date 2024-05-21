@@ -13,15 +13,27 @@ function gTC(th,type){
 	switch(th){
 		case 1://dark
 			bgclr='191919'
-			tclr='aaaaaa'
-			break
+			tclr='42bd52'
+		break
 		case 2://purple
 			bgclr='4a2766'
 			lclr='aaaaaa'
-			break
+		break
 		case 3://blue
 			bgclr='002244'
-			break
+		break
+		case 4://red
+			bgclr='6e0005'
+			tclr='f0f0f0'
+		break
+		case 5://green
+			bgclr='004422'
+			tclr='f0f0f0'
+		break
+		case 6://brown
+			bgclr='7f3300'
+			tclr='f0e7e5'
+		break
 	}
 
 	switch(type){
@@ -39,14 +51,14 @@ function head(th,fs,bgm,lp,msg){
 	switch(fs){
 		case 'small':
 			fsn=7
-			break
+		break
 		case 'large':
 			fsn=4
-			break
+		break
 		default:
 			fs='medium'
 			fsn=5
-			break
+		break
 	}
 
 	bgclr=gTC(th,'bg')
@@ -55,7 +67,7 @@ function head(th,fs,bgm,lp,msg){
 	lclr=gTC(th,'l')
 
 	if(msg){d.write('<title>'+msg+'</title>')}
-	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
+	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' yspeed=1 hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		d.write('<bgsound src=file://rom/Cache/Music/'+bgm+' autostart=true')
@@ -65,7 +77,7 @@ function head(th,fs,bgm,lp,msg){
 			d.write(' loop='+lp+'>')
 		}
 	}
-	if(!msg){msg=""}
+	if(!msg){msg=''}
 	d.write('<table cellspacing=0 cellpadding=0>')
 	d.write('<tr><td>')
 	tab();
@@ -88,7 +100,6 @@ function ci(th){
 }
 
 function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
-	
 	if(s){
 		if(!lc){lc=gTC(th,'t')}
 		if(!rc){rc=gTC(th,'bg')}
@@ -96,7 +107,7 @@ function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 		if(!lc){lc=gTC(th,'bg')}
 		if(!rc){rc=gTC(th,'t')}
 	}
-	if(th == 1){bgclr='333333'}
+	if(th==1){bgclr='333333'}
 	if(!bg){bg='191919'}
 	if(!h){h=32}
 	if(!w){w=320}
