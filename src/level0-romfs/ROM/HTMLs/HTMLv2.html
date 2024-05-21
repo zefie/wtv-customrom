@@ -19,7 +19,9 @@ function htmlViewer() {
 			d.close()
 			break;
 		case "js":
-			eval(d.a.b.value)
+			d.open('text/html');
+			d.write('<scr'+'ipt>'+d.a.b.value+'</scr'+'ipt>')
+			d.close()
 			break;
 		case "acc":
 			window.location=d.a.b.value;
