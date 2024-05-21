@@ -27,13 +27,12 @@
 							<font size=-1> Please select the theme you would like to use from the list below. Click done when finished.
 							<br>
 							<table cellspacing=0 cellpadding=4>
-								<tr>
+								<tr><font size=-2>
 								<script>
 								for(i=0;i<z_th.length;i++){
 									if(i==th){s=' selected'}
 									else{s=''}
-									
-									if (i % 6 == 0){d.write('<tr>')}
+									if(i%6==0){d.write('<tr>')}
 									d.write('<td align=center><font size=-1>'+gTN(i)+'</font><br>')
 									d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC(i,'bg')+' height=45 width=60></table>')
 								}
