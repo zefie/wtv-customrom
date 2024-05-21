@@ -72,7 +72,7 @@ function head(th,fs,bgm,lp,msg,nl){
 	lclr=gTC(th,'l')
 
 	if(msg){d.write('<title>'+msg+'</title>')}
-	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' yspeed=1 hspace=0 vspace=0 fontsize='+fs+'>')
+	d.write('<body background=file://rom/Images/Themes/Pattern.gif text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
