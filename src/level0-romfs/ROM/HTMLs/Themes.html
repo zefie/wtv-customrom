@@ -4,11 +4,7 @@
 <script src=file://rom/JS/NVRAM.js></script>
 <script>	
 	th=pp()
-	if(th!=1&&th!=2&&th!=3&&th!=4&&th!=5&&th!=6){th=0;}
-	function doSubmit(c){if(c){sB(z_nv,0,c)}}
-	// light=0, dark=1, purple=2, blue=3, red=4, green=5, brown=6
-	function doLoad(){document.r.l.selectedIndex=th;}
-	window.onload=doLoad;
+	function sBG(c){sB(z_nv,0,c)}
 </script>
 </head>
 <script>head(th,'large','world1',5,'Theme Settings');</script>
@@ -19,40 +15,33 @@
 			<td colspan=3>
 				<table cellspacing=0 cellpadding=0>
 					<tr>
-						<td valign=center absheight=40>
+						<td valign=center absheight=20>
 				</table>
 			<td>
 		<TR>
 			<td>
-			<td width=250 height=230 valign=top align=left>
+			<td width=350 height=230 valign=top align=left>
 				<table cellspacing=0 cellpadding=0>
 					<tr>
-						<td absheight=250 valign=top>
-							<font size=-1> Please select the theme you would like to use from the drop down on the right. Click done when finished.
+						<td height=250 valign=top>
+							<font size=-1> Please select the theme you would like to use from the list below. Click done when finished.
 							<br>
-					<table cellspacing=0 cellpadding=4>
-						<tr>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(0))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(0,'bg')+' height=45 width=60>')</script>
+							<table cellspacing=0 cellpadding=4>
+								<tr>
+								<script>
+								for(i=0;i<z_th.length;i++){
+									if(i==th){s=' selected'}
+									else{s=''}
+									
+									if (i % 6 == 0){d.write('<tr>')}
+									d.write('<td align=center><font size=-1>'+gTN(i)+'</font><br>')
+									d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC(i,'bg')+' height=45 width=60></table>')
+								}
+								</script>
 							</table>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(1))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(1,'bg')+' height=45 width=60>')</script>
-							</table>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(2))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(2,'bg')+' height=45 width=60>')</script>
-							</table>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(3))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(3,'bg')+' height=45 width=60>')</script>
-							</table>
-					</table>
-							<p><br>
-								<font size=-1>Your current theme is <script>d.write(gTN(th));</script>.
 					<tr>
 				</table>
+<<<<<<< HEAD:src/level0-romfs/ROM/HTMLs/Themes.html
 			<td width=60>
 			<td width=230 valign=top align=left>
 				<table cellspacing=0 cellpadding=0>
@@ -65,6 +54,9 @@
 							</form>
 				</table>
 				<spacer height=190 type=vertical>
+		<tr>
+			<td width=330 valign=top align=right colspan=2>
+			<br>
 		<FORM action='javascript:goHTV()'>
 			<script>butt(th,'Done','Done',160);</script>			
 		</FORM>

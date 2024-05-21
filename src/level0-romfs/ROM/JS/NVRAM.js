@@ -2,7 +2,7 @@ var z_nv=null;
 
 var z_th=new Array()
 	z_th[0]='HackTV Light'
-	z_th[1]='HackTV Dark'
+	z_th[1]='WebTV Dark'
 	z_th[2]='zefie Purple'
 	z_th[3]='SKCro Blue'
 	z_th[4]='Avegee Red'
