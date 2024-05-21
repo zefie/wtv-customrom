@@ -5,6 +5,9 @@ var z_th=new Array()
 	z_th[1]='HackTV Dark'
 	z_th[2]='zefie Purple'
 	z_th[3]='SKCro Blue'
+	z_th[4]='Avegee Red'
+	z_th[5]='Forest Green'
+	z_th[6]='MattMan Brown'
 
 var z_bgm=new Array()
 	z_bgm[0]='AliveAtDawn'
@@ -27,7 +30,7 @@ var chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!"//64
 function gTN(th){return z_th[parseInt(th)]}
 
 function gB(nv,off){
-	b = nv.charAt(off)
+	b=nv.charAt(off)
 	if(b){return chars.indexOf(b)}
 	else{return -1}
 }
