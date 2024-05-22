@@ -15,13 +15,12 @@ z_th=new Array()
 	z_th[11]='Halloween Black'
 
 var z_bgm = new Array()
-	z_bgm[0]='FridayEvilArr'
-	z_bgm[1]='loop1'
-	z_bgm[2]='loop2'
+	z_bgm[0]='loop1'
+	z_bgm[1]='loop2'
 
 var z_def = new Array()
 	z_def[0]=0//theme
-	z_def[1]=2//bgm
+	z_def[1]=1//bgm
 
 chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@-"//64 possible different values
 
