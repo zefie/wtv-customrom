@@ -3,21 +3,16 @@
     <display nooptions noscroll allowoffline noreconnectalert>
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
-<script>	
-	th = pp()
-	bgm = gV(z_nv, 1)
-	function doSubmit(c) {
-		if (c) {
-			sB(z_nv, 1, c)
-		}
-	}
-	function doLoad() {
-		document.r.l.selectedIndex = bgm;
-	}
-	window.onload = doLoad;
-</script>
 </head>
-<script>head(th, 'Background Music Settings', 'large', bgm, -1);</script>
+<script>	
+th=pp()
+bgm=gV(z_nv,1)
+function doSubmit(c) {if(c){sB(z_nv,1,c)}}
+function doLoad() {document.r.l.selectedIndex=bgm}
+
+head(th, 'Background Music Settings', 'large', z_bgm[bgm], -1)
+window.onload = doLoad;
+</script>
   <spacer Width=30 Height=6 type=vertical>
   <table cellspacing=0 cellpadding=0>
     <tr>
