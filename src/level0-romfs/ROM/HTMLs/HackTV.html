@@ -7,7 +7,7 @@
 <script>	
 th = pp()
 bgm = gBGM(z_nv)
-head(th, 'medium', bgm, -1, 'Welcome to HackTV')
+head(th, 'Welcome to HackTV', '', bgm, -1)
 function doMenu() {
 	d.ua.vu.value = d.ua.um[d.ua.um.selectedIndex].value
 }
@@ -38,6 +38,8 @@ window.onload = doMenu;
 <li><a href=BGM.html onmouseover="setMsg('                            Choose from several available background music for the HackTV Homepage.')">BGM Settings</a>
 <li><a href=TechInfoInternal.html onmouseover="setMsg('                            This page allows you to view technical information about your box. Identify the build version, ssid, and other relevant information.')">Tech Info</a>
 <li><a href=HTMLv2.html onmouseover="setMsg('                            This page allows you to play with the HTML and Javascript features of this build by offering a sandbox to play in.')">HTML Sandbox v2</a>
+<li><a href=file://rom/InternalOnly/DiskHax.html onmouseover="setMsg('                            Browse and manipulate your &boxname;'s Hard Disk Partitions')">DiskHax</a>
+<li><a href=file://rom/InternalOnly/VFatHax.html onmouseover="setMsg('                            Browse and manipulate your &boxname;'s Hard Disk Files')">VFatHax</a>
 <li><a href=client:showautodisk onmouseover="setMsg('                            Click here to attempt to re-trigger AutoDisk to extract the Disk Data from ROM, helpful if you are missing pages or having trouble loading HackTV assets.')">Show AutoDisk</a>
 <tr>
 <td>
