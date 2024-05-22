@@ -26,7 +26,7 @@ function gTC(th,type){
 		break
 		case 4://tan
 			bgclr='ece9d8'
-			bgimg='file://rom/Images/xpborder.gif'
+			bgimg='file://rom/Images/Themes/xpborder.gif'
 			tclr='000000'
 		break
 		case 5://green
@@ -52,7 +52,7 @@ function gTC(th,type){
 		break
 		case 10://white
 			bgclr='c9c9c9'
-			bgimg='file://rom/Images/Paper.jpg'
+			bgimg='file://rom/Images/Themes/Paper.jpg'
 			tclr='020202'
 		case 11://halloween
 			bgclr='080808'
@@ -164,7 +164,7 @@ function butt(th,v,n,w,t,x){
 	if(w)d.write(' width='+w)
 	if(x)d.write(' '+x)
 	if(th == 1){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorder2.bif')}
-	if(th > 1){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorderTh'+th+'.bif')}
+	if(th > 1){d.write(' usestyle borderimage=file://ROM/Borders/Themes/ButtonBorder'+th+'.bif')}
 	d.write('></font>');
 	if(th > 0){d.write('</shadow>')}
 }
