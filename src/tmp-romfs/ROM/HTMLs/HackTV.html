@@ -6,8 +6,8 @@
 </head>
 <script>	
 th = pp()
-bgm = z_bgm[gV(z_nv, 1)]
-head(th, 'medium', bgm, -1, 'Welcome to HackTV')
+bgm = gBGM(z_nv)
+head(th, 'Welcome to HackTV', '', bgm, -1)
 function doMenu() {
 	d.ua.vu.value = d.ua.um[d.ua.um.selectedIndex].value
 }

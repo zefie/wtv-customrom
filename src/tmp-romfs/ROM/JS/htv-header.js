@@ -1,10 +1,13 @@
 String.prototype.replace=function(o,n){return this.split(o).join(n);}
 d=document;
 
+
 function gTC(th,type){
 	// light
 	bgclr='4c5a67'
-	bgimg='file://rom/Images/Themes/Pattern.gif'
+	bgimg='Pattern.gif'
+	shimg='ShadowLogo.gif'
+	bbif=''
 	bclr='e7ce4a'
 	tclr='cbcbcb'
 	vclr='dddddd'
@@ -14,57 +17,71 @@ function gTC(th,type){
 		case 1://dark
 			bgclr='191919'
 			tclr='42bd52'
+			bbif='ButtonBorder2'
 		break
 		case 2://red
 			bgclr='6e0005'
 			tclr='f0f0f0'
 			bclr='f0f0f0'
+			bbif='Themes/ButtonBorder2'
 		break
 		case 3://orange
 			bgclr='c06000'
 			tclr='f0f0f0'
+			bbif='Themes/ButtonBorder3'
 		break
 		case 4://tan
 			bgclr='ece9d8'
-			bgimg='file://rom/Images/Themes/xpborder.gif'
+			bgimg='xpborder.gif'
 			tclr='000000'
+			bbif='Themes/ButtonBorder4'
 		break
 		case 5://green
 			bgclr='004422'
 			tclr='f0f0f0'
+			bbif='Themes/ButtonBorder5'
 		break
 		case 6://blue
 			bgclr='002244'
 			tclr='f0f0f0'
 			bclr='000000'
+			bbif='Themes/ButtonBorder6'
 		break
 		case 7://teal
 			bgclr='008080'
 			tclr='f0f0f0'
+			bbif='Themes/ButtonBorder7'
 		break
 		case 8://purple
 			bgclr='4a2766'
 			lclr='aaaaaa'
+			shimg='ShadowLogo8.gif'
+			bbif='Themes/ButtonBorder8'
 		break
 		case 9://brown
 			bgclr='442200'
 			tclr='e7ce4a'
+			bbif='Themes/ButtonBorder9'
 		break
 		case 10://white
 			bgclr='c9c9c9'
-			bgimg='file://rom/Images/Themes/Paper.jpg'
+			bgimg='Paper.jpg'
 			tclr='020202'
+			bbif='Themes/ButtonBorder10'
 		case 11://halloween
 			bgclr='080808'
 			tclr='c06000'
+			bbif='Themes/ButtonBorder11'
 		break
 	}
 
 	switch(type){
 		case 'bg':
 			return bgclr
+		case 'butt':
+			return bbif
 		case 'b':
-			return bclr
+			return bclr			
 		case 'l':
 			return lclr
 		case 't':
@@ -73,7 +90,7 @@ function gTC(th,type){
 			return vclr
 	}
 }
-function head(th,fs,bgm,lp,msg){
+function head(th,msg,fs,bgm,lp,nl){
 	switch(fs){
 		case 'small':
 			fsn=7
@@ -93,7 +110,7 @@ function head(th,fs,bgm,lp,msg){
 	lclr=gTC(th,'l')
 
 	if(msg){d.write('<title>'+msg+'</title>')}
-	d.write('<body background='+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
+	d.write('<body background=file://rom/Images/Themes/'+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		d.write('<bgsound src=file://rom/Cache/Music/'+bgm+' autostart=true')
@@ -115,8 +132,8 @@ function head(th,fs,bgm,lp,msg){
 
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
-	if(msg){d.write('<td width=100% height=80 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg><td abswidth=460 height=54 valign=top background=file://ROM/Images/Themes/ShadowLogo.gif align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
-	else{d.write('<td width=100% height=80 valign=top align=left background=file://ROM/Images/Themes/ShadowLogo.gif novtilebg>')}
+	if(msg){d.write('<td width=100% height=80 valign=top background=file://rom/Images/Themes/'+shimg+' novtilebg><td abswidth=460 height=54 valign=top background=file://rom/Images/Themes/'+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
+	else{d.write('<td width=100% height=80 valign=top align=left background=file://rom/Images/Themes/'+shimg+' novtilebg>')}
 }
 
 function ci(th){
@@ -152,6 +169,7 @@ function goHTV(){return go('client:gotoadvancedsetup')}
 
 function butt(th,v,n,w,t,x){
 	bclr=gTC(th,'b')
+	bbif=gTC(th,'butt')
 	if(th > 0){d.write('<shadow>')}
 	d.write('<font color='+bclr+'>')
 	if(!t)t='submit';
@@ -159,8 +177,7 @@ function butt(th,v,n,w,t,x){
 	if(n)d.write(' name='+n)
 	if(w)d.write(' width='+w)
 	if(x)d.write(' '+x)
-	if(th == 1){d.write(' usestyle borderimage=file://ROM/Borders/ButtonBorder2.bif')}
-	if(th > 1){d.write(' usestyle borderimage=file://ROM/Borders/Themes/ButtonBorder'+th+'.bif')}
+	if(bbif){d.write(' usestyle borderimage=file://ROM/Borders/'+bbif+'.bif')}
 	d.write('></font>');
 	if(th > 0){d.write('</shadow>')}
 }
