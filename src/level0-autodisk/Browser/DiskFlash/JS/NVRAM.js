@@ -41,10 +41,11 @@ var z_bgm=new Array()
 	z_bgm[23]='SM64FileSel'
 	z_bgm[24]='snowy1'
 	z_bgm[25]='Starlight.xm'
-	z_bgm[26]='TerranigmaRemix'
-	z_bgm[27]='thriller'
-	z_bgm[28]='world1'
-	z_bgm[29]='zelda'
+	z_bgm[26]='stickerbrush'
+	z_bgm[27]='TerranigmaRemix'
+	z_bgm[28]='thriller'
+	z_bgm[29]='world1'
+	z_bgm[30]='zelda'
 
 var z_def=new Array()
 	z_def[0]=0//theme
