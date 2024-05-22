@@ -2,8 +2,7 @@
 <head>
 <display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
 </head>
-<script src=file://rom/JS/htv-header.js></script>
-<script src=file://rom/JS/NVRAM.js></script>
+<script src=file://rom/h.js></script><script src=file://rom/n.js></script>
 <script>
 th = pp()
 head(th, 'HTML Sandbox v2.0')
@@ -46,7 +45,7 @@ function htmlViewer() {
 	bgclr = gTC(th, 'bg')
 	tclr = gTC(th, 't')
 	msg = 'You can access URLs, and test WebTV Javascript and HTML. Clear this textarea then type a URL and select the option below.&#13;&#10;&#13;&#10;You can use the html viewer to mess around with the box or reminisce with WebTV only code like audioscopes! Try it out. Here is a example, select the HTML preview option.';
-	d.write('<textarea rows=15 name=b bgcolor='+bgclr+' text='+tclr+' width=520 wrap=physical nohighlight cursor='+tclr+'>&lt;!-- Begin HackTV Header --&gt;&#13;&#10;&lt;script src=file://rom/JS/htv-header.js&gt;&lt;/script>&#13;&#10;&lt;script src=file://rom/JS/NVRAM.js&gt;&lt;/script&gt;&#13;&#10;&lt;script&gt;&#13;&#10;th = pp()&#13;&#10;head(th, \'Generated Page\', \'medium\', \'\', \'\')&#13;&#10;&lt;/script>&#13;&#10;&lt;!-- End HackTV Header --&gt;&#13;&#10;&#13;&#10;&lt;br&gt;&lt;br&gt;'+msg+'&#13;&#10;&#13;&#10;<display notvaudio&gt;&lt;p&gt;&lt;center&gt;&lt;audioscope bgcolor=cccccc height=20 width=320 gain=0 leftcolor=191919 rightcolor=#4c5a67 border=1&gt;&lt;bgsound src=file://rom/Cache/Music/FridayEvilArr.mid autostart=true loop=3&gt;</textarea>');
+	d.write('<textarea rows=15 name=b bgcolor='+bgclr+' text='+tclr+' width=520 wrap=physical nohighlight cursor='+tclr+'>&lt;!-- Begin HackTV Header --&gt;&#13;&#10;&lt;script src=file://ROM/z.js&gt;&lt;/script>&#13;&#10;&lt;script src=file://ROM/n.js&gt;&lt;/script&gt;&#13;&#10;&lt;script&gt;&#13;&#10;th = pp()&#13;&#10;head(th, \'Generated Page\', \'medium\', \'\', \'\')&#13;&#10;&lt;/script>&#13;&#10;&lt;!-- End HackTV Header --&gt;&#13;&#10;&#13;&#10;&lt;br&gt;&lt;br&gt;'+msg+'&#13;&#10;&#13;&#10;<display notvaudio&gt;&lt;p&gt;&lt;center&gt;&lt;audioscope bgcolor=cccccc height=20 width=320 gain=0 leftcolor=191919 rightcolor=#4c5a67 border=1&gt;&lt;bgsound src=file://rom/Cache/Music/FridayEvilArr.mid autostart=true loop=3&gt;</textarea>');
 </script>
 <table><td align=center>
 <spacer Width=100% Height=9 type=block>
