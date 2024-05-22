@@ -15,7 +15,7 @@ function uS(){
 		case "htvb":
 			uI("71.244.121.234","1415","This is the public HackTV minisrv backup, only available when the main HackTV server is down.",true);
 		break;
-		case "z":
+		case "zef":
 			ui("24.148.114.32","1615","zefie's public minisrv, for those who want the vanilla minisrv experience.",true);
 		break;
 		case "mm69":

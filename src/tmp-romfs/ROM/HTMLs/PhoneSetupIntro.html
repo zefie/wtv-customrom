@@ -1,32 +1,16 @@
-<html>
-<head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<html><head><display nooptions noscroll allowoffline noreconnectalert>
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 <script>
-ref = document.referrer
-if (ref == 'file://rom/HTMLs/Themes.html' || ref == 'file://rom/HTMLs/PhoneCallWaitThresh.html' || ref == 'file://rom/HTMLs/BGM.html') {
-	go(ref)
-}
-</script>
-</head>
-<script>
-th = pp()
-head(th, 'large', 'Ghosttown', '', 'Phone & Dialing Settings')
-</script>
-<table cellspacing=0 cellpadding=0>
-<tr>
-<td abswidth=14>
-<td colspan=3>
-<td abswidth=20 height=1>
-<tr>
-<td>
-<td colspan=3 height=70 valign=middle align=left>
-You might need to adjust these dialing options in order to
-connect to WebTV.
-<tr>
-<td>
-<td width=198 height=195 valign=top align=left>
+r=document.referrer
+if(r=='file://rom/HTMLs/Themes.html'||r=='file://rom/HTMLs/PhoneCallWaitThresh.html'||r=='file://rom/HTMLs/BGM.html'){go(r)}
+</script></head><script>
+th=pp()
+head(th,'large','Ghosttown','','Phone & Dialing Settings')
+</script><table cellspacing=0 cellpadding=0>
+<tr><td abswidth=14><td colspan=3><td abswidth=20 height=1>
+<tr><td><td colspan=3 height=70 valign=middle align=left>You might need to adjust these dialing options in order to connect to WebTV.
+<tr><td><td width=198 height=195 valign=top align=left>
 <a href=PhoneSetup.html selected><blackface>Basic</blackface></a><br>
 <font size=-1>Use tone or pulse dialing, or choose a dialing prefix</font><br>
 <img src=file://rom/Images/Spacer.gif width=1 height=12><br>
@@ -35,34 +19,18 @@ connect to WebTV.
 <img src=file://rom/Images/Spacer.gif width=1 height=12><br>
 <a href=client:gotoconfigurebyoisp><blackface>Use your ISP</blackface></a><br>
 <font size=-1>Use your Internet service provider</font><br>
-<td>
-<td width=198 valign=top align=left>
-<a href=AccessNumber.html><blackface>Access</blackface></A><BR>
-<font size=-1>Use a special access number from customer service</FONT><BR>
-<img src=file://rom/Images/Spacer.gif width=1 height=12><BR>
-<a href=AdvancedPhoneSetup.html><blackface>Advanced</blackface></A><BR>
-<font size=-1>Set audible dialing, speed, wait for dialtone</FONT><BR>
-<a href=PhoneReset.html><blackface>Reset</blackface></A><BR>
-<font size=-1>Original settings for dialing options</FONT><BR>
-<tr>
-<td>
-<td colspan=4 height=7 valign=top align=left>
-<tr>
-<td>
-<td colspan=4 height=1 valign=top align=left>
-<tr>
-<td>
-<td colspan=4><hr>
-<tr>
-<td>
-<td colspan=2 height=4 valign=top align=left>
-<tr>
-<td>
-<td colspan=2 height=1 valign=top align=left>
-<font size=-1><I>Choose</I> Done <I>to return to HTV.</I></font>
+<td><td width=198 valign=top align=left>
+<a href=AccessNumber.html><blackface>Access</blackface></a><br>
+<font size=-1>Use a special access number from customer service</font><br>
+<img src=file://rom/Images/Spacer.gif width=1 height=12><br>
+<a href=AdvancedPhoneSetup.html><blackface>Advanced</blackface></a><br>
+<font size=-1>Set audible dialing, speed, wait for dialtone</font><br>
+<a href=PhoneReset.html><blackface>Reset</blackface></a><br>
+<font size=-1>Original settings for dialing options</font><br>
+<tr><td><td colspan=4 height=7 valign=top align=left>
+<tr><td><td colspan=4 height=1 valign=top align=left>
+<tr><td><td colspan=4><hr>
+<tr><td><td colspan=2 height=4 valign=top align=left>
+<tr><td><td colspan=2 height=1 valign=top align=left><font size=-1><i>Choose</i> Done <i>to return to HTV.</i></font>
 <td valign=top align=right>
-<form action="javascript:goHTV()">
-<script>butt(th, 'Done', 'Done', 103)</script>
-</form>
-<td>
-</table>
+<form action=javascript:goHTV()><script>butt(th,'Done','Done',103)</script></form>

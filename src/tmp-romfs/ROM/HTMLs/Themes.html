@@ -1,50 +1,27 @@
-<html><head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<html><head><display nooptions noscroll allowoffline noreconnectalert>
 <script src=file://rom/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
-<script>	
-	th=pp()
-	function sBG(c){sB(z_nv,0,c)}
-</script>
-</head>
+<script>
+th=pp()
+function sBG(c){sB(z_nv,0,c)}
+</script></head>
 <script>head(th,'large','world1',5,'Theme Settings');</script>
-	<spacer Width=30 Height=6 type=vertical>
-	<table cellspacing=0 cellpadding=0>
-		<tr>
-			<td abswidth=14>
-			<td colspan=3>
-				<table cellspacing=0 cellpadding=0>
-					<tr>
-						<td valign=center absheight=20>
-				</table>
-			<td>
-		<TR>
-			<td>
-			<td width=350 height=230 valign=top align=left>
-				<table cellspacing=0 cellpadding=0>
-					<tr>
-						<td height=250 valign=top>
-							<font size=-1> Please select the theme you would like to use from the list below. Click done when finished.
-							<br>
-							<table cellspacing=0 cellpadding=4>
-								<tr><font size=-2>
-								<script>
-								for(i=0;i<z_th.length;i++){
-									if(i==th){s=' selected'}
-									else{s=''}
-									if(i%6==0){d.write('<tr>')}
-									d.write('<td align=center><font size=-1>'+gTN(i)+'</font><br>')
-									d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC(i,'bg')+' height=45 width=60></table>')
-								}
-								</script>
-							</table>
-					<tr>
-				</table>
-		<tr>
-			<td width=330 valign=top align=right colspan=2>
-			<br>
-		<FORM action='javascript:goHTV()'>
-			<script>butt(th,'Done','Done',160);</script>			
-		</FORM>
-	</table>
-</body></html>
+<spacer width=30 height=6 type=vertical>
+<table cellspacing=0 cellpadding=0>
+<tr><td abswidth=14><td colspan=3>
+<spacer height=20 type=vertical><td>
+<tr><td><td width=350 height=230 valign=top align=left>
+<table cellspacing=0 cellpadding=0>
+<tr><td height=250 valign=top>
+<font size=-1>Please select the theme you would like to use from the list below. Click done when finished.<br>
+<table cellspacing=0 cellpadding=4><tr><font size=-2>
+<script>for(i=0;i<z_th.length;i++){
+	if(i==th){s=' selected'}else{s=''}
+	if(i%6==0){d.write('<tr>')}
+	d.write('<td align=center><font size=-1>'+gTN(i)+'</font><br>')
+	d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC(i,'bg')+' height=45 width=60></table>')
+}</script>
+</table></table>
+<tr><td width=330 valign=top align=right colspan=2><br>
+<form action='javascript:goHTV()'><script>butt(th,'Done','Done',160);</script></form>
+</table>
