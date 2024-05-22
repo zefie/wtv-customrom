@@ -21,11 +21,10 @@ z_bgm=new Array()
 	z_bgm[3]='Daybreak'
 	z_bgm[4]='FridayEvilArr'
 	z_bgm[5]='Intro017.mod'
-	z_bgm[6]='Intro029.mod'
-	z_bgm[7]='karTV'
-	z_bgm[8]='SimplyShort.mod'
-	z_bgm[9]='SM64FileSel'
-	z_bgm[10]='Starlight.xm'
+	z_bgm[6]='karTV'
+	z_bgm[7]='SimplyShort.mod'
+	z_bgm[8]='SM64FileSel'
+	z_bgm[9]='Starlight.xm'
 
 z_def=new Array()
 	z_def[0]=0//theme
@@ -63,6 +62,16 @@ function gV(nv,off){
 	z_val=gB(nv,off)
 	if(z_val < 0 || z_val >= z_len){return parseInt(z_def[off])}
 	return parseInt(z_val)
+}
+
+function gBGM(nv,n,rn) {
+		if(n){p=n}
+		else{p=gV(nv,1)}
+		
+		if(rn){return p}
+		f=z_bgm[p];
+		if(f.indexOf('.') < 0){f+='.mid'}
+		return 'file://rom/Cache/Music/'+f
 }
 
 function pp(){
