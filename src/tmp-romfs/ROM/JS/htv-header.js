@@ -113,7 +113,8 @@ function head(th,msg,fs,bgm,lp,nl){
 	d.write('<body background=file://rom/Images/Themes/'+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
-		d.write('<bgsound src=file://rom/Cache/Music/'+bgm+' autostart=true')
+		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
+		d.write('<bgsound name=bgm src="'+bgm+'" autostart=true')
 		if(!lp){d.write('>')}
 		else{
 			if(lp==-1){lp=9999;}
