@@ -22,11 +22,10 @@ z_bgm=new Array()
 	z_bgm[4]='FridayEvilArr'
 	z_bgm[5]='Intro017.mod'
 	z_bgm[6]='Intro029.mod'
-	z_bgm[7]='Intro101.mod'
-	z_bgm[8]='karTV'
-	z_bgm[9]='SimplyShort.mod'
-	z_bgm[10]='SM64FileSel'
-	z_bgm[11]='Starlight.xm'
+	z_bgm[7]='karTV'
+	z_bgm[8]='SimplyShort.mod'
+	z_bgm[9]='SM64FileSel'
+	z_bgm[10]='Starlight.xm'
 
 z_def=new Array()
 	z_def[0]=0//theme
