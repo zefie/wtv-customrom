@@ -132,7 +132,7 @@ function headr(th,msg,fs,bgm,lp,nl){
 		if(!lp){out+='>'}
 		else{
 			if(lp==-1){lp=9999}
-			d.write(' loop='+lp+'>')
+			out+=(' loop='+lp+'>')
 		}
 	}
 	if(!msg){msg=''}
