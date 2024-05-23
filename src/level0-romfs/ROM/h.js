@@ -117,7 +117,7 @@ function headr(th,msg,fs,bgm,lp,nl){
 	d.write('<tr><td>')
 	tab()
 	d.write('<spacer type=block width=11 height=11><br>')
-	d.write('<spacer type=block width=10 height=1><a href=javascript:goHTV()><img src='+rom+'Cache/WebTVLogoJewel.gif width=90 height=69></a>')
+	d.write('<spacer type=block width=10 height=1><a href=# onclick=\'goHTV()\'><img src='+rom+'Cache/WebTVLogoJewel.gif width=90 height=69></a>')
 	tab(msg)
 	d.write('</td></tr></table>')
 }	
@@ -181,4 +181,8 @@ function dial(){
 
 function dhh(th, tit) {
 	if(tit==1){head(th,'Partition Map','','','',true)}
+}
+
+function nbsp(c) {
+	for(i=0;i<c;i++){d.write(' &nbsp;')}
 }
