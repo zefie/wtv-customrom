@@ -1,8 +1,9 @@
-String.prototype.replace=function(o,n){return this.split(o).join(n);}
-d=document;
+String.prototype.replace=function(o,n){return this.split(o).join(n)}
+d=document
+rom='file://rom/'
 
 function gTC(th,type){
-	// light
+	//light
 	bgclr='4c5a67'
 	bgimg='Pattern.gif'
 	shimg='ShadowLogo.gif'
@@ -31,7 +32,7 @@ function gTC(th,type){
 		break
 		case 4://tan
 			bgclr='ece9d8'
-			bgimg='xpborder.gif'
+			bgimg='xpbg.gif'
 			tclr='000000'
 			bbif='Themes/ButtonBorder4'
 		break
@@ -73,7 +74,6 @@ function gTC(th,type){
 			bbif='Themes/ButtonBorder11'
 		break
 	}
-
 	switch(type){
 		case 'bg':
 			return bgclr
@@ -103,50 +103,37 @@ function headr(th,msg,fs,bgm,lp,nl){
 			fsn=5
 		break
 	}
-
 	bgclr=gTC(th,'bg')
 	tclr=gTC(th,'t')
 	vclr=gTC(th,'v')
 	lclr=gTC(th,'l')
 
-	if(msg){out+='<title>'+msg+'</title>'}
-	out+='<body background=file://rom/Images/Themes/'+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
+	if(msg){d.write('<title>'+msg+'</title>')}
+	d.write('<body background='+rom+'Images/Themes/'+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
 	if(bgm){
-		if(bgm.indexOf('.')<0){bgm += '.mid'}
-		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
-		out+='<bgsound name=bgm src="'+bgm+'" autostart=true'
-		if(!lp){out+='>'}
+		if(bgm.indexOf('.')<0){bgm+='.mid'}
+		if(bgm.indexOf('/')<0){bgm=rom+'Cache/Music/'+bgm}
+		d.write('<bgsound name=bgm src="'+bgm+'" autostart=true')
+		if(!lp){d.write('>')}
 		else{
-			if(lp==-1){lp=9999;}
-			out+=' loop='+lp+'>'
+			if(lp==-1){lp=9999}
+			d.write(' loop='+lp+'>')
 		}
 	}
 	if(!msg){msg=''}
-	out+='<table cellspacing=0 cellpadding=0>'
-	out+='<tr><td>'
-	out+=tab();
-	out+='<spacer type=block width=11 height=11><br>'
-	out+='<spacer type=block width=10 height=1>'
-	if(!nl){out+='<a href="javascript:goHTV()">'}
-	out+='<img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69>'
-	if(!nl){out+='</a>'}
-	out+=tab(msg);
-	out+='</td></tr></table>'
-	return out;
-}
-
-function head(th,msg,fs,bgm,lp,nl) {
-	d.write(headr(th,msg,fs,bgm,lp,nl))
-}
-
-function vhead(th) {
-	d.write(headr(th,'VFat Hax'))
-}
+	d.write('<table cellspacing=0 cellpadding=0>')
+	d.write('<tr><td>')
+	tab()
+	d.write('<spacer type=block width=11 height=11><br>')
+	d.write('<spacer type=block width=10 height=1><a href=javascript:goHTV()><img src='+rom+'Cache/WebTVLogoJewel.gif width=90 height=69></a>')
+	tab(msg)
+	d.write('</td></tr></table>')
+}	
 
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
-	if(msg){return '<td width=100% height=80 valign=top background=file://rom/Images/Themes/'+shimg+' novtilebg><td abswidth=460 height=54 valign=top background=file://rom/Images/Themes/'+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>'}
-	else{return '<td width=100% height=80 valign=top align=left background=file://rom/Images/Themes/'+shimg+' novtilebg>'}
+	if(msg){d.write('<td width=100% height=80 valign=top background='+rom+'Images/Themes/'+shimg+' novtilebg><td abswidth=460 height=54 valign=top background='+rom+'Images/Themes/'+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
+	else{d.write('<td width=100% height=80 valign=top align=left background='+rom+'Images/Themes/'+shimg+' novtilebg>')}
 }
 
 function ci(th){
@@ -159,7 +146,7 @@ function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 	if(s){
 		if(!lc){lc=gTC(th,'t')}
 		if(!rc){rc=gTC(th,'bg')}
-	} else{
+	}else{
 		if(!lc){lc=gTC(th,'bg')}
 		if(!rc){rc=gTC(th,'t')}
 	}
@@ -185,14 +172,14 @@ function butt(th,v,n,w,t,x){
 	bbif=gTC(th,'butt')
 	if(th > 0){d.write('<shadow>')}
 	d.write('<font color='+bclr+'>')
-	if(!t)t='submit';
+	if(!t)t='submit'
 	d.write('<input type='+t+' value="'+v+'"')
 	if(n)d.write(' name='+n)
 	if(w)d.write(' width='+w)
 	if(x)d.write(' '+x)
-	if(bbif){d.write(' usestyle borderimage=file://ROM/Borders/'+bbif+'.bif')}
-	d.write('></font>');
-	if(th > 0){d.write('</shadow>')}
+	if(bbif){d.write(' usestyle borderimage='+rom+'Borders/'+bbif+'.bif')}
+	d.write('></font>')
+	if(th>0){d.write('</shadow>')}
 }
 
 function dial(){
