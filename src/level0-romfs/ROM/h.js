@@ -1,6 +1,8 @@
 String.prototype.replace=function(o,n){return this.split(o).join(n)}
 d=document
 rom='file://rom/'
+cch=rom+'Cache/'
+thm=rom+'Images/Themes/'
 
 function gTC(th,type){
 	//light
@@ -74,7 +76,7 @@ function gTC(th,type){
 		break
 	}switch(type){
 		case 'bg':return bgclr
-		case 'butt':return bbif
+		case 'bbif':return bbif
 		case 'b':return bclr			
 		case 'l':return lclr
 		case 't':return tclr			
@@ -100,32 +102,36 @@ function headr(th,msg,fs,bgm,lp,nl){
 	vclr=gTC(th,'v')
 	lclr=gTC(th,'l')
 
-	if(msg){d.write('<title>'+msg+'</title>')}
-	d.write('<body background='+rom+'Images/Themes/'+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>')
+	if(msg){out+='<title>'+msg+'</title>'}
+	out+='<body background='+thm+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
 	if(bgm){
-		if(bgm.indexOf('.')<0){bgm+='.mid'}
-		if(bgm.indexOf('/')<0){bgm=rom+'Cache/Music/'+bgm}
-		d.write('<bgsound name=bgm src="'+bgm+'" autostart=true')
-		if(!lp){d.write('>')}
+		if(bgm.indexOf('.')<0){bgm += '.mid'}
+		if(bgm.indexOf('/')<0){bgm = cch+'Music/' + bgm}
+		out+='<bgsound name=bgm src="'+bgm+'" autostart=true'
+		if(!lp){out+='>'}
 		else{
 			if(lp==-1){lp=9999}
 			d.write(' loop='+lp+'>')
 		}
 	}
 	if(!msg){msg=''}
-	d.write('<table cellspacing=0 cellpadding=0>')
-	d.write('<tr><td>')
-	tab()
-	d.write('<spacer type=block width=11 height=11><br>')
-	d.write('<spacer type=block width=10 height=1><a href=# onclick=\'goHTV()\'><img src='+rom+'Cache/WebTVLogoJewel.gif width=90 height=69></a>')
-	tab(msg)
-	d.write('</td></tr></table>')
-}	
+	out+='<table cellspacing=0 cellpadding=0>'
+	out+='<tr><td>'
+	out+=tab();
+	out+='<spacer type=block width=11 height=11><br>'
+	out+='<spacer type=block width=10 height=1>'
+	if(!nl){out+='<a href="javascript:goHTV()">'}
+	out+='<img src='+cch+'WebTVLogoJewel.gif width=90 height=69>'
+	if(!nl){out+='</a>'}
+	out+=tab(msg);
+	out+='</td></tr></table>'
+	return out;
+}
 
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
-	if(msg){d.write('<td width=100% height=80 valign=top background='+rom+'Images/Themes/'+shimg+' novtilebg><td abswidth=460 height=54 valign=top background='+rom+'Images/Themes/'+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>')}
-	else{d.write('<td width=100% height=80 valign=top align=left background='+rom+'Images/Themes/'+shimg+' novtilebg>')}
+	if(msg){return'<td width=100% height=80 valign=top background='+thm+shimg+' novtilebg><td abswidth=460 height=54 valign=top background='+thm+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>'}
+	else{return'<td width=100% height=80 valign=top align=left background='+thm+shimg+' novtilebg>'}
 }
 
 function ci(th){
@@ -153,15 +159,9 @@ function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 	d.write('<audioscope bgcolor='+bg+' height='+h+' width='+w+' gain='+g+' leftcolor='+tclr+' rightcolor='+bgclr+' leftoffset='+lo+' rightoffset='+ro+' border='+b+'>')
 }
 
-function go(u){
-	location.href=u
-	return true
-}
-function goHTV(){return go('file://ROM/HTMLs/HackTV.html')}
-
 function butt(th,v,n,w,t,x){
 	bclr=gTC(th,'b')
-	bbif=gTC(th,'butt')
+	bbif=gTC(th,'bbif')
 	if(th > 0){d.write('<shadow>')}
 	d.write('<font color='+bclr+'>')
 	if(!t)t='submit'
@@ -174,15 +174,11 @@ function butt(th,v,n,w,t,x){
 	if(th>0){d.write('</shadow>')}
 }
 
-function dial(){
-	go('client:redialphone')
-	go('client:logoshown')
-}
+function dhh(th, tit) {if(tit==1){head(th,'Partition Map','','','',true)}}
+function go(u){location.href=u;return true}
+function goHTV(){return go(rom+'HTMLs/HackTV.html')}
+function dial(){go('client:redialphone');go('client:logoshown')}
+function nbsp(c) {for(i=0;i<c;i++){d.write(' &nbsp;')}}
+function head(th,msg,fs,bgm,lp,nl) {d.write(headr(th,msg,fs,bgm,lp,nl))}
+function vhead(th) {d.write(headr(th,'VFat Hax'))}
 
-function dhh(th, tit) {
-	if(tit==1){head(th,'Partition Map','','','',true)}
-}
-
-function nbsp(c) {
-	for(i=0;i<c;i++){d.write(' &nbsp;')}
-}
