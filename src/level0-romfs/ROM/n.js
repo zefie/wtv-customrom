@@ -25,9 +25,8 @@ z_bgm=new Array()
 	z_bgm[7]='loop1'
 	z_bgm[8]='loop2'
 	z_bgm[9]='seqJ'
-	z_bgm[10]='SM64FileSel'
-	z_bgm[11]='snowy1'
-	z_bgm[12]='snowy2'
+	z_bgm[10]='snowy1'
+	z_bgm[11]='snowy2'
 
 z_def=new Array()
 	z_def[0]=0//theme
