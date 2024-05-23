@@ -11,7 +11,6 @@ function gTC(th,type){
 	tclr='cbcbcb'
 	vclr='dddddd'
 	lclr='dddddd'
-
 	switch(th){
 		case 1://dark
 			bgclr='191919'
@@ -72,20 +71,13 @@ function gTC(th,type){
 			tclr='c06000'
 			bbif='Themes/ButtonBorder11'
 		break
-	}
-	switch(type){
-		case 'bg':
-			return bgclr
-		case 'butt':
-			return bbif
-		case 'b':
-			return bclr			
-		case 'l':
-			return lclr
-		case 't':
-			return tclr			
-		case 'v':
-			return vclr
+	}switch(type){
+		case 'bg':return bgclr
+		case 'butt':return bbif
+		case 'b':return bclr			
+		case 'l':return lclr
+		case 't':return tclr			
+		case 'v':return vclr
 	}
 }
 function head(th,msg,fs,bgm,lp,nl){
