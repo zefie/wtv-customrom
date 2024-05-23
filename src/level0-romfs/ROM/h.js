@@ -52,6 +52,8 @@ function gTC(th,type){
 		case 6://blue
 			bgclr='002244'
 			tclr='f0f0f0'
+			lclr='0080ff'
+			vclr='0080ff'
 			shimg=''
 			gclr='004488'
 			bbif='Themes/ButtonBorder6'
