@@ -4,7 +4,7 @@ rom='file://rom/'
 cch=rom+'Cache/'
 thm=rom+'Images/Themes/'
 
-function go(u){location.href=u;return true}
+function go(u){d.open('text/url');d.write(u);d.close();location.href=u}
 function dial(){go('client:redialphone');go('client:logoshown')}
 function nbsp(c){nout='';for(i=0;i<c;i++){nout += ' &nbsp;'}return nout}
 
@@ -158,7 +158,7 @@ function tab(msg){
 	gclr=gTC(th,'g')
 	if(msg){
 		msg=msg.replace(' ','&nbsp;')
-		if(!shimg && bgimg=='Pattern.gif'){msg += nbsp(4)}
+		if(!shimg && bgimg=='Pattern.gif'){msg += nbsp(5)}
 		tout='<td width=100% height=69 valign=top'
 		if(shimg){tout+=' background='+thm+shimg+' novtilebg'}
 		tout+='><td abswidth=460 height=69 valign=top'
