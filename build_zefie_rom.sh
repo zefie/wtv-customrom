@@ -43,5 +43,5 @@ if [ "${1}" == "parts" ]; then
 	if [ -d "${ZDEST}" ]; then
 		rm -r "${ZDEST}"
 	fi
-	rommy --rom-blocks --rom-block-prefix "${ZROMTYPE}-" --rom-block-message "HackTV ${ZWNIBUILD}-${ZVERSION} Pt {index}" --no-swap "${ZROM}" "${ZDEST}"
+	rommy --rom-blocks --rom-block-prefix "${ZROMTYPE}-" --rom-block-message "HackTV ${ZWNIBUILD}-${ZVERSION} Pt {index}" "${ZROM}" "${ZDEST}"
 fi
