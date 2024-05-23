@@ -5,10 +5,11 @@
 <script>	
 th = pp()
 
+bgm='loop2'
 txt = 'Preparing';
 r=Math.floor(Math.random() * 20)
-if (r == 15){txt = 'Farting out'}
-head(th, txt+' your update', '', 'loop2', -1, true);
+if (r == 15){txt = 'Farting out'; bgm='file://rom/Cache/Audio/fart2.mp3'}
+head(th, txt+' your update', '', bgm, -1, true);
 </script>
 <table cellspacing=0 cellpadding=0>
 	<tr>
@@ -32,8 +33,7 @@ head(th, txt+' your update', '', 'loop2', -1, true);
 				</script>
 
 <spacer type=vertical size=165><br>
-<font color=d0d0d0>
-<script>d.write('<progressindicator message="'+txt+' update" textbelow name="autodisk" height=44 width=240>')</script>
+<script>d.write('<font color='+gTC('t')+'>');d.write('<progressindicator message="'+txt+' update" textbelow name="autodisk" height=44 width=240>')</script>
 </font>
 
 </table>
