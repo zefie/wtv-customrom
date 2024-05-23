@@ -5,7 +5,9 @@ th=pp()
 head(th,'Connect Setup v2.6','','karTV',5);
 window.onload=uS;
 </script><form name=c action=client:ConfirmConnectSetup>
-<table width=100% cellspacing=1 cellpadding=0><tr><td colspan=3>&nbsp;Server:</td>
+<table width=100% cellspacing=1 cellpadding=0>
+<tr><td height=18>
+<tr><td colspan=3>&nbsp;Server:</td>
 <td><select width=440 name=p onchange=uS() selected>
 <option value=htv>MattMan's (HTV) MiniSrv</option>
 <option value=htvb>MattMan's (HTV) MiniSrv Backup</option>
@@ -22,12 +24,12 @@ window.onload=uS;
 &nbsp;Address:&nbsp;&nbsp;&nbsp;<input size=21 asciionly name=machine value="" bgcolor=b5b5b5 text=191919 cursor=6d32a8>
 &nbsp;&nbsp;&nbsp;Port:<input size=5 asciionly numbers name=port value="" bgcolor=b5b5b5 text=191919 cursor=6d32a8>
 </table>
-<spacer type=block height=60><hr><br>
+<spacer type=block height=42><hr><br>
 <table cellspacing=1 cellpadding=0>
 <tr><td height=1>
 <tr><td colspan=2>&nbsp;Info:<br><br><td>
 <tr><td width=20><td width=390 align=left valign=top>
-<form name=i><script>ci(th);</script></form>
+<form name=i><script>ta(th,4,46,'msg',0,'','nohighlight noselect',1)</script></form>
 <td><td width=100% align=right valign=top>
 <font size=-2><input type=hidden name=useEncryption value=true><script>butt(th,'Connect','Connect',170);</script></font>	
 </form>
