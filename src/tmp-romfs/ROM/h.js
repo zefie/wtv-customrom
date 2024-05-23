@@ -1,6 +1,8 @@
 String.prototype.replace=function(o,n){return this.split(o).join(n)}
 d=document
 rom='file://rom/'
+cch=rom+'Cache/'
+thm=rom+'Images/Themes/'
 
 function gTC(th,type){
 	//light
@@ -74,7 +76,7 @@ function gTC(th,type){
 		break
 	}switch(type){
 		case 'bg':return bgclr
-		case 'butt':return bbif
+		case 'bbif':return bbif
 		case 'b':return bclr			
 		case 'l':return lclr
 		case 't':return tclr			
@@ -102,10 +104,10 @@ function headr(th,msg,fs,bgm,lp,nl){
 	lclr=gTC(th,'l')
 
 	if(msg){out+='<title>'+msg+'</title>'}
-	out+='<body background=file://rom/Images/Themes/'+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
+	out+='<body background='+thm+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
-		if(bgm.indexOf('/')<0){bgm = 'file://rom/Cache/Music/' + bgm}
+		if(bgm.indexOf('/')<0){bgm = cch+'Music/' + bgm}
 		out+='<bgsound name=bgm src="'+bgm+'" autostart=true'
 		if(!lp){out+='>'}
 		else{
@@ -120,25 +122,17 @@ function headr(th,msg,fs,bgm,lp,nl){
 	out+='<spacer type=block width=11 height=11><br>'
 	out+='<spacer type=block width=10 height=1>'
 	if(!nl){out+='<a href="javascript:goHTV()">'}
-	out+='<img src=file://ROM/Cache/WebTVLogoJewel.gif width=90 height=69>'
+	out+='<img src='+cch+'WebTVLogoJewel.gif width=90 height=69>'
 	if(!nl){out+='</a>'}
 	out+=tab(msg);
 	out+='</td></tr></table>'
 	return out;
 }
 
-function head(th,msg,fs,bgm,lp,nl) {
-	d.write(headr(th,msg,fs,bgm,lp,nl))
-}
-
-function vhead(th) {
-	d.write(headr(th,'VFat Hax'))
-}
-
 function tab(msg){
 	msg=msg.replace(' ','&nbsp;')
-	if(msg){return'<td width=100% height=80 valign=top background=file://rom/Images/Themes/'+shimg+' novtilebg><td abswidth=460 height=54 valign=top background=file://rom/Images/Themes/'+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>'}
-	else{return'<td width=100% height=80 valign=top align=left background=file://rom/Images/Themes/'+shimg+' novtilebg>'}
+	if(msg){return'<td width=100% height=80 valign=top background='+thm+shimg+' novtilebg><td abswidth=460 height=54 valign=top background='+thm+shimg+' align=right novtilebg><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>'}
+	else{return'<td width=100% height=80 valign=top align=left background='+thm+shimg+' novtilebg>'}
 }
 
 function ci(th){
@@ -166,15 +160,9 @@ function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 	d.write('<audioscope bgcolor='+bg+' height='+h+' width='+w+' gain='+g+' leftcolor='+tclr+' rightcolor='+bgclr+' leftoffset='+lo+' rightoffset='+ro+' border='+b+'>')
 }
 
-function go(u){
-	location.href=u
-	return true
-}
-function goHTV(){return go('client:gotoadvancedsetup')}
-
 function butt(th,v,n,w,t,x){
 	bclr=gTC(th,'b')
-	bbif=gTC(th,'butt')
+	bbif=gTC(th,'bbif')
 	if(th > 0){d.write('<shadow>')}
 	d.write('<font color='+bclr+'>')
 	if(!t)t='submit'
@@ -187,11 +175,9 @@ function butt(th,v,n,w,t,x){
 	if(th>0){d.write('</shadow>')}
 }
 
-function dial(){
-	go('client:redialphone')
-	go('client:logoshown')
-}
-
-function nbsp(c) {
-	for(i=0;i<c;i++){d.write(' &nbsp;')}
-}
+function go(u){location.href=u;return true}
+function goHTV(){return go(rom+'HTMLs/HackTV.html')}
+function dial(){go('client:redialphone');go('client:logoshown')}
+function nbsp(c) {for(i=0;i<c;i++){d.write(' &nbsp;')}}
+function head(th,msg,fs,bgm,lp,nl) {d.write(headr(th,msg,fs,bgm,lp,nl))}
+function vhead(th) {d.write(headr(th,'VFat Hax'))}
