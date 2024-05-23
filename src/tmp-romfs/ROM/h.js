@@ -53,6 +53,7 @@ function gTC(th,type){
 		case 7://teal
 			bgclr='008080'
 			tclr='f0f0f0'
+			bclr='080808'
 			bbif='Themes/ButtonBorder7'
 		break
 		case 8://purple
