@@ -1,31 +1,19 @@
-<html>
-<head>
-<display nooptions noscroll allowoffline noreconnectalert>
-<script src=file://rom/h.js></script><script src=file://rom/n.js></script>
-</head>
-<script>
-th = pp();
+<html><head><display nooptions noscroll allowoffline noreconnectalert>
+<script src=file://rom/h.js></script><script src=file://rom/n.js></script></head><script>
+th=pp()
 head(th, 'NVRAM Test Page');
-</script>
-<h1>NVRAM Test:</h1>
-<table border=1>
-<tr>
-<td colspan=99>NVRAM Contents
-<tr>
-<td>Data:</td>
+</script><h1>NVRAM Test:</h1>
+<table border=1><tr><td colspan=99>NVRAM Contents
+<tr><td>Data:</td>
 <script>
-for(i=0;i<z_nv.length;i++){
-d.write('<td>'+z_nv.charAt(i)+'</td>');
-}
+for(i=0;i<z_nv.length;i++){d.write('<td>'+z_nv.charAt(i)+'</td>');}
 d.write('<tr><td>Byte:</td>')
-for(i=0;i<z_nv.length;i++){
-document.write('<td>'+i+'</td>');
-}
+for(i=0;i<z_nv.length;i++){document.write('<td>'+i+'</td>');}
 </script>
 </table>
-<a href="javascript:sB(z_nv,5,0)">Set byte 5 to 0</a><br>
-<a href="javascript:sB(z_nv,5,1)">Set byte 5 to 1</a><br>
-<a href="javascript:sB(z_nv,15,0)">Set byte 15 to 0</a><br>
-<a href="javascript:sB(z_nv,15,1)">Set byte 15 to 1</a><br>
-<a href="javascript:sB(z_nv,0,1)">Set byte 0 to 1</a> (Dark Theme)<br>
-<a href="javascript:sB(z_nv,0,8)">Set byte 0 to 8</a> (zefie Theme)<br>
+<a href=javascript:sB(z_nv,5,0)>Set byte 5 to 0</a><br>
+<a href=javascript:sB(z_nv,5,1)>Set byte 5 to 1</a><br>
+<a href=javascript:sB(z_nv,15,0)>Set byte 15 to 0</a><br>
+<a href=javascript:sB(z_nv,15,1)>Set byte 15 to 1</a><br>
+<a href=javascript:sB(z_nv,0,1)>Set byte 0 to 1</a> (Dark Theme)<br>
+<a href=javascript:sB(z_nv,0,8)>Set byte 0 to 8</a> (zefie Theme)
