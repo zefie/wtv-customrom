@@ -35,6 +35,8 @@ function gTC(th,type){
 			bgclr='ece9d8'
 			bgimg='xpbg.gif'
 			tclr='000000'
+			lclr='002244'
+			vclr='002244'			
 			bbif='Themes/ButtonBorder4'
 		break
 		case 5://green
@@ -68,6 +70,8 @@ function gTC(th,type){
 			bgclr='c9c9c9'
 			bgimg='Paper.jpg'
 			tclr='020202'
+			lclr='002244'
+			vclr='002244'
 			bbif='Themes/ButtonBorder10'
 		case 11://halloween
 			bgclr='080808'
@@ -134,10 +138,12 @@ function tab(msg){
 	else{return'<td width=100% height=80 valign=top align=left background='+thm+shimg+' novtilebg>'}
 }
 
-function ci(th){
+function ta(th,r,s,n,b,c,x,u) {
 	bgclr=gTC(th,'bg')
-	tclr=gTC(th,'t')
-	d.write('&nbsp;&nbsp;<textarea rows=4 size=46 id=msg name=msg border=0 text='+tclr+' bgcolor='+bgclr+' value="" nohighlight noselect></textarea>')
+	tclr=gTC(th,'t')	
+	if(u){x+=' usestyle';d.write('<font color='+tclr+'>')}
+	d.write('<textarea rows='+r+' size='+s+' id='+n+' name='+n+' border='+b+' text='+tclr+' bgcolor='+bgclr+' '+x+'>'+c+'</textarea>');
+	if(u){d.write('</font>')}
 }
 
 function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
@@ -181,4 +187,3 @@ function dial(){go('client:redialphone');go('client:logoshown')}
 function nbsp(c) {for(i=0;i<c;i++){d.write(' &nbsp;')}}
 function head(th,msg,fs,bgm,lp,nl) {d.write(headr(th,msg,fs,bgm,lp,nl))}
 function vhead(th) {d.write(headr(th,'VFat Hax'))}
-
