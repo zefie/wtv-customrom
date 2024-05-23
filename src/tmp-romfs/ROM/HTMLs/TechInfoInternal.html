@@ -1,80 +1,22 @@
-<html>
-<head>
-<display nooptions noscroll allowoffline noreconnectalert>
+<html><head><display nooptions noscroll allowoffline noreconnectalert>
 <script src=file://ROM/JS/htv-header.js></script>
 <script src=file://rom/JS/NVRAM.js></script>
 <script src=file://ROM/JS/BuildInfo.js></script>
-</head>
-<script>
-th = pp()
-head(th, 'WebTV Technical Information', '', 'tymplingA')
-</script>
-<table width=100%>
-<tr>
-<td width=50>
-<td width=150 valign=top align=right><shadow>Boot ROM:</shadow>
-<td width=10>
-<td valign=top>Version &wtv-bootvers;
-<tr>
-<td width=20>
-<td valign=top align=right width=120><shadow>App ROM:</shadow>
-<td width=10>
-<td valign=top>Version &vers;
-<tr>
-<td>
-<td valign=top align=right><shadow>App ROM Build:</shadow>
-<td width=10>
-<td>
-<a href='BuildInfo.html'>&wtv-appvers;-<script>d.write(bI('version'));</script></a>
-<tr>
-<td>
-<td valign=top align=right><shadow>ROM Type:</shadow>
-<td width=10>
-<td valign=top><script>d.write(bI('romtype'));</script>
-<tr>
-<td>
-<td valign=top align=right><shadow>ROM Pack Date:</shadow>
-<td width=10>
-<td valign=top><script>d.write(bI('packed_date'));</script>
-<tr>
-<td colspan=4><hr>
-<tr>
-<td>
-<td valign=top align=right><shadow>SSID:</shadow>
-<td width=10>
-<td valign=top>&wtv-ssn;
-<tr>
-<td>
-<td valign=top align=right><shadow>CPU Info:</shadow>
-<td width=10>
-<td valign=top>&cpu;
-<tr>
-<td>
-<td valign=top align=right><shadow>Chip Version:</shadow>
-<td width=10>
-<td valign=top>&wtv-chipvers;
-<tr>
-<td>
-<td valign=top align=right><shadow>SysConfig:</shadow>
-<td width=10>
-<td valign=top>&wtv-syscfg;
-<tr>
-<td colspan=4><hr>
-<tr>
-<td>
-<td valign=top align=right><shadow>Service Addr:</shadow>
-<td width=10>
-<td valign=top>&wtv-1800addr;
-<tr>
-<td>
-<td valign=top align=right><shadow>System Date:</shadow>
-<td width=10>
-<td valign=top>&date;
-</table>
-<hr>
-<table>
-<tr>
-<td width=600 align=right>
-<form action='javascript:goHTV()'>
-<script>butt(th, 'Done', '', 120, '', 'font=proportional selected')</script>
-</form></font>
+</head><script>th=pp()
+head(th,'WebTV Technical Information','','tymplingA')
+</script><table width=100%>
+<tr><td width=50><td width=150 valign=top align=right><shadow>Boot ROM:</shadow><td width=10><td valign=top>Version &wtv-bootvers;
+<tr><td width=20><td valign=top align=right width=120><shadow>App ROM:</shadow><td width=10><td valign=top>Version &vers;
+<tr><td><td valign=top align=right><shadow>App ROM Build:</shadow><td width=10><td><a href=BuildInfo.html>&wtv-appvers;-<script>d.write(bI('version'));</script></a>
+<tr><td><td valign=top align=right><shadow>ROM Type:</shadow><td width=10><td valign=top><script>d.write(bI('romtype'));</script>
+<tr><td><td valign=top align=right><shadow>ROM Pack Date:</shadow><td width=10><td valign=top><script>d.write(bI('packed_date'));</script>
+<tr><td colspan=4><hr>
+<tr><td><td valign=top align=right><shadow>SSID:</shadow><td width=10><td valign=top>&wtv-ssn;
+<tr><td><td valign=top align=right><shadow>CPU Info:</shadow><td width=10><td valign=top>&cpu;
+<tr><td><td valign=top align=right><shadow>Chip Version:</shadow><td width=10><td valign=top>&wtv-chipvers;
+<tr><td><td valign=top align=right><shadow>SysConfig:</shadow><td width=10><td valign=top>&wtv-syscfg;
+<tr><td colspan=4><hr>
+<tr><td><td valign=top align=right><shadow>Service Addr:</shadow><td width=10><td valign=top>&wtv-1800addr;
+<tr><td><td valign=top align=right><shadow>System Date:</shadow><td width=10><td valign=top>&date;
+</table><hr>
+<table><tr><td width=600 align=right><form action=javascript:goHTV()><script>butt(th,'Done','',120,'','font=proportional selected')</script></form></font>
