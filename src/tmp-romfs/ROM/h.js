@@ -182,8 +182,22 @@ function butt(th,v,n,w,t,x){
 	if(th>0){d.write('</shadow>')}
 }
 
+function sa(m,i,b1t,b1a,b2t,b2a) {
+	u='client:showalert?message='+escape(m);
+	if(i)u+='&image='+escape(i);
+	if(b1t)u+='&buttonlabel1='+escape(b1t);
+	if(b1t&&!b1a){b1a='client:donothing'}
+	if(b1a)u+='&buttonaction1='+escape(b1a);
+	if(b2t)u+='&buttonlabel2='+escape(b2t);
+	if(b2t&&!b2a){b2a='client:donothing'}
+	if(b2a)u+='&buttonaction2='+escape(b2a);
+	return u;
+}
+
+
 function go(u){location.href=u;return true}
 function goHTV(){return go(rom+'HTMLs/HackTV.html')}
+function gsa(m,i,b1t,b1a,b2t,b2a){go(sa(m,i,b1t,b1a,b2t,b2a))}
 function dial(){go('client:redialphone');go('client:logoshown')}
 function nbsp(c) {for(i=0;i<c;i++){d.write(' &nbsp;')}}
 function head(th,msg,fs,bgm,lp,nl) {d.write(headr(th,msg,fs,bgm,lp,nl))}
