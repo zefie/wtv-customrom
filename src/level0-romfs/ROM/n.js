@@ -14,13 +14,24 @@ z_th=new Array()
 	z_th[10]='Paper White'
 	z_th[11]='Halloween Black'
 
-var z_bgm = new Array()
-	z_bgm[0]='loop1'
-	z_bgm[1]='loop2'
+z_bgm=new Array()
+	z_bgm[0]='AfterWork'
+	z_bgm[1]='airloop'
+	z_bgm[2]='AliveAtDawn'
+	z_bgm[3]='Boogie'
+	z_bgm[4]='Daybreak'
+	z_bgm[5]='ghosttown'
+	z_bgm[6]='karTV'
+	z_bgm[7]='loop1'
+	z_bgm[8]='loop2'
+	z_bgm[9]='seqJ'
+	z_bgm[10]='SM64FileSel'
+	z_bgm[11]='snowy1'
+	z_bgm[12]='snowy2'
 
-var z_def = new Array()
+z_def=new Array()
 	z_def[0]=0//theme
-	z_def[1]=1//bgm
+	z_def[1]=8//bgm
 
 chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@-"//64 possible different values
 
@@ -54,6 +65,16 @@ function gV(nv,off){
 	z_val=gB(nv,off)
 	if(z_val < 0 || z_val >= z_len){return parseInt(z_def[off])}
 	return parseInt(z_val)
+}
+
+function gBGM(nv,n,rn) {
+		if(n){p=n}
+		else{p=gV(nv,1)}
+		
+		if(rn){return p}
+		f=z_bgm[p];
+		if(f.indexOf('.') < 0){f+='.mid'}
+		return 'file://rom/Cache/Music/'+f
 }
 
 function pp(){
