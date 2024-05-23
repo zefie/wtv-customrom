@@ -11,7 +11,7 @@
 		},
 		"/ROM/Cache": {
 			"compression_type": "UNKNOWN",
-			"depth": 0,
+			"depth": 1,
 			"name": "Cache",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -20,7 +20,7 @@
 		},
 		"/ROM/Cache/Music": {
 			"compression_type": "UNKNOWN",
-			"depth": 0,
+			"depth": 2,
 			"name": "Music",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -29,7 +29,7 @@
 		},
 		"/ROM/Cache/Music/loop1.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -38,7 +38,7 @@
 		},
 		"/ROM/Cache/Music/loop2.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -47,7 +47,7 @@
 		},
 		"/ROM/Cache/Music/AliveAtDawn.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -56,7 +56,7 @@
 		},
 		"/ROM/Cache/Music/swelplng.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -65,7 +65,7 @@
 		},
 		"/ROM/Cache/Music/Daybreak.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -74,7 +74,7 @@
 		},
 		"/ROM/Cache/Music/Ghosttown.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -83,7 +83,7 @@
 		},
 		"/ROM/Cache/Music/karTV.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -92,7 +92,7 @@
 		},
 		"/ROM/Cache/Music/mjstyWTV.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -101,7 +101,7 @@
 		},
 		"/ROM/Cache/Music/plingA.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -110,7 +110,7 @@
 		},
 		"/ROM/Cache/Music/plingB.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -119,7 +119,7 @@
 		},
 		"/ROM/Cache/Music/seqJ.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -128,7 +128,7 @@
 		},
 		"/ROM/Cache/Music/snowy1.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -137,7 +137,7 @@
 		},
 		"/ROM/Cache/Music/snowy2.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -146,7 +146,7 @@
 		},
 		"/ROM/Cache/Music/tymplingA.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -155,7 +155,7 @@
 		},
 		"/ROM/Cache/Music/tymplingB.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -164,7 +164,7 @@
 		},
 		"/ROM/Cache/Music/world1.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -173,7 +173,7 @@
 		},
 		"/ROM/Cache/Music/majesty.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
+			"depth": 3,
 			"name": "ROM",
 			"next_link": 2682257344,
 			"offset": 1966016,
@@ -182,11 +182,7 @@
 		},
 		"/ROM/Cache/Music/WTVa.mid": {
 			"compression_type": "NONE",
-			"depth": 0,
-			"name": "ROM",
-			"next_link": 2682257344,
-			"offset": 1966016,
-			"size": 0,
+			"depth": 2,
 			"type": 2
 		}				
 	}
