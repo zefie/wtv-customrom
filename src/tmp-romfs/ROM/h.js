@@ -3,11 +3,9 @@ d=document
 rom='file://rom/'
 cch=rom+'Cache/'
 thm=rom+'Images/Themes/'
-
 function go(u){d.open('text/url');d.write(u);d.close();location.href=u}
 function dial(){go('client:redialphone');go('client:logoshown')}
 function nbsp(c){nout='';for(i=0;i<c;i++){nout += ' &nbsp;'}return nout}
-
 function gTC(th,type){
 	//light
 	bgclr='4c5a67'
@@ -54,6 +52,8 @@ function gTC(th,type){
 		case 6://blue
 			bgclr='002244'
 			tclr='f0f0f0'
+			lclr='0080ff'
+			vclr='0080ff'
 			shimg=''
 			gclr='004488'
 			bbif='Themes/ButtonBorder6'
@@ -103,13 +103,11 @@ function gTC(th,type){
 }
 
 function headr(th,msg,fs,bgm,lp,nl){
-	out = ''
+	out=''
 	switch(fs){
-		case 'small':
-			fsn=7
+		case 'small':fsn=7
 		break
-		case 'large':
-			fsn=4
+		case 'large':fsn=4
 		break
 		default:
 			fs='medium'
@@ -123,7 +121,6 @@ function headr(th,msg,fs,bgm,lp,nl){
 	tclr=gTC(th,'t')
 	vclr=gTC(th,'v')
 	lclr=gTC(th,'l')
-
 	if(msg){out+='<title>'+msg+'</title>'}
 	out+='<body background='+thm+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
 	if(bgm){
@@ -150,7 +147,6 @@ function headr(th,msg,fs,bgm,lp,nl){
 	out+='</td></tr></table>'
 	return out;
 }
-
 function tab(msg){
 	bgimg=gTC(th,'bgimg')
 	shimg=gTC(th,'shimg')
@@ -172,15 +168,13 @@ function tab(msg){
 	}
 	return tout
 }
-
-function ta(th,r,s,n,b,c,x,u) {
+function ta(th,r,s,n,b,c,x,u){
 	bgclr=gTC(th,'bg')
 	tclr=gTC(th,'t')	
 	if(u){x+=' usestyle';d.write('<font color='+tclr+'>')}
 	d.write('<textarea rows='+r+' size='+s+' id='+n+' name='+n+' border='+b+' text='+tclr+' bgcolor='+bgclr+' '+x+'>'+c+'</textarea>');
 	if(u){d.write('</font>')}
 }
-
 function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 	if(s){
 		if(!lc){lc=gTC(th,'t')}
@@ -199,7 +193,6 @@ function as(th,bg,h,w,g,b,lc,rc,lo,ro,s){
 	if(!b){b=1}
 	d.write('<audioscope bgcolor='+bg+' height='+h+' width='+w+' gain='+g+' leftcolor='+tclr+' rightcolor='+bgclr+' leftoffset='+lo+' rightoffset='+ro+' border='+b+'>')
 }
-
 function butt(th,v,n,w,t,x){
 	if(th>0&&th!=4&&th!=7&&th!=10){sh=true}
 	bclr=gTC(th,'b')
@@ -215,7 +208,6 @@ function butt(th,v,n,w,t,x){
 	d.write('></font>')
 	if(sh){d.write('</shadow>')}
 }
-
 function sa(m,i,b1t,b1a,b2t,b2a) {
 	u='client:showalert?message='+escape(m);
 	if(i)u+='&image='+escape(i);
@@ -227,9 +219,7 @@ function sa(m,i,b1t,b1a,b2t,b2a) {
 	if(b2a)u+='&buttonaction2='+escape(b2a);
 	return u;
 }
-
-
 function goHTV(){return go(rom+'HTMLs/HackTV.html')}
 function gsa(m,i,b1t,b1a,b2t,b2a){go(sa(m,i,b1t,b1a,b2t,b2a))}
-function head(th,msg,fs,bgm,lp,nl) {d.write(headr(th,msg,fs,bgm,lp,nl))}
-function vhead(th) {d.write(headr(th,'VFat Hax'))}
+function head(th,msg,fs,bgm,lp,nl){d.write(headr(th,msg,fs,bgm,lp,nl))}
+function vhead(th){d.write(headr(th,'VFat Hax'))}
