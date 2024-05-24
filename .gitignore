@@ -4,3 +4,4 @@ origdbg/
 parts/
 workdir/
 *ida*
+rommy.py
