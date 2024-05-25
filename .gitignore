@@ -6,3 +6,6 @@ origdbg/
 parts/
 workdir/
 *ida*
+lib/
+rommy.py
+quickbuild.bat
