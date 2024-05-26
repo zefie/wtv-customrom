@@ -1,76 +1,27 @@
-<html>
-  <head>
-    <display nooptions noscroll allowoffline noreconnectalert>
-<script src=file://rom/JS/htv-header.js></script>
-<script src=file://rom/JS/NVRAM.js></script>
-<script>	
-	th = pp()
-	bgm = gV(z_nv, 1)
-	function doSubmit(c) {
-		if (c) {
-			sB(z_nv, 1, c)
-		}
-	}
-	function doLoad() {
-		document.r.l.selectedIndex = bgm;
-	}
-	window.onload = doLoad;
-</script>
-</head>
-<script>head(th, 'large', z_bgm[bgm], -1, 'Background Music Settings');</script>
-  <spacer Width=30 Height=6 type=vertical>
-  <table cellspacing=0 cellpadding=0>
-    <tr>
-      <td abswidth=14>
-      <td colspan=3>
-        <table cellspacing=0 cellpadding=0>
-          <tr>
-            <td valign=center absheight=40>
-        </table>
-      <td>
-    <TR>
-      <td>
-      <td width=250 height=230 valign=top align=left>
-        <table cellspacing=0 cellpadding=0>
-          <tr>
-            <td absheight=250 valign=top>
-              <font size=-1> Please select the background music you would like to play on the HackTV Homepage from the drop down on the right. Click done when finished.
-              <p><br>
-              <p><br>
-                <FONT SIZE=-1>Your current Background Music is 
-				<script>d.write(z_bgm[bgm])</script>.
-				<br><br><br>
-				<script>as(th, '', '', 250, 0, 1)</script>
-          <tr>
-        </table>
-      <td width=60>
-      <td width=230 valign=top align=left>
-        <table cellspacing=0 cellpadding=0>
-          <tr>
-            <td absheight=40 valign=top colspan=3>
-              <form name=r>
-                <select name=l width=160 onchange="doSubmit(this[this.selectedIndex].value);" selected>
-                  <script>
-					for (i = 0; i < z_bgm.length; i++) {
-						d.write('<option value='+i+'>'+z_bgm[i]+'</option>')
-					}
-				  </script>
-                </select>
-              </form>
-              <table>
-                <tr>
-                  <td valign=top align=left>			  
-              </table>
-        </table>
-        <spacer height=190 type=vertical>
-		<FORM action=client:gotoadvancedsetup>
-			<script>butt(th, 'Done', 'Done', 160);</script>			
-		</FORM>
-      </td>
-    </tr>
-  </table>
-  </td>
-  </tr>
-  </table>
-</body>
-</html>
+<html><head><display nooptions noscroll allowoffline noreconnectalert>
+<script src=file://rom/h.js></script><script src=file://rom/n.js></script></head><script>th=pp()
+bgm=gV(z_nv,1)
+function doSubmit(c){if(c){sB(z_nv,1,c)}}
+function doLoad(){document.r.l.selectedIndex=bgm}
+head(th,'Background Music Settings','large',z_bgm[bgm],-1)
+window.onload=doLoad</script>
+<spacer Width=30 Height=6 type=vertical>
+<table cellspacing=0 cellpadding=0><tr><td abswidth=14><td colspan=3><spacer height=40 type=vertical><td>
+	<tr><td><td width=250 height=230 valign=top align=left>
+		<table cellspacing=0 cellpadding=0>
+			<tr><td absheight=250 valign=top>
+				<font size=-1> Please select the background music you would like to play on the HackTV Homepage from the drop down on the right. Click done when finished.
+				<p><br><p><br><font size=-1>Your current Background Music is <script>d.write(z_bgm[bgm])</script>.<br><br><br>
+				<script>as(th,'','',250,0,1)</script>
+			<tr>
+		</table>
+	<td width=60><td width=230 valign=top align=left>
+		<table cellspacing=0 cellpadding=0>
+			<tr><td absheight=40 valign=top colspan=3>
+				<form name=r><select name=l width=160 onchange="doSubmit(this[this.selectedIndex].value);" selected>
+					<script>for(i=0;i<z_bgm.length;i++){d.write('<option value='+i+'>'+z_bgm[i]+'</option>')}</script>
+				</select></form>
+		<table><tr><td valign=top align=left></table></table>
+		<spacer height=190 type=vertical>
+		<form action=client:gotoadvancedsetup><script>butt(th,'Done','Done',160);</script></form>
+</td></tr></table>

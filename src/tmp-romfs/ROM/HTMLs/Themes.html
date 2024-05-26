@@ -1,85 +1,21 @@
-<html><head>
-<display nooptions noscroll allowoffline noreconnectalert>
-<script src=file://rom/JS/htv-header.js></script>
-<script src=file://rom/JS/NVRAM.js></script>
-<script>	
-	th=pp()
-	if (th != 1 && th != 2 && th != 3) {
-		th=0;
-	}
-	function doSubmit(c) {
-		if (c) {
-			sB(z_nv, 0, c)
-		}
-	}
-	// light=0, dark=1, purple=2, blue=3
-	function doLoad() {
-		document.r.l.selectedIndex=th;
-	}
-	window.onload=doLoad;
-</script>
-</head>
-<script>head(th,'large','world1',5,'Theme Settings');</script>
-	<spacer Width=30 Height=6 type=vertical>
-	<table cellspacing=0 cellpadding=0>
-		<tr>
-			<td abswidth=14>
-			<td colspan=3>
-				<table cellspacing=0 cellpadding=0>
-					<tr>
-						<td valign=center absheight=40>
-				</table>
-			<td>
-		<TR>
-			<td>
-			<td width=250 height=230 valign=top align=left>
-				<table cellspacing=0 cellpadding=0>
-					<tr>
-						<td absheight=250 valign=top>
-							<font size=-1> Please select the theme you would like to use from the drop down on the right. Click done when finished.
-							<p><br>
-					<table cellspacing=0 cellpadding=4>
-						<tr>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(0))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(0,'bg')+' height=45 width=60>')</script>
-							</table>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(1))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(1,'bg')+' height=45 width=60>')</script>
-							</table>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(2))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(2,'bg')+' height=45 width=60>')</script>
-							</table>
-						<td align=center>
-							<font size=-1><script>d.write(gTN(3))</script><br>
-							<script>d.write('<table border=1><tr><td bgcolor='+gTC(3,'bg')+' height=45 width=60>')</script>
-							</table>
-					</table>
-							<p><br>
-								<FONT SIZE=-1>Your current theme is 
-				<script>d.write(gTN(th));</script>.
-					<tr>
-				</table>
-			<td width=60>
-			<td width=230 valign=top align=left>
-				<table cellspacing=0 cellpadding=0>
-					<tr>
-						<td absheight=40 valign=top colspan=3>
-							<form name=r>
-								<select name=l width=160 onchange="doSubmit(this[this.selectedIndex].value);" selected>
-									<script>for(i=0;i<z_th.length;i++){d.write('<option value='+i+'>'+gTN(i)+'</option>');}</script>
-								</select>
-							</form>
-							<table>
-								<tr>
-									<td valign=top align=left>
-							</table>
-				</table>
-				<spacer height=190 type=vertical>
-		<FORM action=client:gotoadvancedsetup>
-			<script>butt(th, 'Done', 'Done', 160);</script>			
-		</FORM>
+<html><head><display nooptions noscroll allowoffline noreconnectalert>
+<script src=file://rom/h.js></script><script src=file://rom/n.js></script>
+<script>th=pp()
+function sBG(c){sB(z_nv,0,c)}
+</script></head><script>head(th,'Theme Settings','large','world1',5);</script>
+<spacer width=30 height=6 type=vertical>
+<table cellspacing=0 cellpadding=0><tr><td abswidth=14><td colspan=3><spacer height=20 type=vertical><td>
+	<tr><td><td width=350 height=230 valign=top align=left>
+	<table cellspacing=0 cellpadding=0><tr><td height=250 valign=top>
+		<font size=-1> Please select the theme you would like to use from the list below. Click done when finished.<br>
+		<table cellspacing=0 cellpadding=4><tr><font size=-2><script>
+		for(i=0;i<z_th.length;i++){
+			if(i==th){s=' selected'}
+			else{s=''}
+			if(i%6==0){d.write('<tr>')}
+			d.write('<td align=center><font size=-1>'+gTN(i)+'</font><br>')
+			d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC(i,'bg')+' height=45 width=60></table>')
+		}</script></table>
 	</table>
-</body></html>
+	<tr><td width=330 valign=top align=right colspan=2><br><form action=javascript:goHTV()><script>butt(th,'Done','Done',160);</script></form>
+</table></body></html>
