@@ -25,6 +25,8 @@ z_bgm=new Array()
 	z_bgm[9]='seqJ'
 	z_bgm[10]='snowy1'
 	z_bgm[11]='snowy2'
+	z_bgm[12]='world1'
+	z_bgm[13]='world2'
 
 z_def=new Array()
 	z_def[0]=0//theme
