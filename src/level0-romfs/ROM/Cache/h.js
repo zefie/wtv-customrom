@@ -16,7 +16,7 @@ th=0
 function clientvers(){d.write('<form name=z2><input type=hidden name=v value=&wtv-appvers;></form>');return parseInt(d.z2.v.value)}
 function go(u){location.href=u;d.open('text/url');d.write(u);d.close();}
 function dial(){go('client:redialphone');go('client:logoshown')}
-function nbsp(c){nout='';for(i=0;i<c;i++){nout += ' &nbsp;'}return nout}
+function nbsp(c){nout='';for(i=0;i<c;i++){nout+=' &nbsp;'}return nout}
 function gTC(type,itm){
 	//light
 	bgclr='4c5a67'
@@ -28,7 +28,7 @@ function gTC(type,itm){
 	tclr='cbcbcb'
 	vclr='dddddd'
 	lclr='dddddd'
-	if(!itm){itm=th}	
+	if(!itm){itm=th}
 	switch(itm){
 		case 1://dark
 			bgclr='191919'
@@ -45,7 +45,7 @@ function gTC(type,itm){
 			bgclr='cccccc'
 			tclr='000000'
 			lclr='2a2aae'
-			vclr='962ab5'			
+			vclr='962ab5'
 			bbif=''
 		break
 		case 4://tan
@@ -124,8 +124,7 @@ function headr(msg,fs,bgm,lp,nl){
 		break
 		case 'large':fsn=4
 		break
-		default:
-			fs='medium'
+		default:fs='medium'
 			fsn=5
 		break
 	}
@@ -186,7 +185,7 @@ function tab(msg){
 }
 function ta(r,s,n,b,c,x,u){
 	bgclr=gTC('bg')
-	tclr=gTC('t')	
+	tclr=gTC('t')
 	if(u){x+=' usestyle';d.write('<font color='+tclr+'>')}
 	d.write('<textarea rows='+r+' size='+s+' id='+n+' name='+n+' border='+b+' text='+tclr+' bgcolor='+bgclr+' '+x+'>'+c+'</textarea>');
 	if(u){d.write('</font>')}
