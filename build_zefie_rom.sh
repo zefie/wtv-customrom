@@ -31,6 +31,7 @@ sed -i "s|!TEMPLATE_ROM!|${ZROMTYPE}|" "${ZINFOJS}"
 
 if [ "${1}" == "viewer" ] || [ "${1}" == "vwr" ]; then
 	# Build Viewer Test
+	cp -r "${ZWORK}/level0-autodisk/Browser/DiskFlash/"* "${ZWORK}/level0-romfs/ROM/"
 	rommy "${ZWORK}" /mnt/c/bin/webtv/WebTVIntel--2.5-HE/Flash69.vwr
 else
 	# Build ROM
