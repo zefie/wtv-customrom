@@ -1,7 +1,7 @@
 function dF2(){dF(5);}//m minus number of non farts
 
 function dF(m){
-	if(!m){m=7}// 2 higher than last number
+	if(!m){m=7}//2 higher than last number
 	r=Math.floor(Math.random()*m)
 	if(r==0){u="file://ROM/Cache/Audio/fart1.mp3"}
 	else if(r==1){u="file://ROM/Cache/Audio/fart2.mp3"}
@@ -14,5 +14,5 @@ function dF(m){
 	}else{
 		u="file://ROM/Cache/Audio/bum.mp3"
 		setTimeout(dF2, 1500)
-	}location.href=u
+	}location=u
 }

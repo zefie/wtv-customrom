@@ -3,7 +3,7 @@ d=document
 rom='file://rom/'
 cch=rom+'Cache/'
 thm=rom+'Images/Themes/'
-function go(u){d.open('text/url');d.write(u);d.close();location.href=u}
+function go(u){d.open('text/url');d.write(u);d.close();location=u}
 function dial(){go('client:redialphone');go('client:logoshown')}
 function nbsp(c){nout='';for(i=0;i<c;i++){nout+=' &nbsp;'}return nout}
 function gTC(th,type){
