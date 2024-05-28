@@ -3,9 +3,9 @@ d=document
 rom='file://rom/'
 cch=rom+'Cache/'
 thm=rom+'Images/Themes/'
-function go(u){d.open('text/url');d.write(u);d.close();location.href=u}
+function go(u){d.open('text/url');d.write(u);d.close();location=u}
 function dial(){go('client:redialphone');go('client:logoshown')}
-function nbsp(c){nout='';for(i=0;i<c;i++){nout += ' &nbsp;'}return nout}
+function nbsp(c){nout='';for(i=0;i<c;i++){nout+=' &nbsp;'}return nout}
 function gTC(th,type){
 	//light
 	bgclr='4c5a67'
@@ -109,8 +109,7 @@ function headr(th,msg,fs,bgm,lp,nl){
 		break
 		case 'large':fsn=4
 		break
-		default:
-			fs='medium'
+		default:fs='medium'
 			fsn=5
 		break
 	}
