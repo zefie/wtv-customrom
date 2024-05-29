@@ -223,9 +223,7 @@ function sa(m,i,b1t,b1a,b2t,b2a) {
 }
 
 function redir(){
-	// todo: find real cutoff
-	if(clientvers()<2000){r=document.referrer}
-	else{r=history.previous}
+	r=history.previous
 	if(r==htm+'Themes.html'||r==htm+'PhoneCallWaitThresh.html'||r==htm+'BGM.html'||r==htm+'NVRAM.html'){go(r)}
 }
 
