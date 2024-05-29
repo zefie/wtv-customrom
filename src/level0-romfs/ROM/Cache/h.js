@@ -223,9 +223,6 @@ function sa(m,i,b1t,b1a,b2t,b2a) {
 	if(b2a)u+='&buttonaction2='+escape(b2a);
 	return u;
 }
-<<<<<<< HEAD:src/level0-romfs/ROM/Cache/h.js
-function goHTV(){return go(rom+'HTMLs/HackTV.html')}
-=======
 
 function redir(){
 	r=history.previous
@@ -233,7 +230,6 @@ function redir(){
 }
 
 function goHTV(){return go(htm+'HackTV.html')}
->>>>>>> d4b4543 (move themes to rom/cache in prep for service themes):src/tmp-romfs/ROM/Cache/h.js
 function gsa(m,i,b1t,b1a,b2t,b2a){go(sa(m,i,b1t,b1a,b2t,b2a))}
 function head(th,msg,fs,bgm,lp,nl){d.write(headr(th,msg,fs,bgm,lp,nl))}
 function dhh(th, tit) {if(tit==1){head(th,'Partition Map','','','',true)}}
