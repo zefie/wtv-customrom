@@ -1,8 +1,11 @@
 String.prototype.replace=function(o,n){return this.split(o).join(n)}
 d=document
 rom='file://rom/'
+htm=rom+'HTMLs/'
 cch=rom+'Cache/'
 thm=rom+'Images/Themes/'
+
+function clientvers(){d.write('<form name=z2><input type=hidden name=v value=&wtv-appvers;></form>');return parseInt(d.z2.v.value)}
 function go(u){d.open('text/url');d.write(u);d.close();location=u}
 function dial(){go('client:redialphone');go('client:logoshown')}
 function nbsp(c){nout='';for(i=0;i<c;i++){nout+=' &nbsp;'}return nout}
@@ -218,6 +221,14 @@ function sa(m,i,b1t,b1a,b2t,b2a) {
 	if(b2a)u+='&buttonaction2='+escape(b2a);
 	return u;
 }
+
+function redir(){
+	// todo: find real cutoff
+	if(clientvers()<2000){r=document.referrer}
+	else{r=history.previous}
+	if(r==htm+'Themes.html'||r==htm+'PhoneCallWaitThresh.html'||r==htm+'BGM.html'||r==htm+'NVRAM.html'){go(r)}
+}
+
 function goHTV(){return go(rom+'HTMLs/HackTV.html')}
 function gsa(m,i,b1t,b1a,b2t,b2a){go(sa(m,i,b1t,b1a,b2t,b2a))}
 function head(th,msg,fs,bgm,lp,nl){d.write(headr(th,msg,fs,bgm,lp,nl))}
