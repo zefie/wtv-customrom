@@ -4,24 +4,22 @@ head(th,'HTML Sandbox v2.0')
 </script><spacer width=1 height=5 type=block><script>function hV(){
 	switch(d.a.sel[d.a.sel.selectedIndex].value){
 		case 'html':
-			d.open('text/html');
-			d.write(d.a.b.value);
-			d.close();
-		break;
+			d.open('text/html')
+			d.write(d.a.b.value)
+			d.close()
+		break
 		case 'js':
-			d.open('text/html');
-			d.write('<scr'+'ipt>'+d.a.b.value+'</scr'+'ipt>');
-			d.close();
+			d.open('text/html')
+			d.write('<scr'+'ipt>'+d.a.b.value+'</scr'+'ipt>')
+			d.close()
 		break;
-		case 'acc':
-			window.location=d.a.b.value;
-		break;
-		case 'em':
-			window.open(d.a.b.value);
-		break;
+		case 'acc':window.location=d.a.b.value;
+		break
+		case 'em':window.open(d.a.b.value);
+		break
 		case 'src':
-			d.write('<body bgcolor=191919 vlink=dddddd><embed type=text/plain src='+a.b.value+'><a selected href='+a.b.value+'>Show It!</a>');
-		break;
+			d.write('<body bgcolor=191919 vlink=dddddd><embed type=text/plain src='+a.b.value+'><a selected href='+a.b.value+'>Show It!</a>')
+		break
 		default:document.reload()
 	}
 }</script>
@@ -41,7 +39,7 @@ head(th,'HTML Sandbox v2.0')
 <script>if(parseInt(d.a.r.value)>7200){
 	d.write('<option value="em">Embed URL</option>')
 	d.write('<option value="src">Source URL</option>')
-}</script>				  
+}</script>
 <option selected value="">Select Option</option>
 </select><script>
 butt(th,'Do it!')
