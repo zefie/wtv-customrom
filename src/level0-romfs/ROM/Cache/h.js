@@ -222,4 +222,4 @@ function goHTV(){return go(rom+'HTMLs/HackTV.html')}
 function gsa(m,i,b1t,b1a,b2t,b2a){go(sa(m,i,b1t,b1a,b2t,b2a))}
 function head(th,msg,fs,bgm,lp,nl){d.write(headr(th,msg,fs,bgm,lp,nl))}
 function dhh(th, tit) {if(tit==1){head(th,'Partition Map','','','',true)}}
-function vhead(th){d.write(headr(th,'VFat Hax'))}
+function vh(){th=pp();d.write(headr(th,'VFat Hax'))}
