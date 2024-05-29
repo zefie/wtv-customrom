@@ -2,8 +2,10 @@ String.prototype.replace=function(o,n){return this.split(o).join(n)}
 d=document
 rom='file://rom/'
 htm=rom+'HTMLs/'
-cch=rom+'Cache/'
-thm=rom+'Images/Themes/'
+cch='/ROMCache/'
+thm=cch+'Themes/'
+thi=thm+'Images/'
+thb=thm+'Borders/'
 
 function clientvers(){d.write('<form name=z2><input type=hidden name=v value=&wtv-appvers;></form>');return parseInt(d.z2.v.value)}
 function go(u){d.open('text/url');d.write(u);d.close();location=u}
@@ -24,18 +26,18 @@ function gTC(th,type){
 		case 1://dark
 			bgclr='191919'
 			tclr='42bd52'
-			bbif='ButtonBorder2'
+			bbif=rom+'ButtonBorder2'
 		break
 		case 2://red
 			bgclr='6e0005'
 			tclr='f0f0f0'
 			bclr='f0f0f0'
-			bbif='Themes/ButtonBorder2'
+			bbif=thb+'ButtonBorder2'
 		break
 		case 3://orange
 			bgclr='c06000'
 			tclr='f0f0f0'
-			bbif='Themes/ButtonBorder3'
+			bbif=thb+'ButtonBorder3'
 		break
 		case 4://tan
 			bgclr='ece9d8'
@@ -45,12 +47,12 @@ function gTC(th,type){
 			vclr='002244'
 			bclr='000000'
 			shimg='ShadowLogo4.gif'
-			bbif='Themes/ButtonBorder4'
+			bbif=thb+'ButtonBorder4'
 		break
 		case 5://green
 			bgclr='004422'
 			tclr='f0f0f0'
-			bbif='Themes/ButtonBorder5'
+			bbif=thb+'ButtonBorder5'
 		break
 		case 6://blue
 			bgclr='002244'
@@ -59,25 +61,25 @@ function gTC(th,type){
 			vclr='0080ff'
 			shimg=''
 			gclr='004488'
-			bbif='Themes/ButtonBorder6'
+			bbif=thb+'ButtonBorder6'
 		break
 		case 7://teal
 			bgclr='008080'
 			bgimg='9xbg.gif'
 			tclr='f0f0f0'
 			bclr='080808'
-			bbif='Themes/ButtonBorder7'
+			bbif=thb+'ButtonBorder7'
 		break
 		case 8://purple
 			bgclr='4a2766'
 			lclr='aaaaaa'
 			shimg='ShadowLogo8.gif'
-			bbif='Themes/ButtonBorder8'
+			bbif=thb+'ButtonBorder8'
 		break
 		case 9://brown
 			bgclr='442200'
 			tclr='e7ce4a'
-			bbif='Themes/ButtonBorder9'
+			bbif=thb+'ButtonBorder9'
 		break
 		case 10://white
 			bgclr='c9c9c9'
@@ -86,11 +88,11 @@ function gTC(th,type){
 			lclr='002244'
 			vclr='002244'
 			bclr='000000'
-			bbif='Themes/ButtonBorder10'
+			bbif=thb+'ButtonBorder10'
 		case 11://halloween
 			bgclr='080808'
 			tclr='c06000'
-			bbif='Themes/ButtonBorder11'
+			bbif=thb+'ButtonBorder11'
 		break
 	}switch(type){
 		case 'bg':return bgclr
@@ -124,7 +126,7 @@ function headr(th,msg,fs,bgm,lp,nl){
 	vclr=gTC(th,'v')
 	lclr=gTC(th,'l')
 	if(msg){out+='<title>'+msg+'</title>'}
-	out+='<body background='+thm+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
+	out+='<body background='+thi+bgimg+' text='+tclr+' bgcolor='+bgclr+' vlink='+vclr+' link='+lclr+' hspace=0 vspace=0 fontsize='+fs+'>'
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		if(bgm.indexOf('/')<0){bgm = cch+'Music/' + bgm}
@@ -138,7 +140,7 @@ function headr(th,msg,fs,bgm,lp,nl){
 	if(!msg){msg=''}
 	out+='<table cellspacing=0 cellpadding=0 abswidth=560 absheight=69'
 	if(gclr){out+=' bgcolor='+gclr+' gradcolor='+bgclr}
-	if(!shimg && bgimg=='Pattern.gif'){out+=' background='+thm+bgimg}
+	if(!shimg && bgimg=='Pattern.gif'){out+=' background='+thi+bgimg}
 	out+='><tr><td>'
 	out+=tab();
 	out+='<spacer type=block width=11 height=11><br><spacer type=block width=10 height=1>'
@@ -158,13 +160,13 @@ function tab(msg){
 		msg=msg.replace(' ','&nbsp;')
 		if(!shimg && bgimg=='Pattern.gif'){msg += nbsp(5)}
 		tout='<td width=100% height=69 valign=top'
-		if(shimg){tout+=' background='+thm+shimg+' novtilebg'}
+		if(shimg){tout+=' background='+thi+shimg+' novtilebg'}
 		tout+='><td abswidth=460 height=69 valign=top'
-		if(shimg){tout+=' background='+thm+shimg+' novtilebg'}
+		if(shimg){tout+=' background='+thi+shimg+' novtilebg'}
 		tout+=' align=right><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>'
 	}else{
 		tout='<td width=100% height=69 valign=top align=left'
-		if(shimg){tout+=' background='+thm+shimg}
+		if(shimg){tout+=' background='+thi+shimg}
 		if(gclr){tout+=' bgcolor='+gclr+' gradcolor='+bgclr}
 		tout+=' novtilebg>'
 	}
@@ -206,7 +208,7 @@ function butt(th,v,n,w,t,x){
 	if(n)d.write(' name='+n)
 	if(w)d.write(' width='+w)
 	if(x)d.write(' '+x)
-	if(bbif){d.write(' usestyle borderimage='+rom+'Borders/'+bbif+'.bif')}
+	if(bbif){d.write(' usestyle borderimage='+bbif+'.bif')}
 	d.write('></font>')
 	if(sh){d.write('</shadow>')}
 }
@@ -224,10 +226,10 @@ function sa(m,i,b1t,b1a,b2t,b2a) {
 
 function redir(){
 	r=history.previous
-	if(r==htm+'Themes.html'||r==htm+'PhoneCallWaitThresh.html'||r==htm+'BGM.html'||r==htm+'NVRAM.html'){go(r)}
+	if(r==htm+'Themes.html'||r==htm+'PhoneCallWaitThresh.html'||r==htm+'BGM.html'||r==htm+'NVRAM.html'||r.indexOf('wtv-')==0){go(r)}
 }
 
-function goHTV(){return go(rom+'HTMLs/HackTV.html')}
+function goHTV(){return go(htm+'HackTV.html')}
 function gsa(m,i,b1t,b1a,b2t,b2a){go(sa(m,i,b1t,b1a,b2t,b2a))}
 function head(th,msg,fs,bgm,lp,nl){d.write(headr(th,msg,fs,bgm,lp,nl))}
 function vhead(th){d.write(headr(th,'VFat Hax'))}

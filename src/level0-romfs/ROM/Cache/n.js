@@ -20,17 +20,16 @@ z_bgm=new Array()
 	z_bgm[4]='Daybreak'
 	z_bgm[5]='ghosttown'
 	z_bgm[6]='karTV'
-	z_bgm[7]='loop1'
-	z_bgm[8]='loop2'
-	z_bgm[9]='seqJ'
-	z_bgm[10]='snowy1'
-	z_bgm[11]='snowy2'
-	z_bgm[12]='world1'
-	z_bgm[13]='world2'
+	z_bgm[7]='loop2'
+	z_bgm[8]='seqJ'
+	z_bgm[9]='snowy1'
+	z_bgm[10]='snowy2'
+	z_bgm[11]='world1'
+	z_bgm[12]='world2'
 
 z_def=new Array()
 	z_def[0]=0//theme
-	z_def[1]=8//bgm
+	z_def[1]=7//bgm
 chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@-"//64 possible different values
 function gTN(th){return z_th[parseInt(th)]}
 function gB(nv,off){
