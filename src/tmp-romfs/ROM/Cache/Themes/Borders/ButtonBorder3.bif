@@ -1,4 +1,4 @@
-IMAGE file://ROM/Images/Themes/ButtonBorder5.gif
+IMAGE /ROMCache/Themes/Images/ButtonBorder3.gif
 INNERBOUNDS  22, 14, 35, 22
 PADBOUNDS  14, 9, 16, 6
 DRAWCENTER
