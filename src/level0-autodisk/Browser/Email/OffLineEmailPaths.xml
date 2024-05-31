@@ -1,0 +1,12 @@
+<APPLICATION Name="Offline Email"
+	InBoxDir="/Email/InBox/" 
+	OutBoxDir="/Email/email.data/OutBox/" 
+	EmailDataPath="/Email/email.data/"
+	AddressBookFile="/Browser/AddressBook."
+	UserInfoFile="/Email/email.data/OffLineEMailUserInfo.xml"
+	ConfigFile="/Email/email.data/OffLineEMailConfig.xml"
+	LastWriteMsg="/Email/email.data/LastWriteMsg."
+	BlankWriteMsg="/Email/email.data/BlankEmail.xml"
+	ServiceUserFile="/Email/email.data/Users.xml"
+	SettingsFile="/Email/email.data/Settings.xml"
+/>

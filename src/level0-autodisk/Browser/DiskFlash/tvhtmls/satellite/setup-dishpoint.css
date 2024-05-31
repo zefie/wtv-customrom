@@ -1,0 +1,164 @@
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 63;
+	width: 161;
+	height: 26;
+}
+
+#helpText1 {
+	position: absolute;
+	top: 151;
+	left: 63;
+	width: 208;
+	height: 43;
+}
+
+#helpText2 {
+	position: absolute;
+	top: 214;
+	left: 63;
+	width: 223;
+	height: 84;
+}
+
+#zipCodeDiv {
+	position: absolute;
+	top: 214;
+	left: 320;
+	width: 159;
+	height: 40;
+}
+
+#satellite {
+	position: absolute;
+	top: 151;
+	left: 320;
+	width: 163;
+	height: 18;
+}
+
+#transponder {
+	position: absolute;
+	top: 177;
+	left: 320;
+	width: 161;
+	height: 18;
+}
+
+#satButton {
+	position: absolute;
+	top: 146;
+	left: 481;
+	width: 59;
+	height: 28;
+}
+
+#transButton {
+	position: absolute;
+	top: 174;
+	left: 481;
+	width: 59;
+	height: 28;
+}
+
+#signalStrength {
+	position: absolute;
+	top: 302;
+	left: 309;
+	width: 210;
+	height: 17;
+}
+
+#border {
+	position: absolute;
+	top: 299;
+	left: 307;
+	width: 214;
+	height: 46;
+}
+
+#signalPercent {
+	position: absolute;
+	top: 327;
+	left: 308;
+	width: 221;
+	height: 32;
+}
+
+#signalStatus {
+	position: absolute;
+	top: 260;
+	left: 308;
+}
+
+#elevate {
+	position: absolute;
+	top: 301;
+	left: 63;
+	width: 216;
+	height: 18;
+}
+
+#rotate {
+	position: absolute;
+	top: 327;
+	left: 63;
+	width: 180;
+	height: 18;
+}
+
+#elevateDimmed {
+	position: absolute;
+	top: 301;
+	left: 63;
+	width: 216;
+	height: 18;
+}
+
+#rotateDimmed {
+	position: absolute;
+	top: 327;
+	left: 63;
+	width: 180;
+	height: 18;
+}
+
+#moreInfoButton {
+	position: absolute;
+	top: 372;
+	left: 40;
+	width: 130;
+	height: 35;
+}
+
+#switchBoxButton {
+	position: absolute;
+	top: 372;
+	left: 229;
+	width: 170;
+	height: 35;
+}
+
+#doneButton {
+	position: absolute;
+	top: 372;
+	left: 412;
+	width: 130;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}

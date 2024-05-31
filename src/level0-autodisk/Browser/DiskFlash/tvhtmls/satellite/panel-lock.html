@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>Block All Ratings</TITLE>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</HEAD>
+<BODY>
+
+<script language="JavaScript">
+	function setState()
+	{
+		document.panelLockingForm.panelLocked.checked = TVAccess.isPanelLocked();
+	}
+</script>
+
+<link rel="StyleSheet" type="text/css" href="locking-styles.css">
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0
+ onLoad="setState()" fontsize=large noscroll hideoptions>
+
+<form name=panelLockingForm action="client:CAM">
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=contbutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input type=submit value=Done name=Done
+				usestyle width=130 onclick="history.back();" selected
+				borderimage="file://ROM/tvimages/TVButtonBorder.bif">
+		</shadow></font>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Receiver buttons</font>
+	</div>
+
+	<div id=info>
+		<font size=-1 color=989898>
+			To disable the buttons on 
+			the front panel of your
+			satellite box, mark<br>
+			<b>Disable buttons</b>.<br>
+			Your ratings limits will 
+			not be affected by this.
+		</font>
+	</div>
+
+	<div id=checkbox>
+		<input name=panelLocked type=checkbox bgcolor=#444444 checked=off offimage="file://ROM/tvimages/satellite/BlockBox.gif" onimage="file://ROM/tvimages/satellite/BlockedBox.gif">
+		&nbsp; <font size=-1 color=#6cb18a>Disable buttons
+	</div>
+<input name=panelLockingSubmitted type=hidden value=yes>
+</form>
+</body>
+</html>
+
+

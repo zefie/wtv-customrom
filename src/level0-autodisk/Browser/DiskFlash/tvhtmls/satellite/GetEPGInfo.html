@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>Getting TV Info</title>
+<display notvaudio noscroll lockpage>
+
+<script language="JavaScript">
+
+	var waitTime;
+	var fetching;
+	var unlockedSignalTime;
+
+	function fetchEPG()
+	{
+		System.refreshScreen();
+
+//		window.message("##### PETER: fetchEPG #####\n\n");
+		document.fetchProgress.setPercentDone(TVAccess.getPercentComplete());
+		
+		again = true;
+
+		if (!TVAccess.hasServiceList()) {
+			if (waitTime++ > 10) {
+				showHome();
+			}
+		} else if (fetching) {
+			waitTime++;
+			if (!TVAccess.isFetchingEPG()) {
+				showHome();
+				again = false;
+			}    
+			if (!Satellite.isSignalLocked) {
+				window.message("signal NOT locked");
+				unlockedSignalTime++;
+				// If the signal stays unlocked for longer than X seconds in a row then abort
+				if (unlockedSignalTime > 60) {
+					window.message("Aborting fetchEPG");
+					TVAccess.cancelAllPending();
+					if (history.length <= 1) {
+						showHome();
+					} else {
+						document.lockPage(false);
+						history.go(-1);
+					}
+					again = false;
+				}
+			} else {
+				unlockedSignalTime = 0;
+			}
+		} else {
+			TVAccess.fetchCAInfo();
+			TVAccess.fetchEPGData();
+			fetching = true;
+		}
+
+		if (again) {
+			setTimeout(fetchEPG, 1000);
+		}
+	}
+
+	function showHome()
+	{
+		document.lockPage(false);
+		document.location = "client:showtvhome";
+	}
+
+	function onLoadPage()
+	{
+		waitTime = 0;
+		unlockedSignalTime = 0;
+		document.fetchProgress.setPercentDone(5);
+		setTimeout(fetchEPG, 1000);
+	}
+
+</script>
+
+<style type="text/css">
+
+#banner {
+	position: absolute;
+	top: 0;
+	left: 1;
+	width: 560;
+	height: 56;
+}
+
+#webtv {
+	position: absolute;
+	top: 6;
+	left: 7;
+	width: 104;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 62;
+	width: 286;
+	height: 34;
+}
+
+#explain {
+	position: absolute;
+	top: 155;
+	left: 60;
+	width: 315;
+	height: 129;
+}
+
+#progress {
+	position: absolute;
+	top: 285;
+	left: 60;
+	width: 315;
+	height: 129;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+</head>
+<body bgcolor=#1c2438 background="file://rom/tvimages/StripePatternTVListings.gif"
+		text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large onLoad="onLoadPage()">
+
+	<form>
+
+	<div id=banner>
+		<table cellspacing=0 cellpadding=0>
+		<tr><td width=104 height=50 background="file://ROM/tvimages/TVListingsShadowLogo.gif">
+			<td valign=top>
+				<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
+				<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+		</table>
+	</div>
+
+	<div id=webtv>
+    	<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69><shadow>Getting TV Information</shadow></font>
+	</div>
+
+	<div id=explain>
+		<font size=-1 color=#989898>
+		Your satellite receiver is getting TV listings information from the satellite.
+		<p>This may take up to 3 minutes and then you will be able to watch TV.
+		</font>
+	</div>
+
+	<div id=progress>
+		<font size=-1 color=#cbcbcb><shadow>
+		<progressindicator name=fetchProgress message="Getting information" textbelow height=40 width=250>
+		</shadow></font>
+	</div>
+
+</form>
+</body>
+</html>

@@ -1,14 +1,21 @@
 <html>
 <head><title>TV Search</title></head>
 <display nooptions>
-
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
 <body bgcolor=#1c2438 background="file://ROM/tvimages/StripePatternTVListings.gif" text=989898 link=6cb18a vlink=6cb18a hspace=0 vspace=0 fontsize=large>
 
 <table cellspacing=0 cellpadding=0 cellborder=0>
 	<tr><td background="file://ROM/tvimages/TVListingsShadowLogo.gif" width=104 height=80 valign=top align=left>
 			<spacer type=block width=11 height=11><br>
 			<spacer type=block width=10 height=1>
-	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
 	    <td width=456 height=80 valign=top align=center>
 			<img src="file://ROM/tvimages/TVListingsBanner.gif" width=456 height=50><br>
 			<img src="file://ROM/tvimages/Shadow_Horizontal.gif" width=456 height=6>
@@ -29,7 +36,7 @@
 							Type a word, phrase, or program title
 							<spacer type=vertical height=4><br>
 						</font>
-						<spacer type=block height=49 width=42>
+						
 						<font color=black>
 							<input type=text name="title" width=292 maxlength=255
 								bgcolor=#444444 text=#ffdd33 cursor=#cc9933 selected>
@@ -47,7 +54,7 @@
 						<br><spacer type=vertical height=18>
 				<tr><td valign=top>
 						<table cellspacing=0 cellpadding=0>
-							<tr><td abswidth=43><td>
+							<tr>
 								<table cellspacing=0 cellpadding=0>
 									<tr><td abswidth=139 absheight=41 valign=top>
 											<a href="client:TVSearch?action=showSubTypes&type=movies">
@@ -57,9 +64,9 @@
 											<a href="client:TVSearch?action=showSubTypes&type=sports">
 												<font size=+2 color=cccccc>Sports</font>
 											</a>
-										<td abswidth=148 valign=top>
-											<a href="client:TVSearch?action=showSubTypes&type=instructional">
-												<font size=+2 color=cccccc>Instructional</font>
+										<td abswidth=160 valign=top>
+											<a href="client:TVSearch?action=showSubTypes&type=interactive">
+												<font size=+2 color=cccccc>InteractiveTV</font>
 											</a>
 									<tr><td absheight=41 valign=top>
 											<a href="client:TVSearch?action=showSubTypes&type=series">

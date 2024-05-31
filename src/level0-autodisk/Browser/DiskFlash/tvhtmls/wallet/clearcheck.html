@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Check if &wtv-tvwallet; should be cleared</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+<script language="javascript" src="../wallet.js">
+</script>
+</head>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large>
+<form name="clearcheck" action="client:goback">
+<div id="Banner" style="position:absolute; top:0px; left:0px;">
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+<div id="Header" style="position:absolute; top:105px; left:60px;">
+  <font color=ffcf69 size=+2><shadow>Are you sure?</shadow></font>
+</div>
+<div id="Body" style="position:absolute; top:140px; left:60px; width:380;">
+  <font color=999999>Are you sure you want to permanently clear your &wtv-tvwallet; info stored on your WebtTV? To clear the info, choose <b>Clear Wallet</b>, otherwise choose <b>Don't Clear</b> to go back to reviewing your &wtv-tvwallet; info.</font>
+</div>
+<div id="Buttons" style="position:absolute; top:375px; left:175px;">
+<table border=0 cellpadding=0 cellspacing=0><tr>
+<td><font size=-1 color=#ffcf69><input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" Value="Clear Wallet" usestyle width=170 onClick="top.myWallet.clear(); top.UpdateGlobalFields(); top.location='client:ClearBackTVSettings';"></font></td>
+<td width=20></td>
+<td><font size=-1 color=#ffcf69><input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" Value="Don't Clear" usestyle width=170 selected></font></td>
+</tr></table>
+</div>
+</form>
+</body>
+</html>

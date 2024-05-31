@@ -5,14 +5,21 @@ Cable Box
 </TITLE>
 <DISPLAY noscroll nologo nooptions noreconnectalert>
 </HEAD>
-
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
 <body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
 
 <table cellspacing=0 cellpadding=0 cellborder=0>
 	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
 			<spacer type=block WIDTH=11 HEIGHT=11><br>
 			<spacer type=block WIDTH=10 HEIGHT=1>
-	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
 	    <td width=456 height=80 valign=top align=center>
 			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
 			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
@@ -37,10 +44,10 @@ Cable Box
 			<font size=-1 color=#989898>
 			If your phone line has call<br>waiting and you want<br>to receive calls, choose<br>
 			<b>Accept calls</b> and then<br>choose <b>Adjust Sensitivity</b>.
-			<p>If your line has call waiting<br>but you don't want WebTV<br>
-			to be interrupted, choose<br><b>Block calls</b>.
+			<br><br>If your line has call waiting<br>but you don't want to <br>
+			interrupt your service, choose<br><b>Block calls</b>.
 			</font>
-		<td width=20> 
+		<td width=20>
 		<td width=250 valign=top align=left>
 			<table cellspacing=0 cellpadding=0>
 			<tr><td>
@@ -56,9 +63,7 @@ Cable Box
 				<td width=5>
 				<td>
 					<font size=-1 color=#6cb18a>
-					<spacer type=block width=200 height=3><br>
 					<b>Accept calls</b><br>
-					<spacer type=block width=100 height=5><br>
 					<font size=-2>Disconnect if a call comes in.</font>
 					</font>
 			<tr><td height=15>
@@ -67,15 +72,11 @@ Cable Box
 				<td width=5>
 				<td>
 					<font size=-1 color=#6cb18a>
-					<spacer type=block width=200 height=3><br>
 					<b>Block calls</b><br>
-					<spacer type=block width=100 height=5><br>
-					<font size=-2>Shut off call waiting when<br>connected to WebTV, using<br>
+					<font size=-2>Shut off call waiting when<br>connected to MSN TV, using<br>
 					the prefix below:<br></font>
-					<spacer type=block width=200 height=5><br>
 					<font size=-1>Prefix:&nbsp;</font><input type=text name=CallWaitingPrefix maxlength=31 bgcolor=#444444 text=#ffdd33 size=4
 					cursor=#cc9933 value="&wstr;"><br>
-					<spacer type=block width=200 height=5><br>
 					<font size=-1><i>example:</i>
 					<tt>*70,</tt></font>
 					</font>

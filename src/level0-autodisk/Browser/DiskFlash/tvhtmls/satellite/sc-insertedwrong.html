@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>CA Removed</title>
+
+<display nologo nooptions noreconnectalert lockpage>
+
+<style type="text/css">
+
+#banner {
+	position: absolute;
+	top: 0;
+	left: 1;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 105;
+	left: 59;
+	width: 282;
+	height: 34;
+}
+
+#explain {
+	position: absolute;
+	top: 146;
+	left: 61;
+	width: 270;
+	height: 122;
+}
+
+#continuebutton {
+	position: absolute;
+	top: 367;
+	left: 409;
+	width: 130;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+
+</style>
+</head>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" 
+ text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<form>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Check smart card</font>
+	</div>
+
+	<div id=explain>
+		<font size=-1 color=#989898>
+		Your smart card is not correctly inserted into the back of
+		your &boxname; receiver.
+		<p>Check to be sure it is not inserted upside down or backwards.
+		When you reinsert the card, your &boxname; receiver will power off.
+		</font>
+	</div>
+
+	<div id=continuebutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input selected type=submit value="Power off" name=button usestyle width=130 borderimage=file://ROM/tvimages/TVButtonBorder.bif
+			 action=client:PowerOff>
+		</shadow></font>
+	</div>
+
+</form>
+
+</body>
+</html>

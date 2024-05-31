@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>
+Switchbox Result
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio skipback>
+
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 63;
+	width: 415;
+	height: 33;
+}
+
+#helpText {
+	position: absolute;
+	top: 144;
+	left: 63;
+	width: 317;
+	height: 190;
+}
+
+#summaryButton {
+	position: absolute;
+	top: 372;
+	left: 250;
+	width: 140;
+	height: 35;
+}
+
+#doneButton {
+	position: absolute;
+	top: 372;
+	left: 408;
+	width: 130;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+
+<script language="JavaScript">
+	function onLoadPage()
+	{
+		if (Satellite.isShowingIntroPages)
+			document.lockPage(true);			
+	}
+
+	function gotoSummary()
+	{
+		document.location = "file://ROM/tvhtmls/satellite/switchbox-summary.html?checkAgain=true";
+	}
+</script>
+
+</head>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=989898 link=#4489a8
+ hspace=0 vspace=0 fontsize=large noscroll hideoptions onLoad="onLoadPage();">
+
+<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block width=11 height=11><br>
+				<spacer type=block width=10 height=1>
+				<script language=JavaScript>
+					var image = "<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>";
+
+					if (!Satellite.isShowingIntroPages)
+						image = "<a href=client:showtvhome>" + image + "</a>";
+
+					document.write(image);
+				</script>	    	
+			 <td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69>Multi-dish setup</font>
+</div>
+
+<div id=helpText>
+	<font size=-1>
+	<script language="JavaScript">
+		var setupResult = Satellite.getSwitchboxSetupResult();
+		var textString;
+
+		if (setupResult == "OK")
+			textString = "The multi-dish switch has been detected and successfully configured.";
+		else if (setupResult == "misconnected")
+			textString = "A problem has been detected with your multi-dish switch.<br><br>" +
+						 "This can be caused by using the wrong type of cable, or by using cables longer than 100 feet.<br><br>" +
+						 "Check to make sure your multi-dish switch is properly connected.";
+		else if (setupResult == "no satellite")
+			textString = "A problem has been detected with your multi-dish switch.<br><br>" +
+						 "Check to make sure it is properly connected.";
+		else if (setupResult == "not found")
+			textString = "No multi-dish switch was detected.<br><br>" +
+						"Check to make sure your multi-dish switch is properly connected.";
+		else
+			textString = "An unknown problem has been detected with your multi-dish switch.<br><br>" +
+						 "Check to make sure it is properly connected.";
+
+		document.write(textString);
+	</script>
+	</font>
+</div>
+
+<form>
+<div id=summaryButton align=right>
+	<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value="Summary" useStyle width=130
+			onClick="gotoSummary();"
+			action="" borderImage="file://ROM/tvimages/tvbuttonborder.bif">
+	</shadow></font>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value="Done" useStyle width=130 selected  
+		action="" onClick="history.go(-2);" borderImage="file://rom/tvimages/tvbuttonborder.bif">
+	</shadow></font>
+</div>
+</form>
+
+</body>
+</html>

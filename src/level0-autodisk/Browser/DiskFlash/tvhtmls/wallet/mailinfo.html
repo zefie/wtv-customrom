@@ -1,0 +1,170 @@
+<html>
+<head>
+	<title>Mailing Information</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+<script language="Javascript1.1" src="../wallet.js"></script>
+<script language="javascript">
+var phoneNumber;
+function CheckMailInput(form){
+var addComma = ", ";
+var fieldName = "";
+var invalid = "";
+var phoneInput = document.mail_info.area.value + document.mail_info.prefix.value + document.mail_info.phone.value;
+top.errorMessage = "";
+  form.firstname.value = TrimWhiteSpace(form.firstname.value);
+  form.lastname.value = TrimWhiteSpace(form.lastname.value);
+  form.midinitial.value = TrimWhiteSpace(form.midinitial.value);
+  phoneInput = TrimWhiteSpace(phoneInput);
+  form.email.value = TrimWhiteSpace(form.email.value);
+  if (form.firstname.value == "") {
+		fieldName = "First Name";
+  }else if (validCN(form.firstname.value) != true)
+		invalid = "First Name";
+  else {
+		top.shipFName = form.firstname.value;
+		top.myWallet.setUserInfo("shipFName",top.shipFName);
+  }
+  if (!validCN(form.midinitial.value)) {
+        if (invalid != "") {invalid += addComma;}
+		invalid += "Middle Initial";
+  }	else{
+		top.shipMI = form.midinitial.value;
+		top.myWallet.setUserInfo("shipMI",top.shipMI);
+  }
+  if (form.lastname.value == ""){
+  		if (fieldName != "") {fieldName += addComma;}
+		fieldName += "Last Name";
+  } else if (validCN(form.lastname.value) != true){
+  		if (invalid != "") {invalid += addComma;}
+		invalid += "Last Name";
+  }else {
+		top.shipLName = document.mail_info.lastname.value;
+		top.myWallet.setUserInfo("shipLName",top.shipLName);
+  }
+  if (phoneInput.length == 0) {
+    if (fieldName != "") {fieldName += addComma;}
+    fieldName += "Phone";
+  }
+  if (form.email.value.length == 0) {
+    if (fieldName != "") {fieldName += addComma;}
+    fieldName += "E-mail";
+  }
+  if (fieldName != ""){
+    top.errorMessage = "You need to provide information for: " + fieldName + ". It's required to fulfill your request. ";
+  }
+  if (invalid != ""){
+    top.errorMessage += "You have typed in an improper "+invalid + ". Please try typing it again. ";
+  }
+if (phoneInput.length != 0) {
+  if (!ValidPhone(phoneInput)){
+		top.errorMessage += "<BR>You have typed in an incorrect phone number. Please try typing it again in the proper format, for example: (415)555-1212. ";
+  } else {
+		top.phone = phoneInput;
+		top.myWallet.setUserInfo("phone",top.phone);
+	}
+}
+  if (form.email.value.length != 0) {
+	if (!ValidEMail(document.mail_info.email.value)) {
+		top.errorMessage += "<BR>You have typed in an incorrect e-mail address. Please try typing it again in the proper format, for example: name@msn.com ";
+	} else {
+		top.email = form.email.value;
+		top.myWallet.setUserInfo("email",top.email);
+	}
+  }
+if (top.errorMessage != "") {
+		top.SetPage('error.html');
+}
+else {
+		phoneNumber = phoneInput;
+		MailContinueButton();
+  }
+}
+function SubmitMailInfo(){
+	top.shipFName = document.mail_info.firstname.value;
+	top.shipMI = document.mail_info.midinitial.value;
+	top.shipLName = document.mail_info.lastname.value;
+	top.phone = phoneNumber;
+	top.email = document.mail_info.email.value;
+	top.myWallet.setUserInfo("shipFName",top.shipFName);
+	top.myWallet.setUserInfo("shipMI",top.shipMI);
+	top.myWallet.setUserInfo("shipLName",top.shipLName);
+	top.myWallet.setUserInfo("phone",top.phone);
+	top.myWallet.setUserInfo("email",top.email);
+}
+function LoadMailInfo(){
+	document.mail_info.firstname.value = top.shipFName;
+	document.mail_info.midinitial.value = top.shipMI;
+	document.mail_info.lastname.value = top.shipLName;
+	document.mail_info.email.value = top.email;
+	var fullphonenum = top.phone;
+	if (fullphonenum.length == 10)
+	{
+		document.mail_info.area.value = fullphonenum.substring(0,3);
+		document.mail_info.prefix.value = fullphonenum.substring(3,6);
+		document.mail_info.phone.value = fullphonenum.substring(6,10);
+	}
+}
+function MailContinueButton(){
+	SubmitMailInfo();
+	top.SetPage("mailaddress.html");
+}
+</script>
+</head>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large onLoad = "LoadMailInfo();">
+<form name="mail_info">
+<div id="Banner" style="position:absolute; top:0px; left:0px;">
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+<div id="Header" style="position:absolute; top:105px; left:60px;">
+<font color=#ffcf69 size=+2><shadow>Mailing information</shadow></font>
+</div>
+<div id="Body" style="position:absolute; top:140px; left:60px; width:500;">
+<font color=999999>Type in your name, phone number and e-mail.</font>
+</div>
+<div id="MailInfo" style="position:absolute; top:165px; left:60px;">
+<table border=0 cellspacing=0 cellpadding=0>
+  <tr><td abswidth=95 align=right height=40><font size=-1 color=6cb28b>First Name:</font>
+  <td abswidth=7>
+  <td abswidth=120><font color=ffcf69><input name="firstname" usestyle size=20 maxlength=20 border=1 selected  bgcolor=000000></font>
+  <td abswidth=6 align=right><font size=-1 color=6cb28b>M.I.:</font>
+  <td abswidth=20><font color=ffcf69><input name="midinitial" usestyle size=5 maxlength=3 border=1  bgcolor=000000></font>
+  <tr><td align=right height=40><font size=-1 color=6cb28b>Last Name:</font>
+  <td>
+  <td colspan=4><font color=ffcf69><input name="lastname" usestyle size=25 maxlength=30 border=1 bgcolor=000000></font>
+  <tr><td align=right height=40><font size=-1 color=6cb28b>Phone:</font>
+  <td>
+  <td colspan=4><font size=-1 color=6cb28b>(</font> <font color=ffcf69><input name="area" usestyle size=4 maxlength=3 border=1  bgcolor=000000><font size=-1 color=6cb28b> )</font>
+  <input name="prefix" usestyle size=4 maxlength=3 border=1  bgcolor=000000><font size=-1 color=6cb28b> -</font>
+  <input name="phone" usestyle size=5 maxlength=4 border=1  bgcolor=000000></font>
+  <tr><td><td colspan=3 valign=top height=25><font size=-1 color=6cb28b><i>Example: (415) 555-1212</i></font>
+  <tr><td colspan=6><table border=0 cellspacing=0 cellpadding=0>
+    <td abswidth=95 align=right height=40><font size=-1 color=6cb28b>E-Mail:</font>
+    <td abswidth=5>
+    <td><font color=ffcf69><input name="email" usestyle size=25 maxlength=40 border=1 bgcolor=000000></font>
+    <tr><td align=right height=20>
+    <td colspan=5><font size=-1 color=6cb28b><i>Example: name@msn.com</i></font>
+  </table>
+</table>
+</div>
+<div id="Buttons" style="position:absolute; top:375px; left:415px;">
+<font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Continue" usestyle  width=130 onClick="CheckMailInput(this.form)"></font>
+</div>
+</form>
+</body>
+</html>

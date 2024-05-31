@@ -1,0 +1,143 @@
+<!--- *=* Copyright 2000 WebTV Networks, Inc. All rights reserved. --->
+<html>
+<head>
+<title>Client Version Property Overrides</title>
+<display nostatus nooptions>
+<script>
+function init()
+{
+	// Set the userAgent
+	init_value(navigator.defaultUserAgent, document.forms.main._userAgent, document.forms.main.userAgent);
+	// Set the appName
+	init_value(navigator.getDefaultScriptProperty('appName'), document.forms.main._appName, document.forms.main.appName);
+	// Set the appVersion
+	init_value(navigator.getDefaultScriptProperty('appVersion'), document.forms.main._appVersion, document.forms.main.appVersion);
+	// Set the AliasAppName
+	init_value(navigator.getDefaultScriptProperty('AliasAppName'), document.forms.main._AliasAppName, document.forms.main.AliasAppName);
+	// Set the override flag
+	if (navigator.allowServiceVersionOverrides)
+		document.forms.main.AllowOverrides.checked = true;
+}
+
+function init_value(value, menu, text)
+{
+	text.value = value;
+	for( i = 0; i < menu.length; i++ )
+	{
+		if (menu.options[i].value == value)
+		{
+			menu.options[i].selected = true;
+			return;
+		}
+	}
+	menu.options[0].selected = true;
+}
+
+function do_submit()
+{
+	navigator.defaultUserAgent = document.forms.main.userAgent.value;
+	navigator.setDefaultScriptProperty('appName', document.forms.main.appName.value);
+	navigator.setDefaultScriptProperty('appVersion', document.forms.main.appVersion.value);
+	navigator.setDefaultScriptProperty('AliasAppName', document.forms.main.AliasAppName.value);
+	navigator.allowServiceVersionOverrides = document.forms.main.AllowOverrides.checked;
+	history.back();
+}
+
+function copy_value(from,to)
+{
+	if (from.value != '-')
+		to.value = from.value;
+}
+</script>
+</head>
+
+<body bgcolor="#111111" text="#44bb55" link=#dddddd nohtilebg fontsize=medium onload="init();">
+
+<br><h1>Client Version Property Overrides<hr></h1>
+<form name=main onsubmit="do_submit(); return false;">
+<table>
+<tr>
+<td rowspan=2 valign=top>User Agent: </td>
+<td> 
+<select name="_userAgent" onchange="copy_value(this,this.form.userAgent)">
+<option value="-">-- Choose One --
+<option value="Mozilla/4.0 WebTV/2.6 (compatible; MSIE 4.0)" selected>WebTV Client 2.6
+<option value="Mozilla/3.0 WebTV/2.5 (compatible; MSIE 2.0)">WebTV Client 2.5
+<option value="Mozilla/5.0 (compatible; MSIE 5.0; Windows 98)">Internet Explorer 5.0 
+<option value="Mozilla/4.0 (compatible; MSIE 4.0; Windows 95)">Internet Explorer 4.0 
+<option value="Mozilla/2.0 (compatible; MSIE 3.02; Windows 95)">Internet Explorer 3.0
+<option value="Mozilla/4.0 (Win95; I)">Netscape 4.0 
+<option value="Mozilla/3.0 (Win95; I)">Netscape 3.0
+</select>
+</td></tr>
+<tr>
+<td><input ASCIIONLY size=96 name=userAgent bgcolor=#444444 text=#ffdd33 cursor=#cc9933></td>
+</tr>
+
+<tr>
+<td rowspan=2 valign=top>appName: </td>
+<td>
+<select name="_appName" onchange="copy_value(this,this.form.appName)">
+<option value="-">-- Choose One --
+<option value="WebTV Plus Receiver">WebTV Plus Receiver
+<option value="WebTV Internet Terminal">WebTV Internet Terminal
+<option value="WebTV Satellite Receiver">WebTV Satellite Receiver
+<option value="Microsoft Internet Explorer">Microsoft Internet Explorer
+<option value="Netscape">Netscape Navigator
+</select>
+</td></tr>
+<tr>
+<td><input ASCIIONLY size=96 name=appName bgcolor=#444444 text=#ffdd33 cursor=#cc9933></td>
+</tr>
+
+<tr>
+<td rowspan=2 valign=top>appVersion: </td>
+<td>
+<select name="_appVersion" onchange="copy_value(this,this.form.appVersion)">
+<option value="-">-- Choose One --
+<option value="4.0 (WebTV;2.6)">WebTV Client 2.6
+<option value="3.0 (WebTV;2.5)">WebTV Client 2.5
+<option value="5.0 (compatible; MSIE 5.0; Windows NT 5.0)">Internet Explorer 5.0
+<option value="4.0 (compatible; MSIE 4.0; Windows 95)">Internet Explorer 4.0
+<option value="5.0">Netscape 5.0
+<option value="4.0">Netscape 4.0
+<option value="3.0">Netscape 3.0
+</select>
+</td></tr>
+<tr>
+<td><input ASCIIONLY size=96 name=appVersion bgcolor=#444444 text=#ffdd33 cursor=#cc9933></td>
+</tr>
+
+<tr>
+<td rowspan=2 valign=top>AliasAppName: </td>
+<td>
+<select name="_AliasAppName" onchange="copy_value(this,this.form.AliasAppName)">
+<option value="-">-- Choose One --
+<option value="Microsoft Internet Explorer">Internet Explorer
+<option value="Netscape">Netscape
+<option value="">&lt;NONE&gt;
+</select>
+</td></tr>
+<tr>
+<td><input ASCIIONLY size=96 name=AliasAppName bgcolor=#444444 text=#ffdd33 cursor=#cc9933></td>
+</tr>
+
+</table>
+
+<table width=100%>
+	<tr>
+		<td align=left width=24%>
+		<td align=left width=56%><input type=checkbox name=AllowOverrides> Disable Service Overrides
+		<td align=right width=20% height=50>
+			<font color="#E7CE4A" size=-1><shadow>
+			<input 
+				type=submit 
+				borderimage="file://ROM/Borders/ButtonBorder2.bif" 
+				value="Do It" 
+				name="Do It" 
+				usestyle 
+				width=103>
+			</shadow></font>
+</table>
+</form>
+</body>

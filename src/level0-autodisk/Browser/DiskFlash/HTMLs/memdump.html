@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<script language=JavaScript>
+	
+	function refreshPage()
+	{
+		var memBuffer = Satellite.getMemoryAt(document.memdumpForm.addr.value);
+		
+		temp = (document.memdumpForm.addr.value).toUpperCase();
+		document.memdumpForm.address1.value = temp;
+		temp = document.memdumpForm.address2.value = Satellite.getNextAddr(temp);
+		temp = document.memdumpForm.address3.value = Satellite.getNextAddr(temp);
+		temp = document.memdumpForm.address4.value = Satellite.getNextAddr(temp);
+		temp = document.memdumpForm.address5.value = Satellite.getNextAddr(temp);
+		temp = document.memdumpForm.address6.value = Satellite.getNextAddr(temp);
+		temp = document.memdumpForm.address7.value = Satellite.getNextAddr(temp);
+		temp = document.memdumpForm.address8.value = Satellite.getNextAddr(temp);
+		
+		document.memdumpForm.mem11.value = memBuffer.substring(0, 8);
+		document.memdumpForm.mem12.value = memBuffer.substring(8, 16);
+		document.memdumpForm.mem13.value = memBuffer.substring(16, 24);
+		document.memdumpForm.mem14.value = memBuffer.substring(24, 32);
+
+		document.memdumpForm.mem21.value = memBuffer.substring(32, 40);
+		document.memdumpForm.mem22.value = memBuffer.substring(40, 48);
+		document.memdumpForm.mem23.value = memBuffer.substring(48, 56);
+		document.memdumpForm.mem24.value = memBuffer.substring(56, 64);
+
+		document.memdumpForm.mem31.value = memBuffer.substring(64, 72);
+		document.memdumpForm.mem32.value = memBuffer.substring(72, 80);
+		document.memdumpForm.mem33.value = memBuffer.substring(80, 88);
+		document.memdumpForm.mem34.value = memBuffer.substring(88, 96);
+
+		document.memdumpForm.mem41.value = memBuffer.substring(96, 104);
+		document.memdumpForm.mem42.value = memBuffer.substring(104, 112);
+		document.memdumpForm.mem43.value = memBuffer.substring(112, 120);
+		document.memdumpForm.mem44.value = memBuffer.substring(120, 128);
+
+		document.memdumpForm.mem51.value = memBuffer.substring(128, 136);
+		document.memdumpForm.mem52.value = memBuffer.substring(136, 144);
+		document.memdumpForm.mem53.value = memBuffer.substring(144, 152);
+		document.memdumpForm.mem54.value = memBuffer.substring(152, 160);
+
+		document.memdumpForm.mem61.value = memBuffer.substring(160, 168);
+		document.memdumpForm.mem62.value = memBuffer.substring(168, 176);
+		document.memdumpForm.mem63.value = memBuffer.substring(176, 184);
+		document.memdumpForm.mem64.value = memBuffer.substring(184, 192);
+
+		document.memdumpForm.mem71.value = memBuffer.substring(192, 200);
+		document.memdumpForm.mem72.value = memBuffer.substring(200, 208);
+		document.memdumpForm.mem73.value = memBuffer.substring(208, 216);
+		document.memdumpForm.mem74.value = memBuffer.substring(216, 224);
+
+		document.memdumpForm.mem81.value = memBuffer.substring(224, 232);
+		document.memdumpForm.mem82.value = memBuffer.substring(232, 240);
+		document.memdumpForm.mem83.value = memBuffer.substring(240, 248);
+		document.memdumpForm.mem84.value = memBuffer.substring(248, 256);
+	}
+
+	function nextAddr()
+	{
+		document.memdumpForm.addr.value = Satellite.getNextAddr(document.memdumpForm.addr.value);
+		refreshPage();
+	}
+
+	function prevAddr()
+	{
+		document.memdumpForm.addr.value = Satellite.getPrevAddr(document.memdumpForm.addr.value);
+		refreshPage();
+	}
+
+</script>
+</HEAD>
+
+<TITLE>
+Memory Dump and Device Status
+</TITLE>
+<DISPLAY noscroll nologo nooptions noreconnectalert>
+
+<body bgcolor=#21212e text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=medium noscroll hideoptions onLoad="refreshPage()">
+
+<table cellspacing=0 cellpadding=0 cellborder=0 valign=top bgcolor=#21212e width=560 height=60>
+	<tr><td width=104 height=60 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+		<td width=465>
+			<spacer type=block width=2>
+			<font size=+1 color=ffffff><b>Memory Dump and Device Status<b></font>
+</table>
+<form name="memdumpForm">
+
+<table cellspacing=0 cellpadding=0 border=0>
+	<tr><td height=6>
+	<tr><td width=20><td valign=top>
+		<table cellspacing=0 cellpadding=0 border=1 width=515>
+			<tr><td>00-00<td>00-00<td>0000<td>0002<td>0000<td>006b<td><td>
+			<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;
+			<tr><td>00-00<td>DE-22<td>00-00<td>00-00<td>00-00<td>00-00<td>00-00<td>00-00
+			<tr><td>0000<td>0001<td>0000<td>00-00<td><td><td><td>
+		</table>
+	<tr><td><td height=10>
+	<tr><td><td valign=top absheight=190>
+		<table cellspacing=0 cellpadding=0 border=1 width=515>
+			<tr><font color=cbcbcb>
+				<td><font color=cbcbcb><input type=text id=address1 size=9 nobackground usestyle border=0 nocursor noselect>: </font>
+				<td><font color=cbcbcb><input type=text id=mem11 size=9 nobackground usestyle border=0 nocursor noselect></font>
+				<td><font color=cbcbcb><input type=text id=mem12 size=9 nobackground usestyle border=0 nocursor noselect></font>
+				<td><font color=cbcbcb><input type=text id=mem13 size=9 nobackground usestyle border=0 nocursor noselect></font>
+				<td><font color=cbcbcb><input type=text id=mem14 size=9 nobackground usestyle border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address2 size=9 nobackground usestyle border=0 nocursor noselect>: </font>
+			    <td><font color=cbcbcb><input type=text id=mem21 size=9 nobackground usestyle border=0 nocursor noselect></font>
+			    <td><font color=cbcbcb><input type=text id=mem22 size=9 nobackground usestyle border=0 nocursor noselect></font>
+			    <td><font color=cbcbcb><input type=text id=mem23 size=9 nobackground usestyle border=0 nocursor noselect></font>
+			    <td><font color=cbcbcb><input type=text id=mem24 size=9 nobackground usestyle border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address3 size=9 usestyle nobackground border=0 nocursor noselect>: </font>
+				 <td><font color=cbcbcb><input type=text id=mem31 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem32 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem33 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem34 size=9 usestyle nobackground border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address4 size=9 usestyle nobackground border=0 nocursor noselect>: </font>
+				 <td><font color=cbcbcb><input type=text id=mem41 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem42 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem43 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem44 size=9 usestyle nobackground border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address5 size=9 usestyle nobackground border=0 nocursor noselect>: </font>
+				 <td><font color=cbcbcb><input type=text id=mem51 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem52 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem53 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem54 size=9 usestyle nobackground border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address6 size=9 usestyle nobackground border=0 nocursor noselect>: 
+				 <td><font color=cbcbcb><input type=text id=mem61 size=9 maxlength=38 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem62 size=9 maxlength=38 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem63 size=9 maxlength=38 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem64 size=9 maxlength=38 usestyle nobackground border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address7 size=9 usestyle nobackground border=0 nocursor noselect>: </font>
+				 <td><font color=cbcbcb><input type=text id=mem71 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem72 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem73 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem74 size=9 usestyle nobackground border=0 nocursor noselect></font>
+			<tr>
+				<td><font color=cbcbcb><input type=text id=address8 size=9 usestyle nobackground border=0 nocursor noselect>: </font>
+				 <td><font color=cbcbcb><input type=text id=mem81 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem82 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem83 size=9 usestyle nobackground border=0 nocursor noselect></font>
+				 <td><font color=cbcbcb><input type=text id=mem84 size=9 usestyle nobackground border=0 nocursor noselect></font>
+		</font>
+		</table>
+	<tr><td><td height=2>
+	<tr><td><td width=500>
+		<table cellspacing=0 cellpadding=0 border=0 width=515>
+			<tr><td>
+			<table cellspacing=0 cellpadding=0 border=0>
+				<tr><td>
+					<font size=+1>
+					<input onchange=refreshPage() type="text" id="addr" value="00000000" size="8" maxlength="8"
+					 bgcolor=#444444 text=#ffdd33 cursor=#cc9933 noSubmit numbers selected>
+					</font>
+				<td width=2>
+				<td align=left>
+					<table height=20 width=16>
+					<tr><td height=10 width=16>
+						<table href="client:donothing" onclick="prevAddr()"><tr><td><img src="file://Disk/Browser/DiskFlash/tvimages/ScrollArrowUp.gif" height=8 width=14>
+						</table>
+					<tr><td height=10 width=16>
+						<table href="client:donothing" onclick="nextAddr()"><tr><td><img src="file://Disk/Browser/DiskFlash/tvimages/ScrollArrowDown.gif" height=8 width=14>
+						</table>
+					</table>
+			</table>
+			<td width=28>
+			<td align=right>
+				<font size=+1 color=#ffcf69><shadow>
+				<input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" value=Done usestyle width=130 action="client:goback">
+				</shadow></font>
+		</table>
+</table>
+</form>
+</body>
+</html>

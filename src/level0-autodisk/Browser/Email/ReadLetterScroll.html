@@ -1,0 +1,223 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<style>
+		.clsTitleBgnd {
+			position: absolute;
+			top: 87;
+			left: 16;
+			width: 85;
+			height: 17;
+			background-color:48775d;
+		}
+		.clsTitle {
+			position: absolute;
+			top: 89;
+			left: 20;
+			color:0f1918;
+			font-weight:bold;
+			font-size:10pt;
+		}
+		.clsValue {
+			position: absolute;
+			top: 89;
+			left: 112;
+			color:6cb18a;
+			font-size:16pt;
+		}
+		#fromTitleBkgnd {
+			top: 87;
+		}
+		#fromTitle {
+			top: 89;
+		}
+		#dateTitleBkgnd {
+			top: 109;
+		}
+		#dateTitle {
+			top: 111;
+		}
+		#toTitleBkgnd {
+			top: 131;
+		}
+		#toTitle {
+			top: 133;
+		}
+		#subjectTitleBkgnd {
+			top: 153;
+		}
+		#subjectTitle {
+			top: 155;
+		}
+		#mailBody {
+			position: absolute;
+			top: 190;
+			left: 18;
+			width: 431;
+			height: 300;
+			color:cbcbcb;
+		}
+		#messageNumber {
+			position: absolute;
+			top: 45;
+			left: 140;
+			width: 431;
+			height: 30;
+			color: ffcf69;
+			font-size: 16pt;
+		}
+	</style>
+
+	<script>
+		var folderToUse = eval(parameters.folder);
+		var msgIndex = parseInt(parameters.whichItem);
+
+		function AddAddress()
+		{
+			var L_AddAddr_Text = "Would you like to add &1 to your address list?";
+			var confirmMsg = top.ParamText(L_AddAddr_Text, top.gLetter.senderName);
+			if (confirmPriv(confirmMsg, top.gAlertIconURL, top.L_YesButton_Text, top.L_NoButton_Text)) {
+				var newLoc = "AddAddress.html?cmd=add";
+				parent.location = newLoc;
+			}
+		}
+
+	</script>
+
+</head>
+
+<print blackandwhite>
+
+<body
+	text=42DB52
+	link=189CD6
+	vlink=189CD6
+	vspace=0
+	hspace=0
+	bgcolor="172625"
+	onLoad="top.refreshArrows();">
+
+<script>
+	// create XML tree with stock data
+	var xmlLetter = top.MailFolder_GetLetterXML(folderToUse, msgIndex);
+
+	var letters = xmlLetter.getElementsByTagName("letter");
+	top.gLetter.msgid = letters[0].getAttribute("msgid");
+
+	var senders = xmlLetter.getElementsByTagName("sender_name");
+	top.gLetter.senderName = senders[0].firstChild.text;
+
+	var addresses = xmlLetter.getElementsByTagName("sender_address");
+	top.gLetter.senderAddress = addresses[0].firstChild.text;
+
+	var sendDates = xmlLetter.getElementsByTagName("send_date");
+	top.gLetter.sendDate = sendDates[0].firstChild.text;
+
+	var subjects = xmlLetter.getElementsByTagName("subject");
+	top.gLetter.subject = subjects[0].firstChild.text;
+
+	var bodies = xmlLetter.getElementsByTagName("message");
+	top.gLetter.body = bodies[0].firstChild.text;
+
+</script>
+
+<div id=topBannerBackgroundScroll bgcolor=0c1413 gradcolor=172625 gradangle=0>
+</div>
+
+<div id=topBannerScroll>
+	<img src=images/MailBanner.gif width=431 height=54>
+</div>
+
+<div id=pageTitleTextScroll>
+	<shadow>Message</shadow>
+</div>
+
+<div id=messageNumber>
+	<script>
+		var messageNo = parseInt(msgIndex) + 1;
+		document.write('(' + messageNo + " OF " + top.MailFolder_length(folderToUse) + ')');
+	</script>
+</div>
+
+<div id=bannerAdDisplay>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td align=center bgcolor=000000>
+			<script>
+//				 if (top.clientVersion() >= 3)
+//					top.WriteAd("epg-banner");
+			</script>
+
+	</table>
+</div>
+
+<div class=clsTitleBgnd id=fromTitleBkgnd>
+</div>
+
+<div class=clsTitle id=fromTitle>
+	FROM
+</div>
+
+<div class=clsValue id=fromTitle>
+	<script>
+		document.write(top.gLetter.senderAddress)
+	</script>
+	 <a onClick="AddAddress();">
+		<script>
+			document.write("(", top.gLetter.senderName, ")");
+		</script>
+	 </a>
+</div>
+
+<div class=clsTitleBgnd id=dateTitleBkgnd>
+</div>
+
+<div class=clsTitle id=dateTitle>
+	DATE
+</div>
+
+<div class=clsValue id=dateTitle>
+	<script>
+		document.write(top.gLetter.sendDate)
+	</script>
+</div>
+
+
+<div class=clsTitleBgnd id=toTitleBkgnd>
+</div>
+
+<div class=clsTitle id=toTitle>
+	TO
+</div>
+
+<div class=clsValue id=toTitle>
+	<script>
+		document.write(top.gEmailAddress)
+	</script>
+</div>
+
+
+<div class=clsTitleBgnd id=subjectTitleBkgnd>
+</div>
+
+<div class=clsTitle id=subjectTitle>
+	SUBJECT
+</div>
+
+<div class=clsValue id=subjectTitle>
+	<script>
+		document.write(top.gLetter.subject)
+	</script>
+</div>
+
+<div id=mailBody>
+	<script>
+		document.write(top.gLetter.body)
+	</script>
+</div>
+
+</body>
+</html>

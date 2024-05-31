@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>
+Switchbox Intro
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio skipback>
+
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 63;
+}
+
+#helpText {
+	position: absolute;
+	top: 144;
+	left: 63;
+	width: 300;
+	height: 153;
+}
+
+#noteText {
+
+    position: absolute;
+
+    top: 230;
+
+    left: 377;
+
+    width: 150;
+
+}
+
+
+
+#summaryButton {
+	position: absolute;
+	top: 372;
+	left: 60;
+	width: 130;
+	height: 35;
+}
+
+#setupButton {
+	position: absolute;
+	top: 372;
+	left: 205;
+	width: 130;
+	height: 35;
+}
+
+#doneButton {
+	position: absolute;
+	top: 372;
+	left: 412;
+	width: 140;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+
+</style>
+
+<script language="JavaScript">
+	function onLoadPage()
+	{
+		if (Satellite.isShowingIntroPages)
+			document.lockPage(true);			
+	}
+
+	function gotoSummary()
+	{
+		document.skipBack(false);
+		document.location = "file://ROM/tvhtmls/satellite/switchbox-summary.html";
+	}
+</script>
+
+</head>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=989898 link=#4489a8
+ hspace=0 vspace=0 fontsize=large noscroll hideoptions onLoad="onLoadPage();">
+
+<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block width=11 height=11><br>
+				<spacer type=block width=10 height=1>
+				<script language=JavaScript>
+					var image = "<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>";
+
+					if (!Satellite.isShowingIntroPages)
+						image = "<a href=client:showtvhome>" + image + "</a>";
+
+					document.write(image);
+				</script>	    	
+			 <td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69>Multiple dish setup</font>
+</div>
+
+<div id=helpText>
+	<font size=-1>
+		To use more than one dish with your receiver, you need a multi-dish switch.
+		<p>
+		Choose <b>Set Up</b> if you have connected or disconnected a multi-dish switch from your receiver.
+		Choose <b>Summary</b> to see how your receiver is currently set up.
+		Or choose <b>Done</b> to leave the current setup unchanged.
+	</font>
+</div>
+
+<div id='noteText'>
+
+	<font size="-2" color="74bf95">
+
+	<b>Note:</b> After you set up a multi-dish switch, choose <b>Done</b>. Then try to get a <font size=-2>LOCKED</font> signal on each of the dishes.
+
+</div>
+
+
+
+<form>
+<div id=summaryButton>
+	<font size=-1 color=#ffcf69><shadow>
+		<input type=submit value='Summary' useStyle width=130
+			onClick="gotoSummary();"
+			action="" borderImage="file://ROM/tvimages/tvbuttonborder.bif">
+	</shadow></font>
+</div>
+
+<div id=setupButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value="Set Up" useStyle width=130 selected action="file://ROM/tvhtmls/satellite/switchbox-setup.html" borderImage="file://rom/tvimages/tvbuttonborder.bif">
+	</shadow></font>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value="Done" useStyle width=130 action="" onClick="history.back()" borderImage="file://rom/tvimages/tvbuttonborder.bif">
+	</shadow></font>
+</div>
+
+</form>
+</body>
+</html>

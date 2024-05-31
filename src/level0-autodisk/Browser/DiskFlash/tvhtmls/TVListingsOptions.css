@@ -123,3 +123,10 @@
 	top: 295;
 	left: 454;
 }
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}

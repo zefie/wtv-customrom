@@ -1,0 +1,186 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<display fontsize="medium">
+	<style>
+	.clsArrow {
+		position: absolute;
+		left: 57;
+	}
+	.clsName {
+		position: absolute;
+		left: 97;
+		width: 250
+		color:b1b1b1;
+		font:18pt;
+	}
+	.clsUnread {
+		position: absolute;
+		left: 360;
+		color:ffcf69;
+		font:16pt;
+	}
+	#arrow0 {
+		top: 150;
+	}
+	#arrow1 {
+		top: 185;
+	}
+	#arrow2 {
+		top: 220;
+	}
+	#arrow3 {
+		top: 255;
+	}
+	#arrow4 {
+		top: 290;
+	}
+	#arrow5 {
+		top: 325;
+	}
+	#userView0 {
+		top: 158;
+	}
+	#userView1 {
+		top: 193;
+	}
+	#userView2 {
+		top: 228;
+	}
+	#userView3 {
+		top: 263;
+	}
+	#userView4 {
+		top: 298;
+	}
+	#userView5 {
+		top: 332;
+	}
+	#unreadView0 {
+		top: 158;
+	}
+	#unreadView1 {
+		top: 193;
+	}
+	#unreadView2 {
+		top: 228;
+	}
+	#unreadView3 {
+		top: 263;
+	}
+	#unreadView4 {
+		top: 298;
+	}
+	#unreadView5 {
+		top: 332;
+	}
+
+	#MSNLogo {
+		position: absolute;
+		top: 7;
+		left: 10;
+		width: 87;
+	}
+
+	</style>
+
+	<script>
+		// If there's only one user, go right to the password page
+		if (top.gServiceUserCount == 1)
+			SelectUser(0);
+
+		function SelectUser(user)
+		{
+			window.message("SelectUser");
+			top.ChooseUser(user);
+			if (top.gUserPasswd == "") {
+				window.message("No password");
+				top.WarnUser();	// if there's no password, go immediately to the mail list and skip the login
+			} else {
+				window.message("has a password of '", top.gUserPasswd, "'");
+				location = "GetPassword.html";
+			}
+		}
+
+		function WriteUser(index, userName, msgCnt)
+		{
+			var m =
+				"<div class=clsArrow id=arrow" + index + ">" +
+					"<img src=file://ROM/tvimages/TOCArrows.gif width=32 height=31>" +
+				"</div>" +
+				"<div class=clsName id=userView" + index + ">" +
+					'<a onclick="SelectUser(' + index + ');"><font color=b1b1b1>' + userName + "</font></a>" +
+				"</div>";
+			if (msgCnt > 0) {
+				var L_OneUnreadMsg_Text = "one unread message";
+				var L_SomeUnreadMsg_Text = "&1 unread messages";
+				var unreadMsg = msgCnt > 1 ? L_SomeUnreadMsg_Text : L_OneUnreadMsg_Text;
+				unreadMsg = top.ParamText(unreadMsg, msgCnt);
+				m += "<div class=clsUnread id=unreadView" + index + ">" +
+					unreadMsg +
+				"</div>";
+			}
+			
+			return m;
+		}
+
+	</script>
+
+</head>
+
+<print blackandwhite>
+
+<body 
+	bgcolor=172625 text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	hspace=0>
+
+<div id=topTVBannerBackground bgcolor=6D5A85>
+</div>
+
+<div id=topTVBanner>
+	<img src=images/TVMailBanner.gif>
+</div>
+
+<div id=webTVJewel>
+	<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>
+</div>
+
+<div id=topTVBannerShadow>
+	<img src=images/TVMailShadowHoriz.gif shadow=#000000 transparency=60>
+</div>
+
+<div id=tvPageTitleText>
+	<shadow>Choose your name</shadow>
+</div>
+
+<script>
+	// Now build the list of users. 
+//	var counts = new Array(3,4,3,2,1,0);
+window.message("GetNewMessageCounts");
+	var counts = top.GetNewMessageCounts();
+window.message("back from GetNewMessageCounts");
+
+	var m = "";
+	for (var i = 0; i < top.gMaxUsers; i++) {
+		if (i < top.gUserCount) {
+			var userInfo = top.gUserInfos[i];
+			var userName = userInfo.getAttribute("UserName");
+			if (userName == null || userName == "")
+				userName = userInfo.getAttribute("EmailAddress");
+
+			var userID	 = userInfo.getAttribute("UserID");
+
+			m += WriteUser(i, userName, counts[i]);
+		}
+	}
+	document.write(m);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,373 @@
+<html>
+<head>
+<title>
+Dish Pointing
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio>
+
+<script language=JavaScript src="music-object.js">
+	new musicObject ("music");
+	music.stubEmbed ('echotune1.rmf');
+</script>
+
+<script language="JavaScript" src="SignalMeter.js">
+	var signalStrengthMeter = new signalMeter("satSignal");
+	var satelliteIndex = 0;
+	var lastZipCode = null;
+	var lastSoundSignal = -1;
+
+	function updatePage()
+	{
+		var sig = Satellite.getSignalStrength();
+		var sigStatus = "\x0d" + "NOT LOCKED";
+
+		if (sig < 0) 
+			sigStatus = "WRONG SATELLITE: " + "\x0d" + Satellite.getSatelliteName();
+		else if (Satellite.isSignalLocked)
+			sigStatus = "\x0d" + "LOCKED: " + Satellite.getSatelliteName();
+			
+		document.dishPointForm.satName.value = sigStatus;
+
+		if (sig < 0)
+			sig = -sig;
+		signalStrengthMeter.setSignal(sig);
+		document.dishPointForm.sigPercent.value = sig + "%";
+
+		if (lastZipCode != null) {
+			if (document.zipCodeForm.zipcode.value != lastZipCode) {
+				lastZipCode = document.zipCodeForm.zipcode.value;
+				onZipChange();
+			}
+		}
+
+		setSoundSignal(sig);
+	}
+
+	function setSoundSignal(sig)
+	{
+		if ( lastSoundSignal != sig ) {
+		
+			if ( sig <= 0 ) {
+				with (music) {
+					setTrackMute (1,1)
+					setTrackMute (2,1)
+					setTrackMute (3,1)
+					setTrackMute (4,1)
+					setTrackMute (5,0)
+					setTrackMute (6,0)
+					setTrackMute (7,0)
+					setTrackMute (8,0)
+				};
+
+				tempo = 104;
+				pitch = 0;
+			} else {
+				if ( sig > 100 )
+					sig = 100;
+
+				if ( lastSoundSignal == 0 ) {
+					with (music) {
+						setTrackMute (1,0)
+						setTrackMute (2,0)
+						setTrackMute (3,0)
+						setTrackMute (4,0)
+						setTrackMute (5,1)
+						setTrackMute (6,1)
+						setTrackMute (7,1)
+						setTrackMute (8,1)
+					};
+				}
+
+				tempo = 104 + (((208-104) * sig) / 100);
+				pitch = (12 * sig) / 100;
+			}
+
+			lastSoundSignal = sig;
+		}
+
+		with (music) {
+			setTempo(tempo)
+			setTranspose(pitch)
+		};
+	}
+
+	function onLoadPage()
+	{
+		Satellite.enableSignalStrength(true);
+		setInterval(updatePage, 100);
+
+		satelliteIndex = Satellite.getCurrentSatellite();
+		document.dishPointForm.satLocation.value =
+			Satellite.getNthSatellitePosition(satelliteIndex).toString() + "\xB0";
+			
+		Satellite.setNextTransponder();
+		Satellite.setPreviousTransponder();
+		
+		document.dishPointForm.satTransponder.value = Satellite.getTransponder();
+
+		if (Satellite.getNumberOfSatellites() < 2)
+			document.satButton.visibility = "hidden";
+
+		onZipChange();
+
+		if (Satellite.isShowingIntroPages)
+			document.lockPage(true);			
+	}
+
+	function nextSat()
+	{
+		satelliteIndex++;
+		if (satelliteIndex >= Satellite.getNumberOfSatellites())
+			satelliteIndex = 0;
+
+		Satellite.setSatellite(satelliteIndex);
+
+		document.dishPointForm.satLocation.value =
+			Satellite.getNthSatellitePosition(satelliteIndex).toString() + "\xB0";
+		document.dishPointForm.satTransponder.value = Satellite.getTransponder();
+		
+		onZipChange();
+	}
+
+	function prevSat()
+	{
+		satelliteIndex--;
+		if (satelliteIndex < 0)
+			satelliteIndex = Satellite.getNumberOfSatellites() - 1;
+
+		Satellite.setSatellite(satelliteIndex);
+
+		document.dishPointForm.satLocation.value =
+			Satellite.getNthSatellitePosition(satelliteIndex).toString() + "\xB0";
+		document.dishPointForm.satTransponder.value = Satellite.getTransponder();
+
+		onZipChange();
+	}
+
+	function nextTrans()
+	{
+		document.dishPointForm.satTransponder.value = Satellite.setNextTransponder();
+	}
+
+	function prevTrans()
+	{
+		document.dishPointForm.satTransponder.value = Satellite.setPreviousTransponder();
+	}
+
+	function onZipChange()
+	{
+		var zip = document.zipCodeForm.zipcode.value;
+
+		if (zip.length == 5) {
+			Satellite.setZipCode(document.zipCodeForm.zipcode.value);
+			document.dishPointForm.elevation.value = Satellite.getElevation(zip) + "\xB0";
+			document.dishPointForm.azimuth.value = Satellite.getAzimuth(zip) + "\xB0";
+			if (document.elevate.visibility == "hidden") {
+				document.elevateDimmed.visibility = "hidden";
+				document.rotateDimmed.visibility = "hidden";
+				document.elevate.visibility = "visible";
+				document.rotate.visibility = "visible";
+			}
+		} else {
+			if (document.elevateDimmed.visibility == "hidden") {
+				document.elevate.visibility = "hidden";
+				document.rotate.visibility = "hidden";
+				document.elevateDimmed.visibility = "visible";
+				document.rotateDimmed.visibility = "visible";
+			}
+		}
+	}
+
+	function doneButtonLink()
+	{
+		if (!Satellite.isSignalLocked) {
+			document.location = "file://rom/tvhtmls/satellite/Signal-setup-error.html";
+		}
+		else {
+			Satellite.setHasSeenDishPointPage(true);
+
+			if (navigator.isSatPrerelease && !Satellite.inFactoryMode) {
+					// check the signal on satellite 119
+				Satellite.setSatellite(0);
+				if (!Satellite.isSignalLocked)
+					document.location = "file://rom/tvhtmls/satellite/satprerelease/WrongSatelliteError.html";
+				else
+					document.location = "file://rom/tvhtmls/satellite/satprerelease/ConfirmSetup.html";
+			}
+			else {
+				if (!Satellite.isShowingIntroPages)
+						// no, we're probably coming from Setup
+					history.back();
+				else
+						// yes, go home
+					document.location = "client:showtvhome";
+			}
+		}
+	}
+</script>
+
+<link rel="StyleSheet" type="text/css" href="setup-dishpoint.css">
+</head>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=989898 link=#4489a8
+	hspace=0 vspace=0 fontsize=large onLoad="onLoadPage();">
+
+<div id=banner>
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+			<script language=JavaScript>
+				var image = "<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>";
+
+				if (!Satellite.isShowingIntroPages)
+					image = "<a href=client:showtvhome>" + image + "</a>";
+
+				document.write(image);
+			</script>	    	
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69>
+	Dish pointing
+	</font>
+</div>
+
+<div id=helpText1>
+	<font size=-1>
+	Choose a satellite from
+	<br><spacer type=vertical height=18>
+	which to receive a signal.
+	</font>
+</div>
+
+<div id=helpText2>
+	<font size=-1>
+	Type in your <font size=-2>ZIP</font> code to
+	<br><spacer type=vertical height=18>
+	determine the best position
+	<br><spacer type=vertical height=18>
+	to point your satellite dish.
+	</font>
+</div>
+
+<div id=zipCodeDiv>
+	<form name=zipCodeForm action="client:doNothing" onSubmit="onZipChange();">
+	<font size=-2 color=#6cb18a>
+	ZIP <font size=-1>code:
+	<input TYPE="text" id="zipcode" VALUE="&tv-zipcode;"
+		onChange="onZipChange();"
+		onFocus="lastZipCode = this.value;"
+		onBlur="lastZipCode = null;"
+		SIZE=6 height=32 MAXLENGTH=5 bgcolor=171720 cursor=#cc9933 usestyle numbers selected>
+	</font>
+	</font>
+	</form>
+</div>
+
+<form name=dishPointForm action="client:stopSigStrength">
+<input type=hidden name=autosubmit value=true autosubmit=onleave>
+
+<div id=satellite>
+	<font size=-1 color=#6cb18a>
+	Satellite at:
+	<input type=text id=satLocation size=6 bgcolor=#444444
+		nobackground border=0 nocursor noselect usestyle>
+	</font>
+</div>
+
+<div id=transponder>
+	<font size=-1 color=#6cb18a>
+	Transponder:
+	<input type=text id=satTransponder size=4 bgcolor=#444444
+		nobackground border=0 nocursor noselect usestyle>
+	</font>
+</div>
+
+<div id=satButton>
+	<a href=client:donothing onClick="prevSat();"><img src="file://ROM/tvimages/Button_LeftMinus.gif"></a><a href=client:donothing onClick="nextSat();"><img src="file://ROM/tvimages/Button_RightPlus.gif"></a>
+</div>
+
+<div id=transButton>
+	<a href=client:donothing onClick="prevTrans();"><img src="file://ROM/tvimages/Button_LeftMinus.gif"></a><a href=client:donothing onClick="nextTrans();"><img src="file://ROM/tvimages/Button_RightPlus.gif"></a>
+</div>
+
+<div id=signalStrength align=center bgcolor=#21212e>
+	<script language="JavaScript">
+		signalStrengthMeter.writeHTML(20, 9, 13, "7399e5");
+	</script>
+</div>
+
+<div id=border>
+	<img src=file://ROM/Borders/TextField.bif width=214 height=22>
+</div>
+
+<div id=signalPercent>
+	<font size=-2 color=7399e5>
+	SIGNAL STRENGTH: 
+	<input type=text id=sigPercent size=5 maxlength=5 nobackground border=0 nocursor noselect usestyle>
+	</font>
+</div>
+
+<div id=signalStatus>
+	<font size=-2 color=7399e5>
+	<textarea id=satName ROWS=2 width=240 nobackground border=0 nocursor noselect usestyle></textarea>
+	</font>
+</div>
+
+<div id=elevate>
+	<font size=-1 color=7399e5><b>
+	Elevate dish to:
+	<input type=text id=elevation size=4 maxlength=4 nobackground border=0 nocursor noselect usestyle>
+	</b></font>
+</div>
+
+<div id=rotate>
+	<font size=-1 color=7399e5><b>
+	Rotate dish to:
+	<input type=text id=azimuth size=4 maxlength=4 nobackground border=0 nocursor noselect usestyle>
+	</b></font>
+</div>
+
+<div id=elevateDimmed style='visibility: hidden;'>
+	<font size=-1 color=484856><b>
+	Elevate dish to: &#150; &#150;
+	</b></font>
+</div>
+
+<div id=rotateDimmed style='visibility: hidden;'>
+	<font size=-1 color=484856><b>
+	Rotate dish to: &#150; &#150;
+	</b></font>
+</div>
+
+<div id=moreInfoButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="More Info"
+		usestyle width=170 action="file://rom/tvhtmls/satellite/setup-dishpoint-More.html">
+	</shadow></font>
+</div>
+
+<div id=switchBoxButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Multiple Dishes"
+		usestyle width=170 action="file://rom/tvhtmls/satellite/switchbox-intro.html">
+	</shadow></font>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" value=Done 
+		usestyle width=130 action="" onClick="doneButtonLink();">
+	</shadow></font>
+</div>
+
+</form>
+
+</body>
+</html>
+

@@ -1,0 +1,488 @@
+<html>
+<head>
+<title>
+Switchbox Summary
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio skipback>
+
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+} 
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 63;
+	width: 415;
+	height: 33;
+}
+
+#switchModel {
+	position: absolute;
+	top: 114;
+	left: 364;
+	height: 18;
+}
+
+#tableTitle {
+	position: absolute;
+	top: 146;
+	left: 63;
+	width: 470;
+	height: 32;
+}
+
+#inputsTitle {
+	position: absolute;
+	top: 178;
+	left: 63;
+	width: 110;
+	height: 32;
+}
+
+#satTitle {
+	position: absolute;
+	top: 212;
+	left: 63;
+	width: 110;
+	height: 32;
+}
+
+#transTitle {
+	position: absolute;
+	top: 246;
+	left: 63;
+	width: 110;
+	height: 32;
+}
+
+#statusTitle {
+	position: absolute;
+	top: 286;
+	left: 63;
+	width: 110;
+	height: 32;
+}
+
+#switchStatus {
+	position: absolute;
+	top: 286;
+	left: 177;
+	height: 32;
+}
+
+#satInfo {
+	position: absolute;
+	top: 178;
+	left: 177;
+	height: 66;
+}
+
+#polarity {
+	position: absolute;
+	top: 246;
+	left: 177;
+	height: 32;
+}
+
+#checkAgainButton {
+	position: absolute;
+	top: 372;
+	left: 250;
+	width: 145;
+	height: 35;
+}
+
+#doneButton {
+	position: absolute;
+	top: 372;
+	left: 412;
+	width: 130;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+
+<script language="JavaScript" src="file://ROM/tvhtmls/pageUtils.js">
+	var pageParams = parsePageParams();
+
+	function onLoadPage()
+	{
+		if (Satellite.isShowingIntroPages)
+			document.lockPage(true);			
+	}
+
+	function getSwitchInputCount()
+	{
+		return Satellite.getSwitchboxInputCount();
+	}
+
+	function getSwitchSatellite(inputIndex)
+	{
+		var sat = Satellite.getSwitchboxSatellite(inputIndex);
+		var satString;
+
+		if (sat != -1) {
+			satString = "<font size=-2 color=#ffcf69>" + sat.toString() + "&deg;";
+		} else {
+			satString = "<font size=-1 color=#484856>&#150;";
+		}
+		satString += "</font>";
+
+		return satString;
+	}
+
+	function getSwitchModel()
+	{
+		return Satellite.getSwitchboxType();
+	}
+
+	function getSwitchStatus()
+	{
+		var setupResult = Satellite.getSwitchboxSetupResult();
+
+		if (setupResult == "OK")
+			textString = "Satellite reception verified";
+		else if (setupResult == "misconnected")
+			textString = "Multi-dish switch is not properly connected";
+		else if (setupResult == "no satellite")
+			textString = "Only one satellite is connected";
+		else if (setupResult == "not found")
+			textString = "No multi-dish switch was detected"
+		else
+			textString = "An unknown error occurred"
+
+		return textString;
+	}
+
+	function getSwitchInputLabel(inputIndex)
+	{
+		var inputLabel = (Math.floor(inputIndex / 2) + 1).toString();
+		return inputLabel + ((inputIndex & 1) == 0 ? "A" : "B");
+	}
+
+	function gotoSetup()
+	{
+		document.location = "file://ROM/tvhtmls/satellite/switchbox-setup.html";
+	}
+</script>
+</head>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#989898 link=#4489a8
+	hspace=0 vspace=0 fontsize=large noscroll hideoptions onLoad="onLoadPage();">
+
+<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block width=11 height=11><br>
+				<spacer type=block width=10 height=1>
+				<script language=JavaScript>
+					var image = "<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>";
+
+					if (!Satellite.isShowingIntroPages)
+						image = "<a href=client:showtvhome>" + image + "</a>";
+
+					document.write(image);
+				</script>	    	
+			 <td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+</div>
+
+<div id=title>
+	<font size=+2 color=#ffcf69>Installation summary</font>
+</div>
+
+<div id=switchModel>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td maxlines=1>
+			<font size=-2>
+			Installed Model: 
+			</font>
+		<td maxlines=1>
+			<font size=-2>
+			<script language="JavaScript">
+				document.write(getSwitchModel());
+			</script>
+			</font>
+	</table>
+	</font>
+</div>
+
+<div id=tableTitle bgcolor=#171720>
+	<spacer type=vertical height=9><br>
+	<spacer type=horizontal width=6>
+	<font size=-2>
+	<b>MULTI-DISH SWITCH INPUTS</b>
+	</font>
+</div>
+
+<div id=inputsTitle bgcolor=#171720>
+	<spacer type=vertical height=9><br>
+	<spacer type=horizontal width=6>
+	<font size=-2>
+	Dish inputs
+	</font>
+</div>
+
+<div id=satTitle bgcolor=#171720>
+	<spacer type=vertical height=9><br>
+	<spacer type=horizontal width=6>
+	<font size=-2>
+	Satellite
+	</font>
+</div>
+
+<div id=transTitle bgcolor=#171720>
+	<spacer type=vertical height=9><br>
+	<spacer type=horizontal width=6>
+	<font size=-2>
+	Transponder
+	</font>
+</div>
+
+<div id=statusTitle bgcolor=#171720>
+	<spacer type=vertical height=9><br>
+	<spacer type=horizontal width=6>
+	<font size=-2>
+	Status
+	</font>
+</div>
+
+<div id=switchStatus bgcolor=#0f0f15>
+	<spacer type=vertical height=9>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td maxlines=1 abswidth=355>
+			<spacer type=horizontal width=6>
+			<font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				document.write(getSwitchStatus());
+			</script>
+			</font>
+	</table>
+</div>
+
+<div id=satInfo>
+	<table cellspacing=0 cellpadding=0>
+		<tr><td>
+
+		<script language="JavaScript">
+			var inputCount = getSwitchInputCount();
+			var inputIndex;
+
+			if (getSwitchModel() != "SW64") {
+				if (inputCount <= 0) {
+					for (inputIndex = 0; inputIndex < 3; inputIndex++) {
+						document.write(
+							"<table cellspacing=0 cellpadding=0>" +
+								"<tr><td height=32 width=116 bgcolor=#171720 align=center valign=top>" +
+									"<spacer type=vertical height=9><br>" +
+									"<font size=-1 color=#484856><b>&#150;</b></font>" +
+								"<tr><td height=2>" +
+								"<tr><td height=32 width=116 bgcolor=#0f0f15 align=center valign=top>" +
+									"<spacer type=vertical height=9><br><font size=-1 color=#484856><b>&#150;</b></font>" +
+							"</table>"
+							);
+						document.write("<td width=4><td>");
+					}
+				} 
+				else {
+					for (inputIndex = 1; inputIndex <= inputCount; inputIndex++) {
+						document.write(
+							"<table cellspacing=0 cellpadding=0>" +
+								"<tr><td height=32 width=116 bgcolor=#171720 align=center valign=top>" +
+									"<spacer type=vertical height=9><br>" +
+									"<font size=-2><b>" + inputIndex + "</b></font>" +
+								"<tr><td height=2>" +
+								"<tr><td height=32 width=116 bgcolor=#0f0f15 align=center valign=top>" +
+									"<spacer type=vertical height=9><br>" +
+									getSwitchSatellite(inputIndex) +
+							"</table>"
+							);
+
+						document.write("<td width=4><td>");
+					}
+
+					for (inputIndex = 0; inputIndex < 3 - inputCount; inputIndex++) {
+						document.write(
+							"<table cellspacing=0 cellpadding=0>" +
+								"<tr><td height=32 width=116 bgcolor=#171720 align=center valign=top>" +
+								"<tr><td height=2>" +
+								"<tr><td height=32 width=116 bgcolor=#0f0f15 align=center valign=top>" +
+							"</table>"
+							);
+						document.write("<td width=4><td>");
+					}
+				} 
+			} 
+			else {
+				document.write("<table cellspacing=0 cellpadding=0><tr>");
+
+				for (inputIndex = 1; inputIndex <= inputCount; inputIndex++) {
+					document.write(
+						"<td height=32 width=57 bgcolor=#171720 align=center valign=top>" +
+							"<spacer type=vertical height=9><br>" +
+							"<font size=-2><b>" + getSwitchInputLabel(inputIndex-1) + "</b></font>"
+						);
+
+					document.write("<td width=" + ((inputIndex & 1) ? "4" : "2") + ">");
+				}
+
+				document.write("<tr><td colspan=6 height=2><tr>");
+
+				for (inputIndex = 1; inputIndex <= inputCount; inputIndex++) {
+					document.write(
+						"<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>" +
+							"<spacer type=vertical height=9><br>" +
+							"<font size=-2 color=#ffcf69>" +
+							getSwitchSatellite(inputIndex) +
+							"</font>"
+						);
+
+					document.write("<td width=" + ((inputIndex & 1) ? "4" : "2") + ">");
+				}
+
+				document.write("</table>");
+			}
+		</script>
+	</table>
+</div>
+
+<div id=polarity>
+	<table cellspacing=0 cellpadding=0>
+		<tr>
+		<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>
+			<spacer type=vertical height=9><br><font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				var inputCount = getSwitchInputCount();
+				var refCount = 1;
+
+				if (inputCount >= refCount) {
+					if (Satellite.getSwitchboxSatellite(refCount) != -1)
+						document.write("Odd");
+					else
+						document.write("<font size=-1 color=#484856><b>&#150;</b></font>");
+				}
+			</script>
+		<td width=2>
+		<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>
+			<spacer type=vertical height=9><br><font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				var inputCount = getSwitchInputCount();
+				var refCount = 1;
+
+				if (getSwitchModel() == "SW64") 
+					refCount = 2;
+
+				if (inputCount >= refCount) {
+					if (Satellite.getSwitchboxSatellite(refCount) != -1)
+						document.write("Even");
+					else
+						document.write("<font size=-1 color=#484856><b>&#150;</b></font>");
+				}
+			</script>
+		<td width=4>
+		<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>
+			<spacer type=vertical height=9><br><font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				var inputCount = getSwitchInputCount();
+				var refCount = 2;
+
+				if (getSwitchModel() == "SW64") 
+					refCount = 3;
+
+				if (inputCount >= refCount) {
+					if (Satellite.getSwitchboxSatellite(refCount) != -1)
+						document.write("Odd");
+					else
+						document.write("<font size=-1 color=#484856><b>&#150;</b></font>");
+				}
+			</script>
+		<td width=2>
+		<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>
+			<spacer type=vertical height=9><br><font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				var inputCount = getSwitchInputCount();
+				var refCount = 2;
+
+				if (getSwitchModel() == "SW64") 
+					refCount = 4;
+
+				if (inputCount >= refCount) {
+					if (Satellite.getSwitchboxSatellite(refCount) != -1)
+						document.write("Even");
+					else
+						document.write("<font size=-1 color=#484856><b>&#150;</b></font>");
+				}
+			</script>
+		<td width=4>
+		<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>			
+			<spacer type=vertical height=9><br><font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				var inputCount = getSwitchInputCount();
+				var refCount = 3;
+
+				if (getSwitchModel() == "SW64") 
+					refCount = 5;
+
+				if (inputCount >= refCount) {
+					if (Satellite.getSwitchboxSatellite(refCount) != -1)
+						document.write("Odd");
+					else
+						document.write("<font size=-1 color=#484856><b>&#150;</b></font>");
+				}
+			</script>
+		<td width=2>
+		<td height=32 width=57 bgcolor=#0f0f15 align=center valign=top>
+			<spacer type=vertical height=9><br><font size=-2 color=#ffcf69>
+			<script language="JavaScript">
+				var inputCount = getSwitchInputCount();
+				var refCount = 3;
+
+				if (getSwitchModel() == "SW64") 
+					refCount = 6;
+
+				if (inputCount >= refCount) {
+					if (Satellite.getSwitchboxSatellite(refCount) != -1)
+						document.write("Even");
+					else
+						document.write("<font size=-1 color=#484856><b>&#150;</b></font>");
+				}
+			</script>
+	</table>
+</div>
+
+<form>
+<div id=checkAgainButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<script language="JavaScript">
+		if (pageParams.checkAgain == "true")
+			document.write(
+				"<input type=submit value='Check Again' useStyle width=145 " +
+					"onClick='gotoSetup();' action='' " +
+					"borderImage='file://rom/tvimages/tvbuttonborder.bif'>"
+				);
+	</script>
+</div>
+
+<div id=doneButton>
+	<font size=-1 color=#ffcf69><shadow>
+	<input type=submit value="Done" useStyle width=130 selected onClick="history.go(-1)" action="" borderImage="file://rom/tvimages/tvbuttonborder.bif">
+	</shadow></font>
+</div>
+</form>
+
+</body>
+</html>

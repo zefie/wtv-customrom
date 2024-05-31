@@ -1,0 +1,204 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<display fontsize="medium">
+	<style>
+	.clsTitleLeft {
+		position: absolute;
+		left: 124;
+		width: 200;
+		color:e5e5e5;
+		font-size: 20pt;
+		font-weight: bold;
+	}
+	.clsTitleRight {
+		position: absolute;
+		left: 342;
+		width: 200;
+		color:e5e5e5;
+		font-size: 20pt;
+		font-weight: bold;
+	}
+	.clsDescLeft {
+		position: absolute;
+		left: 124;
+		width: 200;
+		color:6cb18a;
+		font-size: 18pt;
+	}
+	.clsDescRight {
+		position: absolute;
+		left: 342;
+		width: 200;
+		color:6cb18a;
+		font-size: 18pt;
+	}
+	#item1Title {
+		position: absolute;
+		top: 105;
+	}
+	#item1Text {
+		position: absolute;
+		top: 130;
+	}
+	#item2Title {
+		position: absolute;
+		top: 185;
+	}
+	#item2Text {
+		position: absolute;
+		top: 210;
+	}
+	#item3Title {
+		position: absolute;
+		top: 265;
+	}
+	#item3Text {
+		position: absolute;
+		top: 290;
+	}
+	#item4Title {
+		position: absolute;
+		top: 345;
+	}
+	#item4Text {
+		position: absolute;
+		top: 370;
+	}
+	#passwordTitle {
+		position: absolute;
+		top: 140;
+		left: 124;
+		color:e5e5e5;
+		visibility: hidden;
+	}
+	#passwordText {
+		position: absolute;
+		top: 165;
+		left: 124;
+		width: 220;
+		color:6cb18a;
+		visibility: hidden;
+	}
+	#doneButton {
+		position: absolute;
+		top: 355;
+		left: 400;
+		font:18pt;
+		color:ffcf69;
+		line-height:24pt;
+		background-color: 191919;
+	}
+	</style>
+
+</head>
+
+<print blackandwhite>
+
+<body 
+	bgcolor=172625 text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	hspace=0>
+
+<div id=sideBarBackground bgcolor=514971 gradcolor=1f2a30 gradangle=0>
+</div>
+
+<div id=sideBar>
+	<script>
+		top.beginSidebars(true);
+		top.endSidebars();
+	</script>
+</div>
+
+<div id=topBannerBackground bgcolor=0c1413 gradcolor=172625 gradangle=0>
+</div>
+
+<div id=topBanner>
+	<img src=images/MailBanner.gif width=431 height=54>
+</div>
+
+<div id=pageTitleText>
+	<shadow>Settings</shadow>
+</div>
+
+<div id=passwordTitle>
+	<a href=SetPassword.html><font size=+2><shadow>Password</shadow></font></a>
+</div>
+
+<div id=passwordText>
+	Choose or change your password
+</div>
+
+<div id=item1Title class=clsTitleLeft>
+	<a href=SettingExtras.html><shadow>Extras</shadow></a>
+</div>
+
+<div id=item1Text class=clsDescLeft>
+	Storing, addressing, and replying to mail
+</div>
+
+<div id=item2Title class=clsTitleLeft>
+	<a href=SettingOrder.html><shadow>Listing</shadow></a>
+</div>
+
+<div id=item2Text class=clsDescLeft>
+	Choose how messages are listed in the mail list
+</div>
+
+<div id=item3Title class=clsTitleLeft>
+	<a href=EmailWarning.html?nextpage=current&error=NotImpl><shadow>Message light</shadow></a>
+</div>
+
+<div id=item3Text class=clsDescLeft>
+	Automatically check for mail once a day
+</div>
+
+<div id=item4Title class=clsTitleLeft>
+	<a href=EmailWarning.html?nextpage=current&error=NotImpl><shadow>Word list</shadow></a>
+</div>
+
+<div id=item4Text class=clsDescLeft>
+	Words the spell-checker remembers
+</div>
+
+<div id=item1Title class=clsTitleRight>
+	<a href=EmailWarning.html?nextpage=current&error=NotImpl><shadow>Signature</shadow></a>
+</div>
+
+<div id=item1Text class=clsDescRight>
+	Personal text added to each message you send
+</div>
+
+<div id=item2Title class=clsTitleRight>
+	<a href=EmailWarning.html?nextpage=current&error=NotImpl><shadow>Mail name</shadow></a>
+</div>
+
+<div id=item2Text class=clsDescRight>
+	Change the name that appears on your mail
+</div>
+
+<div id=item3Title class=clsTitleRight>
+	<a href=EmailWarning.html?nextpage=current&error=NotImpl><shadow>Remote mail</shadow></a>
+</div>
+
+<div id=item3Text class=clsDescRight>
+	Fetch mail from another mail account
+</div>
+
+<form>
+	<div id=doneButton>
+		<font size=-1><shadow>
+		<input type=submit value=Done name=Done
+			usestyle width=137 action="" onClick='history.back();'
+			borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+</form>
+
+</body>
+</html>

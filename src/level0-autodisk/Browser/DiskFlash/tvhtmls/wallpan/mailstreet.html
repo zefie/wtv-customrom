@@ -1,0 +1,72 @@
+<html>
+<head>
+<object type="application/x-wtv-wallet" name="myWallet"></object>
+<script src="../wallet.js"></script>
+<title>Mailing Address</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</head>
+<script>
+function CheckMailInput(form){
+  var invalid = "";
+  form.ErrorMessage.value ="";
+  form.address1.value = TrimWhiteSpace(form.address1.value);
+  form.address2.value = TrimWhiteSpace(form.address2.value);  
+  if (form.address1.value == "")
+    form.ErrorMessage.value += "Street info is required to fulfill your request. ";
+  else if (!validCN(form.address1.value))
+    invalid = "Street";
+  else
+    myWallet.setUserInfo("shipAddr1", form.address1.value, 1);
+  if (!validCN(form.address2.value)) {
+    if (invalid != "") {invalid += " and "}
+    invalid += "Apt/Suite";
+  }
+  else
+    myWallet.setUserInfo("shipAddr2", form.address2.value, 1);
+  if (invalid != "")
+    form.ErrorMessage.value += "You have typed in an improper " + invalid + ".";
+}
+function SubmitMailInfo() {
+  myWallet.setUserInfo("shipAddr1",document.mail_street.address1.value,1);
+  myWallet.setUserInfo("shipAddr2",document.mail_street.address2.value,1);
+}
+function LoadMailInfo() {
+  document.mail_street.address1.value = myWallet.readUserInfo("shipAddr1",1);
+  document.mail_street.address2.value = myWallet.readUserInfo("shipAddr2",1);
+}
+</script>
+<body text=e0e4e7 link=ffcf69 vlink=ffcf69 fontsize=large vspace=0 hspace=0 nobackground onLoad="LoadMailInfo();">
+<form name="mail_street" action="client:walletpanelaction" onSubmit="CheckMailInput(document.mail_street);">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_BlueTop.gif">
+  <tr><td width=100% absheight=97 bgcolor=#001133 transparency=15% valign=top>
+    <table width=100% border=0 cellspacing=0 cellpadding=0>
+    <tr><td colspan=2 height=30 background="file://ROM/tvimages/TVPanel_blue.gif">
+	<table border=0 cellspacing=0 cellpadding=0>
+	  <tr><td abswidth=20><td abswidth=520><font color=#b2b2b2>Type in the street info where items will be delivered.</font>
+	</table>
+    <tr><td abswidth=20><td><table width=420 border=0 cellspacing=0 cellpadding=0>
+    <tr><td abswidth=95 align=right height=34><font size=-1 color=6cb28b>Street:</font>
+    <td abswidth=7>
+    <td abswidth=150><font color=ffcf69><input name="address1" usestyle size=30 maxlength=30 border=1 bgcolor=000000 selected></font>
+    <tr><td align=right height=33><font size=-1 color=6cb28b>Apt./Suite:</font>
+    <td>
+    <td><font color=ffcf69><input name="address2" usestyle size=30 maxlength=30 border=1 bgcolor=000000 nextright=cont nextdown=cont></font>
+	</table>
+  </table>
+  <tr><td width=100% absheight=4 background="file://ROM/tvimages/TVPanel_Groove.gif">
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_GrayTop.gif" valign=center>
+  <tr><td width=100% absheight=40 background="file://ROM/tvimages/TVPanel_Gray.gif" valign=center>
+  <table border=0 cellspacing=0 cellpadding=0><tr>
+    <td abswidth=20>
+	<td><font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Don't Order" usestyle width=150 onClick="SetPage('cancel.html');"></font>
+    <td width=225>
+    <td align=right><font size=-1 color=#ffcf69><input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" Value="Continue" id=cont usestyle width=150  selected></font>
+	<td align=right><input type=hidden name="ErrorMessage">
+    <td abswidth=10>
+  </table>
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_Gray.gif" valign=center>
+</table>
+</form>
+</body>
+</html>

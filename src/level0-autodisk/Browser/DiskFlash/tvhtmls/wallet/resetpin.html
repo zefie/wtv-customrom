@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Reset PIN</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</head>
+<script language="javascript" src="../wallet.js"></script>
+<script language="javascript">
+var inputCounter=1; 
+function CheckPinInput(form){
+  var addComma = ", ";
+  var fieldName = "";
+  if (form.oldpin.value.length == 0) {
+  	if (fieldName != "") {fieldName += addComma;}
+    fieldName += "Type in current Wallet PIN";
+  }
+  if (form.newpin.value.length == 0) {
+	if (fieldName != "") {fieldName += addComma;}
+    fieldName += "Type in new Wallet PIN";
+  }
+  if (form.confirmpin.value.length == 0) {
+  	if (fieldName != "") {fieldName += addComma;}
+    fieldName += "Re-type to confirm PIN";
+  }
+  if (form.oldpin.value.length == 0 || form.newpin.value == "" || form.confirmpin.value == "") {
+		top.errorMessage = "You need to provide information for: " + fieldName + ". It's required to fulfill your request. ";
+		top.SetPage('error.html');
+  } else if (!top.myWallet.validatePIN(document.reset_pin.oldpin.value)) {
+		top.SetPage('errorpin.html');
+  } else if (!ValidPIN(document.reset_pin.newpin.value,document.reset_pin.confirmpin.value)){
+		top.errorMessage = "The PINs you typed in are incorrect. Please try typing them in again, making sure they match and are only 4 numbers, for example: 1234.";
+		top.SetPage('error.html');
+  } else {
+		ResetPinContinueButton();
+  }
+}
+function SetPin(){
+  top.myWallet.setPIN(document.reset_pin.confirmpin.value);
+}
+function ResetPinContinueButton(){
+  SetPin();
+  top.SetPage("review.html");
+}
+</script>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large>
+<form name="reset_pin">
+<div id="Banner" style="position:absolute; top:0px; left:0px;">
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+<div id="Header" style="position:absolute; top:105px; left:60px;">
+<font color=ffd069 size=+2><shadow>&wtv-tvwallet; PIN setup</shadow></font>
+</div>
+<div id="instruct_card" style="position:absolute; top:140px; left:60px; width:200;">
+<font color=999999>Type your current &wtv-tvwallet; PIN and then type your new PIN.
+<br><br>You can create a &wtv-tvwallet; PIN using the numbers on your remote control.
+<br><br>Your PIN must be at least 4 digits.</font>
+</div>
+<div id="Lock" style="position:absolute; top:100px; left:470px;">
+<img src="file://ROM/tvimages/WalletLock.gif">
+</div>
+<div id="ResetPIN" style="position:absolute; top:130px; left:280px; width:270;">
+<table border=0 cellspacing=0 cellpadding=2>
+  <tr><td height=33><font size=-1 color=6cb28b>Type in current &wtv-tvwallet; PIN:</font></td></tr>
+  <tr><td height=33><font size=-1 color=ffd069><input type="password" name="oldpin" usestyle size=10 maxlength=4 border=1 selected  bgcolor=000000></font></td></tr>
+  <tr><td height=33><font size=-1 color=6cb28b>Type in new &wtv-tvwallet; PIN:</font></td></tr>
+  <tr><td height=33><font size=-1 color=ffd069><input type="password" name="newpin" usestyle size=10 maxlength=4 border=1 bgcolor=000000></font></td></tr>
+  <tr><td height=33><font size=-1 color=6cb28b>Re-type to confirm:</font></td></tr>
+  <tr><td height=33><font size=-1 color=ffd069><input type="password" name="confirmpin" usestyle size=10 maxlength=4 border=1 bgcolor=000000 nextdown=cont nextright=cont></font></td></tr>
+  </table>
+</div>
+<div id="Buttons" style="position:absolute; top:375px; left:60px;">
+<table border=0 cellpadding=0 cellspacing=0><tr>
+<td><font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="About Security" usestyle width=170 onClick="top.SetPage('faq.html')"></font></td>
+<td width=8></td>
+<td><font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Forgot PIN" usestyle width=170 onClick="top.SetPage('faq_pin.html')"></font></td>
+<td width=8></td>
+<td><font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" id=cont value="Continue" usestyle width=130 onClick="CheckPinInput(this.form)"></font></td>
+</tr></table>
+</div>
+</form>
+</body>
+</html>

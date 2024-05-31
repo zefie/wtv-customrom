@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>
+Dish pointing more info
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio lockpage>
+</head>
+
+<style type="text/css">
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 63;
+	width: 161;
+	height: 26;
+}
+
+#moreinfobody {
+	position: absolute;
+	top: 143;
+	left: 63;
+	width: 395;
+	height: 226;
+}
+
+#switchBoxButton {
+	position: absolute;
+	top: 372;
+	left: 229;
+	width: 170;
+	height: 35;
+}
+
+#doneButton {
+	position: absolute;
+	top: 372;
+	left: 412;
+	width: 130;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+
+
+
+</style>
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 onLoad="setState()" fontsize=large noscroll hideoptions>
+
+<form>
+
+	<div id=banner>
+		<table cellspacing=0 cellpadding=0 cellborder=0>
+			<tr>
+				<td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+					<spacer type=block WIDTH=11 HEIGHT=11><br>
+					<spacer type=block WIDTH=10 HEIGHT=1>
+	    				<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>
+				<td width=456 height=80 valign=top align=center>
+					<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+					<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+		</table>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Dish pointing</font>
+	</div>
+
+	<div id=moreinfobody>
+		<font size=-1 color=989898>
+			<p>
+				To point your satellite dish &#151; or dishes &#151; so that your receiver will get the strongest signal:
+			<p><spacer type=horizontal width=10>&#149;
+				Make sure your <font size=-2>ZIP</font> code is entered correctly.
+			<br><spacer type=horizontal width=10>&#149;
+				Choose a satellite &#151;
+
+				<script language="JavaScript">
+					satname = Satellite.getNthSatellitePosition(1).toString() + "\xB0" + ", "
+							+ Satellite.getNthSatellitePosition(0).toString() + "\xB0" + " or "
+							+ Satellite.getNthSatellitePosition(2).toString() + "\xB0" + ".";
+					document.write(satname);
+				</script>	    	
+
+			<br><spacer type=horizontal width=10>&#149;
+				Point your dish to the recommended position.
+			<br><spacer type=horizontal width=10>&#149;
+				Watch the signal strength meter or listen to
+			<br><spacer type=horizontal width=20>
+				the beeping sound to get a <font size=-2>LOCKED</font> signal.
+			<p>
+				If you have more than one dish, choose <b>Multiple Dishes</b> to set up a multi-dish switch.
+		</font>
+	</div>
+
+	<div id=switchBoxButton>
+		<font size=-1 color=#ffcf69><shadow>
+		<input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Multiple Dishes"
+			usestyle width=170 action="file://rom/tvhtmls/satellite/switchbox-intro.html">
+		</shadow></font>
+	</div>
+
+	<div id=donebutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input type=submit value=Done name=Done id=Done usestyle width=130 action="client:goback" selected borderimage="file://ROM/tvimages/TVButtonBorder.bif">
+		</shadow></font>
+	</div>
+
+
+</form>
+</body>
+</html>

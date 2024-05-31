@@ -184,6 +184,636 @@
 			"compression_type": "NONE",
 			"depth": 2,
 			"type": 2
-		}				
+		},
+		"/ROM/Local/US000.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US000.dat",
+            "next_link": 2155865752,
+            "offset": 2877136,
+            "size": 189,
+            "type": 1
+        },
+        "/ROM/Local/US000.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US000.dir",
+            "next_link": 2155865696,
+            "offset": 2877080,
+            "size": 100,
+            "type": 1
+        },
+        "/ROM/Local/US001.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US001.dat",
+            "next_link": 2155865640,
+            "offset": 2877024,
+            "size": 172,
+            "type": 1
+        },
+        "/ROM/Local/US001.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US001.dir",
+            "next_link": 2155865584,
+            "offset": 2876968,
+            "size": 36,
+            "type": 1
+        },
+        "/ROM/Local/US002.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US002.dat",
+            "next_link": 2155865528,
+            "offset": 2876912,
+            "size": 10,
+            "type": 1
+        },
+        "/ROM/Local/US002.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US002.dir",
+            "next_link": 2155865472,
+            "offset": 2876856,
+            "size": 8,
+            "type": 1
+        },
+        "/ROM/Local/US003.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US003.dat",
+            "next_link": 2155865416,
+            "offset": 2876800,
+            "size": 100,
+            "type": 1
+        },
+        "/ROM/Local/US003.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US003.dir",
+            "next_link": 2155865360,
+            "offset": 2876744,
+            "size": 64,
+            "type": 1
+        },
+        "/ROM/Local/US004.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US004.dat",
+            "next_link": 2155865304,
+            "offset": 2876688,
+            "size": 303,
+            "type": 1
+        },
+        "/ROM/Local/US004.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US004.dir",
+            "next_link": 2155865248,
+            "offset": 2876632,
+            "size": 176,
+            "type": 1
+        },
+        "/ROM/Local/US005.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US005.dat",
+            "next_link": 2155865192,
+            "offset": 2876576,
+            "size": 948,
+            "type": 1
+        },
+        "/ROM/Local/US005.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US005.dir",
+            "next_link": 2155865136,
+            "offset": 2876520,
+            "size": 16,
+            "type": 1
+        },
+        "/ROM/Local/US006.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US006.dat",
+            "next_link": 2155865080,
+            "offset": 2876464,
+            "size": 2864,
+            "type": 1
+        },
+        "/ROM/Local/US006.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US006.dir",
+            "next_link": 2155865024,
+            "offset": 2876408,
+            "size": 136,
+            "type": 1
+        },
+        "/ROM/Local/US007.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US007.dat",
+            "next_link": 2155864968,
+            "offset": 2876352,
+            "size": 904,
+            "type": 1
+        },
+        "/ROM/Local/US007.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US007.dir",
+            "next_link": 2155864912,
+            "offset": 2876296,
+            "size": 8,
+            "type": 1
+        },
+        "/ROM/Local/US008.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US008.dat",
+            "next_link": 2155864856,
+            "offset": 2876240,
+            "size": 690,
+            "type": 1
+        },
+        "/ROM/Local/US008.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US008.dir",
+            "next_link": 2155864800,
+            "offset": 2876184,
+            "size": 8,
+            "type": 1
+        },
+        "/ROM/Local/US009.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US009.dat",
+            "next_link": 2155864744,
+            "offset": 2876128,
+            "size": 897,
+            "type": 1
+        },
+        "/ROM/Local/US009.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US009.dir",
+            "next_link": 2155864688,
+            "offset": 2876072,
+            "size": 68,
+            "type": 1
+        },
+        "/ROM/Local/US010.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US010.dat",
+            "next_link": 2155864632,
+            "offset": 2876016,
+            "size": 695,
+            "type": 1
+        },
+        "/ROM/Local/US010.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US010.dir",
+            "next_link": 2155864576,
+            "offset": 2875960,
+            "size": 40,
+            "type": 1
+        },
+        "/ROM/Local/US011.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US011.dat",
+            "next_link": 2155864520,
+            "offset": 2875904,
+            "size": 384,
+            "type": 1
+        },
+        "/ROM/Local/US011.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US011.dir",
+            "next_link": 2155864464,
+            "offset": 2875848,
+            "size": 80,
+            "type": 1
+        },
+        "/ROM/Local/US013.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US013.dat",
+            "next_link": 2155864408,
+            "offset": 2875792,
+            "size": 902,
+            "type": 1
+        },
+        "/ROM/Local/US013.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US013.dir",
+            "next_link": 2155864352,
+            "offset": 2875736,
+            "size": 8,
+            "type": 1
+        },
+        "/ROM/Local/US014.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US014.dat",
+            "next_link": 2155864296,
+            "offset": 2875680,
+            "size": 158,
+            "type": 1
+        },
+        "/ROM/Local/US014.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US014.dir",
+            "next_link": 2155864240,
+            "offset": 2875624,
+            "size": 44,
+            "type": 1
+        },
+        "/ROM/Local/US015.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US015.dat",
+            "next_link": 2155864184,
+            "offset": 2875568,
+            "size": 105,
+            "type": 1
+        },
+        "/ROM/Local/US015.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US015.dir",
+            "next_link": 2155864128,
+            "offset": 2875512,
+            "size": 8,
+            "type": 1
+        },
+        "/ROM/Local/US016.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US016.dat",
+            "next_link": 2155864072,
+            "offset": 2875456,
+            "size": 41,
+            "type": 1
+        },
+        "/ROM/Local/US016.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US016.dir",
+            "next_link": 2155864016,
+            "offset": 2875400,
+            "size": 12,
+            "type": 1
+        },
+        "/ROM/Local/US017.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US017.dat",
+            "next_link": 2155863960,
+            "offset": 2875344,
+            "size": 5127,
+            "type": 1
+        },
+        "/ROM/Local/US017.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US017.dir",
+            "next_link": 2155863904,
+            "offset": 2875288,
+            "size": 316,
+            "type": 1
+        },
+        "/ROM/Local/US018.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US018.dat",
+            "next_link": 2155863848,
+            "offset": 2875232,
+            "size": 1452,
+            "type": 1
+        },
+        "/ROM/Local/US018.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US018.dir",
+            "next_link": 2155863792,
+            "offset": 2875176,
+            "size": 164,
+            "type": 1
+        },
+        "/ROM/Local/US019.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US019.dat",
+            "next_link": 2155863736,
+            "offset": 2875120,
+            "size": 6338,
+            "type": 1
+        },
+        "/ROM/Local/US019.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US019.dir",
+            "next_link": 2155863680,
+            "offset": 2875064,
+            "size": 224,
+            "type": 1
+        },
+        "/ROM/Local/US020.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US020.dat",
+            "next_link": 2155863624,
+            "offset": 2875008,
+            "size": 2863,
+            "type": 1
+        },
+        "/ROM/Local/US020.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US020.dir",
+            "next_link": 2155863568,
+            "offset": 2874952,
+            "size": 164,
+            "type": 1
+        },
+        "/ROM/Local/US021.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US021.dat",
+            "next_link": 2155863512,
+            "offset": 2874896,
+            "size": 93,
+            "type": 1
+        },
+        "/ROM/Local/US021.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US021.dir",
+            "next_link": 2155863456,
+            "offset": 2874840,
+            "size": 52,
+            "type": 1
+        },
+        "/ROM/Local/US022.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US022.dat",
+            "next_link": 2155863400,
+            "offset": 2874784,
+            "size": 216,
+            "type": 1
+        },
+        "/ROM/Local/US022.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US022.dir",
+            "next_link": 2155863344,
+            "offset": 2874728,
+            "size": 52,
+            "type": 1
+        },
+        "/ROM/Local/US023.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US023.dat",
+            "next_link": 2155863288,
+            "offset": 2874672,
+            "size": 679,
+            "type": 1
+        },
+        "/ROM/Local/US023.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US023.dir",
+            "next_link": 2155863232,
+            "offset": 2874616,
+            "size": 12,
+            "type": 1
+        },
+        "/ROM/Local/US024.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US024.dat",
+            "next_link": 2155863176,
+            "offset": 2874560,
+            "size": 2192,
+            "type": 1
+        },
+        "/ROM/Local/US024.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US024.dir",
+            "next_link": 2155863120,
+            "offset": 2874504,
+            "size": 20,
+            "type": 1
+        },
+        "/ROM/Local/US025.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US025.dat",
+            "next_link": 2155863064,
+            "offset": 2874448,
+            "size": 1,
+            "type": 1
+        },
+        "/ROM/Local/US025.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US025.dir",
+            "next_link": 2155863008,
+            "offset": 2874392,
+            "size": 4,
+            "type": 1
+        },
+        "/ROM/Local/US026.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US026.dat",
+            "next_link": 2155862952,
+            "offset": 2874336,
+            "size": 1,
+            "type": 1
+        },
+        "/ROM/Local/US026.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US026.dir",
+            "next_link": 2155862896,
+            "offset": 2874280,
+            "size": 4,
+            "type": 1
+        },
+        "/ROM/Local/US027.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US027.dat",
+            "next_link": 2155862840,
+            "offset": 2874224,
+            "size": 53754,
+            "type": 1
+        },
+        "/ROM/Local/US027.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US027.dir",
+            "next_link": 2155862784,
+            "offset": 2874168,
+            "size": 1196,
+            "type": 1
+        },
+        "/ROM/Local/US028.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US028.dat",
+            "next_link": 2155862728,
+            "offset": 2874112,
+            "size": 896,
+            "type": 1
+        },
+        "/ROM/Local/US028.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US028.dir",
+            "next_link": 2155862672,
+            "offset": 2874056,
+            "size": 100,
+            "type": 1
+        },
+        "/ROM/Local/US029.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US029.dat",
+            "next_link": 2155862616,
+            "offset": 2874000,
+            "size": 6192,
+            "type": 1
+        },
+        "/ROM/Local/US029.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US029.dir",
+            "next_link": 2155862560,
+            "offset": 2873944,
+            "size": 144,
+            "type": 1
+        },
+        "/ROM/Local/US030.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US030.dat",
+            "next_link": 2155862504,
+            "offset": 2873888,
+            "size": 41950,
+            "type": 1
+        },
+        "/ROM/Local/US030.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US030.dir",
+            "next_link": 2155862448,
+            "offset": 2873832,
+            "size": 380,
+            "type": 1
+        },
+        "/ROM/Local/US031.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US031.dat",
+            "next_link": 2155862392,
+            "offset": 2873776,
+            "size": 70,
+            "type": 1
+        },
+        "/ROM/Local/US031.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US031.dir",
+            "next_link": 2155862336,
+            "offset": 2873720,
+            "size": 280,
+            "type": 1
+        },
+        "/ROM/Local/US032.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US032.dat",
+            "next_link": 2155862280,
+            "offset": 2873664,
+            "size": 474,
+            "type": 1
+        },
+        "/ROM/Local/US032.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US032.dir",
+            "next_link": 2155862224,
+            "offset": 2873608,
+            "size": 268,
+            "type": 1
+        },
+        "/ROM/Local/US033.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US033.dat",
+            "next_link": 2155862168,
+            "offset": 2873552,
+            "size": 34,
+            "type": 1
+        },
+        "/ROM/Local/US033.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US033.dir",
+            "next_link": 2155862112,
+            "offset": 2873496,
+            "size": 136,
+            "type": 1
+        },
+        "/ROM/Local/US034.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US034.dat",
+            "next_link": 2155862056,
+            "offset": 2873440,
+            "size": 22906,
+            "type": 1
+        },
+        "/ROM/Local/US034.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US034.dir",
+            "next_link": 2155862000,
+            "offset": 2873384,
+            "size": 496,
+            "type": 1
+        },
+        "/ROM/Local/US036.dat": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US036.dat",
+            "next_link": 2155861944,
+            "offset": 2873328,
+            "size": 3195,
+            "type": 1
+        },
+        "/ROM/Local/US036.dir": {
+            "compression_type": "LZSS",
+            "depth": 2,
+            "name": "US036.dir",
+            "next_link": 0,
+            "offset": 2873272,
+            "size": 44,
+            "type": 1
+        }		
 	}
 }

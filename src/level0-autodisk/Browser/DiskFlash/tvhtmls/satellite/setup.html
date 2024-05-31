@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Satellite settings</title>
+
+<meta http-equiv=refresh content=0;url=client:ClearBackTVSettings>
+
+<display nologo nooptions noreconnectalert>
+
+<style type="text/css">
+
+#banner {
+	position: absolute;
+	top: 0;
+	left: 1;
+	width: 560;
+	height: 80;
+}
+
+#lockimage {
+ 	position: absolute;
+	top: 84;
+	left: 418;
+	width: 25;
+	height: 37;
+}
+
+#hooking {
+	position: absolute;
+	top: 98;
+	left: 64;
+	width: 173;
+	height: 77;
+}
+
+#locking {
+	position: absolute;
+	top: 98;
+	left: 312;
+	width: 200;
+	height: 61;
+}
+
+#channels {
+	position: absolute;
+	top: 199;
+	left: 64;
+	width: 186;
+	height: 61;
+}
+
+#dialing {
+	position: absolute;
+	top: 199;
+	left: 312;
+	width: 185;
+	height: 61;
+}
+
+#screenaudio {
+	position: absolute;
+	top: 290;
+	left: 312;
+	width: 200;
+	height: 61;
+}
+
+#diagnostics {
+	position: absolute;
+	top: 290;
+	left: 64;
+	width: 200;
+	height: 61;
+}
+
+#purchases {
+	position: absolute;
+	top: 290;
+	left: 312;
+	width: 157;
+	height: 61;
+}
+
+#donebutton {
+	position: absolute;
+	top: 371;
+	left: 410;
+	width: 130;
+	height: 35;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+
+</style>
+</head>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" 
+ text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<form>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=hooking>
+		<a href="file://rom/tvhtmls/satellite/setup-hookup.html">
+		<font size=+2 color=#cbcbcb><shadow>Hooking up</shadow></font></a>
+		<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+		Dish pointing and<br>VCR setup</font>
+	</div>
+
+	<div id=lockimage> 	 	
+		<script language="JavaScript">
+ 	 	 	if (TVAccess.isLocked())
+ 	 	 	 	document.write("<img src=file://rom/tvimages/LockYellowMD_Locked.gif width=25 height=37>");
+ 	 	 	else
+ 	 	 	 	document.write("<img src=file://rom/tvimages/LockGreenMD_Unlocked.gif width=25 height=37>");
+ 	 	</script>
+	</div>
+
+	<div id=locking>
+		<script language="Javascript">
+			if (TVAccess.isLocked())
+				document.write("<a selected href=file://rom/tvhtmls/UnlockOrChangeLimits.html>");
+			else
+				document.write("<a selected href=file://rom/tvhtmls/satellite/setup-locks.html>");
+		</script>
+		<font size=+2 color=#cbcbcb><shadow>Limits</shadow></font></a>
+		<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+		Setting limits allows you to restrict access to programs, channels or pay to view</font>
+	</div>
+
+	<div id=channels>
+		<a href="client:showchannelsetup">
+		<font size=+2 color=#cbcbcb><shadow>Channels</shadow></font></a>
+		<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+		Select stations to view<br>when changing channels</font>
+	</div>
+
+	<div id=dialing>
+		<a href="file://ROM/tvhtmls/p-PhoneSetupIntro.html">
+		<font size=+2 color=#cbcbcb><shadow>Dialing</shadow></font></a>
+		<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+		Phone settings for<br>connecting to MSN TV</font>
+	</div>
+
+	<div id=screenaudio>
+		<a href="file://rom/tvhtmls/satellite/setup-av.html">
+		<font size=+2 color=#cbcbcb><shadow>Screen & Audio</shadow></font></a>
+		<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+		Adjust screen and audio<br>settings</font>
+	</div>
+
+	<div id=diagnostics>
+		<a href="file://rom/tvhtmls/satellite/diagnostics.html">
+		<font size=+2 color=#cbcbcb><shadow>Diagnostics</shadow></font></a>
+		<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+		Diagnose problems with your satellite receiver</font>
+	</div>
+
+	<div id=donebutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input type=submit value=Done name=Done
+				usestyle width=130 action=client:showtvhome
+				borderimage=file://ROM/tvimages/TVButtonBorder.bif>
+		</shadow></font>
+	</div>
+
+</form>
+
+</body>
+</html>

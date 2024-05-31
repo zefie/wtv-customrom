@@ -1,0 +1,228 @@
+<html>
+<head>
+	<title>Billing Address</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</head>
+<script src="../wallet.js"></script>
+<script>
+function CheckBillInput(form){
+var addComma = ", ";
+var fieldName = "";
+top.errorMessage = "";
+var invalid ="";
+  form.firstname.value = TrimWhiteSpace(form.firstname.value);
+  form.lastname.value = TrimWhiteSpace(form.lastname.value);
+  form.address1.value = TrimWhiteSpace(form.address1.value);
+  form.address2.value = TrimWhiteSpace(form.address2.value);
+  form.city.value = TrimWhiteSpace(form.city.value);
+  form.state.value = TrimWhiteSpace(form.state.value);
+  form.zip.value = TrimWhiteSpace(form.zip.value);
+  form.country.value = TrimWhiteSpace(form.country.value);
+  if (form.firstname.value == "") {
+		fieldName = "First Name";
+  }else if (validCN(form.firstname.value) != true) 
+		invalid = "First Name";
+  else {
+		top.billFName = form.firstname.value;
+		top.myWallet.setUserInfo("billFName", top.billFName);
+  }
+  if (!validCN(form.midinitial.value)) {
+        if (invalid != "") {invalid += addComma;}
+		invalid += "Middle Initial";
+  }	else{
+		top.billMI = form.midinitial.value;
+		top.myWallet.setUserInfo("billMI", top.billMI);
+  }
+  if (form.lastname.value== "") {
+  	if (fieldName != "") fieldName += addComma;
+		fieldName += "Last Name";
+  } else  if (validCN(form.lastname.value)!= true) {
+  	if (invalid != "") invalid += addComma;
+		invalid += "Last Name";
+  } else {
+		top.billLName = form.lastname.value;
+		top.myWallet.setUserInfo("billLName", top.billLName);
+  }
+  if (form.address1.value == ""){
+	if (fieldName != "") fieldName += addComma;
+		fieldName += "Street";
+  } 
+  if ( form.address1.value != ""){
+	if (validCN(form.address1.value) == true) {
+	 	top.billAddr1 = form.address1.value;
+		top.myWallet.setUserInfo("billAddr1", top.billAddr1);
+	}
+  }		
+  if (validCN(form.address2.value) == true) {
+  	top.billAddr2 = form.address2.value;
+	top.myWallet.setUserInfo("billAddr2", top.billAddr2);
+  }
+if ((validCN(form.address1.value) != true) || (validCN(form.address2.value) != true)){
+	if (invalid != "") invalid += addComma;
+		invalid += "Street";
+}
+  if (form.city.value == "") {
+  	if (fieldName != "") fieldName += addComma;
+		fieldName += "City";
+  } else if (validCN(form.city.value) != true){
+		if (invalid != "") invalid += addComma;
+		invalid += "City";
+  }else {
+		top.billCity = form.city.value;
+		top.myWallet.setUserInfo("billCity", top.billCity);
+  }
+	if (form.state.value == "") {
+	  if (fieldName != "") fieldName += addComma;
+		fieldName += "State";
+	}else if (validState(form.state.value) == false){
+		if (invalid != "") invalid += addComma;
+		invalid += "State";
+	}else {
+		top.billState = form.state.value;
+		top.myWallet.setUserInfo("billState", top.billState);
+	}
+	if (form.zip.value.length == 0) {
+		if (fieldName != "") {fieldName += addComma;}
+		fieldName += "Zip Code";
+	}
+	if (form.country.value== "") {
+  		if (fieldName != "") {fieldName += addComma;}
+			fieldName += "Country";
+	} else  if (validCountry(form.country.value)!= true) {
+  		if (invalid != "") {invalid += addComma;}
+			invalid += "Country";
+	} else {
+			top.billCountry = form.country.value;
+			top.myWallet.setUserInfo("billCountry",top.billCountry);
+	}
+  if (fieldName != "") {
+		top.errorMessage = "You need to provide information for: " + fieldName + ". It's required to fulfill your request. ";
+  }
+	if (validCountry(form.country.value)== true) {
+		if (form.zip.value.length != 0) {
+			if (!ValidZip(form.zip.value,form.country.value)){
+				top.errorMessage += "You have typed in an incorrect zip code. Please try typing it again in the proper format, for example: 09404 (USA) or A2A 3B3 (Canada). ";
+			} else {
+				top.billZip = form.zip.value;
+				top.myWallet.setUserInfo("billZip", top.billZip);
+			}
+		}
+	}
+	else{
+		if (ValidZip(form.zip.value,"USA") || ValidZip(form.zip.value,"CA")){
+			top.billZip = form.zip.value;
+			top.myWallet.setUserInfo("billZip", top.billZip);
+		}
+	}
+	if (invalid != "") {
+		top.errorMessage += "You have typed in an improper "+invalid + ". Please try typing it again. ";
+	}
+	if (top.errorMessage != ""){
+		top.SetPage('error.html');
+	} else {
+		BillContinueButton();
+	}
+}
+function SubmitBillInfo() {
+  top.billFName = document.bill_address.firstname.value;
+  top.billMI = document.bill_address.midinitial.value;
+  top.billLName = document.bill_address.lastname.value;
+  top.billAddr1 = document.bill_address.address1.value;
+  top.billAddr2 = document.bill_address.address2.value;
+  top.billCity = document.bill_address.city.value;
+  top.billState = document.bill_address.state.value;
+  top.billZip = document.bill_address.zip.value;
+  top.billCountry = document.bill_address.country.value;
+  top.myWallet.setUserInfo("billFName",top.billFName);
+  top.myWallet.setUserInfo("billMI",top.billMI);
+  top.myWallet.setUserInfo("billLName",top.billLName);
+  top.myWallet.setUserInfo("billAddr1",top.billAddr1);
+  top.myWallet.setUserInfo("billAddr2",top.billAddr2);
+  top.myWallet.setUserInfo("billCity",top.billCity);
+  top.myWallet.setUserInfo("billState",top.billState);
+  top.myWallet.setUserInfo("billZip",top.billZip);
+  top.myWallet.setUserInfo("billCountry",top.billCountry);
+}
+function LoadBillInfo() {
+  document.bill_address.firstname.value = top.billFName;
+  document.bill_address.midinitial.value = top.billMI;
+  document.bill_address.lastname.value = top.billLName;
+  document.bill_address.address1.value = top.billAddr1;
+  document.bill_address.address2.value = top.billAddr2;
+  document.bill_address.city.value = top.billCity;
+  document.bill_address.state.value = top.billState;
+  document.bill_address.zip.value = top.billZip;
+  document.bill_address.country.value = top.billCountry;
+  if (document.bill_address.country.value == "" && top.billZip=="") {
+    document.bill_address.country.value = "USA";
+  }
+}
+function BillContinueButton(){
+  SubmitBillInfo();
+  top.SetPage("review.html");
+}
+</script>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large onLoad="LoadBillInfo();">
+<form name="bill_address">
+<div id="Banner" style="position:absolute; top:0px; left:0px;">
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+<div id="Header" style="position:absolute; top:105px; left:60px;">
+<font color=ffd069 size=+2><shadow>Billing information</shadow></font>
+</div>
+<div id="Body" style="position:absolute; top:140px; left:60px; width:500;">
+<font color=999999>Type in your name as it appears on your credit card.</font>
+</div>
+<div id="BillAddress" style="position:absolute; top:165px; left:60px; width:500;">
+<table border=0 cellspacing=0 cellpadding=0>
+  <tr><td abswidth=95 align=right height=34><font size=-1 color=6cb28b>First Name:</font>
+  <td abswidth=7>
+  <td abswidth=120><font color=ffcf69><input name="firstname" usestyle size=20 maxlength=20 border=1 selected bgcolor=000000></font>
+  <td abswidth=6 align=right><font size=-1 color=6cb28b>M.I.:</font>
+  <td abswidth=2>
+  <td abswidth=20><font color=ffcf69><input name="midinitial" usestyle size=7 maxlength=3 border=1 bgcolor=000000></font>
+  <tr><td align=right height=34><font size=-1 color=6cb28b>Last Name:</font>
+  <td>
+  <td colspan=4><font color=ffcf69><input name="lastname" usestyle size=29 maxlength=30 border=1  bgcolor=000000></font>
+  <tr><td align=right height=34 ><font size=-1 color=6cb28b>Street:</font>
+  <td>
+  <td colspan=4><font color=ffcf69><input name="address1" usestyle size=29 maxlength=30 border=1 bgcolor=000000></font>
+  <tr><td align=right height=34 ><font size=-1 color=6cb28b>Apt./Suite:</font>
+  <td>
+  <td colspan=4><font color=ffcf69><input name="address2" usestyle size=29 maxlength=30 border=1  bgcolor=000000></font>
+  <tr><td align=right height=34><font size=-1 color=6cb28b>City:</font>
+  <td>
+  <td><font color=ffcf69><input name="city" usestyle size=14 maxlength=20 border=1 bgcolor=000000></font>
+  <td align=right><font size=-1 color=6cb28b>State:</font>
+  <td></td>
+  <td><font color=ffcf69><input name="state" usestyle size=7 maxlength=2 border=1 bgcolor=000000></font>
+  <tr><td align=right height=34><font size=-1 color=6cb28b>Zip Code:</font>
+  <td>
+  <td><font color=ffcf69><input name="zip" usestyle size=14 maxlength=10 border=1 bgcolor=000000></font>
+  <td align=right><font size=-1 color=6cb28b>Country:</font>
+  <td>
+  <td><font color=ffcf69><input name="country" usestyle size=7 maxlength=6 border=1 bgcolor=000000></font>
+  </table>
+</div>
+<div id="Buttons" style="position:absolute; top:375px; left:415px;">
+<font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Continue" usestyle width=130 onClick="CheckBillInput(this.form)"></font>
+</div>
+</form>
+</body>
+</html>

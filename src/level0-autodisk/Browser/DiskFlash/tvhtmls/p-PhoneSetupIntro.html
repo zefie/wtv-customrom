@@ -5,14 +5,21 @@ TV Setup
 </TITLE>
 <DISPLAY noscroll nologo nooptions noreconnectalert>
 </HEAD>
-
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
 <body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
 
 <table cellspacing=0 cellpadding=0 cellborder=0>
 	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
 			<spacer type=block WIDTH=11 HEIGHT=11><br>
 			<spacer type=block WIDTH=10 HEIGHT=1>
-	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
 	    <td width=456 height=80 valign=top align=center>
 			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
 			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
@@ -47,7 +54,7 @@ Connect to Web Home when powering on</FONT><BR>
 <A HREF="p-AdvancedPhoneSetup.html">
 <font size=+1 color=#cbcbcb>Advanced</shadow></font></A>
 <font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
-Set audible dialing, speed, wait for dialtone</FONT><BR>
+Set audible dialing, speed, wait for dial tone</FONT><BR>
 <spacer type=block WIDTH=1 HEIGHT=20><BR>
 <A HREF="p-PhoneReset.html">
 <font size=+1 color=#cbcbcb><shadow>Reset</shadow></font></A>
@@ -61,7 +68,7 @@ Change the settings of your ISP connection.
 
 </table>
 
-<form action="client:tvsetup?showmainsetup=true">
+<form>
 
 <table cellspacing=0 cellpadding=0>
 <tr><td height=23>
@@ -74,7 +81,7 @@ Change the settings of your ISP connection.
 <td width=14>
 <td valign=top align=right>
 <font size=-1 color=#ffcf69><shadow>
-<input type=SUBMIT BORDERIMAGE="file://ROM/tvimages/TVButtonBorder.bif" Value=Done usestyle width=130>
+<input type=SUBMIT BORDERIMAGE="file://ROM/tvimages/TVButtonBorder.bif" Value=Done usestyle width=130 action="client:ConfirmDialingOptions">
 </shadow></font>
 </table>
 

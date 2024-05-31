@@ -1,0 +1,462 @@
+<html>
+
+<script src=file://ROM/JS/parameters.js></script>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<style>
+	#fullInBox {
+		position: absolute;
+		visibility: hidden;
+		top: 250;
+		left: 16;
+		width: 420;
+		height: 50;
+	}
+	.instructions {
+		position: absolute;
+		top: 135;
+		left: 20;
+		width: 440;
+		height: 30;
+		color:6cb18a;
+	}
+	#inboxInstructions {
+		visibility: hidden;
+	}
+	#outboxInstructions {
+		visibility: hidden;
+	}
+	#deletedInstructions {
+		visibility: hidden;
+	}
+	#listBackground {
+		position: absolute;
+		top: 184;
+		left: 17;
+		width: 417;
+		height: 17;
+		background-color:48775d;
+	}
+	#listFromTitle {
+		position: absolute;
+		top: 187;
+		left: 47;
+		font:bold 12pt;
+		color:0f1918;
+		background-color:48775d
+	}
+	#listSubjectTitle {
+		position: absolute;
+		top: 187;
+		left: 170;
+		font:bold 12pt;
+		color:0f1918;
+		background-color:48775d
+	}
+	#listDateTitle {
+		position: absolute;
+		top: 187;
+		left: 380;
+		font:bold 12pt;
+		color:0f1918;
+		background-color:48775d
+	}
+	#listArea {
+		position: absolute;
+		top: 210;
+		left: 16;
+	}
+	#InboxTab {
+		position: absolute;
+		top: 82;
+		left: 0;
+	}
+	#InboxTabLineRight {
+		position: absolute;
+		top: 115;
+		left: 191;
+		width: 400;
+	}
+	#InboxTabText {
+		position: absolute;
+		top: 90;
+		left: 71;
+	}
+
+	#OutboxTab {
+		position: absolute;
+		top: 82;
+		left: 132;
+	}
+	#OutboxTabLineLeft {
+		position: absolute;
+		top: 115;
+		left: 0;
+		width: 145;
+	}
+	#OutboxTabLineRight {
+		position: absolute;
+		top: 115;
+		left: 312;
+		width: 300;
+	}
+	#OutboxTabText {
+		position: absolute;
+		top: 90;
+		left: 198;
+	}
+
+	#DeletedTab {
+		position: absolute;
+		top: 82;
+		left: 264;
+	}
+	#DeletedTabLineLeft {
+		position: absolute;
+		top: 115;
+		left: 0;
+		width: 280;
+	}
+	#DeletedTabText {
+		position: absolute;
+		top: 90;
+		left: 326;
+	}
+	</style>
+	<script>
+		var folderToUse;
+
+		if (top.gCleanUpCmd == top.kShowDeletedBoxCmd)
+			folderToUse = top.gDeletedFolder;
+		else if (top.gCleanUpCmd == top.kShowOutBoxCmd)
+			folderToUse = top.gOutFolder;
+		else
+			folderToUse = top.gInFolder;
+
+		var L_InBox_Text		= "Inbox";
+		var L_OutBox_Text		= "Outbox";
+		var L_DeletedBox_Text	= "Deleted";
+
+		function ListFolder(folder)
+		{
+			var messageCnt = top.MailFolder_length(folder);
+
+			window.message("cleanupscroll showing messages total = ", messageCnt);
+
+			for (i = 0; i < messageCnt; i++) {
+				ListLetter(folder, i);
+			}
+		}
+
+		function ListLetter(folder, index)
+		{
+			var letterXML = top.MailFolder_GetLetterXML(folder, index);
+			var letters = letterXML.getElementsByTagName("letter");
+//	window.message("got letter count = ", letters.length);
+			letter = letters[0];
+//	window.message("letter = ", letter);
+
+			var hasRead = letter.getAttribute("hasRead") == "r";
+			var letterInfo = new Object();
+
+			var senders = letterXML.getElementsByTagName(top.gCleanUpCmd == top.kShowOutBoxCmd ? "sender_address" : "sender_name");
+			letterInfo.senderName = senders[0].firstChild;
+
+			var sendDates = letterXML.getElementsByTagName("send_date");
+			letterInfo.sendDate = sendDates[0].firstChild;
+
+			var subjects = letterXML.getElementsByTagName("subject");
+			letterInfo.subject = subjects[0].firstChild;
+
+			var bodies = letterXML.getElementsByTagName("message");
+			letterInfo.body = bodies[0].firstChild;
+
+			s =		"<table cellspacing=0 cellpadding=1 width=410><tr>"
+				+	"<tr>"
+				+	"<td maxlines=1 abswidth=29 align=left valign=middle>"
+				+	'<input type="checkbox" name="deleteMail">'
+				+	"<td maxlines=1 abswidth=125>";
+
+			var fontColor = hasRead ? "6cb18a" : "6cb18a";
+			s	+=	'<font color=' + fontColor + ">";
+			if (!hasRead)
+				s	+=	"<b>";
+
+			var sender = letterInfo.senderName;
+			var L_NoSender_Text = "(outgoing)";
+			if (sender == null || sender == "")
+				sender = L_NoSender_Text;
+
+			s	+=	sender
+				+	"<td maxlines=1 abswidth=189>"
+				+	'<font color=' + fontColor + ">";
+
+			if (!hasRead)
+				s	+=	"<b>";
+			var subject = letterInfo.subject;
+			var L_NoSubject_Text = "(no subject)";
+			if (subject == null || subject == "")
+				subject = L_NoSubject_Text;
+			s	+=	subject
+				+	"<td maxlines=1 abswidth=67 align=right>"
+				+	'<font color=' + fontColor + " size=1>";
+
+			if (!hasRead)
+				s	+= "<b>";
+			s	+=	top.ConvertDate(letterInfo.sendDate.text);
+
+//				document.write("<td maxlines=1 abswidth=50 align=right>");
+//				if (!hasRead)
+//					document.write('<font color="4DF063"><b>');
+//				msgSize = letterInfo.subject.text.length + letterInfo.body.text.length;
+//				msgSize = (Math.round(msgSize / 1024 * 10)) / 10;
+//				document.write(msgSize, "K");
+
+			s	+=	"</table>";
+
+			document.write(s);
+		}
+
+		function MarkAll()
+		{
+			window.message("Mark All called");
+			for (j = 0; j < document.deleteform.elements.length; j++) {
+				if (document.deleteform.elements[j].name == "deleteMail")
+					document.deleteform.elements[j].checked = true;
+			}
+		}
+
+		function DeleteMarkedMail()
+		{
+			// first go through the marked letters and see if any of them
+			// are unread.
+
+			var L_NotRead_Text = "You have selected messages to discard that have not been read. Are you sure you want to discard all of these messages?";
+			var L_NotSent_Text = "You have selected messages to discard that have not been sent. Are you sure you want to discard all of these messages?";
+			var L_DeletedOne_Text = "Are you sure you want to discard this message permanently?";
+			var L_DeletedMany_Text = "Are you sure you want to discard all of these messages permanently?";
+			var numToDelete = 0;
+			var unread = 0;
+
+			for (j = 0, i = 0; j < document.deleteform.elements.length; j++) {
+				if (document.deleteform.elements[j].name == "deleteMail") {
+					if (document.deleteform.elements[j].checked == true ) {
+						var letter = top.MailFolder_GetLetter(folderToUse, i);
+						
+						if (top.gCleanUpCmd == top.kShowInBoxCmd) {
+							var hasRead = letter.getAttribute("hasRead") == "r";
+
+							if (!hasRead)
+								++unread;
+						}
+						++numToDelete;
+					}
+					++i;
+				}
+			}
+			if (numToDelete > 0) {
+				var confirmQ;
+				if (top.gCleanUpCmd == top.kShowDeletedBoxCmd)
+					confirmQ = numToDelete > 1 ? L_DeletedMany_Text : L_DeletedOne_Text;
+				else if (top.gCleanUpCmd == top.kShowOutBoxCmd)
+					confirmQ = L_NotSent_Text;
+				else if (unread > 0)
+					confirmQ = L_NotRead_Text;
+				else
+					confirmQ = "";
+
+				if (confirmQ != "" && !confirmPriv(confirmQ, top.gAlertIconURL, top.L_DiscardButton_Text, top.L_DontDiscardButton_Text))
+					return;
+
+				for (j = 0, i = 0; j < document.deleteform.elements.length; j++) {
+					if (document.deleteform.elements[j].name == "deleteMail") {
+						if (document.deleteform.elements[j].checked == true ) {
+							var deletedIndex;
+							if (top.gCleanUpCmd == top.kShowDeletedBoxCmd)
+								deletedIndex = i;
+							else
+								deletedIndex = top.MailFolder_MoveLetter(folderToUse, i, top.gDeletedFolder);
+
+							var letter = top.MailFolder_GetLetter(top.gDeletedFolder, deletedIndex);
+
+							// if we say deleted a deleted letter, really delete it!
+							if (letter.getAttribute("deleted") == "y") {
+								top.MailFolder_DeleteLetter(top.gDeletedFolder, deletedIndex, true);
+							} else {
+								letter.setAttribute("deleted", "y");
+								top.MailFolder_SaveLetter(top.gDeletedFolder, deletedIndex);
+							}
+						} else
+							++i;
+					}
+				}
+				top.CalcFolderSizes();
+				var newLoc = "CleanUpMail.html?view=same";
+				parent.location = newLoc;
+			}
+		}
+
+		function UnDeleteMarkedMail()
+		{
+			for (j = 0, i = 0; j < document.deleteform.elements.length; j++) {
+				if (document.deleteform.elements[j].name == "deleteMail") {
+					if (document.deleteform.elements[j].checked == true ) {
+						// if we say deleted a deleted letter, un-delete it!
+						var letter = top.MailFolder_GetLetter(folderToUse, i);
+						letter.setAttribute("deleted", "n");
+						top.MailFolder_SaveLetter(folderToUse, i);
+
+						// now move the msg back to it's original folder
+						var	newIndex = top.MailFolder_RestoreLetter(folderToUse, i);
+					} else
+						++i;
+				}
+			}
+			top.CalcFolderSizes();
+			var newLoc = "CleanUpMail.html?view=same";
+			parent.location = newLoc;
+		}
+
+		function SetView(view)
+		{
+			if (view == L_InBox_Text)
+				folderToUse = top.gInFolder;
+			else if (view == L_OutBox_Text)
+				folderToUse = top.gOutFolder;
+			else if (view == L_DeletedBox_Text)
+				folderToUse = top.gDeletedFolder;
+		}
+
+		function WriteDiv(div, selected, extra)
+		{
+			SetView(div);
+
+			var nextView;
+			if (div == L_InBox_Text)
+				nextView = "top.kShowInBoxCmd";
+			else if (div == L_OutBox_Text)
+				nextView = "top.kShowOutBoxCmd";
+			else if (div == L_DeletedBox_Text)
+				nextView = "top.kShowDeletedBoxCmd";
+
+			var color = selected ? "ffcf69" : "e5e5e5";
+
+			var s = '<div id=' + div + "Tab>";
+			s	 +=		'<img src=images/FolderTab.gif NOMIRROR>';
+			s	 +=	"</div>";
+			s	 += "<div id=" + div + 'TabText style="color:' + color + '">';
+			s	 +=		'<a target=MainFrameArea href="CleanUpMail.html?view=' + nextView + '">' + div + '</a>';
+			s	 +=	"</div>";
+			s	 += extra;
+			document.write(s);
+		}
+
+		function PageLoaded()
+		{
+			// Because of timing issues, these "visibility" commands have to occur
+			// after the document has been completely loaded.
+
+			if (top.gCleanUpCmd == top.kShowDeletedBoxCmd) {
+				document.deletedInstructions.visibility = "visible";
+				SetView(L_DeletedBox_Text);
+			} else if (top.gCleanUpCmd == top.kShowOutBoxCmd) {
+				document.outboxInstructions.visibility = "visible";
+				SetView(L_OutBox_Text);
+			} else {
+				document.inboxInstructions.visibility = "visible";
+				SetView(L_InBox_Text);
+			}
+			top.refreshArrows();
+		}
+	</script>
+
+	<title>Cleanup mail list</title>
+</head>
+
+<print blackandwhite>
+
+<body bgcolor=172625 text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	onLoad="PageLoaded();"
+	hspace=0>
+
+<div id=topBannerBackgroundScroll bgcolor=0c1413 gradcolor=172625 gradangle=0>
+</div>
+
+<div id=topBannerScroll>
+	<img src=images/MailBanner.gif width=431 height=54>
+</div>
+
+<div id=pageTitleTextScroll>
+	<shadow>Clean up</shadow>
+</div>
+
+<div id=inboxInstructions class=instructions>
+	Mark messages you want to move from the mail list, then choose <b>Discard</b>.
+</div>
+
+<div id=outboxInstructions class=instructions>
+	Mark messages you want to delete from the outbox, then choose <b>Discard</b>.
+</div>
+
+<div id=deletedInstructions class=instructions>
+	Mark messages to delete, then choose <b>Discard</b>. To save a message, mark it and choose <b>Save</b>.
+</div>
+
+<form name=deleteform>
+	<div id=listBackground>
+	</div>
+
+	<div id=listFromTitle>
+		<script>
+			var L_From_Text = "FROM";
+			var L_To_Text = "TO";
+			
+			var dest = top.gCleanUpCmd == top.kShowOutBoxCmd ? L_To_Text : L_From_Text;
+			document.write(dest);
+		</script>
+	</div>
+
+	<div id=listSubjectTitle>
+		SUBJECT
+	</div>
+
+	<div id=listDateTitle>
+		DATE
+	</div>
+
+	<div id=listArea>
+		<script>
+			ListFolder(folderToUse)
+		</script>
+	</div>
+</form>
+
+<script>
+	if (top.gCleanUpCmd == top.kShowDeletedBoxCmd) {
+window.message("showing deleted");
+		WriteDiv(L_InBox_Text, false, "");
+		WriteDiv(L_OutBox_Text, false, "");
+		var extra = "<div id=DeletedTabLineLeft><img src=images/FolderLine.gif NOMIRROR width=280 height=2></div>";
+		WriteDiv(L_DeletedBox_Text, true, extra);
+	} else if (top.gCleanUpCmd == top.kShowOutBoxCmd) {
+window.message("showing outbox");
+		WriteDiv(L_DeletedBox_Text, false, "");
+		WriteDiv(L_InBox_Text, false, "");
+		var extra = "<div id=OutboxTabLineLeft><img src=images/FolderLine.gif NOMIRROR width=145 height=2></div>"
+				+	"<div id=OutboxTabLineRight><img src=images/FolderLine.gif NOMIRROR width=200 height=2></div>";
+		WriteDiv(L_OutBox_Text, true, extra);
+	} else {
+window.message("showing inbox");
+		WriteDiv(L_DeletedBox_Text, false, "");
+		WriteDiv(L_OutBox_Text, false, "");
+		var extra = "<div id=InboxTabLineRight><img src=images/FolderLine.gif NOMIRROR width=350 height=2></div>";
+		WriteDiv(L_InBox_Text, true, extra);
+	}
+</script>
+
+</body>
+</html>

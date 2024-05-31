@@ -6,14 +6,21 @@ TV Setup
 <meta http-equiv=refresh content=0;url=client:ClearBackTVSettings>
 <DISPLAY noscroll nologo nooptions noreconnectalert>
 </HEAD>
-
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
 <body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
 
 <table cellspacing=0 cellpadding=0 cellborder=0>
 	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
 			<spacer type=block WIDTH=11 HEIGHT=11><br>
 			<spacer type=block WIDTH=10 HEIGHT=1>
-	    	<a href="client:showtvhome"><img src="file://ROM/Cache/WebTVLogoJewel.gif" width=87 height=67></a>
+	    	<a href="client:showtvhome"><div id=MSNLogo ><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" width=87 ></div></a>
 	    <td width=456 height=80 valign=top align=center>
 			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
 			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
@@ -22,24 +29,22 @@ TV Setup
 <table cellspacing=0 cellpadding=0>
 <tr>
 <td abswidth=64 absheight=25>
-
-<TR>
 <td>
 <td WIDTH=228 absheight=266 VALIGN=top ALIGN=left>
 	<A HREF="client:ShowTVListingsSetup?main-page=true" selected>
 	<font size=+2 color=#cbcbcb><shadow>Listings setup</shadow></font></A>
 	<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
-	Set WebTV to give you<br>TV listings for your area</FONT><BR>
+	Set your receiver to give you<br>TV listings for your area</FONT><BR>
 	<IMG SRC="file://ROM/Images/Spacer.gif" WIDTH=1 HEIGHT=32><BR>
 	<A HREF="client:ConfirmExternalSetup?showPage=IntroPage">
 	<font size=+2 color=#cbcbcb><shadow>Hooking up</shadow></font></A>
 	<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
-	Set up to use WebTV with<br>your VCR, cable TV box,<br>or satellite dish</FONT><BR>
+	Set up your receiver for use with<br>your VCR, cable TV box,<br>or satellite dish</FONT><BR>
 	<IMG SRC="file://ROM/Images/Spacer.gif" WIDTH=1 HEIGHT=32><BR>
 	<A HREF="p-PhoneSetupIntro.html">
 	<font size=+2 color=#cbcbcb><shadow>Dialing</shadow></font></A>
 	<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
-	Settings for connecting<br>to WebTV</FONT><BR>
+	Settings for connecting<br>to MSN TV service</FONT><BR>
 <TD WIDTH=20>
 <TD WIDTH=208 VALIGN=top ALIGN=left>
 	<A HREF="client:showchannelsetup">
@@ -47,13 +52,19 @@ TV Setup
 	<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
 	Select stations to view<br>when changing channels</FONT><BR>
 	<IMG SRC="file://ROM/Images/Spacer.gif" WIDTH=1 HEIGHT=32><BR>
-	<A HREF="setup-center.html">
-	<font size=+2 color=#cbcbcb><shadow>Screen</shadow></font></A>
+	<A HREF="file://ROM/tvhtmls/wallet/index.html">
+	<font size=+2 color=#cbcbcb><shadow>Wallet</shadow></font></A> <img src="file://rom/tvimages/WalletLockSM.gif">
 	<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
-	Adjust how WebTV looks<br>on your television</FONT><BR>
+	Enables you to securely<br>purchase items and<br>receive free offers</FONT><BR>
+	<IMG SRC="file://ROM/Images/Spacer.gif" WIDTH=1 HEIGHT=32><BR>
+	<A HREF="setup-center.html">
+ 	<font size=+2 color=#cbcbcb><shadow>Screen</shadow></font></A>
+ 	<font size=-2 color=#6cb18a><br><spacer type=block width=10 height=2><br>
+	Adjust how your service looks<br>on your television</FONT><BR>
 </table>
 
 <form action="client:showtvhome">
+<spacer type=vertical height=50>
 <spacer type=horizontal width=410>
 <font color=ffcf69 size=-1><shadow>
 <input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Done" usestyle width=130>

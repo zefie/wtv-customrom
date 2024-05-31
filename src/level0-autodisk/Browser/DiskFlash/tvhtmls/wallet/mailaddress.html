@@ -1,0 +1,188 @@
+<html>
+<head>
+	<title>Mailing Address</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</head>
+<script src="../wallet.js"></script>
+<script>
+function CheckMailInput(form){
+	var addComma = ", ";
+	var fieldName = "";
+	var invalid ="";
+	top.errorMessage = "";
+	form.address1.value = TrimWhiteSpace(form.address1.value);
+	form.address2.value = TrimWhiteSpace(form.address2.value);
+	form.city.value = TrimWhiteSpace(form.city.value);
+	form.state.value = TrimWhiteSpace(form.state.value);
+	form.zip.value = TrimWhiteSpace(form.zip.value);
+	form.country.value = TrimWhiteSpace(form.country.value);
+	if (form.address1.value == "") {
+		fieldName += "Street";
+	} 
+	if ( form.address1.value != ""){
+		if (validCN(form.address1.value) == true){
+			top.shipAddr1 = form.address1.value;
+			top.myWallet.setUserInfo("shipAddr1", top.shipAddr1);
+		}
+	}
+	if (validCN(form.address2.value) == true){
+ 			top.shipAddr2 = form.address2.value;
+			top.myWallet.setUserInfo("shipAddr2", top.shipAddr2);
+	}
+	if ((validCN(form.address1.value) != true) || (validCN(form.address2.value) != true)){
+			invalid="Street";
+	}
+	if (form.city.value == "") {
+  		if (fieldName != "") {fieldName += addComma;}
+			fieldName += "City";
+	} else if (validCN(form.city.value) == true){
+		top.shipCity = form.city.value;
+		top.myWallet.setUserInfo("shipCity", top.shipCity);
+	} else {
+		if (invalid !="") invalid += addComma;
+		invalid += "City";
+	}
+	if (form.state.value == "") {
+  		if (fieldName != "") {fieldName += addComma;}
+			fieldName += "State";
+	} else if (validState(form.state.value) == true){
+		top.shipState = form.state.value;
+		top.myWallet.setUserInfo("shipState", top.shipState);
+	} else {
+		if (invalid !="") invalid += addComma;
+		invalid += "State";
+	}
+	if (form.zip.value.length == 0) {
+		if (fieldName != "") {fieldName += addComma;}
+			fieldName += "Zip Code";
+	}
+	if (form.country.value== "") {
+  		if (fieldName != "") {fieldName += addComma;}
+			fieldName += "Country";
+	} else  if (validCountry(form.country.value)!= true) {
+  		if (invalid != "") {invalid += addComma;}
+				invalid += "Country";
+	} else {
+			top.shipCountry = form.country.value;
+			top.myWallet.setUserInfo("shipCountry",top.shipCountry);
+	}
+	if (fieldName != ""){
+		top.errorMessage = "You need to provide information for: " + fieldName + ". It's required to fulfill your request. ";
+	} 
+	if (form.address1.value == "") 
+		fieldName += "Please fill out street address completely. ";
+	if (validCountry(form.country.value)== true) {
+ 		if ((form.zip.value.length != 0) && (invalid == "")) {
+			if (!ValidZip(form.zip.value,form.country.value)){
+				top.errorMessage += "You have typed in an incorrect zip code. Please try typing it again in the proper format, for example: 09404 (USA) or A2A 3B3 (Canada). ";
+			} else {
+				top.shipZip = form.zip.value;
+				top.myWallet.setUserInfo("shipZip",top.shipZip);
+			}
+		}
+	}
+	else{
+		if ( ValidZip(form.zip.value,"USA") || ValidZip(form.zip.value,"CA") ){
+			top.shipZip = form.zip.value;
+			top.myWallet.setUserInfo("shipZip", top.shipZip);
+		}
+	}
+	if (invalid != "") {
+		top.errorMessage += "You have typed in an improper "+invalid + ". Please try typing it again. ";
+	}
+   if (top.errorMessage != "")
+   {
+		top.SetPage('error.html');
+   } else {
+		MailAddressContinueButton();
+  }
+}
+function SubmitMailInfo() {
+  top.shipAddr1 = document.mail_address.address1.value;
+  top.shipAddr2 = document.mail_address.address2.value;
+  top.shipCity = document.mail_address.city.value;
+  top.shipState = document.mail_address.state.value;
+  top.shipZip = document.mail_address.zip.value;
+  top.shipCountry = document.mail_address.country.value;
+  top.myWallet.setUserInfo("shipAddr1",top.shipAddr1);
+  top.myWallet.setUserInfo("shipAddr2",top.shipAddr2);
+  top.myWallet.setUserInfo("shipCity",top.shipCity);
+  top.myWallet.setUserInfo("shipState",top.shipState);
+  top.myWallet.setUserInfo("shipZip",top.shipZip);
+  top.myWallet.setUserInfo("shipCountry",top.shipCountry);
+}
+function LoadMailInfo() {
+  document.mail_address.address1.value = top.shipAddr1;
+  document.mail_address.address2.value = top.shipAddr2;
+  document.mail_address.city.value = top.shipCity;
+  document.mail_address.state.value = top.shipState;
+  document.mail_address.zip.value = top.shipZip;
+  document.mail_address.country.value = top.shipCountry;
+  if (document.mail_address.country.value == "" && top.shipZip=="") {
+    document.mail_address.country.value = "USA";
+  }
+}
+function MailAddressContinueButton(){
+  SubmitMailInfo();
+  if (top.goToReview == false) {
+    top.SetPage('safe.html');
+  } else {
+    top.SetPage('review.html');
+  }
+}
+</script>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large onLoad="LoadMailInfo();">
+<form name="mail_address">
+<div id="Banner" style="position:absolute; top:0px; left:0px;">
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block WIDTH=11 HEIGHT=11><br>
+			<spacer type=block WIDTH=10 HEIGHT=1>
+	    	<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+</div>
+<div id="Header" style="position:absolute; top:105px; left:60px;">
+<font color=ffd069 size=+2><shadow>Mailing information</shadow></font>
+</div>
+<div id="Body" style="position:absolute; top:140px; left:60px; width:500;">
+<font color=999999>Type in the address where items will be delivered.</font>
+</div>
+<div id="MailAddress" style="position:absolute; top:165px; left:60px; width:450;">
+<table border=0 cellspacing=0 cellpadding=2>
+  <tr><td abswidth=80 align=right height=40><font size=-1 color=6cb28b>Street:</font>
+  <td abswidth=2>
+  <td height=40 colspan=4><font color=ffcf69><input name="address1" usestyle size=35 maxlength=30 selected border=1 bgcolor=000000></font>
+  <tr><td abswidth=80 align=right height=40><font size=-1 color=6cb28b>Apt./Suite:</font>
+  <td>
+  <td colspan=4><font color=ffcf69><input name="address2" usestyle size=35 maxlength=30 border=1 bgcolor=000000></font>
+  <tr><td align=right height=40><font size=-1 color=6cb28b>City:</font>
+  <td>
+  <td><font color=ffcf69><input name="city" usestyle size=20 maxlength=20 border=1 bgcolor=000000></font>
+  <td abswidth=60 align=right><font size=-1 color=6cb28b>State:</font>
+  <td abswidth=2>
+  <td><font color=ffcf69><input name="state" usestyle size=10 maxlength=2 border=1 bgcolor=000000></font>
+  <tr><td align=right height=40><font size=-1 color=6cb28b>Zip Code:</font>
+  <td>
+  <td><font color=ffcf69><input name="zip" usestyle size=20 maxlength=10 border=1  bgcolor=000000></font>
+  <td align=right><font size=-1 color=6cb28b>Country:</font>
+  <td>
+  <td><font color=ffcf69><input name="country" usestyle size=10 maxlength=6 border=1 bgcolor=000000></font>
+  </table>
+</div>
+<div id="Buttons" style="position:absolute; top:375px; left:415px;">
+<font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Continue" usestyle width=130 onClick="CheckMailInput(this.form)"></font>
+</div>
+</form>
+</body>
+</html>

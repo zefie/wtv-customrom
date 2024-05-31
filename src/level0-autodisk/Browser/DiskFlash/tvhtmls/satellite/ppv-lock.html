@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<TITLE>Block All Ratings</TITLE>
+<DISPLAY noscroll nologo nooptions noreconnectalert>
+</HEAD>
+<BODY>
+
+<script language="JavaScript">
+	var curLimit = -1;
+	var ppvLimitArray = new Array( 0, 10, 25, 50, 75, 100, 999999 );
+
+	function setState()
+	{
+		document.ppvLocksForm.ppvLocked.checked = TVAccess.isPPVLocked();
+		curLimit = TVAccess.getPPVSpendingLimit();
+		updateLimit();
+	}
+
+	function nextLimit()
+	{
+		var limit;
+
+		curLimit++;
+		if (curLimit >= ppvLimitArray.length)
+			curLimit = 0;
+
+		updateLimit();
+	}
+
+	function prevLimit()
+	{
+		var limit;
+
+		curLimit--;
+		if (curLimit < 0)
+			curLimit = ppvLimitArray.length - 1;
+
+		updateLimit();
+	}
+
+	function updateLimit()
+	{
+		limit = ppvLimitArray[curLimit];
+		if (limit == 0)
+		        limit = "BLOCKED";
+		else if (limit != 999999)
+			limit = "$" + limit + " LIMIT";
+		else
+			limit = "UNLIMITED";
+
+		document.ppvLocksForm.limit.value = "Spending: " + limit;
+	}
+
+	function clickDone()
+	{
+		TVAccess.setPPVLock(document.ppvLocksForm.ppvLocked.checked);
+		TVAccess.setPPVSpendingLimit(curLimit);
+		history.back();
+	}
+</script>
+
+<link rel="StyleSheet" type="text/css" href="locking-styles.css">
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0
+ onLoad="setState()" fontsize=large noscroll hideoptions>
+
+<form name=ppvLocksForm>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=contbutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input type=submit value=Done name=Done
+				usestyle width=130 onclick="clickDone();" action="client:donothing" selected
+				borderimage="file://ROM/tvimages/TVButtonBorder.bif">
+		</shadow></font>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Pay to view</font>
+	</div>
+
+	<div id=info>
+		<font size=-1 color=989898>
+			To prevent purchasing<br>
+			pay to view programs<br>
+			mark <b>Block pay to view</b>.
+		</font>
+	</div>
+
+	<!-- Commented out the spending limit -->
+	<!-- <div id=info2>
+		<font size=-1 color=989898>
+			Choose a monthly<br>
+			spending limit for pay<br>
+			to view programs.
+		</font>
+	</div> -->
+
+	<div id=checkbox>
+		<input name=ppvLocked type=checkbox bgcolor=#444444 checked=off offimage="file://ROM/tvimages/satellite/BlockBox.gif" onimage="file://ROM/tvimages/satellite/BlockedBox.gif">
+		&nbsp; <font size=-1 color=#6cb18a>Block pay to view</font>
+	</div>
+
+	<!-- Commented out the spending limit buttons -->
+	<!-- <div id=limitButtons>
+		<font size=-1 color=#6cb18a>
+		<input type=text value='Spending:' name=limit size=19 usestyle nocursor noselect border=0 nobackground>
+		<a href=client:donothing onClick="prevLimit();"><img src="file://ROM/tvimages/Button_LeftMinus.gif"></a><a href=client:donothing onClick="nextLimit();"><img src="file://ROM/tvimages/Button_RightPlus.gif"></a>
+		</font>
+	</div> -->
+</form>
+</body>
+</html>
+
+

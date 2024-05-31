@@ -20,10 +20,11 @@
 		var channel = TVController.channel;
 		var url;
 		var title;
+		var network = TVDatabase.getNetworkOrCallSign(channel);
 
 		if (updateChannel == 1) {
 			document.channel.channel = channel;
-			document.channel.network = TVDatabase.getNetworkOrCallSign(channel)
+			document.channel.network = network;
 		}
 
 		if (TVDatabase.isDataAvailable()) {
@@ -36,7 +37,10 @@
 
 			title = TVDatabase.getProgramTitle(channel, 0);
 			if ( title != null && title != "" )
+			{
 				document.titleForm.title.value = title;
+				document.titleForm.network.value = " " + channel + " " + network;
+			}
 			else
 				document.titleForm.title.value = "No Information";
 		} else {
@@ -63,7 +67,7 @@
 		if (TVDatabase.isDataAvailable())
 			document.location = "client:showtvinfopage";
 		else
-			document.location = "file://Disk/Browser/DiskFlash/tvhtmls/NoTVHomeData.html";
+			document.location = "file://ROM/tvhtmls/NoTVHomeData.html";
 	}
 
 	</script>
@@ -86,7 +90,7 @@
 								<tr><td abswidth=10 absheight=228 bgcolor=#244441 gradcolor=#0f2a27 gradangle=0>
 										<img src=file://ROM/tvimages/VideoBorderEdge_Left.gif width=10 height=228>
 									<td abswidth=304 absheight=228 href=client:showtvfullscreen selected name="tvDisplay">
-										<tv id=tv width=304 height=228 onChannelChange="updateShowInfo(1);" channeldisplayid=channel>
+										<tv id=tv width=304 height=228 onChannelChange="updateShowInfo(1);" channeldisplay id=channel>
 									<td abswidth=10 absheight=228>
 										<img src=file://ROM/tvimages/VideoBorderEdge_Right.gif width=10 height=228>
 								<tr><td abswidth=10 absheight=3>
@@ -98,7 +102,7 @@
 							</table>
 
 					<tr><td abswidth=21>
-						<td valign=top absheight=30>
+						<td valign=top absheight=50>
 							<form name=titleForm>
 							<table cellspacing=0 cellpadding=0>
 								<tr><td abswidth=300 valign=top>
@@ -108,16 +112,10 @@
 											<input id=title type=text size=30 usestyle nobackground border=0 marginheight=3 nocursor noselect>
 											</shadow></font>
 										</a>
-							</table>
-							</form>
-
-					<tr><td abswidth=21>
-						<td><form name=channelForm>
-							<table cellspacing=0 cellpadding=0>
-								<tr><td><spacer width=6 type=horizontal>
-										<font size=+2 color=ffcf69><shadow>
-											<channeldisplay id=channel>
-										</shadow></font>
+								<tr><td abswidth=300 valign=top>
+											<font size=-2 color=6cb18a><shadow>
+											<input id=network type=text size=10 usestyle nobackground border=0 marginheight=3 nocursor noselect>
+											</shadow></font>
 							</table>
 							</form>
 

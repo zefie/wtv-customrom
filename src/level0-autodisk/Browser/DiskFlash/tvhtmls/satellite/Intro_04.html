@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>
+	Getting started
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio lockpage>
+<script language="JavaScript">
+function handleContinueButton()
+{
+	if (navigator.isSatPrerelease)
+		document.location = "file://rom/tvhtmls/satellite/setup-dishpoint.html";
+	else
+		document.location = "client:showtvhome";
+}
+</script>
+
+</head>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+			<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<table cellpadding=0 cellspacing=0>
+	<tr><td width=560 height=290 valign=top>
+
+<table cellpadding=0 cellspacing=0>
+	<tr>
+		<td width=62 rowspan=99>
+		<td width=350>
+		<td width=20 rowspan=99>
+		<td width=78>
+		<td width=50 rowspan=99>
+	<tr>
+		<td height=27>
+	<tr>
+		<td valign=top colspan=2>
+			<font size=+2 color=#ffcf69>
+				Your satellite dish
+			</font>
+	<tr>
+		<td valign=top>
+			<font color=#989898 size=-1>
+				<spacer type=vertical height=15><br>
+				The next couple of screens will help you set up and point your satellite dish. You may find it useful to consult your satellite dish installation manual for instructions on mounting and positioning a dish.
+				<spacer type=vertical height=15><br>
+				When you're ready to continue, press the <b>Return</b> key on your keyboard.
+			</font>
+</table>
+
+</table>
+<form>
+<table cellspacing=0 cellpadding=0 width=560>
+	<tr>
+		<td valign=top align=right>
+			<font size=-1 color=#ffcf69><shadow>
+			<input action="" onClick="handleContinueButton();" type=submit borderimage="file://rom/tvimages/tvbuttonborder.bif" value="Continue" usestyle width=130 NOARGS>
+			</shadow></font>
+		<td width=20>
+</table>
+</form>
+
+</body>
+</html>

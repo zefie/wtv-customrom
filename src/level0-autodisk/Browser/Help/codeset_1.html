@@ -16,6 +16,8 @@
 	if ( allParameters != null ) {
 		startIndex = allParameters.indexOf("=")+1;
 		endIndex = allParameters.indexOf("&");
+		if (endIndex == -1)
+			endIndex = allParameters.length;
 		nowDevice = allParameters.substring( startIndex, endIndex );
 	}
 
@@ -928,10 +930,10 @@
 		
 		if (nowPage >0)  {
 			if (maxPage==nowPage) {
-				embedDoc.write("<input name='prevBut' value='Previous' type=button action='' onClick='prevSet()' borderimage='file://ROM/tvimages/TVButtonBorder.bif' selected usestyle width=130>");
+				embedDoc.write("<input name='prevBut' value='Previous' type=button onClick='prevSet(); return false;' borderimage='file://ROM/tvimages/TVButtonBorder.bif' selected usestyle width=130>");
 			}	else {
 				
-				embedDoc.write("<input name='prevBut' value='Previous' type=button action='' onClick='prevSet()' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=130>");
+				embedDoc.write("<input name='prevBut' value='Previous' type=button onClick='prevSet(); return false;' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=130>");
 			} 
 		}	else {
 			embedDoc.write("<spacer type=horizontal width=130");
@@ -942,7 +944,7 @@
 		embedDoc.write("<spacer type = horizontal width = 10>");
 
 		if (nowPage < maxPage) {
-			embedDoc.write("<input name='moreBut' value='More' type=button action='' onClick='nextSet()' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=130 selected></shadow></font>");
+			embedDoc.write("<input name='moreBut' value='More' type=button onClick='nextSet(); return false;' borderimage='file://ROM/tvimages/TVButtonBorder.bif' usestyle width=130 selected></shadow></font>");
 		}
 		embedDoc.write("</form>");
 		embedDoc.close();

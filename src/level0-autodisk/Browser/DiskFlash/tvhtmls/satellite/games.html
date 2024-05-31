@@ -1,0 +1,25 @@
+<HTML>
+<script>
+	function gamesOnDisk() {
+		var file = new Store("/Browser/Games/Games.html");
+		var data = file.data;
+		if ( data != null && data != "") {
+			return true;
+		}
+		return false;
+	}
+	if ( ! TVAccess.isGamesAvailable() ) {
+		// Copied from UserInterface\Screen.c: kWebPromoURL
+		document.location = "file://disk/Browser/WebPromo/webintro_00.html";
+	}
+	if ( gamesOnDisk() ) {
+		document.location = "file://disk/Browser/Games/Games.html";
+	}
+	else {
+	    // For some reason this has to be an absolute address.
+	    // A relative address makes the box go on-line in some
+	    // situations.
+		document.location = "file://rom/tvhtmls/satellite/games-missing.html";
+	}
+</script>
+</HTML>

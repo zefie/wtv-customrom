@@ -1,0 +1,441 @@
+<HTML>
+<HEAD>
+<TITLE>
+TV Setup
+</TITLE>
+
+<script language = "JavaScript">
+var PageLocked = (!TVAccess.isLocked() && TVAccess.areLimitsSet()) ? "lockpage " : "";
+document.write("<DISPLAY noscroll " + PageLocked + "nologo nooptions noreconnectalert>");
+</script>
+
+<script language="JavaScript" src="file://rom/tvhtmls/pageUtils.js">
+
+	var pageParams;
+	var pageString = "";
+
+	pageParams = parsePageParams();
+	if (pageParams != null) {
+		if (pageParams.type != null)
+			pageString = pageParams.type;
+	}
+
+	function getRatings()
+	{
+		var ratings = "";
+		var movieRating = getMovieRating();
+		var tvRating = getTVRating();
+		var notRated = getNotRated();
+		
+		ratings += movieRating;
+
+		// add TV rating
+		if (movieRating.length > 0 && tvRating.length > 0)
+			ratings += " / ";
+		ratings += tvRating;
+
+		// add whether not-rated shows are blocked
+		if (ratings.length > 0 && notRated.length > 0)
+		  {
+		    ratings += " / ";
+		  }
+		ratings += notRated;
+
+		// add extra ratings information
+		var extRatings = getExtRatings();
+		if (extRatings.length > 0)
+		  {
+		    ratings += " (" + extRatings + ")";
+		  } 
+		  		  		  
+		// truncate ratings listing if it's too long
+		if (ratings.length > 30)
+			ratings = ratings.substring(0, 28) + "...";
+
+		if (ratings.length == 0)
+			ratings += "NONE SET";
+		else
+			ratings = "<b>" + ratings + "</b>";
+			
+		return ratings;
+	}
+	
+	function getExtRatings()
+	{
+		var extRatings = "";
+		if (TVAccess.getExtendedRatingLimits() & 2)
+			extRatings = extRatings + "L, ";
+		if (TVAccess.getExtendedRatingLimits() & 1)
+			extRatings = extRatings + "V, ";
+		if (TVAccess.getExtendedRatingLimits() & 16)
+			extRatings = extRatings + "FV, ";
+		if (TVAccess.getExtendedRatingLimits() & 8)
+			extRatings = extRatings + "S, ";
+		if (TVAccess.getExtendedRatingLimits() & 4)
+			extRatings = extRatings + "D, ";
+	
+		if (extRatings != "")
+			extRatings = extRatings.substring(0, extRatings.length - 2);
+		return extRatings;
+	}	
+
+	function getTVRating()
+	{
+		var tvRatingStr = "";
+		var tvRating = TVAccess.GetTVRatingLimit();
+		if (tvRating == 1)
+			tvRatingStr = "TV-Y";
+		else if (tvRating == 3)
+			tvRatingStr = "TV-Y7";
+		else if (tvRating == 2)
+			tvRatingStr = "TV-G";
+		else if (tvRating == 4)
+			tvRatingStr = "TV-PG";
+		else if (tvRating == 5)
+			tvRatingStr = "TV-14";
+		else if (tvRating == 6)
+			tvRatingStr = "TV-MA";
+		return tvRatingStr;
+	}
+
+	function getMovieRating()
+	{
+		var ratingStr = "";
+		var rating = TVAccess.GetMPAARatingLimit();
+		if (rating == 0)
+			ratingStr = "G";
+		else if (rating == 1)
+			ratingStr = "PG";
+		else if (rating == 2)
+			ratingStr = "PG-13";
+		else if (rating == 3)
+			ratingStr = "R";
+		else if (rating == 4)
+			ratingStr = "NC-17";
+		else if (rating == 5)
+			ratingStr = "NR-MATURE";
+		return ratingStr;
+	}
+
+	function getNotRated()
+	{
+	  return TVAccess.isNotRatedBlocked() ? "NR" : "";
+	}
+
+	function getESRBLimit()
+	{
+		var ratingStr = "";
+		var rating = TVAccess.GetESRBRatingLimit();
+		if (rating < 0)
+				ratingStr = "NOT BLOCKED";
+		else if (rating == 0)
+			ratingStr = "<b>EC</b> (EARLY CHILDHOOD)";
+		else if (rating == 1)
+			ratingStr = "<b>E</b> (EVERYONE)";
+		else if (rating == 2)
+			ratingStr = "<b>T</b> (TEEN)";
+		else if (rating == 3)
+			ratingStr = "<b>M</b> (MATURE)";
+		else if (rating == 4)
+			ratingStr = "<b>AO</b> (ADULTS ONLY)";
+		else if (rating == 5)
+			ratingStr = "<b>RP</b> (RATING PENDING)";
+		return ratingStr;
+	}
+	
+	function getNumChannels()
+	{
+		var numChannels = TVAccess.numLockedChannels();
+		if (numChannels == 0)
+			return "";
+		else
+			return "(" + numChannels + " TOTAL)";
+	}
+
+	function getPPV()
+	{
+		if (!TVAccess.isPPVLocked()) 
+		  limitStr = "NOT BLOCKED";
+		// this code prints out dollar values when a spending
+		// limit is enabled
+		// {
+		// 	   limit = TVAccess.getPPVSpendingLimit();
+		// 	   if (limit == 6)
+		// 		   limitStr = "NOT BLOCKED";
+		// 	   else if (limit == 0)
+		// 		   limitStr = "BLOCKED";
+		// 	   else if (limit == 1)
+		// 		   limitStr = "$10 LIMIT";
+		// 	   else if (limit == 2)
+		// 		   limitStr = "$25 LIMIT";
+		// 	   else if (limit == 3)
+		// 		   limitStr = "$50 LIMIT";			
+		// 	   else if (limit == 4)
+		// 		   limitStr = "$75 LIMIT";			
+		// 	   else if (limit == 5)
+		// 		   limitStr = "$100 LIMIT";			
+		// }
+		else
+		  limitStr = "BLOCKED";
+
+		return limitStr;
+	}
+
+	function getPanel()
+	{
+		if (TVAccess.isPanelLocked())		
+			return "BLOCKED";
+		else
+			return "NOT BLOCKED";
+	}
+
+	function getGames()
+	{
+		if (TVAccess.isGamesLocked())		
+			return "BLOCKED";
+		else
+			return getESRBLimit();
+	}
+
+	function gotoNext()
+	{
+		if (!TVAccess.isLocked() && TVAccess.areLimitsSet())
+			document.location = "file://rom/tvhtmls/HowToLock.html"
+		else
+			document.location = "client:goback"
+	}
+
+	function gotoPasswordPage()
+	{
+		if (TVAccess.areLimitsSet())
+			document.location = "client:CAM?showPasswordPage=true&global=true"
+		else
+			document.location = "file://rom/tvhtmls/LockWithoutBlocks.html"
+	}
+
+	function writeSpacer(spacerHeight)
+	{
+		document.write(
+			"<tr><td height=" + spacerHeight + ">" +
+			"<tr><td valign=top width=8>"
+		);
+	}
+
+	function writeArrow()
+	{
+		if (TVAccess.isLocked())
+			document.write("<img src=file://rom/tvimages/Arrow_PurpleDimmed2.gif width=7 height=13>");
+		else
+			document.write("<img src=file://rom/tvimages/Arrow_Green.gif width=7 height=13>");
+
+		document.write(
+			"<td><spacer type=block width=7>" +
+			"<td>"
+		);
+	}
+</script>
+
+</HEAD>
+
+<link rel="StyleSheet" type="text/css" href="locking-styles.css">
+<style type="text/css">
+
+#lockIcon {
+	position: absolute;
+	top: 66;
+	left: 513;
+	width: 30;
+	height: 47;
+}
+
+#lockTable {
+	position: absolute;
+	top: 147;
+	left: 292;
+	width: 262;
+	height: 200;
+}
+
+#donebutton {
+	position: absolute;
+	top: 371;
+	left: 410;
+	width: 130;
+	height: 35;
+}
+
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#6cb18a link=#6cb18a hspace=0 vspace=0 fontsize=large noscroll hideoptions>
+
+<form name=lockingForm>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=lockIcon>
+			<script language="JavaScript">
+				if (TVAccess.isLocked())
+					document.write("<img src=file://rom/tvimages/LockYellowLG_Locked.gif>");
+				else
+					document.write("<img src=file://rom/tvimages/LockGreenLG_Unlocked.gif>");
+			</script>
+	</div>
+
+	<div id=lockTable>
+		<table cellspacing=0 cellpadding=0>
+			<tr><td valign=top width=8>
+			<script language="JavaScript">
+
+			var gamesAvailable = TVAccess.isGamesAvailable();
+			var spacerHeight = 16;
+			var textcolor = (TVAccess.isLocked() ? "color=#616173" : "");
+
+			// pick the right image depending on whether the system is locked or not
+			writeArrow();
+
+			// first cell - ratings
+			if (TVAccess.isLocked())
+				document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/TVPassword.html?block=ratings>");
+			else {
+				var selectRatings = (TVAccess.areLimitsSet() ? " " : " selected ");
+
+				if (TVAccess.hasCompleteRatingInfo())
+					document.write("<table cellspacing=0 cellpadding=0" + selectRatings + 
+									"href=file://ROM/tvhtmls/satellite/movie-ratings.html>");
+				else
+					document.write("<table cellspacing=0 cellpadding=0" + selectRatings + 
+									"href=file://ROM/tvhtmls/satellite/IncompleteRatings.html>");
+			}
+
+			document.write(
+					"<tr><td align=left><font size=-1 " + textcolor + "><b>Ratings:&nbsp;</b>" +
+					"<tr><td height=4>" +
+					"<tr><td align=left><font size=-2 " + textcolor + ">" + getRatings() + "</font>" + 
+					"</table>"
+			);
+
+			writeSpacer(spacerHeight);
+			writeArrow();
+
+			// second cell - channels
+			if (TVAccess.isLocked())
+				document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/TVPassword.html?block=channels>");
+			else
+				document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/satellite/channels-lock.html>");
+
+			var channels = TVAccess.lockedChannels();
+			if (channels == "")
+				channels = "&nbsp;";
+
+			var numChannels = getNumChannels()
+			if (numChannels.length > 0) {
+				document.write(
+					"<tr><td align=left>" + 
+					"<font size=-1 " + textcolor + ">" +
+					"<b>Channels: </b><font size=-2 " + textcolor + ">" + numChannels +
+					"<tr><td height=4>" +
+					"<tr><td align=left><font size=-2 " + textcolor + ">" + channels + "</font>" +
+					"</table>"
+					);
+			} else {
+				document.write(
+					"<tr><td align=left>" + 
+					"<font size=-1 " + textcolor + ">" +
+					"<b>Channels: </b>" +
+					"<tr><td height=4>" +
+					"<tr><td align=left><font size=-2 " + textcolor + ">NONE SET</font>" +
+					"</table>"
+					);
+			}
+
+			writeSpacer(spacerHeight);
+			writeArrow();
+
+			// third cell - ppv
+			if (TVAccess.isLocked())
+				document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/TVPassword.html?block=ppv>");
+			else
+				document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/satellite/ppv-lock.html>");
+
+			document.write(
+				"<tr><td>" + 
+				"<font size=-1 " + textcolor + ">" + 
+				"<b>Pay to view:&nbsp;</b><font size=-2 " + textcolor + ">" + getPPV() + "</font></font>" +
+				"</table>"
+			);
+
+			writeSpacer(spacerHeight);
+			writeArrow();
+
+			// fifth cell -- front panel
+			if (TVAccess.isLocked())
+				document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/TVPassword.html?block=frontpanel>");
+			else
+				document.write("<table cellspacing=0 cellpadding=0 href=file://rom/tvhtmls/satellite/panel-lock.html>");
+
+			document.write(
+				"<tr><td>" +
+				"<font size=-1 " + textcolor + ">" +
+				"<b>Receiver buttons:&nbsp;</b><font size=-2 " + textcolor + ">" + getPanel() + "</font></font>" +
+				"</table>"
+			);
+
+			if ( gamesAvailable ) {
+
+				writeSpacer(spacerHeight);
+				writeArrow();
+
+				// sixth cell -- games
+
+				if (TVAccess.isLocked())
+					document.write("<table cellspacing=0 cellpadding=0 href=file://ROM/tvhtmls/TVPassword.html?block=games>");
+				else
+					document.write("<table cellspacing=0 cellpadding=0 href=file://rom/tvhtmls/satellite/games-lock.html>");
+
+				document.write(
+					"<tr><td>" +
+					"<font size=-1 " + textcolor + ">" +
+					"<b>Games:&nbsp;</b><font size=-2 " + textcolor + ">" + getGames() +
+					"</table>"
+				);
+			}
+
+		</script>
+		</table>
+	</div>
+
+	<div id=donebutton>
+	<script language="JavaScript">
+	var ButtonValue = (!TVAccess.isLocked() && TVAccess.areLimitsSet()) ? 
+	                     "Continue" : "Done";
+	document.write("<font size=-1 color=#ffcf69><shadow>" +
+		       "<input selected type=submit value=" + ButtonValue +
+                       " name=Done usestyle width=130 " + 
+		       " action=client:donothing onClick=\"gotoNext()\"" +
+		       " borderimage=file://ROM/tvimages/TVButtonBorder.bif>" +
+		       " </shadow></font>");
+
+	</script>	
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Limits</font>
+	</div>
+
+	<div id=info>
+		<font size=-1 color=989898>
+		Choose an access limit<br>to change its setting.
+	</div>
+
+</form>
+</BODY>
+</HTML>

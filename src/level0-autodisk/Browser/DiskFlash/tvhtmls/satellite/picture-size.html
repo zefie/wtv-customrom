@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<TITLE>Picture Size
+</TITLE>
+<DISPLAY noscroll nologo nooptions noreconnectalert>
+</HEAD>
+
+<style type="text/css">
+
+#banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 560;
+	height: 80;
+}
+
+#donebutton {
+	position: absolute;
+	top: 371;
+	left: 410;
+	width: 130;
+	height: 35;
+}
+
+#title {
+	position: absolute;
+	top: 107;
+	left: 62;
+	width: 143;
+	height: 31;
+}
+
+#description {
+	position: absolute;
+	top: 142;
+	left: 62;
+	width: 205;
+	height: 54;
+}
+
+#standardButton {
+	position: absolute;
+	top: 319;
+	left: 337;
+	width: 130;
+	height: 35;
+}
+
+#cinematicButton {
+	position: absolute;
+	top: 319;
+	left: 100;
+	width: 130;
+	height: 35;
+}
+
+#cinematicImage {
+	position: absolute;
+	top: 220;
+	left: 100;
+	width: 116;
+	height: 85;
+}
+
+#standardImage {
+	position: absolute;
+	top: 220;
+	left: 337;
+	width: 91;
+	height: 85;
+}
+
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+
+</style>
+
+<script language="JavaScript">
+
+	var timeOut = null;
+
+	function setState()
+	{
+		document.aspectRatioForm.ratio[Satellite.getAspectRatio()].checked = true;
+	}
+
+</script>
+
+
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb 
+link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions onLoad="setState()">
+
+<form name=aspectRatioForm action=client:aspectratio>
+
+	<div id=banner>
+	<table cellspacing=0 cellpadding=0 cellborder=0>
+		<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+				<spacer type=block WIDTH=11 HEIGHT=11><br>
+				<spacer type=block WIDTH=10 HEIGHT=1>
+	    		<a href="client:showtvhome"><div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+			<td width=456 height=80 valign=top align=center>
+				<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+				<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+	</table>
+	</div>
+
+	<div id=donebutton>
+		<font size=-1 color=#ffcf69><shadow>
+			<input type=submit value=Done name=Done
+			 usestyle width=130 selected borderimage="file://ROM/tvimages/TVButtonBorder.bif">
+		</shadow></font>
+	</div>
+
+	<div id=title>
+		<font size=+2 color=#ffcf69>Picture size</font>
+	</div>
+
+	<div id=description>
+		<font size=-1 color=#989898>
+		Choose the aspect ratio of your TV screen.
+	</div>
+
+	<div id=standardButton>
+		<font size=-1 color=#6cb18a>
+		<input name=ratio type=radio value=Standard bgcolor=#444444 checked=off>
+		Standard</FONT><BR>
+	</div>
+
+	<div id=cinematicButton>
+		<font size=-1 color=#6cb18a>
+		<input name=ratio type=radio value=Cinematic bgcolor=#444444 checked=off>
+		Cinematic</FONT><BR>
+	</div>
+
+	<div id=cinematicImage>
+		<img src="file://rom/tvimages/satellite/TV_Cinematic.gif" width=116 height=85>
+	</div>
+
+	<div id=standardImage>
+		<img src="file://rom/tvimages/satellite/TV_Standard.gif" width=91 height=85>
+	</div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+<object type="application/x-wtv-wallet" name="myWallet"></object>
+<script src="../wallet.js"></script>
+	<title>Same mailing address?</title>
+<DISPLAY noscroll skipback nologo nooptions noreconnectalert>
+</head>
+<script>
+function CheckContinueButton(goToBilling) {
+  if (goToBilling == "false") {
+    myWallet.setUserInfo("shipFName", myWallet.readUserInfo("billFName",1),1);
+    myWallet.setUserInfo("shipMI", myWallet.readUserInfo("billMI",1),1);
+    myWallet.setUserInfo("shipLName", myWallet.readUserInfo("billLName",1),1);
+    myWallet.setUserInfo("shipAddr1", myWallet.readUserInfo("billAddr1",1),1);
+    myWallet.setUserInfo("shipAddr2", myWallet.readUserInfo("billAddr2",1),1);
+    myWallet.setUserInfo("shipCity", myWallet.readUserInfo("billCity",1),1);
+    myWallet.setUserInfo("shipState",myWallet.readUserInfo("billState",1),1);
+    myWallet.setUserInfo("shipZip", myWallet.readUserInfo("billZip",1),1);
+    myWallet.setUserInfo("shipCountry",myWallet.readUserInfo("billCountry",1),1);
+    SetPage('review.html');
+  } else if (goToBilling == "true") {
+    SetPage ('mailname.html');
+  }
+}
+</script>
+<body text=e0e4e7 link=ffcf69 vlink=ffcf69 fontsize=large vspace=0 hspace=0 nobackground>
+<form name="CheckBox">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_BlueTop.gif">
+  <tr><td width=100% absheight=97 bgcolor=#001133 transparency=15% valign=top>
+    <table width=100% border=0 cellspacing=0 cellpadding=0>
+    <tr><td colspan=2 height=30 background="file://ROM/tvimages/TVPanel_blue.gif">
+	  <table border=0 cellspacing=0 cellpadding=0>
+	  <tr><td abswidth=20><td abswidth=520><font color=#b2b2b2>Are the billing and delivery addresses the same?</font>
+	  </table>
+    <tr><td abswidth=20><td>
+	  <table width=500 border=0 cellspacing=0 cellpadding=0>
+      <tr><td><font color=#999999>If you'd like to have the item(s) delivered to an address<br>
+	  							  different from where your credit card statement is<br>
+								  received, choose <b>Different</b>, otherwise choose <b>Same</b>.</font>
+	  </table>
+  </table>
+  <tr><td width=100% absheight=4 background="file://ROM/tvimages/TVPanel_Groove.gif">
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_GrayTop.gif" valign=center>
+  <tr><td width=100% absheight=40 background="file://ROM/tvimages/TVPanel_Gray.gif" valign=center>
+  <table border=0 cellspacing=0 cellpadding=0><tr>
+  <td width=260>
+  <td><td><font size=-1 color=#ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" Value="Different" usestyle width=150 onClick="CheckContinueButton('true');"></font>
+  <td abswidth=20>
+  <td><font size=-1 color=#ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" Value="Same" usestyle width=150 onClick="CheckContinueButton('false');" selected></font>
+  <td abswidth=10>
+  </table>
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_Gray.gif" valign=center>
+</table>
+</form>
+</body>
+</html>

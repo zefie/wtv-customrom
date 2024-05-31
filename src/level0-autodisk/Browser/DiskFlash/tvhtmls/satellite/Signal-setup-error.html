@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>
+Signal-Setup-Error
+</title>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function onLoadPage()
+	{
+		if (Satellite.isShowingIntroPages)
+			document.lockPage(true);			
+	}
+	function setupURL()
+	{
+		var backURL = history.previous();
+
+		if (backURL.indexOf("setup-dishpoint.html"))
+			history.back();
+		else
+			document.location = "file://rom/tvhtmls/satellite/setup-dishpoint.html";
+	}
+</script>
+
+<display noscroll nologo nooptions noreconnectalert notvaudio skipback !lockpage>
+</head>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8 hspace=0 vspace=0 fontsize=large noscroll hideoptions onLoad="onLoadPage();">
+
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+			<script language=JavaScript>
+				var image = "<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div>";
+
+				if (!Satellite.isShowingIntroPages)
+					image = "<a href=client:showtvhome>" + image + "</a>";
+
+				document.write(image);
+			</script>	    	
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<form name=signalerror>
+
+
+<table cellspacing=0 cellpadding=0>
+
+<tr><td valign=top align=left abswidth=560 absheight=290>
+
+	<table cellspacing=0 cellpadding=0>
+
+	<tr><td width=64 height=30>
+
+	<tr><td>
+
+		<td width=320 height=200 valign=top align=left>
+
+			<font size=+1 color=#ffcf69>
+
+				No satellite reception
+
+			</font>
+
+
+
+			<font size=-1 color=#989898>
+
+				<p>Your receiver is not getting a satellite signal. 
+
+				<p>Check to make sure your satellite dish is properly connected to your satellite receiver. 
+				Then choose <b>Dish Pointing</b> to set up your dish to get a stronger signal.
+
+			</font>
+
+	</table>
+
+</table>
+
+
+<table cellspacing=0 cellpadding=0>
+	<tr>
+	<td width=270>
+	<td width=90>
+	<td width=10>
+	<td valign=top align=right>
+		<font size=-1 color=#ffcf69><shadow>
+		<input selected type=submit borderimage="file://rom/tvimages/tvbuttonborder.bif" value="Dish&nbsp;Pointing" usestyle width=170 action="" onClick="setupURL();" NOARGS>
+		</shadow></font>
+</table>
+</form>
+
+</body>
+</html>

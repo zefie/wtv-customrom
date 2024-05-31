@@ -2,8 +2,9 @@ String.prototype.replace=function(o,n){return this.split(o).join(n)}
 d=document
 rom='file://rom/'
 htm=rom+'HTMLs/'
-cch='/ROMCache/'
-thm=cch+'Themes/'
+rch='/ROMCache/'
+cch=rom+'Cache/'
+thm=rch+'Themes/'
 thi=thm+'Images/'
 thb=thm+'Borders/'
 
@@ -130,12 +131,13 @@ function headr(th,msg,fs,bgm,lp,nl){
 	if(bgm){
 		if(bgm.indexOf('.')<0){bgm += '.mid'}
 		if(bgm.indexOf('/')<0){bgm = cch+'Music/' + bgm}
-		out+='<bgsound name=bgm src="'+bgm+'" autostart=true'
+		out+='<embed name=ebgm src="'+bgm+'" autostart=true'
 		if(!lp){out+='>'}
 		else{
 			if(lp==-1){lp=9999}
 			out+=(' loop='+lp+'>')
 		}
+		d.write('</embed>')
 	}
 	if(!msg){msg=''}
 	out+='<table cellspacing=0 cellpadding=0 abswidth=560 absheight=69'
@@ -163,7 +165,7 @@ function tab(msg){
 		if(shimg){tout+=' background='+thi+shimg+' novtilebg'}
 		tout+='><td abswidth=460 height=69 valign=top'
 		if(shimg){tout+=' background='+thi+shimg+' novtilebg'}
-		tout+=' align=right><spacer height=32 type=block><b><shadow><blackface><font color=cbcbcb>'+msg+' &nbsp; </font></blackface></shadow></b>'
+		tout+=' align=right><spacer height=32 type=block><strong><shadow><font color=cbcbcb>'+msg+' &nbsp; </font></shadow></strong>'
 	}else{
 		tout='<td width=100% height=69 valign=top align=left'
 		if(shimg){tout+=' background='+thi+shimg}

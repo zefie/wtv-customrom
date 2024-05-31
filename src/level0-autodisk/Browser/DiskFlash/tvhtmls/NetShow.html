@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>Windows Media Player</title>
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<script language="JavaScript">
+</script>
+</head>
+<display>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+
+<body bgcolor=#A6ABBF text=cccccc link=aaaaaa vlink=aaaaaa fontsize=medium hspace=0 vspace=0 > <table cellspacing=0 cellpadding=0>
+<tr>
+<td BGCOLOR=#A6ABBF>
+<table cellspacing=0 cellpadding=0>
+	<tr><td width=98 height=67 align=center valign=middle bgcolor=#A6ABBF>
+		<div id=MSNLogo>
+			<a href="wtv-home:/home"><img src="file://rom/tvimages/MSNLogo.gif" ></a>
+		</div>
+		<td width=296 height=80 align=right valign=top bgcolor=#A6ABBF><img src="file://rom/tvimages/winmelogo.gif" width=295 height=80>
+	</td></tr>
+</table>
+<tr><td>
+
+<script>
+var old_state = 1;
+
+function btn_off(b, disk)
+{
+	if (disk == 1) 
+	{
+		eval("document." + b + ".src = 'file://disk/Browser/Images/NetShow/" + b + "Off.gif'");
+	}
+	else
+	{
+		eval("document." + b + ".src = 'file://ROM/images/NetShow/" + b + "Off.gif'");
+    }
+}
+
+function btn_on(b, disk)
+{
+	if (disk) 
+	{
+		eval("document." + b + ".src = 'file://disk/Browser/Images/NetShow/" + b + "On.gif'");
+	}
+	else
+	{
+		eval("document." + b + ".src = 'file://ROM/images/NetShow/" + b + "On.gif'");
+    }
+}
+
+function action(a)
+{
+	top.location = "client:nets?" + a;
+}
+
+function new_state(st, disk)
+{
+	if(st == 0 && old_state != 0)
+	{
+		btn_on("Stop", disk);
+		btn_off("Play", disk);
+		if(old_state == 2)
+			btn_off("Pause", disk);
+
+		action("Stop");
+	}
+	else if(st == 1 && old_state != 1)
+	{
+		btn_on("Play", disk);
+		btn_off("Stop", disk);
+		if(old_state == 2)
+			btn_off("Pause", disk);
+
+		action("Play");
+	}
+	else if(st == 2 && (old_state == 1 || old_state == 2))
+	{
+		if (old_state == 1)
+		{
+			btn_on("Pause", disk);
+			action("Pause", disk);
+		}
+		else {
+			btn_off("Pause", disk);
+			action("Play", disk);
+			st = 1;
+		}
+	}
+	else if(st == 3)
+	{
+		btn_on("Rewind", disk);
+		setTimeout("btn_off('Rewind', disk)", 2000);
+		action("Rewind");
+	}
+	else if(st == 4)
+	{
+		btn_on("Forward", disk);
+		setTimeout("btn_off('Forward', disk)", 2000);
+		action("Forward");
+	}
+
+	old_state = st;
+}
+</script>
+
+<table cellspacing=0 cellpadding=0>
+<tr><td width=21 valign=top bgcolor=#A6ABBF>
+<td abswidth=336 valign=top>
+
+<table cellspacing=0 cellpadding=0 border=0>
+<tr><td valign=top abswidth=13 rowspan=2 bgcolor=#282a36>
+    <img src="file://rom/tvimages/topleftcorner.gif" width=13 height=25>
+<td valign=middle bgcolor=#282a36>
+	<spacer type=vertical size=10><br>
+	<Netshow src=Netshow.html width=326 height=246>
+<td abswidth=8 rowspan=2 bgcolor=#282a36>
+<tr><td bgcolor=#282a36 valign=middle><spacer type=vertical size=19><img width=325 height=14>
+<tr><td bgcolor=#282a36 colspan=3 align=center valign=middle><spacer type=vertical size=30><a onclick="new_state(0, 1)"><img src="file://rom/tvimages/pb_stop_off.gif" width=82 height=24></a><a onclick="new_state(0, 1)"><img src="file://rom/tvimages/pb_play_on.gif" width=76 height=24></a><a onclick="new_state(2, 1)"><img src="file://rom/tvimages/pb_pause_off.gif" width=93 height=24></a><Netshowtimer width=66 height=24>
+<tr><td bgcolor=#282a36 colspan=3>&nbsp;
+</table>
+
+<td width=205 valign=top bgcolor=#282a36>
+
+<table cellspacing=0 cellpadding=0 width=205>
+<tr><td height=4 colspan=3>
+<tr><td height=22 colspan=3 valign=middle bgcolor=#000000 transparency=50 gradcolor=#282a36 gradangle=90>
+	<spacer type=horizontal size=19>
+	<img src=file://rom/tvimages/related_circlearrow.gif width=19 height=19>
+	<font size=-1 color=#FFCE6B><b>Settings</b></font>
+	<spacer type=horizontal size=6>
+	<img src=file://rom/tvimages/related_circlearrow.gif width=19 height=19>
+	<font size=-1 color=#FFCE6B><b>Help</b></font>
+<tr><td height=20 colspan=3>
+	<spacer type=vertical size=20>
+
+<tr><td width=205 valign=top colspan=3>
+	<spacer type=horizontal size=19>
+	<Netshowstatus type=0>
+
+<tr><td width=205 valign=top colspan=3>
+	<spacer type=horizontal size=19>	
+	<Netshowstatus type=1>
+
+<tr><td width=205 valign=top colspan=3>
+	<spacer type=horizontal size=19>
+	<Netshowstatus type=2>
+
+<tr><td height=30 colspan=3>
+<tr><td width=205 colspan=3>
+<spacer type=horizontal size=19>
+<img src=file://rom/tvimages/tvicon.gif width=19 height=19>
+<font size=-1 color=#FFCE6B>New video links</font>
+<tr><td width=205 height=4 colspan=3>
+<spacer type=horizontal size=19>
+<img src=file://rom/tvimages/audioicon.gif width=19 height=19>
+<font size=-1 color=#FFCE6B>New audio links</font>
+<tr><td height=35 colspan=3>
+	<spacer type=vertical size=35>
+<tr><td colspan=3>
+<form>
+<spacer type=horizontal size=19><input type="checkbox" name="Enlarge video" value="Enlarge video">
+<font size=-1 color=#FFCE6B>Enlarge video</font>
+</form>
+<tr><td colspan=3 height=30 >
+	<spacer type=vertical size=30>
+<tr><td valign=top align=right colspan=3>
+<spacer type=vertical size=10><BR>
+<img src=file://rom/tvimages/done.gif width=80 height=33>
+</table>
+</table>
+</body>

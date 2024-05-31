@@ -1,0 +1,50 @@
+\<html>
+
+<head>
+	<link href="CommonStyles.css" rel=Stylesheet>
+
+	<title>Addresses</title>
+</head>
+
+<print blackandwhite>
+
+<body bgcolor="172625" text="42BD52" link="189CD6"
+	vlink="189CD6" fontsize="medium"
+	vspace=0
+	hspace=0>
+
+<div id=sideBarBackground bgcolor=514971 gradcolor=1f2a30 gradangle=0>
+</div>
+
+<div id=sideBar>
+	<script>
+		var L_AddButton_Text = "Add";
+
+		top.beginSidebars(true);
+		top.addSidebar(top.L_ListButton_Text, "ListMail.html", "MainFrameArea", "", true)
+		top.addSidebar(L_AddButton_Text, "AddAddress.html", "MainFrameArea", "", true)
+		top.addSidebar(top.L_HelpButton_Text, "Help.html", "MainFrameArea", "", true)
+		top.endSidebars();
+	</script>
+</div>
+
+<!--
+<div id=sideBarSeparator>
+	<img src=images/TransVertShadow.gif width=6 height=384>
+</div>
+-->
+
+<div id=scrollArea>
+	<IFRAME name=scrollingListArea  SCROLLTARGET=YES  SRC="AddressesScroll.html" HEIGHT=420 WIDTH=454 onscroll="top.refreshArrows()" frameborder=no></IFRAME>
+</div>
+
+<div id=upArrow>
+	<img src=images/ScrollArrowUp.gif>
+</div>
+
+<div id=downArrow style="top: 400">
+	<img src=images/ScrollArrowDown.gif>
+</div>
+
+</table>
+</body>

@@ -1,0 +1,124 @@
+<html>
+<head>
+<object type="application/x-wtv-wallet" name="myWallet"></object>
+<script src="../wallet.js"></script>
+<title>Billing Address Cont'd</title>
+</head>
+<script>
+function CheckBillInput(form){
+  var addComma = ", ";
+  var fieldName = "";
+  var invalid = "";
+  form.ErrorMessage.value= "";
+  form.city.value = TrimWhiteSpace(form.city.value);
+  form.state.value = TrimWhiteSpace(form.state.value);
+  form.zip.value = TrimWhiteSpace(form.zip.value);
+  form.country.value = TrimWhiteSpace(form.country.value);
+  if (form.city.value == "") {
+    fieldName += "City";
+  } else if (validCN(form.city.value) != true) {
+		invalid += "City";
+  } else {
+    myWallet.setUserInfo("billCity",form.city.value,1);
+  }
+  if (form.state.value == "") {
+  	if (fieldName != "") {fieldName += addComma;}
+    fieldName += "State";
+  } else if (validState(form.state.value) == false) {
+        if (invalid != "") {invalid += addComma;}
+	invalid += "State";
+  } else {
+    myWallet.setUserInfo("billState",form.state.value,1);
+  }
+  if (form.zip.value.length == 0) {
+    if (fieldName != "") {fieldName += addComma;}
+    fieldName += "Zip Code";
+  }
+  if (form.country.value == "") {
+  	if (fieldName != "") {fieldName += addComma;}
+    fieldName += "Country";
+  }else  if (validCountry(form.country.value)!= true) {
+  		if (invalid != "") {invalid += addComma;}
+			invalid += "Country";
+  }
+   if (fieldName != "") {
+    form.ErrorMessage.value = fieldName + " info is required to fulfill your request. ";
+  }
+  if (validCountry(form.country.value) == true) {
+        myWallet.setUserInfo("billCountry", form.country.value,1);
+	if (form.zip.value.length!=0) {
+		if (!ValidZip(form.zip.value,form.country.value)){
+			form.ErrorMessage.value += "Check the zip code, proper format is: 09404 (US) or A2A 3B3 (Canada). ";
+		}
+		else {	
+			myWallet.setUserInfo("billZip", form.zip.value,1);
+		}
+	}
+  }
+  else{
+	if (ValidZip(form.zip.value,"USA") || ValidZip(form.zip.value,"CA")){
+		myWallet.setUserInfo("billZip", form.zip.value,1);
+	}
+  }
+  if (invalid != "") {
+		form.ErrorMessage.value+= "You have typed in an improper "+invalid  + ".";
+  }
+}
+function SubmitBillInfo() {
+  myWallet.setUserInfo("billCity",document.bill_city.city.value,1);
+  myWallet.setUserInfo("billState",document.bill_city.state.value,1);
+  myWallet.setUserInfo("billZip",document.bill_city.zip.value,1);
+  myWallet.setUserInfo("billCountry", document.bill_city.country.value,1);
+}
+function LoadBillInfo() {
+  document.bill_city.city.value = myWallet.readUserInfo("billCity",1);
+  document.bill_city.state.value = myWallet.readUserInfo("billState",1);
+  document.bill_city.zip.value = myWallet.readUserInfo("billZip",1);
+  document.bill_city.country.value = myWallet.readUserInfo("billCountry",1);
+  if (document.bill_city.country.value == "" && document.bill_city.zip.value=="") {
+    document.bill_city.country.value = "USA";
+  }
+}
+</script>
+<body text=e0e4e7 link=ffcf69 vlink=ffcf69 fontsize=large vspace=0 hspace=0 nobackground onLoad="LoadBillInfo();">
+<form name="bill_city" action="client:walletpanelaction" onSubmit="CheckBillInput(document.bill_city);">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_BlueTop.gif">
+  <tr><td width=100% absheight=97 bgcolor=#001133 transparency=15% valign=top>
+    <table width=100% border=0 cellspacing=0 cellpadding=0>
+    <tr><td colspan=2 height=30 background="file://ROM/tvimages/TVPanel_blue.gif">
+	<table border=0 cellspacing=0 cellpadding=0>
+	  <tr><td abswidth=20>
+	  <td abswidth=520><font color=#b2b2b2>Type in the address of your credit card bill.</font>
+	  <td><img src="file://ROM/tvimages/WalletLock.gif">
+	  <td abswidth=10>
+	</table>
+    <tr><td abswidth=20><td><table width=420 border=0 cellspacing=0 cellpadding=0>
+    <tr><td abswidth=40 align=right height=34><font size=-1 color=6cb28b>City:</font>
+    <td abswidth=7>
+    <td abswidth=50><font color=ffcf69><input name="city" usestyle size=14 maxlength=20 border=1 bgcolor=000000 selected></font>
+    <td abswidth=40 align=right><font size=-1 color=6cb28b>State: </font>
+    <td abswidth=20><font color=ffcf69><input name="state" usestyle size=7 maxlength=2 border=1 bgcolor=000000></font>
+    <tr><td align=right height=33><font size=-1 color=6cb28b>Zip Code:</font>
+    <td>
+    <td><font color=ffcf69><input name="zip" usestyle size=14 maxlength=10 border=1 bgcolor=000000 nextdown=cont></font>
+    <td align=right><font size=-1 color=6cb28b>Country: </font>
+    <td><font color=ffcf69><input name="country" usestyle size=7 maxlength=6 border=1 bgcolor=000000 nextright=cont></font>
+	</table>
+  </table>
+  <tr><td width=100% absheight=4 background="file://ROM/tvimages/TVPanel_Groove.gif">
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_GrayTop.gif" valign=center>
+  <tr><td width=100% absheight=40 background="file://ROM/tvimages/TVPanel_Gray.gif" valign=center>
+  <table border=0 cellspacing=0 cellpadding=0><tr>
+    <td abswidth=20>
+	<td><font size=-1 color=ffcf69><input type=button borderimage="file://ROM/tvimages/TVButtonBorder.bif" value="Don't Order" usestyle width=150 onClick="SetPage('cancel.html');"></font>
+    <td width=225>
+    <td align=right><font size=-1 color=#ffcf69><input type=submit borderimage="file://ROM/tvimages/TVButtonBorder.bif" Value="Continue" id=cont usestyle width=150 selected></font>
+	<td align=right><input type=hidden name="ErrorMessage">
+    <td abswidth=10>
+  </table>
+  <tr><td width=100% absheight=3 background="file://ROM/tvimages/TVPanel_Gray.gif" valign=center>
+</table>
+</form>
+</body>
+</html>

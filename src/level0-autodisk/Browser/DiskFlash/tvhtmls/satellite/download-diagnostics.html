@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>
+Satellite Download Diagnostics
+</title>
+<display noscroll nologo nooptions noreconnectalert notvaudio>
+<script language="JavaScript">
+var timeOut=null;
+function updateStatus()
+{
+	var numStreams = Satellite.getNumberOfStreams();
+
+	if (numStreams > 0) {
+		document.statusform.name1.value = Satellite.getSatelliteStreamName(0);
+		document.statusform.status1.value = Satellite.getSatelliteStreamStatus(0);
+		document.statusform.rate1.value = Satellite.getSatelliteStreamRate(0);
+	}
+
+	if (numStreams > 1) {
+		document.statusform.name2.value = Satellite.getSatelliteStreamName(1);
+		document.statusform.status2.value = Satellite.getSatelliteStreamStatus(1);
+		document.statusform.rate2.value = Satellite.getSatelliteStreamRate(1);
+	}
+
+	if (numStreams > 2) {
+		document.statusform.name3.value = Satellite.getSatelliteStreamName(2);
+		document.statusform.status3.value = Satellite.getSatelliteStreamStatus(2);
+		document.statusform.rate3.value = Satellite.getSatelliteStreamRate(2);
+	}
+
+	if (numStreams > 3) {
+		document.statusform.name4.value = Satellite.getSatelliteStreamName(3);
+		document.statusform.status4.value = Satellite.getSatelliteStreamStatus(3);
+		document.statusform.rate4.value = Satellite.getSatelliteStreamRate(3);
+	}
+
+	document.statusform.downloadSchedule.value = Satellite.getSatelliteDownloadSchedule();
+
+	if (timeOut != null) 
+		clearTimeout(timeOut);
+	timeOut = setTimeout('updateStatus()', 1000);
+}
+</script>
+</head>
+<style type="text/css">
+#MSNLogo {
+	position: absolute;
+	top: 7;
+	left: 10;
+	width: 87;
+}
+</style>
+<body bgcolor=#21212e background="file://rom/tvimages/Pattern_TVSettings.gif" text=#cbcbcb link=#4489a8
+ hspace=0 vspace=0 fontsize=medium noscroll hideoptions onLoad="updateStatus();">
+
+<form name=statusform>
+<table cellspacing=0 cellpadding=0 cellborder=0>
+	<tr><td background="file://rom/tvimages/ShadowLogo_Horizontal.gif" width=104 height=80 valign=top align=left>
+			<spacer type=block width=11 height=11><br>
+			<spacer type=block width=10 height=1>
+	    	<div id=MSNLogo><img src="file://ROM/tvimages/WebTVPlusJewelLogo.gif" ></div></a>
+	    <td width=456 height=80 valign=top align=center>
+			<img src="file://rom/tvimages/TVSettingsBanner.gif" width=456 height=50><br>
+			<img src="file://rom/tvimages/Shadow_Horizontal.gif" width=456 height=6>
+</table>
+
+<table cellspacing=0 cellpadding=0>
+	<tr><td width=20>
+		<td width=550 valign=top align=left>
+
+			<table width=100%% height=70 cellspacing=0 cellpadding=0>
+				<tr><td width=280 align=left valign=middle>
+						<font size=+2 color=#ffcf69>
+						<b>Satellite Download Diagnostics</b>
+						</font>
+					<td width=150 align=right valign=middle>
+						<font size=-1 color=6f90bd>
+							<clock dayofweek allcaps abbreviated><spacer width=6 type=block>
+							<clock month day allcaps abbreviated><spacer width=14 type=block>
+							<clock time ampm>
+						</font>
+			
+			</table>
+			<table width=500 height=200 cellspacing=0 cellpadding=0 border=1>
+				<tr><td width=300 height=50 align=middle valign=middle>
+						<font color=##6cb18a> Stream (pid/chnl/port) </font>
+					<td width=200 align=middle valign=middle>
+						<font color=##6cb18a> Status </font>
+					<td width=100 align=middle valign=middle>
+						<font color=##6cb18a> Rate </font>	
+				<tr><td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=name1 type=text width=300 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=status1 type=text width=200 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=rate1 type=text width=100 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+				<tr><td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=name2 type=text width=300 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=status2 type=text width=200 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=rate2 type=text width=100 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+				<tr><td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=name3 type=text width=300 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=status3 type=text width=200 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=rate3 type=text width=100 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+				<tr><td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=name4 type=text width=300 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=status4 type=text width=200 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+					<td align=center valign=middle>
+						<font size=-1 color=#e0e4e7>
+						<input id=rate4 type=text width=100 halign=center usestyle 
+							value="" nobackground border=0 nocursor noselect>
+						</font>
+			</table>
+		<td width=20>
+	<tr><td>
+		<td valign=bottom height=30>
+</table>
+
+<spacer type=block width=11 height=11>
+Next download: 
+<font size=-1 color=#e0e4e7> 
+<input id=downloadSchedule type=text width=400 halign=left usestyle border=0 nobackground nocursor noselect>
+</font>
+</input>
+
+<!--
+<table cellspacing=0 cellpadding=0>
+	<tr>
+	<td width=190>
+	<td width=170>
+	<td width=10>
+	<td valign=top align=right>
+		<font size=-1 color=#ffcf69><shadow>
+		<input selected type=submit borderimage="file://rom/tvimages/tvbuttonborder.bif" value="Power&nbsp;Off" usestyle width=170 
+			action="client:pow" NOARGS>
+		</shadow></font>
+</table>
+-->
+</form>
+
+</body>
+</html>

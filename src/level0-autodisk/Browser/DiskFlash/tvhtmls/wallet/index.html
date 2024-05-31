@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Wallet</title>
+<DISPLAY nologo nooptions noreconnectalert>
+<object type="application/x-wtv-wallet" name="myWallet"></object>
+<script language="Javascript">
+var goToReview=false; 
+var errorMessage; 
+var shipFName;
+var shipMI;
+var shipLName;
+var phone;
+var email;
+var shipAddr1;
+var shipAddr2;
+var shipCity;
+var shipState;
+var shipZip;
+var shipCountry;
+var billFName;
+var billMI;
+var billLName;
+var billAddr1;
+var billAddr2;
+var billCity;
+var billState;
+var billZip;
+var billCountry;
+var ccExpMonth;
+var ccExpYear;
+var ccNum;
+function UpdateGlobalFields()
+{
+shipFName = myWallet.readUserInfo("shipFName");
+shipMI = myWallet.readUserInfo("shipMI");
+shipLName = myWallet.readUserInfo("shipLName");
+phone = myWallet.readUserInfo("phone");
+email = myWallet.readUserInfo("email");
+shipAddr1 = myWallet.readUserInfo("shipAddr1");
+shipAddr2 = myWallet.readUserInfo("shipAddr2");
+shipCity = myWallet.readUserInfo("shipCity");
+shipState = myWallet.readUserInfo("shipState");
+shipZip = myWallet.readUserInfo("shipZip");
+shipCountry = myWallet.readUserInfo("shipCountry");
+billFName = myWallet.readUserInfo("billFName");
+billMI = myWallet.readUserInfo("billMI");
+billLName = myWallet.readUserInfo("billLName");
+billAddr1 = myWallet.readUserInfo("billAddr1");
+billAddr2 = myWallet.readUserInfo("billAddr2");
+billCity = myWallet.readUserInfo("billCity");
+billState = myWallet.readUserInfo("billState");
+billZip = myWallet.readUserInfo("billZip");
+billCountry = myWallet.readUserInfo("billCountry");
+ccExpMonth = myWallet.readUserInfo("ccExpMonth");
+ccExpYear = myWallet.readUserInfo("ccExpYear");
+ccNum = myWallet.readUserInfo("ccNum");
+}
+function IsWalletEmpty()
+{
+	var fields = myWallet.getFieldsAvailable();
+	var fieldArray = fields.split(",");
+	for(var i=0; i < fieldArray.length; i++)
+	{
+		if (myWallet.readUserInfo(fieldArray[i]) != "")
+			return false;
+	}
+	return true;
+}
+function CheckIfRegistered(){
+  if (IsWalletEmpty()){
+    SetPage('setup.html');
+  } else {
+    SetPage('review.html');
+  }
+}
+function SetPage(val){
+top.frames[0].location=val;
+}
+</script>
+</head>
+<frameset rows="420" border=0 frameborder=0 framespacing=0 marginwidth=0 marginheight=0 hspace=0 vspace=0>
+    <frame name='global' SRC='setup.html' width=560 height=420>
+<script>
+UpdateGlobalFields();
+CheckIfRegistered();
+</script>
+</frameset>
+</html>

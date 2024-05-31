@@ -18,18 +18,26 @@
 	if ( allParameters != null ) {
 		startIndex = allParameters.indexOf("=")+1;
 		endIndex = allParameters.indexOf("&");
+		if (endIndex == -1)
+			endIndex = allParameters.length;
 		nowDevice = allParameters.substring( startIndex, endIndex );
 		allParameters = allParameters.substring( endIndex + 1, allParameters.length );
 		startIndex = allParameters.indexOf("=")+1;
 		endIndex = allParameters.indexOf("&");
+		if (endIndex == -1)
+			endIndex = allParameters.length;
 		nowBrand = allParameters.substring( startIndex, endIndex );
 		allParameters = allParameters.substring( endIndex + 1, allParameters.length );
 		startIndex = allParameters.indexOf("=")+1;
 		endIndex = allParameters.indexOf("&");
+		if (endIndex == -1)
+			endIndex = allParameters.length;
 		nowCodes = allParameters.substring( startIndex, endIndex );
 		allParameters = allParameters.substring( endIndex + 1, allParameters.length );
 		startIndex = allParameters.indexOf("=")+1;
 		endIndex = allParameters.indexOf("&");
+		if (endIndex == -1)
+			endIndex = allParameters.length;
 		boxBrand = allParameters.substring( startIndex, endIndex );
 
 		boxRemoteBrand = boxBrand;
