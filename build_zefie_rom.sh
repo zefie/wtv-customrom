@@ -1,11 +1,11 @@
 #!/bin/bash
 cd "$(realpath "$(dirname "${0}")")" || exit 1
 
-ZWNIBUILD=7253
+ZWNIBUILD=16115
 if [ -z "${ZVERSION}" ]; then
 	ZVERSION="git-${USER}-v1"
 fi
-ZROMTYPE="US-LC2-disk-0MB-8MB-softmodem-CPU5230"
+ZROMTYPE="US-LC2-disk-0MB-8MB"
 
 ZSRC="src"
 ZWORK="workdir"
@@ -31,7 +31,9 @@ sed -i "s|!TEMPLATE_ROM!|${ZROMTYPE}|" "${ZINFOJS}"
 
 if [ "${1}" == "viewer" ] || [ "${1}" == "vwr" ]; then
 	# Build Viewer Test
-	cp -r "${ZWORK}/level0-autodisk/Browser/DiskFlash/"* "${ZWORK}/level0-romfs/ROM/"
+	if [ "${2}" != "nodisk" ]; then
+		cp -r "${ZWORK}/level0-autodisk/Browser/DiskFlash/"* "${ZWORK}/level0-romfs/ROM/"
+	fi
 	rommy "${ZWORK}" /mnt/c/bin/webtv/WebTVIntel--2.5-HE/Flash69.vwr
 else
 	# Build ROM
