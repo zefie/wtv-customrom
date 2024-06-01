@@ -1,6 +1,6 @@
-<html><head><display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
-<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>th=pp()
-head(th,'Call waiting options')
+<html><head><display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert nosave nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>
+head('Call waiting options')
 </script><table cellspacing=0 cellpadding=0>
 <tr><td abswidth=34><td colspan=3>
 <spacer height=44 type=vertical>
@@ -12,7 +12,6 @@ head(th,'Call waiting options')
 <form action=client:ConfirmPhoneSetup name=ps>
 <table cellspacing=0 cellpadding=0>
 <tr><td valign=top>
-<input type=hidden name=autosubmit value=true autosubmit=onleave>
 <input type=radio name=call-waiting-mode value=NONE selected checked=&hasit;>
 <td abswidth=4><td valign=top>
 <font size=-1>No call waiting on my phone line.</font>
@@ -33,5 +32,5 @@ head(th,'Call waiting options')
 <tr><td>
 <tr><td><td colspan=4 height=24 valign=top align=left>
 <tr><td><td colspan=3 valign=top align=right>
-<script>butt(th,'Adjust Sensitivity','Adjust Sensitivity',190,'','onclick=go("file://rom/HTMLs/PhoneCallWaitThresh.html")')
-butt(th,'Done','Done',190)</script>
+<script>butt('Adjust Sensitivity','AdjustSensitivity',190,'button','onclick=go("file://rom/HTMLs/PhoneCallWaitThresh.html")')
+butt('Done','Done',190)</script>

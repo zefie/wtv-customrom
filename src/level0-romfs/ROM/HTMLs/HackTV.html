@@ -1,14 +1,14 @@
-<html><head><display nooptions noscroll notvaudio switchtowebmode allowoffline noreconnectalert>
-<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>th=pp()
-bgm=gBGM(z_nv)
-head(th,'Welcome to HackTV','',bgm,-1)
+<html><head><display nooptions noscroll notvaudio switchtowebmode allowoffline noreconnectalert nosave nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head>
+<script>bgm=gV(1)
+head('Welcome to HackTV','',z_bgm[bgm],-1,1)
 function doMenu(){d.ua.vu.value=d.ua.um[d.ua.um.selectedIndex].value}
 function setMsg(msg){d.msg.box.value=msg}
 function urlInfo(){setMsg('                            This is a URL accessor. Will allow you to explore this build, and when connected, allow access to wtv- urls.')}
 window.onload = doMenu;
 </script><table cellspacing=0 cellpadding=0><tr><td abswidth=10>&nbsp;<td colspan=3>
 <table><tr><td width=190 valign=top align=left>
-<spacer width=9 type=block><font size=3 color=bbbbbb><shadow><a selected href=BuildInfo.html onmouseover="setMsg('                            Welcome to the HTV custom build for LC2 Derby.                                       Brought to you by:           eMac                 MattMan69                 zefie                     Outa                                                        BuildInfo for more details.')" nohighlight>Welcome!</a></shadow></font>
+<spacer width=9 type=block><font size=3 color=bbbbbb><shadow><a selected href=BuildInfo.html onmouseover="setMsg('                            Welcome to the HTV custom build for LC2 Plus.                                        Brought to you by:           eMac                 MattMan69                 zefie                     Outa                                                        BuildInfo for more details.')" nohighlight>Welcome!</a></shadow></font>
 <br> &nbsp; <br>
 <font size=2 color=989898>
 <li><a href=javascript:dial() onmouseover="setMsg('                            In the event that you already have a Tellyscript for the server you want to connect to, select this to connect to the web now.')">Quick Connect</a>
@@ -21,15 +21,15 @@ window.onload = doMenu;
 <li><a href=HTMLv2.html onmouseover="setMsg('                            This page allows you to play with the HTML and Javascript features of this build by offering a sandbox to play in.')">HTML Sandbox v2</a>
 <li><a href=file://rom/InternalOnly/DiskHax.html onmouseover="setMsg('                            Browse, create, and delete your &boxname;\'s Hard Disk Partitions.')">DiskHax</a>
 <li><a href=file://rom/InternalOnly/VFatHax.html onmouseover="setMsg('                            Browse your &boxname;\'s Hard Disk files, including HackTV content.')">VFatHax</a>
-<li><a href=client:showautodisk onmouseover="setMsg('                            Click here to attempt to re-trigger AutoDisk to extract the Disk Data from ROM, helpful if you are missing pages or having trouble loading HackTV assets.')">Show AutoDisk</a>
+<li><a href=client:showautodisk onblur=urlInfo() onmouseover="setMsg('                            Click here to attempt to re-trigger AutoDisk to extract the Disk Data from ROM, helpful if you are missing pages or having trouble loading HackTV assets.')">Show AutoDisk</a>
 <tr><td><spacer width=2 height=120 type=block></td></tr>
 </table></td>
 <spacer height=9 type=block><td valign=top>
 <table><td valign=top>
 <center><spacer width=2 height=2 type=block>
-<form name=msg><script>ta(th,11,29,'box',1,'','nohighlight noselect')</script></form>
-</table>&nbsp;<script>as(th,'',10,256,0,1)</script>
-<table><tr><td><form name=ua><select name=um onchange=doMenu() width=272 onmouseover=urlInfo()>
+<form name=msg><script>ta(11,29,'box',1,'','nohighlight noselect')</script></form>
+</table>&nbsp;<script>as('',10,256,0,1)</script>
+<table><tr><td><form name=ua><select name=um onchange=doMenu() width=272 onblur=urlInfo()>
 <option value=file://rom/HTMLs/BuildInfo.html selected>file://rom/HTMLs/BuildInfo.html</option>
 <option value=file://rom/Cache/Music/index.html>file://rom/Cache/Music/index.html</option>
 <option value=file://rom/Cache/Audio/index.html>file://rom/Cache/Audio/index.html</option>
@@ -38,6 +38,6 @@ window.onload = doMenu;
 <option value=client:>client:</option>
 <option value=wtv->wtv-</option>
 </select>
-<script>d.write('<input type=text name=vu value="" border=1 bgcolor='+gTC(th,'bg')+' text='+gTC(th,'t')+' cursor='+gTC(th,'t')+' align=center width=214 executeurl asciionly autoactivate onmouseover="urlInfo()">')</script>
-<spacer type=block width=2><script>butt(th,'Go','',56,'','onmouseover=urlInfo()')</script>
+<script>d.write('<input type=text name=vu value="" border=1 bgcolor='+gTC('bg')+' text='+gTC('t')+' cursor='+gTC('t')+' align=center width=214 executeurl asciionly autoactivate onblur="urlInfo()">')</script>
+<spacer type=block width=2><script>butt('Go','',56,'','onblur=urlInfo()')</script>
 </form></table></td></tr>

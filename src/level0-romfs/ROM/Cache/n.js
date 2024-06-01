@@ -26,22 +26,35 @@ var z_bgm=new Array()
 z_def=new Array()
 	z_def[0]=0//theme
 	z_def[1]=5//bgm
+
 chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@-"//64 possible different values
 function gTN(th){return z_th[parseInt(th)]}
-function gB(nv,off){
-	b=nv.charAt(off)
+function pp(){d.write('<form name=z><input type=hidden name=h value=&pname;></form>');z_nv=d.z.h.value}
+function gB(off){
+	if(!z_nv){pp()}
+	b=z_nv.charAt(parseInt(off))
 	if(b){return chars.indexOf(b)}
 	else{return -1}
 }
-function sB(nv,off,dat){
+function sB(off,dat,raw){
+	if(!z_nv){pp()}
+	off=parseInt(off)
 	prefix=''
-	if(off > 0){prefix=nv.substring(0,off)}
+	if(off>0){prefix=z_nv.substring(0,off)}
 	if(off>prefix.length){while(off!=prefix.length){prefix+='.'}}
-	dat=chars.charAt(parseInt(dat));
-	z_url='client:ConfirmBYOISPSetup?BYOISPProviderName='+prefix+dat+nv.substring(off+1)
+	if(!raw){dat=chars.charAt(parseInt(dat));}
+	z_url='client:ConfirmBYOISPSetup?BYOISPProviderName='+prefix+dat+z_nv.substring(off+1)
 	go(z_url)
 }
-function gV(nv,off){
+function eB(off){
+	sB(off,'.',true)
+}
+function eAll(){
+	z_url='client:ConfirmBYOISPSetup?BYOISPProviderName='
+	go(z_url)
+}
+function gV(off){	
+	off=parseInt(off)
 	z_len=0
 	switch(off){
 		case 0:z_len=z_th.length
@@ -49,20 +62,7 @@ function gV(nv,off){
 		case 1:z_len=z_bgm.length
 		break
 	}
-	z_val=gB(nv,off)
-	if(z_val<0||z_val>=z_len){return parseInt(z_def[off])}
-	return parseInt(z_val)
-}
-function gBGM(nv,n,rn){
-		if(n){p=n}
-		else{p=gV(nv,1)}
-		if(rn){return p}
-		f=z_bgm[p];
-		if(f.indexOf('.')<0){f+='.mid'}
-		return 'file://rom/Cache/Music/'+f
-}
-function pp(){
-	d.write('<form name=z><input type=hidden name=h value=&pname;></form>')
-	z_nv=d.z.h.value
-	return parseInt(gV(z_nv,0))//theme
+	z_val=gB(off)
+	if(z_val<0||z_val>=z_len){return z_def[off]}
+	return z_val
 }

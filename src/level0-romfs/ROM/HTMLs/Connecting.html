@@ -1,9 +1,16 @@
-<html><head><display nooptions nostatus skipback clearback><title>Connecting</title></head><body bgcolor=#0 text=449944>
-<bgsound src=file://ROM/Cache/Music/DialingWebTV.mid loop>
-<center><br><br><br><br>
-	<img src=/Images/ConnectingTo.gif ani=/Animations/ConnectingTo.cel><br>
-	<img src=/Images/CityGlow.gif><br>
-	<img src=/Images/Spacer.gif width=1 height=4><br>
-	<img src=/Images/CityRoad.gif ani=/Animations/CityRoad.cel>
-</center><br>
-<font color=808080><spacer type=horizontal size=24><progressindicator name=progressindicator height=44 width=240></font></body></html>
+<html><head><display nooptions nostatus skipback clearback nosave nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script><script>
+head('Connecting to WebTV','','DialingWebTV',-1,1)</script>
+<table width=560 height=312 cellspacing=0 cellpadding=16>
+<tr><td align=center colspan=2>
+	<img src=file://rom/Images/Spacer.gif width=1 height=32><br>
+	<img src=file://rom/Images/CityGlow.gif><br>
+	<img src=file://rom/Images/CityRoad.gif ani=file://rom/Animations/CityRoad.cel>
+</td></tr><tr>
+	<td width=240 height=44 align=left valign=bottom><shadow><progressindicator name=progressindicator width=240 height=44></shadow></td>
+	<td height=1 align=right valign=bottom><shadow><font size=-1>
+		<b>SSID</b>: <code>&wtv-ssn;</code><br>
+		<b>Service IP</b>: <code>&wtv-1800addr;</code><br></font>
+		<script>as('020202',14,270,0,2)</script>
+	</shadow></td>
+</tr></table>
