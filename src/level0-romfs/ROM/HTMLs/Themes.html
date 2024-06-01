@@ -1,8 +1,7 @@
 <html><head><display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert>
-<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script><script>
-th=pp()
-function sBG(c){sB(z_nv,0,c)}
-</script></head><script>head(th,'Theme Settings','large','world1',5);</script>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head>
+<script>head('Theme Settings','large','world1',5)
+function sBG(c){sB(0,c)}</script>
 <spacer width=30 height=6 type=vertical>
 <table cellspacing=0 cellpadding=0><tr><td abswidth=14><td colspan=3><spacer height=20 type=vertical><td>
 	<tr><td><td width=350 height=230 valign=top align=left>
@@ -14,8 +13,8 @@ function sBG(c){sB(z_nv,0,c)}
 			else{s=''}
 			if(i%6==0){d.write('<tr>')}
 			d.write('<td align=center><font size=-1>'+gTN(i)+'</font><br>')
-			d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC(i,'bg')+' height=45 width=60></table>')
+			d.write('<table border=1 href="javascript:sBG('+i+')" insetselection'+s+'><tr><td bgcolor='+gTC('bg',i)+' height=45 width=60></table>')
 		}</script></table>
 	</table>
-	<tr><td width=330 valign=top align=right colspan=2><br><form action=javascript:goHTV()><script>butt(th,'Done','Done',160);</script></form>
+	<tr><td width=330 valign=top align=right colspan=2><br><form action=javascript:goHTV()><script>butt('Done','Done',160);</script></form>
 </table></body></html>
