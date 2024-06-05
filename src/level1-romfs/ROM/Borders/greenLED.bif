@@ -1,0 +1,5 @@
+IMAGE file://ROM/Images/options/pipoff.gif
+IMAGE file://ROM/Images/options/pipon.gif
+INNERBOUNDS  8, 8, 12, 12
+PADBOUNDS  8, 8, 12, 12
+DRAWCENTER

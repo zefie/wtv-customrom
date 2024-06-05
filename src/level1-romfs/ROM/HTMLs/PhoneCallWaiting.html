@@ -1,0 +1,36 @@
+<html><head><display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert nosave nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>
+head('Call waiting options')
+</script><table cellspacing=0 cellpadding=0>
+<tr><td abswidth=34><td colspan=3>
+<spacer height=44 type=vertical>
+<td abswidth=20>
+<tr><td><td width=220 height=220 valign=top align=left>
+<p>If your phone line has call waiting and you want incoming calls to interrupt WebTV, choose <b>accept calls</b>, and adjust sensitivity.
+<p>If your line has call waiting but you don't want WebTV to be interrupted, choose <b>block calls</b>.
+<td width=20><td width=220 valign=top align=left>
+<form action=client:ConfirmPhoneSetup name=ps>
+<table cellspacing=0 cellpadding=0>
+<tr><td valign=top>
+<input type=radio name=call-waiting-mode value=NONE selected checked=&hasit;>
+<td abswidth=4><td valign=top>
+<font size=-1>No call waiting on my phone line.</font>
+<tr><td absheight=10>
+<tr><td valign=top><input type=radio name=call-waiting-mode value=hack checked=&hack;>
+<td abswidth=4><td valign=top>
+<font size=-1><i>Accept calls</i><br>Disconnect if a call comes in.</font>
+<tr><td absheight=10>
+<tr><td valign=top><input type=radio name=call-waiting-mode value=disable checked=&nowait;>
+<td abswidth=3><td valign=top>
+<font size=-1><i>Block calls</i><br>Shut off call waiting when connecting to WebTV, using this prefix:
+<input type=text name=CallWaitingPrefix maxlength=31 bgcolor=444444 text=ffdd33 size=4 cursor=cc9933 value=&wstr;></font>
+<tr><td absheight=3>
+<tr><td valign=top colspan=3><font size=-1><i>example:</i><tt>*70,</tt></font>
+</table>
+<tr><td>
+<tr><td><td colspan=4 height=1 valign=top align=left>
+<tr><td>
+<tr><td><td colspan=4 height=24 valign=top align=left>
+<tr><td><td colspan=3 valign=top align=right>
+<script>butt('Adjust Sensitivity','AdjustSensitivity',190,'button','onclick=go("file://rom/HTMLs/PhoneCallWaitThresh.html")')
+butt('Done','Done',190)</script>

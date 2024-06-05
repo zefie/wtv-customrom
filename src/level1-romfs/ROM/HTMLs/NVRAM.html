@@ -1,0 +1,23 @@
+<html><head><display nooptions noscroll notvaudio switchtowebmode allowoffline noreconnectalert nosave nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>
+head('NVRAM Test Page');</script><h1>NVRAM Test:</h1>
+<table border=1><tr><td colspan=99>NVRAM Contents
+<tr><td>Data:</td><script>
+for(i=0;i<z_nv.length;i++){d.write('<td>'+z_nv.charAt(i)+'</td>');}
+d.write('<tr><td>Byte:</td>')
+for(i=0;i<z_nv.length;i++){document.write('<td>'+i+'</td>');}
+</script></table>
+<a href=javascript:sB(5,0)>Set byte 5 to 0</a><br>
+<a href=javascript:sB(5,1)>Set byte 5 to 1</a><br>
+<a href=javascript:sB(15,0)>Set byte 15 to 0</a><br>
+<a href=javascript:sB(15,1)>Set byte 15 to 1</a><br>
+<a href=javascript:sB(0,1)>Set byte 0 to 1</a> (Dark Theme)<br>
+<a href=javascript:sB(0,8)>Set byte 0 to 8</a> (zefie Theme)<br>
+<a href=javascript:eAll()>Wipe HackTV NVRAM</a>
+<br><br>
+Manually set:
+<form onsubmit="sB(this.b.value,this.v.value)">
+<table><tr><td>Byte:</td><td><input type="text" name="b" numbers size=2 value="0"></td>
+<td>Value:</td><td><input type="text" name="v" numbers size=2 value="8"></td>
+<td><script>butt('Commit')</script></td>
+</table></form>

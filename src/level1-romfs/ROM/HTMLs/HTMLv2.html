@@ -1,0 +1,48 @@
+<html><head><display nooptions noscroll allowoffline noreconnectalert nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>
+head('HTML Sandbox v2.0')
+</script><spacer width=1 height=5 type=block><script>function hV(){
+	poo=d.a.sel[d.a.sel.selectedIndex].value;
+	switch(poo){
+		case 'html':
+			d.open('text/html')
+			d.write(d.a.b.value)
+			d.close()
+		break
+		case 'js':
+			d.open('text/html')
+			d.write('<scr'+'ipt>'+d.a.b.value+'</scr'+'ipt>')
+			d.close()
+		break;
+		case 'acc':window.location=d.a.b.value
+		break
+		case 'em':window.open(d.a.b.value)
+		break
+		case 'src':d.write('<body bgcolor=191919 vlink=dddddd><embed type=text/plain src='+a.b.value+'><a selected href='+a.b.value+'>Show It!</a>')
+		break
+		default:document.reload()
+	}
+}</script>
+<center><form name=a onsubmit="hV() return false">
+<input type=hidden name=r value=&wtv-appvers;><script>
+	bgclr=gTC('bg')
+	tclr=gTC('t')
+	if(parseInt(d.a.r.value)>7200){msg='You can access, embed, or source a URL. You can also test WebTV JavaScript and HTML. Clear this textarea then type a URL and select the option below.&#13;&#10;&#13;&#10;To source enter a URL, select the source option then scroll to bottom of page. Click the (Show It) button.&#13;&#10;&#13;&#10;You can use the html viewer to mess around with the box or reminisce with WebTV-only code like audioscopes! Try it out. Here is an example, select the HTML preview option.';
+	}else{msg='You can access URLs, and test WebTV JavaScript and HTML. Clear this textarea then type a URL and select the option below.&#13;&#10;&#13;&#10;You can use the HTML viewer to mess around with the box or reminisce with WebTV-only code like audioscopes! Try it out. Here is an example, select the HTML preview option.';
+	}d.write('<textarea rows=15 name=b bgcolor='+bgclr+' text='+tclr+' width=520 wrap=physical nohighlight cursor='+tclr+'>&lt;!-- Begin HackTV Header --&gt;&#13;&#10;&lt;script src=file://rom/Cache/h.js&gt;&lt;/script>&#13;&#10;&lt;script src=file://rom/Cache/n.js&gt;&lt;/script&gt;&#13;&#10;&lt;script&gt;&#13;&#10;head(\'Generated Page\')&#13;&#10;&lt;/script>&#13;&#10;&lt;!-- End HackTV Header --&gt;&#13;&#10;&#13;&#10;&lt;br&gt;&lt;br&gt;'+msg+'&#13;&#10;&#13;&#10;<display notvaudio&gt;&lt;p&gt;&lt;center&gt;&lt;audioscope bgcolor=cccccc height=20 width=320 gain=0 leftcolor=191919 rightcolor=#4c5a67 border=1&gt;&lt;bgsound src=file://rom/Cache/Music/FridayEvilArr.mid autostart=true loop=3&gt;</textarea>');
+</script><table><td align=center>
+<spacer Width=100% Height=9 type=block>
+<select width=380 name=sel onchange=hV() selected>
+<option value=html>Preview HTML</option>
+<option value=js>Execute JS</option>
+<option value=acc>Access URL</option>
+<script>if(parseInt(d.a.r.value)>7200){
+	d.write('<option value="em">Embed URL</option>')
+	d.write('<option value="src">Source URL</option>')
+}</script>				  
+<option selected value="">Select Option</option>
+</select>
+<script>
+butt('Do it!')
+butt('Clear','','','button','onclick="d.a.b.value=\'\'"')
+</script></td></table></form>

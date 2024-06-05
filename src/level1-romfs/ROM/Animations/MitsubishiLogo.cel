@@ -1,0 +1,22 @@
+IMAGE = file://ROM/Images/MitsubishiLogo.gif
+
+FRAME m1 = 0 0 77 384
+FRAME m2 = 77 0 154 384
+
+PERIOD = 6
+
+FRAME m2
+    ADVANCE = 0 0
+
+FRAME m1
+    DISSOLVE = 4
+    ADVANCE = 0 0
+
+PERIOD = 60
+
+FRAME m1
+    ADVANCE = 0 0
+
+FRAME m2
+    DISSOLVE = 4
+    ADVANCE = 0 0

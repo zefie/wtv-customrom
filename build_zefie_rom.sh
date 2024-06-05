@@ -5,14 +5,14 @@ ZWNIBUILD=16115
 if [ -z "${ZVERSION}" ]; then
 	ZVERSION="git-${USER}-v1"
 fi
-ZROMTYPE="US-LC2-disk-0MB-8MB"
+ZROMTYPE="US-BPS-flashdisk-0MB-8MB-softmodem-CPU5230"
 
 ZSRC="src"
 ZWORK="workdir"
 ZROM="htv-${ZVERSION}.o"
 ZDEST="parts"
 
-ZINFOJS="${ZWORK}/level0-romfs/ROM/JS/BuildInfo.js"
+ZINFOJS="${ZWORK}/level1-romfs/ROM/JS/BuildInfo.js"
 ZDATE=$(date +"%Y-%m-%d %H:%M:%S %Z")
 
 

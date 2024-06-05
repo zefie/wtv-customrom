@@ -1,0 +1,5 @@
+IMAGE file://ROM/Images/redLEDoff.gif
+IMAGE file://ROM/Images/redLEDon.gif
+INNERBOUNDS  8, 8, 12, 12
+PADBOUNDS  8, 8, 12, 12
+DRAWCENTER

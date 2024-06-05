@@ -1,0 +1,28 @@
+<html><head><display nooptions noscroll allowoffline notvaudio switchtowebmode noreconnectalert nosave nosend>
+<script src=file://rom/Cache/h.js></script><script src=file://rom/Cache/n.js></script></head><script>
+head('Dialing options')
+</script><table cellspacing=0 cellpadding=0>
+<tr><td abswidth=14><td colspan=3>
+<spacer height=60 type=vertical>
+<td abswidth=20>
+<tr><td><td width=230 height=220 valign=top align=left>
+<table cellspacing=0 cellpadding=0><tr><td absheight=127 valign=top>
+<font size=-1>Some phone lines require a dialing prefix such as 9 to make an outside call. If necessary, type the number here.
+<tr><td valign=top><font size=-1>If your phone line only allows pulse dialing, rather than tone dialing, check this box.
+</table>
+<td width=20><td width=230 valign=top align=left>
+<form action=client:ConfirmPhoneSetup>
+<input type=hidden name=autosubmit value=true autosubmit=onleave>
+<table cellspacing=0 cellpadding=0>
+<tr><td align=right width=70><td width=140>Prefix: <input type=text name=DialOutsidePrefix bgcolor=444444 text=ffdd33 cursor=cc9933 size=4 maxlength=16 numbers selected value=&outstr;>
+<tr><td align=right height=28 width=70><td width=140><i>example: 9</i>
+<tr><td height=70>
+<tr><td align=right><td width=160>
+<input type=checkbox name=UsePulseDialing value=true checked=&pulse;>&nbsp;Pulse dialing
+</table>
+<tr><td><td colspan=4 height=7 valign=top align=left>
+<tr><td>
+<tr><td><td colspan=4 height=1 valign=top align=left>
+<tr><td>
+<tr><td><td colspan=4 height=4 valign=top align=left>
+<tr><td><td colspan=3 valign=top align=right><script>butt('Done','Done',103)</script></form>
