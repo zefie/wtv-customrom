@@ -30,7 +30,7 @@ jobs:
     - name: Make AppROM
       run: |
         dir
-        sh ./build_github_rom.sh
+        sh ./build_actions_rom.sh
     - name: Validate
       run: rm -rf rommy/
     - uses: actions/upload-artifact@master
