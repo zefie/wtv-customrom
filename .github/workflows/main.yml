@@ -27,8 +27,6 @@ jobs:
       run: | 
         git clone https://github.com/wtvemac/rommy.git
         pip install -r rommy/requirements.txt
-        sudo echo '#!/bin/bash
-        python /home/zefie/rommy/rommy.py "${@}"' > /usr/bin/rommy
     - name: Make AppROM
       run: ./build_zefie_rom.sh
     - name: Validate
