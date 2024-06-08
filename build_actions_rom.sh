@@ -30,5 +30,5 @@ sed -i "s|!TEMPLATE_VERS!|${ZVERSION}|" "${ZINFOJS}"
 sed -i "s|!TEMPLATE_ROM!|${ZROMTYPE}|" "${ZINFOJS}"
 
 # Build ROM
-./rommy/python3 rommy.py --fixcs "${ZWORK}" "${ZROM}"
+python3 ./rommy/rommy.py --fixcs "${ZWORK}" "${ZROM}"
 # --disable-lzss-compression
