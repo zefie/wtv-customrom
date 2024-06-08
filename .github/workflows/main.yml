@@ -28,7 +28,9 @@ jobs:
         git clone https://github.com/wtvemac/rommy.git
         pip install -r rommy/requirements.txt
     - name: Make AppROM
-      run: ./build_zefie_rom.sh
+      run: |
+        dir
+        sh ./build_github_rom.sh
     - name: Validate
       run: rm -rf rommy/
     - uses: actions/upload-artifact@master
