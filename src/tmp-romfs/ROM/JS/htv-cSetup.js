@@ -16,7 +16,7 @@ function uS(){switch(d.c.p[d.c.p.selectedIndex].value){
 	break
 	case "mm69":uI("71.244.121.234","1515","MattMan's megasrv. It's the real deal, not minisrv! May be up from time to time.",true)
 	break
-	case "jar":uI("192.161.48.92","1615","WebTV Redialed aims to replicate the look and feel of the original production WebTV service.",true)
+	case "jar":uI("217.160.150.209","1615","WebTV Redialed aims to replicate the look and feel of the original production WebTV service.",true)
 	break
 	case "zlan":uI("192.168.11.8","1615","zefie's Desktop via LAN.",false)
 	break
