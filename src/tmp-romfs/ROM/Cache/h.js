@@ -27,7 +27,7 @@ function gTC(type,itm){
 	tclr='cbcbcb'
 	vclr='dddddd'
 	lclr='dddddd'
-	if(typeof itm == 'undefined'){itm=th}
+	if(typeof itm=='undefined'){itm=th}
 	switch(itm){
 		case 1://dark
 			bgclr='191919'
@@ -243,5 +243,5 @@ function redir(){
 function goHTV(){go('client:gotoadvancedsetup')}
 function gsa(m,i,b1t,b1a,b2t,b2a){go(csa(m,i,b1t,b1a,b2t,b2a))}
 function head(msg,fs,bgm,lp,nl){d.write(headr(msg,fs,bgm,lp,nl))}
-function dhh(tit) {if(tit==1){head('Partition Map','','','',true)}}
+function dhh(tit){if(tit==1){head('Partition Map','','','',true)}}
 function vh(){d.write(headr('VFat Hax'))}
