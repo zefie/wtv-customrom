@@ -115,8 +115,10 @@ function gTC(type,itm){
 		case 'v':return vclr
 	}
 }
-function headr(msg,fs,bgm,lp,nl){
+
+function headr(msg,fs,bgm,lp,nl,logo){
 	th=gV(0)
+	if(!logo){logo=rch+'WebTVLogoJewel.gif'}
 	out=''
 	switch(fs){
 		case 'small':fsn=7
@@ -155,12 +157,13 @@ function headr(msg,fs,bgm,lp,nl){
 	out+=tab();
 	out+='<spacer type=block width=11 height=11><br><spacer type=block width=10 height=1>'
 	if(!nl){out+='<a href="javascript:goHTV()">'}
-	out+='<img src='+cch+'WebTVLogoJewel.gif width=90 height=69>'
+	out+='<img src='+logo+' width=90 height=69>'
 	if(!nl){out+='</a>'}
 	out+=tab(msg);
 	out+='</td></tr></table>'
 	return out;
 }
+
 function tab(msg){
 	bgimg=gTC('bgimg')
 	shimg=gTC('shimg')
